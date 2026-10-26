@@ -5,14 +5,16 @@ Hosted on GitHub Pages in **its own repository**, separate from `habbine.github.
 
 ## Edit the site
 
-- Text: `src/content.py` (EN / FR / KO)
-- Contact details, booking link, KakaoTalk, legal notice fields, team photos: `src/config.py`
+- Text: `content.py` (EN / FR / KO)
+- Contact details, booking link, KakaoTalk, legal notice fields, team photos: `config.py`
 - Look: `assets/style.css`
+
+Upload or push the whole folder **with its subfolders** (`assets/`, `fr/`, `ko/`, `services/` and so on). Uploading files one by one through the GitHub web page flattens the folders and breaks the site.
 
 After any change:
 
 ```bash
-python3 src/build.py
+python3 build.py
 git add -A && git commit -m "Update site" && git push
 ```
 
@@ -50,17 +52,17 @@ Rollback: put the three Wix A records and the `cdn3.wixdns.net` CNAME back. DNS 
 
 `archelegal.net` (the old Wix address) is a separate domain and is not affected. Redirect it later if you want.
 
-Redirects: set `SITE_URL` in `src/config.py` to the version you want as canonical (`www` or bare) and rebuild.
+Redirects: set `SITE_URL` in `config.py` to the version you want as canonical (`www` or bare) and rebuild.
 
 ## Before launch checklist
 
-- [ ] Fill the legal notice fields in `src/config.py` (`LEGAL`): RCS, capital, VAT, bar, insurance, publication director. Blank ones show highlighted on the page.
-- [ ] Have a native speaker proofread the French and Korean text in `src/content.py`.
+- [ ] Fill the legal notice fields in `config.py` (`LEGAL`): RCS, capital, VAT, bar, insurance, publication director. Blank ones show highlighted on the page.
+- [ ] Have a native speaker proofread the French and Korean text in `content.py`.
 - [ ] Confirm the claims in the credentials section with each partner (roles and dates change, e.g. the CCICF presidency).
 - [ ] Add a booking link (`BOOKING_URL`), a form endpoint (`FORM_ENDPOINT`, e.g. Formspree) and KakaoTalk if used.
 - [ ] Add real photos: put files in `assets/img/` and set `photo` for each person in `config.py`.
 - [ ] Add Seoul and Hong Kong addresses if the offices have them.
 - [ ] Selected matters (Experience page) are anonymised summaries from the old Competence page. Brand and client names that appeared there (e.g. carmakers, luxury houses, a coffee chain) were left out. Add them back only with client consent, and check bar advertising rules.
-- [ ] CCICF presidency dates differ on the old site (home page: 2019–2026; profile slide: since 2018). Confirm and fix in `src/content.py` and `src/content_extra.py`.
+- [ ] CCICF presidency dates differ on the old site (home page: 2019–2026; profile slide: since 2018). Confirm and fix in `content.py` and `content_extra.py`.
 - [ ] Replace `assets/logo.svg` with the firm's real logo file (keep the name, or edit `build.py`).
 - [ ] Personal mobile numbers shown on the old profile slides were intentionally not copied.

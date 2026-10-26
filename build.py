@@ -73,7 +73,8 @@ def footer(lang, page, t):
 <div><h3>{e(t["home"]["offices_h"])}</h3><ul><li>Paris: {e(", ".join(C.ADDRESS_LINES[:2]))}</li><li>Seoul</li><li>Hong Kong</li></ul></div>
 <div><h3>{e(f["follow"])}</h3><ul>{soc}</ul></div>
 </div>
-<div class="fine"><span>© {2026} {e(C.FIRM_FULL)}. {e(f["rights"])}</span><a href="{rel(lang, page, lang, "legal")}">{e(f["legal"])}</a><a href="{rel(lang, page, lang, "privacy")}">{e(f["privacy"])}</a></div></footer>'''
+<div class="fine"><span>© {2026} {e(C.FIRM_FULL)}. {e(f["rights"])}</span><a href="{rel(lang, page, lang, "legal")}">{e(f["legal"])}</a><a href="{rel(lang, page, lang, "privacy")}">{e(f["privacy"])}</a></div>
+</div></footer>'''
 
 
 def head(lang, page, t, extra_ld=""):
@@ -145,7 +146,7 @@ def page_home(lang, t):
     h = t["home"]
     svc = t["services"]["items"]
     who = "".join(f'<div class="rule-top"><h3>{e(a)}</h3><p>{e(b)}</p></div>' for a, b in h["who"])
-    svcs = "".join(f'<div class="rule-top"><h3><a href="{rel(lang, "home", lang, "services")}">#{s[0]}</a></h3><p>{e(s[2])}</p></div>' for s in svc)
+    svcs = "".join(f'<div class="rule-top"><h3><a href="{rel(lang, "home", lang, "services")}#{s[0]}" style="color:inherit;text-decoration:none">{e(s[1])}</a></h3><p>{e(s[2])}</p></div>' for s in svc)
     creds = "".join(f'<div class="rule-top"><h3 style="font-size:1.1rem">{e(a)}</h3><p>{e(b)}</p></div>' for a, b in h["creds"])
     inds = "".join(f'<span class="tag">{e(x)}</span>' for x in h["industries"])
     def office(name, d, main=False):
@@ -215,7 +216,7 @@ def page_people(lang, t):
         if person["linkedin"]:
             links += f' · <a href="{e(person["linkedin"])}" rel="noopener">{e(p["linkedin_label"])}</a>'
         links += "</p>"
-        out += f'<div class="person"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div><h2 style="font-size:1.6rem;margin-bottom:.1em">{e(person["name"])}<small>{e(p["role"][k])}</small></h2>{links}<ul>{lis}</ul></div></div>'
+        out += f'<div class="person"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div><h2 style="font-size:1.6rem;margin-bottom:.1em">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p><ul>{lis}</ul>{links}</div></div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1><p class="lede">{e(p["lede"])}</p></div></div>
 <section style="padding-top:0"><div class="wrap">{out}</div></section>
 {cta_band(lang, "people", t, t["home"]["cta_h"], t["home"]["cta_p"])}'''
