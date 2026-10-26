@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Static site generator for Archè. Run from the repo root:  python3 src/build.py
+"""Static site generator for Archè. Run from the repo root:  python3 build.py
 Writes en pages at the repo root, fr/ and ko/ for the other languages."""
 import html, json, os, re, shutil, sys
 from pathlib import Path
@@ -10,7 +10,7 @@ from content import T
 import content_extra
 content_extra.apply(T)
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent
 LANGS = ["en", "fr", "ko"]
 LANG_LABEL = {"en": "EN", "fr": "FR", "ko": "한국어"}
 NAV = ["services", "experience", "people", "insights", "contact"]
@@ -52,7 +52,7 @@ def header(lang, page, t):
         switch += f'<a href="{rel(lang, page, l, page)}" hreflang="{l}" lang="{l}"{cur}>{LANG_LABEL[l]}</a>'
     return f'''<a class="skip" href="#main">{e(t["skip"])}</a>
 <header class="site-header"><div class="wrap">
-<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo.svg" width="40" height="40" alt=""><span class="brand-text"><span>{e(C.FIRM)}</span><small>Paris · Seoul · Hong Kong</small></span></a>
+<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo.svg" width="40" height="40" alt=""><span class="brand-text"><span>{e(C.FIRM)}</span><small>SELARL</small></span></a>
 <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" type="button">{e(t["menu"])}</button>
 <nav class="primary" id="primary-nav" aria-label="{e(t["menu"])}">{nav}<a class="btn" href="{cta_href(lang, page)}">{e(t["cta"])}</a><div class="lang" role="group" aria-label="Language">{switch}</div></nav>
 </div></header>'''
@@ -73,8 +73,7 @@ def footer(lang, page, t):
 <div><h3>{e(t["home"]["offices_h"])}</h3><ul><li>Paris: {e(", ".join(C.ADDRESS_LINES[:2]))}</li><li>Seoul</li><li>Hong Kong</li></ul></div>
 <div><h3>{e(f["follow"])}</h3><ul>{soc}</ul></div>
 </div>
-<div class="fine"><span>© {2026} {e(C.FIRM_FULL)}. {e(f["rights"])}</span><a href="{rel(lang, page, lang, "legal")}">{e(f["legal"])}</a><a href="{rel(lang, page, lang, "privacy")}">{e(f["privacy"])}</a></div>
-</div></footer>'''
+<div class="fine"><span>© {2026} {e(C.FIRM_FULL)}. {e(f["rights"])}</span><a href="{rel(lang, page, lang, "legal")}">{e(f["legal"])}</a><a href="{rel(lang, page, lang, "privacy")}">{e(f["privacy"])}</a></div></footer>'''
 
 
 def head(lang, page, t, extra_ld=""):
@@ -146,7 +145,7 @@ def page_home(lang, t):
     h = t["home"]
     svc = t["services"]["items"]
     who = "".join(f'<div class="rule-top"><h3>{e(a)}</h3><p>{e(b)}</p></div>' for a, b in h["who"])
-    svcs = "".join(f'<div class="rule-top"><h3><a href="{rel(lang, "home", lang, "services")}#{s[0]}" style="color:inherit;text-decoration:none">{e(s[1])}</a></h3><p>{e(s[2])}</p></div>' for s in svc)
+    svcs = "".join(f'<div class="rule-top"><h3><a href="{rel(lang, "home", lang, "services")}">#{s[0]}</a></h3><p>{e(s[2])}</p></div>' for s in svc)
     creds = "".join(f'<div class="rule-top"><h3 style="font-size:1.1rem">{e(a)}</h3><p>{e(b)}</p></div>' for a, b in h["creds"])
     inds = "".join(f'<span class="tag">{e(x)}</span>' for x in h["industries"])
     def office(name, d, main=False):
@@ -216,7 +215,7 @@ def page_people(lang, t):
         if person["linkedin"]:
             links += f' · <a href="{e(person["linkedin"])}" rel="noopener">{e(p["linkedin_label"])}</a>'
         links += "</p>"
-        out += f'<div class="person"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div><h2 style="font-size:1.6rem;margin-bottom:.1em">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p><ul>{lis}</ul>{links}</div></div>'
+        out += f'<div class="person"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div><h2 style="font-size:1.6rem;margin-bottom:.1em">{e(person["name"])}<small>{e(p["role"][k])}</small></h2>{links}<ul>{lis}</ul></div></div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1><p class="lede">{e(p["lede"])}</p></div></div>
 <section style="padding-top:0"><div class="wrap">{out}</div></section>
 {cta_band(lang, "people", t, t["home"]["cta_h"], t["home"]["cta_p"])}'''
@@ -334,8 +333,8 @@ def main():
     t = T["en"]
     base = C.SITE_URL.rstrip("/") + "/"
     nf = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{e(t["meta"]["404"][0])}</title><meta name="robots" content="noindex"><link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="{base}assets/style.css"></head>
-<body><main id="main"><section><div class="wrap"><h1>{e(t["nf"]["h1"])}</h1><p class="lede">{e(t["nf"]["p"])}</p><p><a class="btn" href="{base}">{e(t["nf"]["back"])}</a></p></div></section></main></body></html>'''
+<title>{e(t["meta"]["404"][0])}</title><meta name="robots" content="noindex"><link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="{base}assets/style.css">
+</head><body><main id="main"><section><div class="wrap"><h1>{e(t["nf"]["h1"])}</h1><p class="lede">{e(t["nf"]["p"])}</p><p><a class="btn" href="{base}">{e(t["nf"]["back"])}</a></p></div></section></main></body></html>'''
     write("404.html", nf)
 
     # sitemap with hreflang alternates
