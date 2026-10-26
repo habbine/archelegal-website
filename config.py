@@ -1,7 +1,7 @@
-"""Site-wide settings. Edit this file, then run: python3 src/build.py"""
+"""Site-wide settings. Edit this file, then run: python3 build.py"""
 
 DOMAIN = "archelegal.com"           # canonical domain (written to CNAME)
-SITE_URL = "https://www.archelegal.com"  # change to https://archelegal.com if you prefer the bare domain
+SITE_URL = "https://archelegal.com"  # matches CNAME (apex); GitHub Pages redirects www to it
 FIRM = "Archè"
 FIRM_FULL = "Archè SELARL"
 
