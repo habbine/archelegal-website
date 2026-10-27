@@ -26,10 +26,16 @@ MONTHS = {"en": "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(),
 
 
 def fmt_date(lang, d):
-    y, m, day = d.split("-")
+    parts = d.split("-")  # "YYYY-MM-DD", or "YYYY-MM" when only the month is known
+    y, m = parts[0], parts[1]
+    day = parts[2] if len(parts) > 2 else None
     if lang == "ko":
-        return f"{y}.{m}.{day}"
-    return f"{int(day)} {MONTHS[lang][int(m) - 1]} {y}"
+        return f"{y}.{m}.{day}" if day else f"{y}.{m}"
+    mon = MONTHS[lang][int(m) - 1]
+    if not day:
+        mon = {"en": "Jan Feb Mar Apr May June July Aug Sept Oct Nov Dec", "fr": "janvier février mars avril mai juin juillet août septembre octobre novembre décembre"}[lang].split()[int(m) - 1]
+        return f"{mon} {y}"
+    return f"{int(day)} {mon} {y}"
 
 
 def press_items(lang, items):
