@@ -151,6 +151,40 @@ WHAT = {
 }
 
 
+SIGNATURE = {
+    "en": {"kicker": "Signature", "h": "A Paris firm with Korean roots",
+           "case_more": "Read about the case",
+           "first_h": "The first Korean lawyer admitted to the French bar",
+           "first_p": "James Joong-ho Kim, admitted to the Paris Bar in 1997, was reported by Law Times (2016) as the first Korean lawyer in France.",
+           "first_more": "Meet the team"},
+    "fr": {"kicker": "Repères", "h": "Un cabinet parisien aux racines coréennes",
+           "case_more": "En savoir plus sur l'affaire",
+           "first_h": "Le premier avocat coréen inscrit au barreau en France",
+           "first_p": "James Joong-ho Kim, inscrit au Barreau de Paris en 1997, a été présenté par le Law Times (2016) comme le premier avocat coréen en France.",
+           "first_more": "Découvrir l'équipe"},
+    "ko": {"kicker": "대표 이력", "h": "한국에 뿌리를 둔 파리 로펌",
+           "case_more": "사건 자세히 보기",
+           "first_h": "한국인 최초의 프랑스 변호사",
+           "first_p": "1997년 파리 변호사로 등록한 김중호 변호사는 법률신문(2016)에서 한국인 첫 프랑스 변호사로 소개되었습니다.",
+           "first_more": "구성원 보기"},
+}
+TEAM_H = {"en": ("Who will handle your matter", "Partner-led work in French, English and Korean."),
+          "fr": ("Qui suivra votre dossier", "Des dossiers suivis par les associés, en français, en anglais et en coréen."),
+          "ko": ("사안을 담당할 변호사", "파트너가 직접 맡아 한국어, 프랑스어, 영어로 진행합니다.")}
+NETWORK = {"en": "Through long-standing cooperation with local law firms, we also advise in other countries across Europe, Asia, Africa and the Middle East.",
+           "fr": "Grâce à une coopération de longue date avec des cabinets locaux, nous intervenons aussi dans d'autres pays d'Europe, d'Asie, d'Afrique et du Moyen-Orient.",
+           "ko": "현지 로펌들과의 오랜 협력 관계를 통해 유럽, 아시아, 아프리카, 중동의 다른 국가에서도 자문을 제공합니다."}
+CLOSE = {"en": ("Tell us briefly what you need, in English, French or Korean.", "Discuss your matter"),
+         "fr": ("Décrivez-nous brièvement votre besoin, en français, en anglais ou en coréen.", "Parlez-nous de votre dossier"),
+         "ko": ("필요하신 내용을 한국어, 프랑스어, 영어로 간단히 알려 주세요.", "사안 상담하기")}
+
+
+def what_compact(lang):
+    import content_services as CS
+    svc = rel(lang, "home", lang, "services")
+    return "".join(f'<li><a href="{svc}#{sid}">{e(title)}</a></li>' for sid, title, _, _ in CS.SERVICES8[lang])
+
+
 def what_cards(lang):
     out = ""
     import content_services as CS
@@ -211,10 +245,10 @@ def footer(lang, page, t):
            + "".join(f'<li><a href="{e(u)}" rel="noopener">{e(l)}</a></li>' for l, u in C.FOOTER_PERSONAL))
     return f'''<footer class="site-footer"><div class="wrap">
 <div class="cols c4">
-<div><h3>{e(C.FIRM_FULL)}</h3><p>{e(f["lawyers"])}</p></div>
-<div><h3>{e(f["nav"])}</h3><ul>{links}</ul></div>
-<div><h3>{e(t["home"]["offices_h"])}</h3><ul><li>Paris: {e(", ".join(C.ADDRESS_LINES[:2]))}</li><li>Seoul</li><li>Hong Kong</li></ul></div>
-<div><h3>{e(f["follow"])}</h3><ul>{soc}</ul></div>
+<div><h2 class="ft-h">{e(C.FIRM_FULL)}</h2><p>{e(f["lawyers"])}</p></div>
+<div><h2 class="ft-h">{e(f["nav"])}</h2><ul>{links}</ul></div>
+<div><h2 class="ft-h">{e(t["home"]["offices_h"])}</h2><ul><li>Paris: {e(", ".join(C.ADDRESS_LINES[:2]))}</li><li>Seoul</li><li>Hong Kong</li></ul></div>
+<div><h2 class="ft-h">{e(f["follow"])}</h2><ul>{soc}</ul></div>
 </div>
 <div class="fine"><span>© {2026} {e(C.FIRM_FULL)}. {e(f["rights"])}</span><a href="{rel(lang, page, lang, "legal")}">{e(f["legal"])}</a><a href="{rel(lang, page, lang, "privacy")}">{e(f["privacy"])}</a></div>
 </div></footer>'''
@@ -331,25 +365,49 @@ def page_home(lang, t):
     if t.get("matters"):
         firsts = "".join(f'<div class="rule-top"><h3 style="font-size:1.05rem">{e(g[0])}</h3><p>{e(g[1][0])}</p></div>' for g in t["matters"]["groups"])
         mt = f'''<section><div class="wrap"><div class="section-head"><h2>{e(h["matters_h"])}</h2><p class="lede">{e(h["matters_intro"])}</p></div>
-<div class="cols c4">{firsts}</div><p style="margin-top:28px"><a href="{rel(lang, "home", lang, "experience")}">{e(h["matters_more"])}</a></p></div></section>'''
+<div class="cols c3">{firsts}</div><p style="margin-top:28px"><a href="{rel(lang, "home", lang, "experience")}">{e(h["matters_more"])}</a></p></div></section>'''
     up = "../" * depth(lang, "home")
     cov = {"en": ("Boutique international law firm", "Paris · Seoul · Hong Kong", "Enter the site"), "fr": ("Cabinet d'avocats international", "Paris · Séoul · Hong Kong", "Découvrir le cabinet"), "ko": ("국제 부티크 로펌", "파리 · 서울 · 홍콩", "사이트 둘러보기")}[lang]
     hc = {"en": {"label": "Contact", "kicker": "Write to us", "cities": "Paris · Seoul · Hong Kong", "note": "Write in English, French or Korean."}, "fr": {"label": "Contact", "kicker": "Écrivez-nous", "cities": "Paris · Séoul · Hong Kong", "note": "En français, en anglais ou en coréen."}, "ko": {"label": "문의", "kicker": "문의하기", "cities": "파리 · 서울 · 홍콩", "note": "한국어, 프랑스어, 영어로 문의해 주세요."}}[lang]
-    body = f'''<section class="landing" style="background-image:url('{up}assets/img/landing-bg.webp')" aria-hidden="true"></section>
+    sig = SIGNATURE[lang]
+    sig_html = (f'<section class="alt signature" aria-labelledby="sig-h"><div class="wrap"><div class="section-head"><p class="kicker">{e(sig["kicker"])}</p><h2 id="sig-h">{e(sig["h"])}</h2></div><div class="cols c2">'
+                f'<div class="sig-card"><h3>{e(HERITAGE[lang][0])}</h3><p>{e(HERITAGE[lang][1])}</p><a class="sig-link" href="{rel(lang, "home", lang, "insights")}#oegyujanggak">{e(sig["case_more"])} →</a></div>'
+                f'<div class="sig-card"><h3>{e(sig["first_h"])}</h3><p>{e(sig["first_p"])}</p><a class="sig-link" href="{rel(lang, "home", lang, "people")}#jk">{e(sig["first_more"])} →</a></div>'
+                '</div></div></section>')
+    import team_profiles as TP
+    team_cards = "".join(
+        f'<a class="tm-card" href="{rel(lang, "home", lang, "people")}#{p["slug"]}"><img src="{up}{e(p["photo"])}" alt="" width="240" height="300" loading="lazy" decoding="async">'
+        f'<span class="tm-name">{e(p["name"])}</span><span class="tm-role">{e(t["people"]["roles"][p["slug"]])}</span><span class="tm-lang">{e(TP.PROFILES[p["slug"]][lang]["lang"])}</span></a>'
+        for p in C.PEOPLE if p.get("photo"))
+    team_html = (f'<section aria-labelledby="tm-h"><div class="wrap"><div class="section-head"><h2 id="tm-h">{e(TEAM_H[lang][0])}</h2><p class="lede">{e(TEAM_H[lang][1])}</p></div>'
+                 f'<div class="tm-grid">{team_cards}</div></div></section>')
+    close = CLOSE[lang]
+    close_html = (f'<section class="alt close-line"><div class="wrap"><p class="close-h">{e(close[0])}</p>'
+                  f'<a class="btn" href="{cta_href(lang, "home")}">{e(close[1])}</a></div></section>')
+    primary = {"en": "Discuss your matter", "fr": "Parlez-nous de votre dossier", "ko": "사안 상담하기"}[lang]
+    secondary = {"en": "Explore our expertise", "fr": "Découvrir nos expertises", "ko": "업무분야 보기"}[lang]
+    strip = ('<section class="cred-strip strip-b" aria-label="' + e(h["strip"][0][0]) + '"><div class="wrap"><dl>'
+             + "".join("<div><dt>" + e(a) + "</dt><dd>" + " ".join('<span class="nw">' + e(x) + ("&nbsp;·" if i < len(c.split(" · ")) - 1 else "") + "</span>" for i, x in enumerate(c.split(" · "))) + "</dd></div>" for a, c in h["strip"])
+             + "</dl></div></section>")
+    body = f"""<section class="landing" style="background-image:url('{up}assets/img/landing-bg.webp')" aria-hidden="true"></section>
 <div id="hero-start"></div>
-<section class="hero hero-b" aria-labelledby="hero-name"><div class="wrap"><h1 class="hero-name" id="hero-name"><span lang="fr">Archè</span> <span class="hero-name-ko" lang="ko">아르케</span></h1><p class="hero-cities">{e(cov[1])}</p><p class="lede">{e(BRIDGE[lang])}</p></div></section>
-<section class="cred-strip strip-b" aria-label="{e(h["strip"][0][0])}"><div class="wrap"><dl>{"".join(f"<div><dt>{e(a)}</dt><dd>" + " ".join(f'<span class="nw">{e(x)}{"&nbsp;·" if i < len(c.split(" · ")) - 1 else ""}</span>' for i, x in enumerate(c.split(" · "))) + "</dd></div>" for a, c in h["strip"])}</dl></div></section>
-<section class="hero hero-a"><div class="wrap"><div><h2 class="hero-a-h">{e(h["h1"])}</h2><p class="lede">{e(h["lede"])}</p>
-<div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{ {"en": "Discuss your matter", "fr": "Parlez-nous de votre dossier", "ko": "사안 상담하기"}[lang] }</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{ {"en": "Explore our expertise", "fr": "Découvrir nos expertises", "ko": "업무분야 보기"}[lang] }</a></div></div></div></section>
-<section class="what"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHAT[lang]["kicker"])}</p><h2>{e(h["services_h"])}</h2><p class="lede">{e(WHAT[lang]["lede"])}</p></div><div class="cols c4">{what_cards(lang)}</div>
+<section class="hero hero-b" aria-labelledby="hero-name"><div class="wrap">
+<h1 class="hero-name" id="hero-name"><span class="hn-line"><span lang="fr">Archè</span> <span class="hero-name-ko" lang="ko">아르케</span></span><span class="hero-sub">{e(h["h1"])}</span></h1>
+<p class="hero-cities">{e(cov[1])}</p><p class="lede">{e(h["lede"])}</p>
+<div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{e(primary)}</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{e(secondary)}</a></div>
+</div></section>
+{strip}
+<section class="what"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHAT[lang]["kicker"])}</p><h2>{e(h["services_h"])}</h2><p class="lede">{e(WHAT[lang]["lede"])}</p></div><ul class="what-compact">{what_compact(lang)}</ul>
 <p class="what-more"><a href="{rel(lang, "home", lang, "services")}">{e(WHAT[lang]["more"])} →</a></p></div></section>
-<section class="alt who"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHO[lang]["kicker"])}</p><h2>{e(WHO[lang]["h"])}</h2><p class="lede">{e(WHO[lang]["lede"])}</p></div><div class="cols c3">{who_cards(lang)}</div><div class="who-cta"><div><p class="who-cta-h">{e(WHO[lang]["cta_h"])}</p><p>{e(WHO[lang]["cta_p"])}</p></div><a class="btn ghost" href="{cta_href(lang, "home")}">{e(WHO[lang]["cta_b"])} ↗</a></div></div></section>
+<section class="alt who"><div class="wrap"><div class="section-head"><h2>{e(WHO[lang]["h"])}</h2><p class="lede">{e(WHO[lang]["lede"])}</p></div><div class="cols c3">{who_cards(lang)}</div><div class="who-cta"><div><p class="who-cta-h">{e(WHO[lang]["cta_h"])}</p><p>{e(WHO[lang]["cta_p"])}</p></div><a class="btn ghost" href="{cta_href(lang, "home")}">{e(WHO[lang]["cta_b"])} ↗</a></div></div></section>
 {mt}
+{sig_html}
+{team_html}
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["industries_h"])}</h2><p class="lede">{e(h["industries_p"])}</p></div><div class="industries">{inds}</div></div></section>
-<section><div class="wrap"><div class="section-head"><h2>{e(h["offices_h"])}</h2></div><div class="offices">{offices}</div></div></section>
+<section><div class="wrap"><div class="section-head"><h2>{e(h["offices_h"])}</h2><p class="lede">{e(NETWORK[lang])}</p></div><div class="offices">{offices}</div></div></section>
 <section class="alt"><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS)}</ul></div></section>
 {press}
-<section class="alt" id="follow"><div class="wrap"><h2>{e(t["insights"]["follow_h"])}</h2>{follow_card(lang, t["insights"]["follow_p"])}</div></section>'''
+{close_html}"""
     return body
 
 
@@ -367,11 +425,11 @@ def page_services(lang, t):
     ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in s["faq"]]}
     idx = ""
-    services_js = """<script>(function(){var list=document.getElementById('services-list');if(!list)return;var chips=document.querySelectorAll('.practice-chip');var blocks=list.querySelectorAll('.service');function show(g){blocks.forEach(function(b){b.hidden=(g!=='all'&&b.id!==g)});chips.forEach(function(c){c.setAttribute('aria-pressed',String(c.getAttribute('data-group')===g))});}chips.forEach(function(c){c.addEventListener('click',function(ev){var g=c.getAttribute('data-group');ev.preventDefault();show(g);if(history.replaceState)history.replaceState(null,'','#'+(g==='all'?'services-list':g));list.scrollIntoView({behavior:'smooth',block:'start'});});});var h=location.hash.slice(1);if(h&&h!=='services-list'&&document.getElementById(h)&&h!=='all'){show(h);}})();</script>"""
+    services_js = """<script>(function(){var list=document.getElementById('services-list');if(!list)return;var chips=document.querySelectorAll('.practice-chip');var blocks=list.querySelectorAll('.service');function show(g){blocks.forEach(function(b){b.hidden=(g!=='all'&&b.id!==g)});chips.forEach(function(c){var on=c.getAttribute('data-group')===g;if(c.tagName==='BUTTON'){c.setAttribute('aria-pressed',String(on))}else if(on){c.setAttribute('aria-current','true')}else{c.removeAttribute('aria-current')}});}chips.forEach(function(c){c.addEventListener('click',function(ev){var g=c.getAttribute('data-group');ev.preventDefault();show(g);if(history.replaceState)history.replaceState(null,'','#'+(g==='all'?'services-list':g));list.scrollIntoView({behavior:'smooth',block:'start'});});});var h=location.hash.slice(1);if(h&&h!=='services-list'&&document.getElementById(h)&&h!=='all'){show(h);}})();</script>"""
     if s.get("index"):
         all_lbl = {"en": "All", "fr": "Tous", "ko": "전체"}[lang]
         chips = f'<button type="button" class="practice-chip" data-group="all" aria-pressed="true">{e(all_lbl)}</button>'
-        chips_by_group = "".join(f'<li><a class="practice-chip" href="#{k}" data-group="{k}" aria-pressed="false">{e(lbl)}</a></li>' for lbl, k in s["index"])
+        chips_by_group = "".join(f'<li><a class="practice-chip" href="#{k}" data-group="{k}">{e(lbl)}</a></li>' for lbl, k in s["index"])
         idx = f'<nav class="practice-index" aria-labelledby="pi-h"><h2 id="pi-h">{e(s["index_h"])}</h2><div class="practice-all">{chips}</div><ul class="practice-chips">{chips_by_group}</ul></nav>'
 
     return f'''<div class="page-head"><div class="wrap"><h1>{e(s["h1"])}</h1><p class="lede">{e(s["lede"])}</p>{idx}</div></div>
@@ -430,8 +488,19 @@ def page_people(lang, t):
                 f'<p class="pf-lead">{e(pr["lead"])}</p>'
                 f'<h3 class="pf-h">{e(L["areas"])}</h3><ul class="pf-areas">{areas}</ul>'
                 f'<dl class="pf-facts">{facts}</dl>{roles}{links}</div></article>')
+    import team_profiles as TP2
+    people_ld = []
+    for person in C.PEOPLE:
+        k = person["slug"]; pr = TP2.PROFILES[k]["en"]
+        same = [u for u in [person.get("linkedin")] + [u for _, u in person.get("links", [])] if u]
+        people_ld.append({"@type": "Person", "name": person["name"], "jobTitle": t["people"]["roles"][k],
+                          "worksFor": {"@type": "LegalService", "name": C.FIRM_FULL, "url": C.SITE_URL},
+                          "email": "mailto:" + person["email"], "knowsLanguage": [x.split(" (")[0] for x in pr["lang"].split(" · ")],
+                          **({"image": C.SITE_URL.rstrip("/") + "/" + person["photo"]} if person.get("photo") else {}),
+                          **({"sameAs": same} if same else {})})
+    ld = {"@context": "https://schema.org", "@graph": people_ld}
     return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1></div></div>
-<section style="padding-top:0"><div class="wrap">{out}</div></section>'''
+<section style="padding-top:0"><div class="wrap">{out}</div></section>''', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>"
 
 
 def see_more(items, lang, keep=4):
@@ -450,7 +519,7 @@ def page_experience(lang, t):
     for title, items in m["groups"]:
         groups += f'<div class="service"><div><h2>{e(title)}</h2></div>{see_more(items, lang, 6)}</div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(m["h1"])}</h1><p class="lede">{e(m["lede"])}</p></div></div>
-<section style="padding-top:0"><div class="wrap">{groups}</div></section>
+<section style="padding-top:0"><div class="wrap">{groups}<p class="xp-note">{e(m.get("footnote", ""))}</p></div></section>
 {cta_band(lang, "experience", t, m["cta_h"], m["cta_p"])}'''
 
 

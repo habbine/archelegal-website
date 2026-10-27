@@ -117,7 +117,7 @@ X["en"] = {
         "AFEC EU and Sports Law conference",
         "Guest lectures, Université Paris Cité and Aix-Marseille Université",
     ],
-    "matters_more": "All selected matters",
+    "matters_more": "All selected cases",
     "matters_intro": "Examples of past work for clients.",
 }
 
