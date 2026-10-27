@@ -6,6 +6,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import config as C
+C.PRESS.sort(key=lambda p: p["date"], reverse=True)  # newest first, whatever order config.py lists them in
 from content import T
 import content_extra
 content_extra.apply(T)
@@ -19,6 +20,36 @@ SLUG = {"home": "", "services": "services/", "experience": "experience/", "peopl
 OG_LOCALE = {"en": "en_GB", "fr": "fr_FR", "ko": "ko_KR"}
 e = html.escape
 warnings = []
+
+
+MONTHS = {"en": "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(),
+          "fr": "janv. févr. mars avr. mai juin juil. août sept. oct. nov. déc.".split()}
+
+
+def fmt_date(lang, d):
+    parts = d.split("-")  # "YYYY-MM-DD", or "YYYY-MM" when only the month is known
+    y, m = parts[0], parts[1]
+    day = parts[2] if len(parts) > 2 else None
+    if lang == "ko":
+        return f"{y}.{m}.{day}" if day else f"{y}.{m}"
+    mon = MONTHS[lang][int(m) - 1]
+    if not day:
+        mon = {"en": "Jan Feb Mar Apr May June July Aug Sept Oct Nov Dec", "fr": "janvier février mars avril mai juin juillet août septembre octobre novembre décembre"}[lang].split()[int(m) - 1]
+        return f"{mon} {y}"
+    return f"{int(day)} {mon} {y}"
+
+
+def press_items(lang, items):
+    out = ""
+    for p in items:
+        about = p.get("about", {}).get(lang, "")
+        about_html = f'<span class="about">{e(about)}</span>' if about else ""
+        q = p.get("quote")
+        quote_html = (f'<span class="quote">« <q lang="{q["lang"]}">{e(q["text"])}</q> » — {e(q["by"])}, '
+                      f'<time datetime="{q["date"]}">{fmt_date(lang, q["date"])}</time></span>') if q else ""
+        out += (f'<a href="{e(p["url"])}" rel="noopener" target="_blank"><strong lang="{p["lang"]}">{e(p["title"])}</strong>'
+                f'{about_html}{quote_html}<small>{e(p["outlet"][lang])} · <time datetime="{p["date"]}">{fmt_date(lang, p["date"])}</time></small></a>')
+    return out
 
 
 def url_path(lang, page):
@@ -98,7 +129,7 @@ def head(lang, page, t, extra_ld=""):
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#1B2B2B">
 <link rel="icon" href="{up}assets/favicon.png" type="image/png"><link rel="apple-touch-icon" href="{up}assets/apple-touch-icon.png">
-<link rel="stylesheet" href="{up}assets/style.css">
+<link rel="preload" href="{up}assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="{up}assets/style.css">
 <script defer src="{up}assets/site.js"></script>
 {extra_ld}
 </head>'''
@@ -166,7 +197,7 @@ def page_home(lang, t):
     press = ""
     if C.PRESS:
         press = f'''<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["press_h"])}</h2><p class="lede">{e(h["press_p"])}</p></div>
-<div class="press">''' + "".join(f'<a href="{e(p["url"])}" rel="noopener" lang="{p["lang"]}"><strong>{e(h["press_item"])}</strong><small>{e(p["outlet"])}</small></a>' for p in C.PRESS) + "</div></div></section>"
+<div class="press">''' + press_items(lang, C.PRESS[:C.PRESS_HOME]) + f'</div><p style="margin-top:20px"><a href="{rel(lang, "home", lang, "insights")}">{e(h["press_more"])}</a></p></div></section>'
     mt = ""
     if t.get("matters"):
         firsts = "".join(f'<div class="rule-top"><h3 style="font-size:1.05rem">{e(g[0])}</h3><p>{e(g[1][0])}</p></div>' for g in t["matters"]["groups"])
@@ -236,7 +267,7 @@ def page_experience(lang, t):
 def page_insights(lang, t):
     i = t["insights"]
     events = "".join(f"<li>{e(x)}</li>" for x in i["events"])
-    press ="".join(f'<a href="{e(x["url"])}" rel="noopener" lang="{x["lang"]}"><strong>{e(t["home"]["press_item"])}</strong><small>{e(x["outlet"])}</small></a>' for x in C.PRESS)
+    press = press_items(lang, C.PRESS)
     return f'''<div class="page-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p></div></div>
 <section style="padding-top:0"><div class="wrap cols c2">
 <div><h2>{e(i["press_h"])}</h2><div class="press">{press}</div>
