@@ -311,10 +311,21 @@ def page_insights(lang, t):
             figs += (f'<figure><img src="{up}{e(g["src"])}" alt="{e(g["alt"][lang])}" width="{g["w"]}" height="{g["h"]}" loading="lazy" decoding="async">'
                      f'<figcaption>{e(g["caption"][lang])}{when}</figcaption></figure>')
         gallery = f'<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(i["gallery_h"])}</h2></div><div class="gallery">{figs}</div></div></section>'
-    links = f'<a href="{C.INSTAGRAM}" rel="noopener">Instagram</a>'
+    fl = {"en": ("Follow", "See more"), "fr": ("Suivre", "Voir plus"), "ko": ("팔로우", "더 보기")}[lang]
+    follow_rows = "".join(
+        f'<div class="fc-row"><span class="fc-ico" aria-hidden="true">{ico}</span><div class="fc-name"><strong>{e(name)}</strong><span>{e(handle)}</span></div>'
+        f'<a class="btn ghost fc-btn" href="{e(url)}" rel="noopener">{e(lbl)} ↗</a></div>'
+        for name, handle, url, lbl, ico in [
+            ("LinkedIn", "archelegalparis", C.LINKEDIN, fl[0], "in"),
+            ("Instagram", "@archelegal", C.INSTAGRAM, fl[0], "◎"),
+            ("Website", C.SITE_URL.replace("https://", ""), C.SITE_URL, fl[1], "◍"),
+        ])
+    follow_rows = f'<div class="fc-list">{follow_rows}</div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p></div></div>
 <section style="padding-top:0"><div class="wrap">
-<h2>{e(i["follow_h"])}</h2><p>{e(i["follow_p"])}</p><p><a class="btn ghost" href="{C.LINKEDIN}" rel="noopener">{e(i["follow_cta"])}</a></p><p>{links}</p>
+<h2>{e(i["follow_h"])}</h2>
+<div class="follow-card"><div class="fc-head"><span class="fc-logo" aria-hidden="true">ARCHÈ</span><div><strong>{e(C.FIRM_FULL)}</strong><p>{e(i["follow_p"])}</p></div></div>
+{follow_rows}
 </div></section>
 <section><div class="wrap"><h2>{e(i["press_h"])}</h2><div class="press">{press}</div></div></section>
 <section class="alt"><div class="wrap"><h2>{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul>{events}</ul></div></section>
