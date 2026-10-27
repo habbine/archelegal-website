@@ -298,7 +298,7 @@ h3 a:hover{text-decoration:underline!important}
 
 nav.primary a.btn,nav.primary a.btn:hover{background:var(--gold);border-color:var(--gold);outline-color:var(--gold);color:var(--green)}
 nav.primary a.btn:hover{background:var(--ink);border-color:var(--ink);outline-color:var(--ink)}
-.hero-card{align-self:center;border:1px solid var(--green-mid);background:var(--green-card);padding:clamp(24px,3vw,40px)}
+.hero-card{align-self:start;margin-top:clamp(8px,2vw,24px);border:1px solid var(--green-mid);background:var(--green-card);padding:clamp(24px,3vw,40px)}
 .hero-card-kicker{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
 .hero-card-email{font-family:var(--serif);font-size:clamp(20px,2.4vw,28px);margin:0 0 18px;word-break:break-word}
 .hero-card-email a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
