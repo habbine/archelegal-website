@@ -101,23 +101,23 @@ WHO = {
   "lede": "Legal counsel for businesses operating across borders, from market entry to international growth and complex commercial matters.",
   "cta_h": "Navigating a cross-border legal challenge?", "cta_p": "Let's discuss your business and how we can help.", "cta_b": "Contact Archè",
   "cards": [
-   ("globe", "International businesses entering Europe", "For companies from Asia, North America, the Middle East and beyond establishing or expanding their presence in France and Europe.", [("Market entry", "advice"), ("Corporate structuring", "corporate"), ("Employment", "employment"), ("Commercial contracts", "contracts")]),
-   ("swap", "French and European businesses expanding internationally", "For businesses entering new markets, negotiating cross-border partnerships and managing legal risks across jurisdictions.", [("International expansion", "advice"), ("Partnerships", "contracts"), ("Compliance", "compliance"), ("Disputes", "litigation")]),
-   ("build", "Entrepreneurs, startups and growing businesses", "For founders, SMEs and independent professionals seeking practical legal support to structure, operate and grow their businesses.", [("Business formation", "corporate"), ("Contracts", "contracts"), ("Employment", "employment"), ("Restructuring", "corporate")])]},
+   ("globe", "International businesses entering Europe", "For companies from Asia, North America, the Middle East and beyond establishing or expanding their presence in France and Europe.", [("Market entry", "advice"), ("Corporate structuring", "corporate"), ("Employment", "employment"), ("Commercial contracts", "corporate")]),
+   ("swap", "French and European businesses expanding internationally", "For businesses entering new markets, negotiating cross-border partnerships and managing legal risks across jurisdictions.", [("International expansion", "advice"), ("Partnerships", "corporate"), ("Compliance", "advice"), ("Disputes", "litigation")]),
+   ("build", "Entrepreneurs, startups and growing businesses", "For founders, SMEs and independent professionals seeking practical legal support to structure, operate and grow their businesses.", [("Business formation", "corporate"), ("Contracts", "corporate"), ("Employment", "employment"), ("Restructuring", "corporate")])]},
  "fr": {"kicker": "Archè · Droit international des affaires", "h": "Qui nous accompagnons",
   "lede": "Conseil juridique pour les entreprises qui opèrent au-delà des frontières, de l'implantation à la croissance internationale et aux dossiers commerciaux complexes.",
   "cta_h": "Un enjeu juridique transfrontalier ?", "cta_p": "Parlons de votre activité et de la manière dont nous pouvons vous aider.", "cta_b": "Nous contacter",
   "cards": [
-   ("globe", "Entreprises internationales qui s'implantent en Europe", "Pour les sociétés d'Asie, d'Amérique du Nord, du Moyen-Orient et d'ailleurs qui s'établissent ou se développent en France et en Europe.", [("Implantation", "advice"), ("Structuration juridique", "corporate"), ("Droit du travail", "employment"), ("Contrats commerciaux", "contracts")]),
-   ("swap", "Entreprises françaises et européennes qui se développent à l'international", "Pour les entreprises qui abordent de nouveaux marchés, négocient des partenariats transfrontaliers et maîtrisent les risques juridiques dans plusieurs juridictions.", [("Développement international", "advice"), ("Partenariats", "contracts"), ("Conformité", "compliance"), ("Contentieux", "litigation")]),
-   ("build", "Entrepreneurs, startups et entreprises en croissance", "Pour les fondateurs, PME et indépendants qui cherchent un appui juridique concret pour structurer, exploiter et développer leur activité.", [("Création d'entreprise", "corporate"), ("Contrats", "contracts"), ("Droit du travail", "employment"), ("Restructuration", "corporate")])]},
+   ("globe", "Entreprises internationales qui s'implantent en Europe", "Pour les sociétés d'Asie, d'Amérique du Nord, du Moyen-Orient et d'ailleurs qui s'établissent ou se développent en France et en Europe.", [("Implantation", "advice"), ("Structuration juridique", "corporate"), ("Droit du travail", "employment"), ("Contrats commerciaux", "corporate")]),
+   ("swap", "Entreprises françaises et européennes qui se développent à l'international", "Pour les entreprises qui abordent de nouveaux marchés, négocient des partenariats transfrontaliers et maîtrisent les risques juridiques dans plusieurs juridictions.", [("Développement international", "advice"), ("Partenariats", "corporate"), ("Conformité", "advice"), ("Contentieux", "litigation")]),
+   ("build", "Entrepreneurs, startups et entreprises en croissance", "Pour les fondateurs, PME et indépendants qui cherchent un appui juridique concret pour structurer, exploiter et développer leur activité.", [("Création d'entreprise", "corporate"), ("Contrats", "corporate"), ("Droit du travail", "employment"), ("Restructuration", "corporate")])]},
  "ko": {"kicker": "아르케 · 국제 비즈니스 법", "h": "이런 고객과 함께합니다",
   "lede": "국경을 넘어 사업하는 기업을 위한 법률 자문. 시장 진출에서 해외 성장, 복잡한 상사 사안까지.",
   "cta_h": "국경을 넘는 법적 과제를 안고 계신가요?", "cta_p": "귀사의 사업과 저희가 어떻게 도울 수 있는지 이야기해 보시죠.", "cta_b": "아르케에 문의",
   "cards": [
-   ("globe", "유럽에 진출하는 해외 기업", "아시아, 북미, 중동 등에서 프랑스와 유럽에 진출하거나 사업을 확장하려는 기업을 위해.", [("시장 진출", "advice"), ("법인 구조 설계", "corporate"), ("노동·고용", "employment"), ("상사 계약", "contracts")]),
-   ("swap", "해외로 확장하는 프랑스·유럽 기업", "새로운 시장에 진출하고 국경을 넘는 파트너십을 협상하며 여러 관할의 법적 리스크를 관리하려는 기업을 위해.", [("해외 확장", "advice"), ("파트너십", "contracts"), ("컴플라이언스", "compliance"), ("분쟁", "litigation")]),
-   ("build", "창업가, 스타트업, 성장 기업", "사업을 구조화하고 운영하고 키우는 데 실무적인 법률 지원이 필요한 창업가, 중소기업, 독립 전문가를 위해.", [("법인 설립", "corporate"), ("계약", "contracts"), ("노동·고용", "employment"), ("구조조정", "corporate")])]},
+   ("globe", "유럽에 진출하는 해외 기업", "아시아, 북미, 중동 등에서 프랑스와 유럽에 진출하거나 사업을 확장하려는 기업을 위해.", [("시장 진출", "advice"), ("법인 구조 설계", "corporate"), ("노동·고용", "employment"), ("상사 계약", "corporate")]),
+   ("swap", "해외로 확장하는 프랑스·유럽 기업", "새로운 시장에 진출하고 국경을 넘는 파트너십을 협상하며 여러 관할의 법적 리스크를 관리하려는 기업을 위해.", [("해외 확장", "advice"), ("파트너십", "corporate"), ("컴플라이언스", "advice"), ("분쟁", "litigation")]),
+   ("build", "창업가, 스타트업, 성장 기업", "사업을 구조화하고 운영하고 키우는 데 실무적인 법률 지원이 필요한 창업가, 중소기업, 독립 전문가를 위해.", [("법인 설립", "corporate"), ("계약", "corporate"), ("노동·고용", "employment"), ("구조조정", "corporate")])]},
 }
 
 

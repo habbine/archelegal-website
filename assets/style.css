@@ -399,3 +399,6 @@ nav.primary .lang a{min-width:0;padding:0 7px;min-height:32px;font-size:11px;let
 .what-link:hover,.what-more a:hover{color:var(--gold)}
 .what-link:focus-visible,.what-more a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .what-more{margin:40px 0 0}
+/* Four practice areas: 2x2 on desktop */
+#services-list{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+#services-list .service h2{min-height:0;text-wrap:balance}
