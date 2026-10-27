@@ -101,7 +101,7 @@ T["en"] = {
     "insights": {
         "h1": "Press",
         "lede": "Press coverage of the firm, and where we publish.",
-        "press_h": "Press",
+        "press_h": "Coverage by theme",
         "follow_h": "Follow our work",
         "follow_p": "Follow Archè on social media.",
         "follow_cta": "Follow Archè on LinkedIn",
@@ -270,7 +270,7 @@ T["fr"] = {
     "insights": {
         "h1": "Actualités et presse",
         "lede": "La presse parle du cabinet, et voici où nous publions.",
-        "press_h": "Presse",
+        "press_h": "Couverture par thème",
         "follow_h": "Suivre nos publications",
         "follow_p": "Suivez Archè sur les réseaux sociaux.",
         "follow_cta": "Suivre Archè sur LinkedIn",
@@ -439,7 +439,7 @@ T["ko"] = {
     "insights": {
         "h1": "소식과 언론 보도",
         "lede": "아르케 관련 언론 보도와 게시 채널.",
-        "press_h": "언론 보도",
+        "press_h": "주제별 보도",
         "follow_h": "소식 받아보기",
         "follow_p": "아르케를 소셜 미디어에서 팔로우하세요.",
         "follow_cta": "LinkedIn에서 아르케 팔로우",

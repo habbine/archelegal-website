@@ -461,7 +461,7 @@ def page_insights(lang, t):
     return f'''<div class="page-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p></div></div>
 
 <section><div class="wrap"><h2>{e(i["press_h"])}</h2>{press}</div></section>
-<section class="alt"><div class="wrap"><h2>{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul>{events}</ul></div></section>
+<section class="alt"><div class="wrap"><h2>{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul class="events">{events}</ul></div></section>
 {gallery}'''
 
 
