@@ -273,7 +273,7 @@ def apply(T):
 
 
 HERO = {
-    "en": {"kicker": "Boutique international law firm · Headquartered in Paris",
+    "en": {"kicker": "International boutique law firm · Headquartered in Paris",
            "h1": "Cross-border law for international business.",
            "lede": "For over 25 years, we have advised companies doing business between Europe, Asia, Africa, the United States and the Middle East: company set-up, employment, disputes and international projects. In French, English and Korean.",
            "strip": [("Bar admissions", "Paris Bar · New York Bar"), ("Working languages", "French · English · Korean"), ("Experience", "Europe · UK · USA · Middle East · Asia · Africa")]},
