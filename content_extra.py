@@ -77,7 +77,7 @@ X["en"] = {
     },
     "matters": {
         "h1": "Experience",
-        "lede": "Selected cases for clients between France, Korea and the rest of Asia. Descriptions are anonymised summaries of past work; outcomes depend on the facts of each case.",
+        "lede": "Selected cases",
         "groups": [
             ("Energy, infrastructure and construction", [
                 "A financial consortium's acquisition of assets including 25 solar farms in France, and creation of renewable energy funds",
@@ -193,7 +193,7 @@ X["fr"] = {
     },
     "matters": {
         "h1": "Références",
-        "lede": "Dossiers choisis pour des clients entre la France, la Corée et le reste de l'Asie. Les descriptions sont des résumés anonymisés de missions passées ; les résultats dépendent des faits de chaque affaire.",
+        "lede": "Dossiers choisis",
         "groups": [
             ("Énergie, infrastructures et construction", [
                 "Acquisition par un consortium financier d'actifs comprenant 25 fermes solaires en France, et création de fonds d'énergies renouvelables",
@@ -309,7 +309,7 @@ X["ko"] = {
     },
     "matters": {
         "h1": "수행 사례",
-        "lede": "프랑스, 한국, 아시아를 오가는 고객을 위한 주요 사례입니다. 과거 업무를 익명으로 요약한 것이며, 결과는 사건마다 사실관계에 따라 달라집니다.",
+        "lede": "주요 사례",
         "groups": [
             ("에너지·인프라·건설", [
                 "금융 컨소시엄의 프랑스 태양광 발전소 25곳 포함 자산 인수 및 재생에너지 펀드 설립",
