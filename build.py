@@ -337,23 +337,21 @@ def page_home(lang, t):
 <p class="landing-name" id="landing-title">ARCHÈ <span class="landing-ko" lang="ko">아르케</span></p><p class="landing-tag">{e(cov[0])}</p><p class="landing-cities">{e(cov[1])}</p>
 </div></section>
 <div id="hero-start"></div>
-<section class="hero"><div class="wrap">
-<div><p class="kicker hero-kicker">{e(h["kicker"])}</p><h1>{e(h["h1"])}</h1><p class="lede">{e(h["lede"])}</p>
-<div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{ {"en": "Discuss your matter", "fr": "Parlez-nous de votre dossier", "ko": "사안 상담하기"}[lang] }</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{ {"en": "Explore our expertise", "fr": "Découvrir nos expertises", "ko": "업무분야 보기"}[lang] }</a></div></div>
-</div></section>
+<section class="hero hero-b" aria-labelledby="hero-name"><div class="wrap"><h1 class="hero-name" id="hero-name"><span lang="fr">Archè</span> <span class="hero-name-ko" lang="ko">아르케</span></h1><p class="hero-cities">{e(cov[1])}</p><p class="lede">{e(BRIDGE[lang])}</p></div></section>
+<section class="hero hero-a"><div class="wrap"><div><p class="kicker hero-kicker">{e(h["kicker"])}</p><h2 class="hero-a-h">{e(h["h1"])}</h2><p class="lede">{e(h["lede"])}</p>
+<div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{ {"en": "Discuss your matter", "fr": "Parlez-nous de votre dossier", "ko": "사안 상담하기"}[lang] }</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{ {"en": "Explore our expertise", "fr": "Découvrir nos expertises", "ko": "업무분야 보기"}[lang] }</a></div></div></div></section>
 <section class="cred-strip" aria-label="{e(h["strip"][0][0])}"><div class="wrap"><dl>{"".join(f"<div><dt>{e(a)}</dt><dd>{e(c)}</dd></div>" for a, c in h["strip"])}</dl></div></section>
 <section class="what"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHAT[lang]["kicker"])}</p><h2>{e(h["services_h"])}</h2><p class="lede">{e(WHAT[lang]["lede"])}</p></div><div class="cols c4">{what_cards(lang)}</div>
 <p class="what-more"><a href="{rel(lang, "home", lang, "services")}">{e(WHAT[lang]["more"])} →</a></p></div></section>
 <section class="alt who"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHO[lang]["kicker"])}</p><h2>{e(WHO[lang]["h"])}</h2><p class="lede">{e(WHO[lang]["lede"])}</p></div><div class="cols c3">{who_cards(lang)}</div><div class="who-cta"><div><p class="who-cta-h">{e(WHO[lang]["cta_h"])}</p><p>{e(WHO[lang]["cta_p"])}</p></div><a class="btn ghost" href="{cta_href(lang, "home")}">{e(WHO[lang]["cta_b"])} ↗</a></div></div></section>
-<section><div class="wrap"><div class="section-head"><h2>{e(h["industries_h"])}</h2><p class="lede">{e(h["industries_p"])}</p></div><div class="industries">{inds}</div></div></section>
 {mt}
-<section><div class="wrap"><div class="section-head"><h2>{e(HERITAGE[lang][0])}</h2><p class="lede">{e(HERITAGE[lang][1])}</p></div><p><a class="btn ghost" href="{rel(lang, "home", lang, "insights")}#press-heritage">{e(HERITAGE[lang][2])}</a></p></div></section>
-<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["offices_h"])}</h2></div><div class="offices">{offices}</div></div></section>
-<section class="alt"><div class="wrap cols c2"><div><h2>{e(h["firm_h"])}</h2><p>{e(h["firm_p"])}</p></div>
+<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["industries_h"])}</h2><p class="lede">{e(h["industries_p"])}</p></div><div class="industries">{inds}</div></div></section>
+<section><div class="wrap cols c2"><div><h2>{e(h["firm_h"])}</h2><p>{e(h["firm_p"])}</p></div>
 </div></section>
-<section class="alt"><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS)}</ul></div></section>
+<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["offices_h"])}</h2></div><div class="offices">{offices}</div></div></section>
+<section><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS)}</ul></div></section>
 {press}
-<section class="alt" id="follow"><div class="wrap"><h2>{e(t["insights"]["follow_h"])}</h2>{follow_card(lang, t["insights"]["follow_p"])}</div></section>'''
+<section id="follow"><div class="wrap"><h2>{e(t["insights"]["follow_h"])}</h2>{follow_card(lang, t["insights"]["follow_p"])}</div></section>'''
     return body
 
 
@@ -432,6 +430,38 @@ def page_experience(lang, t):
 {cta_band(lang, "experience", t, m["cta_h"], m["cta_p"])}'''
 
 
+BRIDGE = {"en": "A boutique international law firm headquartered in Paris, working in French, English and Korean for businesses that cross borders.",
+          "fr": "Un cabinet d'avocats international de taille humaine, basé à Paris, qui accompagne en français, en anglais et en coréen les entreprises actives à l'international.",
+          "ko": "파리에 본사를 둔 부티크 국제 로펌으로, 국경을 넘나드는 기업을 한국어, 프랑스어, 영어로 지원합니다."}
+
+CASE = {
+    "en": {"kicker": "Signature historical case", "src": "Timeline from press coverage",
+           "rows": [("2007", "Restitution claim brought before the Paris Administrative Court in February."),
+                    ("2009", "At the December hearing, the French State uses the word “pillage” for the first time."),
+                    ("2010", "Appeal filed in February after the first-instance ruling.")],
+           "more": "See the coverage below"},
+    "fr": {"kicker": "Affaire historique", "src": "Chronologie d'après la presse",
+           "rows": [("2007", "Requête en restitution déposée en février devant le tribunal administratif de Paris."),
+                    ("2009", "À l'audience de décembre, l'État français emploie pour la première fois le mot « pillage »."),
+                    ("2010", "Appel interjeté en février après le jugement de première instance.")],
+           "more": "Voir la couverture ci-dessous"},
+    "ko": {"kicker": "대표 역사 사건", "src": "언론 보도로 본 경과",
+           "rows": [("2007", "2월, 파리 행정법원에 반환 청구 소송 제기."),
+                    ("2009", "12월 변론에서 프랑스 정부가 처음으로 ‘약탈’이라는 표현을 사용."),
+                    ("2010", "2월, 1심 판결 후 항소 제기.")],
+           "more": "아래 보도 보기"},
+}
+
+
+def case_file(lang):
+    c = CASE[lang]
+    rows = "".join(f'<li><span class="cf-year">{y}</span><span>{e(x)}</span></li>' for y, x in c["rows"])
+    return (f'<section class="case-file" id="oegyujanggak" aria-labelledby="cf-h"><div class="wrap cf-grid">'
+            f'<div><p class="kicker cf-kicker">{e(c["kicker"])}</p><h2 id="cf-h">{e(HERITAGE[lang][0])}</h2><p class="lede">{e(HERITAGE[lang][1])}</p>'
+            f'<p class="cf-more"><a href="#press-heritage">{e(c["more"])} ↓</a></p></div>'
+            f'<div class="cf-panel"><p class="cf-src">{e(c["src"])}</p><ol class="cf-timeline">{rows}</ol></div></div></section>')
+
+
 def page_insights(lang, t):
     i = t["insights"]
     events = "".join(f"<li>{e(x)}</li>" for x in i["events"])
@@ -457,6 +487,7 @@ def page_insights(lang, t):
         ])
     follow_rows = f'<div class="fc-list">{follow_rows}</div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p></div></div>
+{case_file(lang)}
 
 <section><div class="wrap"><h2>{e(i["press_h"])}</h2>{press}</div></section>
 <section class="alt"><div class="wrap"><h2>{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul class="events">{events}</ul></div></section>

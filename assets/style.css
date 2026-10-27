@@ -458,3 +458,48 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 .cred-strip dt{font-size:11px}
 .cred-strip dd{font-size:14px}
 @media(max-width:480px){.hero .actions .btn.ghost{flex:0 0 auto}}
+
+/* Hero, Direction B: Paris-Seoul bridge (light paper) */
+.hero.hero-b{background:var(--paper);color:var(--c-ink)}
+.hero-b .hero-name{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:.27em;font-size:clamp(56px,9.4vw,120px);line-height:1;max-width:none;margin:0 0 .22em;color:var(--c-ink)}
+.hero-b .hero-name-ko{font-family:"Noto Serif KR","Nanum Myeongjo","AppleMyungjo","Batang",serif;color:var(--gold-d)}
+.hero-b .hero-cities{font-size:15px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-d);margin:0 0 28px}
+.hero-b .lede{color:var(--c-ink);font-size:clamp(18px,1.9vw,24px);line-height:1.5;max-width:32em}
+.hero-b .actions .btn:not(.ghost){background:var(--c-ink);border-color:var(--c-ink);outline-color:var(--c-ink);color:#fff}
+.hero-b .actions .btn:not(.ghost):hover{background:var(--green-mid);border-color:var(--green-mid);outline-color:var(--green-mid);color:#fff}
+.hero-b .actions .btn.ghost{color:var(--c-ink);border-bottom-color:var(--gold-d)}
+.hero-b .actions .btn.ghost:hover{color:var(--gold-d)}
+.hero-b .actions .btn:focus-visible{outline:2px solid var(--gold-d);outline-offset:4px}
+.cred-strip.strip-b{background:var(--paper);border-top:1px solid var(--c-ink)}
+.strip-b dt{color:var(--gold-d)}
+.strip-b dd{color:var(--c-ink)}
+
+/* Korean display face: self-hosted Noto Serif KR subset (아르케 only), OFL */
+@font-face{font-family:"Arche KR";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/noto-serif-kr-arche-0.woff2) format("woff2");unicode-range:U+CF00}
+@font-face{font-family:"Arche KR";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/noto-serif-kr-arche-1.woff2) format("woff2");unicode-range:U+B974}
+@font-face{font-family:"Arche KR";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/noto-serif-kr-arche-2.woff2) format("woff2");unicode-range:U+C544}
+.hero-b .hero-name-ko,.landing-ko,.brand-ko{font-family:"Arche KR","Noto Serif KR","Nanum Myeongjo","AppleMyungjo","Batang",serif}
+
+/* B band then A block */
+.hero.hero-b{padding:clamp(48px,7vw,96px) 0 clamp(40px,5vw,64px)}
+.hero.hero-b .lede{margin:0}
+.hero.hero-a{padding:clamp(48px,7vw,88px) 0 clamp(48px,7vw,80px)}
+.hero-a .hero-a-h{font-size:clamp(36px,5.6vw,72px);line-height:1.08;max-width:15em;margin:0 0 .4em;color:var(--ink)}
+
+/* Press: Oegyujanggak case file (Direction C) */
+.case-file{background:var(--green-deep);color:var(--text);padding:clamp(48px,7vw,88px) 0}
+.cf-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(32px,5vw,64px);align-items:center}
+.case-file h2{font-size:clamp(34px,5vw,64px);line-height:1.1;color:#fff;margin:0 0 .4em}
+.case-file .lede{color:var(--muted);max-width:34em}
+.cf-kicker{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:0 0 20px}
+.cf-more{margin:24px 0 0}
+.cf-more a{color:#fff;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:4px}
+.cf-more a:hover{color:var(--gold)}
+.cf-more a:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.cf-panel{border:1px solid var(--green-mid);background:var(--green-card);padding:clamp(24px,3vw,36px) clamp(24px,3vw,36px) 8px}
+.cf-src{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 16px}
+.cf-timeline{list-style:none;margin:0;padding:0}
+.cf-timeline li{display:grid;grid-template-columns:80px minmax(0,1fr);gap:16px;padding:18px 0;border-top:1px solid var(--green-line);font-size:16px;line-height:1.5}
+.cf-year{font-family:var(--serif);font-size:22px;color:#fff;line-height:1.2}
+@media(max-width:860px){.cf-grid{grid-template-columns:1fr}}
+@media(max-width:420px){.cf-timeline li{grid-template-columns:60px minmax(0,1fr)}}
