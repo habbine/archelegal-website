@@ -8,7 +8,7 @@ FIRM_FULL = "Archè SELARL"
 EMAIL = "paris@archelegal.com"
 PHONE = "+33 1 4335 8410"
 PHONE_TEL = "+33143358410"
-ADDRESS_LINES = ["57 Quai de Grenelle", "75015 Paris", "France"]
+ADDRESS_LINES = ["Tour Totem", "57 Quai de Grenelle", "75015 Paris", "France"]
 MAPS_URL = "https://www.openstreetmap.org/search?query=57%20Quai%20de%20Grenelle%2075015%20Paris"
 
 LINKEDIN = "https://www.linkedin.com/company/archelegalparis"
@@ -24,14 +24,14 @@ WHATSAPP_URL = ""     # e.g. https://wa.me/33143358410
 FORM_ENDPOINT = ""
 
 # Seoul / Hong Kong. Add a street address and phone when available.
-SEOUL = {"address": "", "phone": "", "email": EMAIL}
-HONGKONG = {"address": "", "phone": "", "email": EMAIL}
+SEOUL = {"address": "Humanstarville #1101, Dosandae-ro 454, Gangnam-gu, Seoul, South Korea", "phone": "", "email": "seoul@archelegal.com"}
+HONGKONG = {"address": "Arche Asia Ltd., Level 1901, Cheung Kong Center, 2 Queen's Road Central, Central, Hong Kong", "phone": "", "email": "hk@archelegal.com"}
 
 PEOPLE = [
     {
         "slug": "jk",
         "initials": "JK",
-        "photo": "",  # e.g. "assets/img/james-kim.jpg" once you add the file
+        "photo": "assets/img/team-jk.webp",  # e.g. "assets/img/james-kim.jpg" once you add the file
         "name": "James Joong-ho Kim",
         "email": "james.kim@archelegal.com",
         "linkedin": "",
@@ -39,7 +39,7 @@ PEOPLE = [
     {
         "slug": "hk",
         "initials": "HK",
-        "photo": "",
+        "photo": "assets/img/team-hk.webp",
         "name": "Habbine Estelle Kim",
         "email": "habbine.kim@archelegal.com",
         "linkedin": "https://www.linkedin.com/in/habbine-kim-avocat/",
@@ -47,7 +47,7 @@ PEOPLE = [
     {
         "slug": "dk",
         "initials": "DK",
-        "photo": "",
+        "photo": "assets/img/team-dk.webp",
         "name": "Dabin Kevin Kim",
         "email": "dabin.kim@archelegal.com",
         "linkedin": "",
@@ -69,12 +69,12 @@ PRESS = [
      "quote": {"text": "Une lecture à la fois aisée et prenante.", "lang": "fr",
                "by": "Hauteclaire, Amazon.fr", "date": "2026-01-18"}},
     {"date": "2025-10-19", "outlet": _o("Legal Times", "리걸타임즈"), "lang": "ko",
-     "url": "http://www.legaltimes.co.kr/news/articleView.html?idxno=89709",
+     "url": "http://www.legaltimes.co.kr/news/articleView.html?idxno=89709", "cover": "assets/img/book-promise.webp",
      "title": "[신간소개] 파리에서 활동하는 김중호 변호사의 《잊혀진 약속》",
      "about": {"en": "New book: James Joong-ho Kim's novel A Forgotten Promise",
                "fr": "Parution du roman de James Joong-ho Kim, A Forgotten Promise"}},
     {"date": "2025-10-14", "outlet": _o("Book · BOOKK (YES24)", "도서 · 부크크 (YES24)", "Livre · BOOKK (YES24)"), "lang": "ko",
-     "url": "https://www.yes24.com/product/goods/160462528",
+     "url": "https://www.yes24.com/product/goods/160462528", "cover": "assets/img/book-beopjaengi.webp",
      "title": "법쟁이 탈출기 (김중호 지음, ISBN 9791112072207)",
      "about": {"en": "Autobiographical essay by James Joong-ho Kim on 25 years of practice in France",
                "fr": "Essai autobiographique de James Joong-ho Kim sur 25 ans d'exercice en France"}},
@@ -109,6 +109,11 @@ PRESS = [
      "title": "“프랑스의 ‘약탈’ 표현은 우리 작전의 성과”",
      "about": {"en": "Interview after the appeal: how the French State came to use the word 'pillage'",
                "fr": "Entretien après l'appel : comment l'État français en est venu à employer le mot « pillage »"}},
+    {"date": "2010-02-26", "outlet": _o("Dong-A Ilbo", "동아일보"), "lang": "ko",
+     "url": "https://www.donga.com/news/Culture/article/all/20100225/26453075/1",
+     "title": "“외규장각 반환訴 1심 졌지만 ‘약탈’인정 성과…끝까지 투쟁”",
+     "about": {"en": "After the first-instance ruling: the appeal and the French State's acknowledgement of 'pillage'",
+               "fr": "Après le jugement de première instance : l'appel et la reconnaissance du « pillage » par l'État français"}},
     {"date": "2010-02-26", "outlet": _o("Seoul Shinmun", "서울신문"), "lang": "ko",
      "url": "http://www.seoul.co.kr/news/newsView.php?id=20100226029023",
      "title": "佛행정법원에 외규장각 문서반환 항소한 김중호 변호사",
@@ -202,11 +207,66 @@ LEGAL = {
     "raison_sociale": "Archè SELARL",
     "forme": "Société d'exercice libéral à responsabilité limitée (SELARL)",
     "capital": "",
-    "siege": "57 Quai de Grenelle, 75015 Paris, France",
-    "rcs": "",
+    "siege": "Tour Totem, 57 Quai de Grenelle, 75015 Paris, France",
+    "rcs": "RCS Paris 812 914 018",
     "tva": "",
-    "barreau": "",
+    "barreau": "Barreau de Paris, toque C 0281",
     "rcp": "",
     "directeur_publication": "",
     "hebergeur": "GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA",
 }
+
+
+# Photos for the "In pictures" section of the press page. Only events whose details are confirmed.
+# w/h are the stored image size (used for layout, avoids page jumps).
+GALLERY = [
+    {"src": "assets/img/salon-2026-1.webp", "w": 568, "h": 565, "date": "2026-10-10",
+     "caption": {"en": "Salon de l'Étudiant, Paris, Korea pavilion: presentations by the CCICF (Habbine Estelle Kim, Secretary General) and KOSME (Jae Yang, Director).",
+                 "fr": "Salon de l'Étudiant, Paris, pavillon coréen : présentations de la CCICF (Habbine Estelle Kim, secrétaire générale) et de KOSME (Jae Yang, directrice).",
+                 "ko": "Salon de l'Étudiant 파리 한국관: CCICF(Habbine Estelle Kim 사무총장)와 중소벤처기업진흥공단 KOSME(Jae Yang 소장) 발표."},
+     "alt": {"en": "Two speakers seated in front of a screen showing the session programme, with French and Korean flags on the table.",
+             "fr": "Deux intervenantes assises devant un écran affichant le programme, drapeaux français et coréen sur la table.",
+             "ko": "세션 프로그램이 띄워진 화면 앞에 두 발표자가 앉아 있고, 탁자에 프랑스와 한국 국기가 놓여 있다."}},
+    {"src": "assets/img/salon-2026-2.webp", "w": 544, "h": 561, "date": "2026-10-10",
+     "caption": {"en": "Salon de l'Étudiant, Paris: KOSME presentation on support for Korean SMEs and startups.",
+                 "fr": "Salon de l'Étudiant, Paris : présentation de KOSME sur l'accompagnement des PME et startups coréennes.",
+                 "ko": "Salon de l'Étudiant 파리: 한국 중소기업·스타트업 지원에 관한 KOSME 발표."},
+     "alt": {"en": "A speaker with a microphone beside a slide titled Overview of KOSME.",
+             "fr": "Une intervenante au micro à côté d'une diapositive intitulée Overview of KOSME.",
+             "ko": "Overview of KOSME 슬라이드 옆에서 마이크를 든 발표자."}},
+    {"src": "assets/img/embassy-2025-poster.webp", "w": 900, "h": 1110, "date": "2025-11-05",
+     "caption": {"en": "Embassy of Korea in France, consular section: 2025 information session on everyday law and student life, led by James Joong-ho Kim.",
+                 "fr": "Ambassade de Corée en France, section consulaire : réunion d'information 2025 sur le droit au quotidien et la vie étudiante, animée par James Joong-ho Kim.",
+                 "ko": "주프랑스 대한민국 대사관 영사부: 김중호 변호사가 강연한 2025 생활법률 & 유학생활 설명회."},
+     "alt": {"en": "Event poster in Korean with a photo of James Joong-ho Kim and the date 5 November 2025, 15:00.",
+             "fr": "Affiche en coréen avec une photo de James Joong-ho Kim et la date du 5 novembre 2025, 15 h.",
+             "ko": "김중호 변호사 사진과 2025년 11월 5일 15시 일정이 적힌 행사 포스터."}},
+    {"src": "assets/img/wislaw-2025.webp", "w": 1200, "h": 831, "date": "2025-04-11",
+     "caption": {"en": "Paris Arbitration Week 2025, WISLaw panel: \"Beating the Post-Paris 2024 Olympic Blues: Experiences and Insights on CAS Arbitration Procedures\", hosted by Gaillard Banifatemi Shelbaya Disputes.",
+                 "fr": "Paris Arbitration Week 2025, table ronde WISLaw : « Beating the Post-Paris 2024 Olympic Blues: Experiences and Insights on CAS Arbitration Procedures », accueillie par Gaillard Banifatemi Shelbaya Disputes.",
+                 "ko": "2025 파리 중재 주간 WISLaw 패널: 「Beating the Post-Paris 2024 Olympic Blues: Experiences and Insights on CAS Arbitration Procedures」, Gaillard Banifatemi Shelbaya Disputes 주최."},
+     "alt": {"en": "Four panellists seated before an audience in a Paris office, next to a screen showing the session title and the Olympic rings.",
+             "fr": "Quatre intervenants devant le public dans un bureau parisien, à côté d'un écran affichant le titre de la session et les anneaux olympiques.",
+             "ko": "파리 사무실에서 청중 앞에 앉은 패널 네 명과 세션 제목 및 올림픽 오륜이 표시된 화면."}},
+    {"src": "assets/img/ccicf-seminar.webp", "w": 1200, "h": 900, "date": "",
+     "caption": {"en": "CCI Corée France hybrid seminar \"Rencontre avec les entreprises coréennes\", with the Embassy of Korea in France.",
+                 "fr": "Séminaire hybride de la CCI Corée France « Rencontre avec les entreprises coréennes », avec l'Ambassade de Corée en France.",
+                 "ko": "주불한국상공회의소(CCICF)·주프랑스 대한민국 대사관 하이브리드 세미나 「한국 기업과의 만남」."},
+     "alt": {"en": "Four speakers seated on a stage under a large screen showing the seminar title, a moderator speaking at a microphone.",
+             "fr": "Quatre intervenants assis sur scène sous un grand écran affichant le titre du séminaire, une modératrice au micro.",
+             "ko": "세미나 제목이 띄워진 대형 화면 아래 무대에 앉은 연사 네 명과 마이크 앞의 사회자."}},
+    {"src": "assets/img/jk-presenting.webp", "w": 1200, "h": 900, "date": "",
+     "caption": {"en": "James Joong-ho Kim presenting the main French business forms (EI, SARL/EURL, SAS/SASU).",
+                 "fr": "James Joong-ho Kim présente les principales formes d'entreprise en France (EI, SARL/EURL, SAS/SASU).",
+                 "ko": "프랑스의 기본 사업 형태(EI, SARL/EURL, SAS/SASU)를 설명하는 김중호 변호사."},
+     "alt": {"en": "A speaker at a lectern beside a Korean flag, pointing to a slide comparing business forms.",
+             "fr": "Un intervenant au pupitre à côté d'un drapeau coréen, montrant une diapositive comparant les formes d'entreprise.",
+             "ko": "태극기 옆 연단에서 사업 형태 비교 슬라이드를 가리키는 발표자."}},
+    {"src": "assets/img/gyeongnam-2025.webp", "w": 1000, "h": 1000, "date": "",
+     "caption": {"en": "2025 Gyeongsangnam-do Investment Promotion Conference: signing of investment and cooperation agreements in aerospace and green industries.",
+                 "fr": "Conférence 2025 de promotion des investissements de la province du Gyeongsangnam-do : signature d'accords d'investissement et de coopération (aéronautique et industries vertes).",
+                 "ko": "2025 경상남도 투자유치 설명회: 우주항공·친환경 산업 투자 및 업무 협약 체결."},
+     "alt": {"en": "Delegates holding a banner on stage in front of a screen reading 2025 Gyeongsangnam-do Investment Promotion Conference.",
+             "fr": "Des délégués tenant une banderole sur scène devant un écran indiquant la conférence 2025 du Gyeongsangnam-do.",
+             "ko": "2025 경상남도 투자유치 설명회 화면 앞 무대에서 현수막을 든 참석자들."}},
+]

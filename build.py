@@ -39,16 +39,18 @@ def fmt_date(lang, d):
     return f"{int(day)} {mon} {y}"
 
 
-def press_items(lang, items):
+def press_items(lang, items, up=""):
     out = ""
     for p in items:
+        cover = (f'<img class="cover" src="{up}{e(p["cover"])}" alt="" width="72" height="108" loading="lazy" decoding="async">'
+                 if p.get("cover") else "")
         about = p.get("about", {}).get(lang, "")
         about_html = f'<span class="about">{e(about)}</span>' if about else ""
         q = p.get("quote")
         quote_html = (f'<span class="quote">« <q lang="{q["lang"]}">{e(q["text"])}</q> » — {e(q["by"])}, '
                       f'<time datetime="{q["date"]}">{fmt_date(lang, q["date"])}</time></span>') if q else ""
-        out += (f'<a href="{e(p["url"])}" rel="noopener" target="_blank"><strong lang="{p["lang"]}">{e(p["title"])}</strong>'
-                f'{about_html}{quote_html}<small>{e(p["outlet"][lang])} · <time datetime="{p["date"]}">{fmt_date(lang, p["date"])}</time></small></a>')
+        out += (f'<a href="{e(p["url"])}" rel="noopener" target="_blank"{' class="has-cover"' if cover else ''}>{cover}<span class="txt"><strong lang="{p["lang"]}">{e(p["title"])}</strong>'
+                f'{about_html}{quote_html}<small>{e(p["outlet"][lang])} · <time datetime="{p["date"]}">{fmt_date(lang, p["date"])}</time></small></span></a>')
     return out
 
 
@@ -90,7 +92,8 @@ def header(lang, page, t):
 
 
 def cta_href(lang, page):
-    return C.BOOKING_URL or rel(lang, page, lang, "contact") + "#form"
+    # The firm prefers first contact by email; a booking link, if set, takes over.
+    return C.BOOKING_URL or f"mailto:{C.EMAIL}"
 
 
 def footer(lang, page, t):
@@ -157,7 +160,7 @@ def cta_band(lang, page, t, h, p, dark=True):
 <div><h2>{e(h)}</h2><p class="lede">{e(p)}</p></div>
 <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
 <a class="btn on-dark" href="{cta_href(lang, page)}">{e(t["cta"])}</a>
-<a class="btn ghost" style="color:#fff;border-color:#fff" href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a>
+<p style="flex-basis:100%;margin:4px 0 0"><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p>
 </div></div></section>'''
 
 
@@ -179,7 +182,7 @@ def page_home(lang, t):
     who = "".join(f'<div class="rule-top"><h3>{e(a)}</h3><p>{e(b)}</p></div>' for a, b in h["who"])
     svcs = "".join(f'<div class="rule-top"><h3><a href="{rel(lang, "home", lang, "services")}#{s[0]}" style="color:inherit;text-decoration:none">{e(s[1])}</a></h3><p>{e(s[2])}</p></div>' for s in svc)
     creds = "".join(f'<div class="rule-top"><h3 style="font-size:1.1rem">{e(a)}</h3><p>{e(b)}</p></div>' for a, b in h["creds"])
-    inds = "".join(f'<span class="tag">{e(x)}</span>' for x in h["industries"])
+    inds = "".join(f'<div class="ind"><h3>{e(g)}</h3><ul>' + "".join(f"<li>{e(x)}</li>" for x in items) + "</ul></div>" for g, items in h["industries"])
     def office(name, d, main=False):
         extra = ""
         if main:
@@ -189,6 +192,8 @@ def page_home(lang, t):
                 extra += f'<p>{e(d["address"])}</p>'
             if d.get("phone"):
                 extra += f'<p><a href="tel:{e(d["phone"])}">{e(d["phone"])}</a></p>'
+            if d.get("address") and d.get("email"):
+                extra += f'<p><a href="mailto:{e(d["email"])}">{e(d["email"])}</a></p>'
             if not extra:
                 extra = f'<p>{e(h["contact_office"])}: <a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p>'
         tag = f'<p><strong>{e(h["main_office"])}</strong></p>' if main else ""
@@ -197,24 +202,30 @@ def page_home(lang, t):
     press = ""
     if C.PRESS:
         press = f'''<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["press_h"])}</h2><p class="lede">{e(h["press_p"])}</p></div>
-<div class="press">''' + press_items(lang, C.PRESS[:C.PRESS_HOME]) + f'</div><p style="margin-top:20px"><a href="{rel(lang, "home", lang, "insights")}">{e(h["press_more"])}</a></p></div></section>'
+<div class="press">''' + press_items(lang, C.PRESS[:C.PRESS_HOME], "../" * depth(lang, "home")) + f'</div><p style="margin-top:20px"><a href="{rel(lang, "home", lang, "insights")}">{e(h["press_more"])}</a></p></div></section>'
     mt = ""
     if t.get("matters"):
         firsts = "".join(f'<div class="rule-top"><h3 style="font-size:1.05rem">{e(g[0])}</h3><p>{e(g[1][0])}</p></div>' for g in t["matters"]["groups"])
         mt = f'''<section><div class="wrap"><div class="section-head"><h2>{e(h["matters_h"])}</h2><p class="lede">{e(h["matters_intro"])}</p></div>
 <div class="cols c4">{firsts}</div><p style="margin-top:28px"><a href="{rel(lang, "home", lang, "experience")}">{e(h["matters_more"])}</a></p></div></section>'''
-    body = f'''<section class="hero"><div class="wrap">
+    up = "../" * depth(lang, "home")
+    cov = {"en": ("International boutique law firm", "Paris · Seoul · Hong Kong", "Enter the site"), "fr": ("Cabinet d'avocats international", "Paris · Séoul · Hong Kong", "Découvrir le cabinet"), "ko": ("국제 부티크 로펌", "파리 · 서울 · 홍콩", "사이트 둘러보기")}[lang]
+    body = f'''<section class="landing" style="background-image:url('{up}assets/img/landing-bg.webp')" aria-labelledby="landing-title"><div class="landing-panel">
+<p class="landing-name" id="landing-title">ARCHÈ SELARL</p><p class="landing-tag">{e(cov[0])}</p><p class="landing-cities">{e(cov[1])}</p>
+<p><a class="landing-link" href="#hero-start">{e(cov[2])}</a></p></div></section>
+<div id="hero-start"></div>
+<section class="hero"><div class="wrap">
 <div><h1>{e(h["h1"])}</h1><p class="lede">{e(h["lede"])}</p>
 <div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{e(t["cta"])}</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{e(h["see_services"])}</a></div></div>
-{bridge(lang, t)}
 </div></section>
+<section><div class="wrap"><div class="section-head"><h2>{e(h["creds_h"])}</h2><p class="lede">{e(h["creds_p"])}</p></div><div class="cols c3">{creds}</div></div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["who_h"])}</h2></div><div class="cols c3">{who}</div></div></section>
 <section><div class="wrap"><div class="section-head"><h2>{e(h["services_h"])}</h2></div><div class="cols c4">{svcs}</div>
 <p style="margin-top:28px"><a href="{rel(lang, "home", lang, "services")}">{e(h["services_more"])}</a></p></div></section>
 {mt}
 <section class="alt"><div class="wrap cols c2"><div><h2>{e(h["firm_h"])}</h2><p>{e(h["firm_p"])}</p></div>
-<div><h2 style="font-size:1.3rem">{e(h["industries_h"])}</h2><div>{inds}</div><p class="lead-in">{e(h["industries_p"])}</p></div></div></section>
-<section><div class="wrap"><div class="section-head"><h2>{e(h["creds_h"])}</h2><p class="lede">{e(h["creds_p"])}</p></div><div class="cols c3">{creds}</div></div></section>
+</div></section>
+<section><div class="wrap"><div class="section-head"><h2>{e(h["industries_h"])}</h2><p class="lede">{e(h["industries_p"])}</p></div><div class="industries">{inds}</div></div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["offices_h"])}</h2></div><div class="offices">{offices}</div></div></section>
 {press}
 {cta_band(lang, "home", t, h["cta_h"], h["cta_p"])}'''
@@ -230,7 +241,10 @@ def page_services(lang, t):
     faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in s["faq"])
     ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in s["faq"]]}
-    return f'''<div class="page-head"><div class="wrap"><h1>{e(s["h1"])}</h1><p class="lede">{e(s["lede"])}</p></div></div>
+    idx = ""
+    if s.get("index"):
+        idx = f'<nav class="practice-index" aria-labelledby="pi-h"><h2 id="pi-h">{e(s["index_h"])}</h2><ul>' + "".join(f'<li><a href="#{k}">{e(lbl)}</a></li>' for lbl, k in s["index"]) + "</ul></nav>"
+    return f'''<div class="page-head"><div class="wrap"><h1>{e(s["h1"])}</h1><p class="lede">{e(s["lede"])}</p>{idx}</div></div>
 <section style="padding-top:0"><div class="wrap">{items}</div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(s["faq_h"])}</h2></div><div class="faq" style="max-width:760px">{faq}</div></div></section>
 {cta_band(lang, "services", t, s["cta_h"], s["cta_p"])}''', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>"
@@ -242,13 +256,15 @@ def page_people(lang, t):
     for person in C.PEOPLE:
         k = person["slug"]
         lis = "".join(f"<li>{e(x)}</li>" for x in p["bios"][k])
-        av = f'<img src="{e(person["photo"])}" alt="{e(person["name"])}" width="120" height="120">' if person["photo"] else e(person["initials"])
+        up = "../" * depth(lang, "people")
+        av = (f'<img src="{up}{e(person["photo"])}" alt="{e(t["people"].get("photo_alt", "{}").format(person["name"]))}" width="480" height="600" loading="lazy" decoding="async">'
+              if person["photo"] else e(person["initials"]))
         links = f'<p>{e(p["email_label"])}: <a href="mailto:{person["email"]}">{e(person["email"])}</a>'
         if person["linkedin"]:
             links += f' · <a href="{e(person["linkedin"])}" rel="noopener">{e(p["linkedin_label"])}</a>'
         links += "</p>"
         out += f'<div class="person"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div><h2 style="font-size:1.6rem;margin-bottom:.1em">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p><ul>{lis}</ul>{links}</div></div>'
-    return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1><p class="lede">{e(p["lede"])}</p></div></div>
+    return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1></div></div>
 <section style="padding-top:0"><div class="wrap">{out}</div></section>
 {cta_band(lang, "people", t, t["home"]["cta_h"], t["home"]["cta_p"])}'''
 
@@ -267,14 +283,24 @@ def page_experience(lang, t):
 def page_insights(lang, t):
     i = t["insights"]
     events = "".join(f"<li>{e(x)}</li>" for x in i["events"])
-    press = press_items(lang, C.PRESS)
+    up = "../" * depth(lang, "insights")
+    press = press_items(lang, C.PRESS, up)
+    gallery = ""
+    if getattr(C, "GALLERY", None):
+        figs = ""
+        for g in C.GALLERY:
+            when = f' <time datetime="{g["date"]}">{fmt_date(lang, g["date"])}</time>' if g.get("date") else ""
+            figs += (f'<figure><img src="{up}{e(g["src"])}" alt="{e(g["alt"][lang])}" width="{g["w"]}" height="{g["h"]}" loading="lazy" decoding="async">'
+                     f'<figcaption>{e(g["caption"][lang])}{when}</figcaption></figure>')
+        gallery = f'<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(i["gallery_h"])}</h2></div><div class="gallery">{figs}</div></div></section>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p></div></div>
 <section style="padding-top:0"><div class="wrap cols c2">
 <div><h2>{e(i["press_h"])}</h2><div class="press">{press}</div>
 <h2 style="margin-top:2em">{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul>{events}</ul></div>
 <div><h2>{e(i["follow_h"])}</h2><p>{e(i["follow_p"])}</p><p><a class="btn ghost" href="{C.LINKEDIN}" rel="noopener">{e(i["follow_cta"])}</a></p>
 <h2 style="margin-top:2em">{e(i["ask_h"])}</h2><p>{e(i["ask_p"])}</p><p><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p></div>
-</div></section>'''
+</div></section>
+{gallery}'''
 
 
 def page_contact(lang, t):
