@@ -387,3 +387,15 @@ nav.primary .lang a{min-width:0;padding:0 7px;min-height:32px;font-size:11px;let
 @media (max-width:900px){.who-card h3{min-height:0}}
 :lang(en) .who-card h3{min-height:2.7em}
 @media (max-width:900px){:lang(en) .who-card h3,.who-card h3{min-height:0}}
+
+/* What we do (home) */
+.what .kicker{margin:0 0 10px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.what .section-head{max-width:70ch}
+.what .lede{font-size:18px;line-height:1.6;color:var(--text)}
+.what-card{border-top:1px solid var(--green-mid);padding-top:20px;display:flex;flex-direction:column;gap:12px}
+.what-card h3{margin:0;font-size:24px;line-height:1.25;text-wrap:pretty}
+.what-card p{margin:0;font-size:16px;line-height:1.6;color:var(--text)}
+.what-link,.what-more a{align-self:flex-start;margin-top:6px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--gold);padding:10px 0 4px}
+.what-link:hover,.what-more a:hover{color:var(--gold)}
+.what-link:focus-visible,.what-more a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.what-more{margin:40px 0 0}

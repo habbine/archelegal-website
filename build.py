@@ -129,6 +129,37 @@ def who_cards(lang):
     return out
 
 
+WHAT = {
+ "en": {"kicker": "Archè · International business law", "learn": "Learn more", "more": "Explore our practice areas",
+  "lede": "We advise businesses, founders and international groups on corporate, employment and commercial matters, combining practical legal advice with a cross-border perspective.",
+  "cards": [("corporate", "Corporate, M&A and commercial contracts", "From company formation and corporate structuring to acquisitions, commercial negotiations and intellectual property, we help businesses build, operate and grow with confidence."),
+            ("employment", "Employment law and workforce mobility", "We advise employers on French employment law, workplace relations and employment disputes, as well as the legal aspects of international workforce mobility, from recruitment to termination."),
+            ("litigation", "Disputes, debt recovery and insolvency", "We represent businesses in litigation and arbitration, pursue debt recovery and advise on insolvency-related matters, developing a strategy tailored to each case from the outset through resolution."),
+            ("advice", "International business and cross-border transactions", "We support international projects involving multiple jurisdictions, coordinate with local counsel and help businesses navigate differences in legal systems, regulatory requirements and commercial practices.")]},
+ "fr": {"kicker": "Archè · Droit international des affaires", "learn": "En savoir plus", "more": "Découvrir nos expertises",
+  "lede": "Nous conseillons les entreprises, les fondateurs et les groupes internationaux en droit des sociétés, droit du travail et droit commercial, en alliant conseil juridique pratique et regard transfrontalier.",
+  "cards": [("corporate", "Sociétés, fusions-acquisitions et contrats commerciaux", "De la création de société et de la structuration aux acquisitions, négociations commerciales et propriété intellectuelle, nous aidons les entreprises à se construire, à opérer et à se développer en confiance."),
+            ("employment", "Droit du travail et mobilité internationale", "Nous conseillons les employeurs en droit du travail français, relations de travail et contentieux, ainsi que sur les aspects juridiques de la mobilité internationale des salariés, du recrutement à la rupture."),
+            ("litigation", "Contentieux, recouvrement et procédures collectives", "Nous représentons les entreprises en contentieux et en arbitrage, menons des recouvrements de créances et conseillons sur les procédures collectives, avec une stratégie adaptée à chaque dossier, de l'origine à son issue."),
+            ("advice", "Affaires internationales et opérations transfrontalières", "Nous accompagnons des projets internationaux impliquant plusieurs juridictions, coordonnons avec des conseils locaux et aidons les entreprises à s'orienter entre systèmes juridiques, exigences réglementaires et pratiques commerciales.")]},
+ "ko": {"kicker": "아르케 · 국제 비즈니스 법", "learn": "자세히 보기", "more": "업무분야 전체 보기",
+  "lede": "기업, 창업가, 국제 그룹을 대상으로 기업법·노동법·상사 사안을 자문하며, 실무적인 법률 자문과 국경을 넘는 시각을 결합합니다.",
+  "cards": [("corporate", "기업법·M&A·상사 계약", "회사 설립과 구조 설계, 인수, 상사 협상, 지식재산에 이르기까지 기업이 자신 있게 구축하고 운영하고 성장하도록 돕습니다."),
+            ("employment", "노동법 및 인력 이동", "프랑스 노동법, 노사 관계, 노동 분쟁은 물론 채용부터 종료까지 국제 인력 이동의 법적 측면에 대해 사용자를 자문합니다."),
+            ("litigation", "분쟁·채권 회수·도산", "소송과 중재에서 기업을 대리하고 채권 회수를 진행하며 도산 관련 사안을 자문하고, 사건마다 처음부터 종결까지 맞춤 전략을 세웁니다."),
+            ("advice", "국제 비즈니스 및 국경 간 거래", "여러 관할이 얽힌 국제 프로젝트를 지원하고 현지 변호사와 협력하며, 법체계·규제 요건·상관행의 차이를 헤쳐 나가도록 돕습니다.")]},
+}
+
+
+def what_cards(lang):
+    out = ""
+    for sid, title, text in WHAT[lang]["cards"]:
+        href = f'{rel(lang, "home", lang, "services")}#{sid}'
+        out += (f'<div class="what-card"><h3>{e(title)}</h3><p>{e(text)}</p>'
+                f'<a class="what-link" href="{href}" aria-label="{e(WHAT[lang]["learn"])}: {e(title)}">{e(WHAT[lang]["learn"])} →</a></div>')
+    return out
+
+
 def url_path(lang, page):
     return ("" if lang == "en" else lang + "/") + SLUG[page]
 
@@ -313,8 +344,8 @@ def page_home(lang, t):
 <section><div class="wrap"><div class="section-head"><h2>{e(h["creds_h"])}</h2><p class="lede">{e(h["creds_p"])}</p></div><div class="cols c3">{creds}</div></div></section>
 <section class="alt"><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><div><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS[:6])}</ul><p style="margin-top:12px"><a href="{rel(lang, "home", lang, "people")}">{ {"en": "All affiliations", "fr": "Toutes les affiliations", "ko": "전체 소속 보기"}[lang] } →</a></p></div></div></section>
 <section class="alt who"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHO[lang]["kicker"])}</p><h2>{e(WHO[lang]["h"])}</h2><p class="lede">{e(WHO[lang]["lede"])}</p></div><div class="cols c3">{who_cards(lang)}</div><div class="who-cta"><div><p class="who-cta-h">{e(WHO[lang]["cta_h"])}</p><p>{e(WHO[lang]["cta_p"])}</p></div><a class="btn ghost" href="{cta_href(lang, "home")}">{e(WHO[lang]["cta_b"])} ↗</a></div></div></section>
-<section><div class="wrap"><div class="section-head"><h2>{e(h["services_h"])}</h2></div><div class="cols c4">{svcs}</div>
-<p style="margin-top:28px"><a href="{rel(lang, "home", lang, "services")}">{e(h["services_more"])}</a></p></div></section>
+<section class="what"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHAT[lang]["kicker"])}</p><h2>{e(h["services_h"])}</h2><p class="lede">{e(WHAT[lang]["lede"])}</p></div><div class="cols c4">{what_cards(lang)}</div>
+<p class="what-more"><a href="{rel(lang, "home", lang, "services")}">{e(WHAT[lang]["more"])} →</a></p></div></section>
 {mt}
 <section class="alt"><div class="wrap cols c2"><div><h2>{e(h["firm_h"])}</h2><p>{e(h["firm_p"])}</p></div>
 </div></section>
