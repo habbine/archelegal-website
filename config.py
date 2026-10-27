@@ -252,6 +252,16 @@ PRESS += [
 ]
 PRESS.sort(key=lambda p: p["date"], reverse=True)
 
+PRESS += [
+    {"date": "2007-02-07", "outlet": _o("France Zone", "프랑스존"), "lang": "ko",
+     "url": "https://www.francezone.com/news/articleView.html?idxno=95669",
+     "title": "김중호 변호사, 9일 외규장각 도서 반환 소송",
+     "about": {"en": "Announcement of the Oegyujanggak restitution claim against the French State, to be filed on 9 February 2007",
+               "fr": "Annonce de l'action en restitution de l'Oegyujanggak contre l'État français, déposée le 9 février 2007",
+               "ko": "2007년 2월 9일 프랑스 정부 상대 외규장각 도서 반환 소송 제기 예고"}},
+]
+PRESS.sort(key=lambda p: p["date"], reverse=True)
+
 # Coverage shown first on the Press page and on the home page.
 PRESS_FEATURED = [
     "https://www.joongang.co.kr/article/3752927",
@@ -334,6 +344,7 @@ GALLERY = [
 
 # Press theme per article (used to group the Press page); keyed by URL
 PRESS_THEME = {
+    'https://www.francezone.com/news/articleView.html?idxno=95669': 'heritage',
     'https://gallerym9.com/somme-des-parties-m-': 'business',
     'https://placedeparis.com/community/bbs/board.php?bo_table=news_issue&wr_id=1402': 'business',
     'https://www.francezone.com/news/articleView.html?idxno=664353': 'law',
