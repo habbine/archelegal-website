@@ -176,6 +176,20 @@ def bridge(lang, t):
 <p class="note">{e(h["bridge_note"])}</p></aside>'''
 
 
+def follow_card(lang, text):
+    fl = {"en": ("Follow", "See more"), "fr": ("Suivre", "Voir plus"), "ko": ("팔로우", "더 보기")}[lang]
+    rows = "".join(
+        f'<div class="fc-row"><span class="fc-ico" aria-hidden="true">{ico}</span><div class="fc-name"><strong>{e(name)}</strong><span>{e(handle)}</span></div>'
+        f'<a class="btn ghost fc-btn" href="{e(url)}" rel="noopener">{e(lbl)} ↗</a></div>'
+        for name, handle, url, lbl, ico in [
+            ("LinkedIn", "archelegalparis", C.LINKEDIN, fl[0], "in"),
+            ("Instagram", "@archelegal", C.INSTAGRAM, fl[0], "◎"),
+            ("Website", C.SITE_URL.replace("https://", ""), C.SITE_URL, fl[1], "◍"),
+        ])
+    return (f'<div class="follow-card"><div class="fc-head"><span class="fc-logo" aria-hidden="true">ARCHÈ</span>'
+            f'<div><strong>{e(C.FIRM_FULL)}</strong><p>{e(text)}</p></div></div><div class="fc-list">{rows}</div></div>')
+
+
 def page_home(lang, t):
     h = t["home"]
     svc = t["services"]["items"]
@@ -229,6 +243,7 @@ def page_home(lang, t):
 <section><div class="wrap"><div class="section-head"><h2>{e(h["industries_h"])}</h2><p class="lede">{e(h["industries_p"])}</p></div><div class="industries">{inds}</div></div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["offices_h"])}</h2></div><div class="offices">{offices}</div></div></section>
 {press}
+<section class="alt"><div class="wrap"><h2>{e(t["insights"]["follow_h"])}</h2>{follow_card(lang, t["insights"]["follow_p"])}</div></section>
 {cta_band(lang, "home", t, h["cta_h"], h["cta_p"])}'''
     return body
 
