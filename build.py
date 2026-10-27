@@ -249,6 +249,7 @@ def page_home(lang, t):
 <section><div class="wrap"><div class="section-head"><h2>{e(h["industries_h"])}</h2><p class="lede">{e(h["industries_p"])}</p></div><div class="industries">{inds}</div></div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["offices_h"])}</h2></div><div class="offices">{offices}</div></div></section>
 {press}
+<section class="alt"><div class="wrap"><h2>{e(t["insights"]["events_h"])}</h2><p class="lead-in">{e(t["insights"]["events_p"])}</p><ul>{"".join(f"<li>{e(x)}</li>" for x in t["insights"]["events"])}</ul></div></section>
 <section class="alt" id="follow"><div class="wrap"><h2>{e(t["insights"]["follow_h"])}</h2>{follow_card(lang, t["insights"]["follow_p"])}</div></section>
 {cta_band(lang, "home", t, h["cta_h"], h["cta_p"])}'''
     return body
