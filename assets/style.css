@@ -347,3 +347,6 @@ nav.primary a.btn:hover{background:var(--ink);border-color:var(--ink);outline-co
 .follow-card a.btn.fc-btn:hover{background:#fff;color:#2e1f2b}
 .fc-logo small{display:block;font-family:var(--sans,inherit);font-size:7px;letter-spacing:.12em;text-transform:uppercase;margin-top:2px;color:#fff}
 .brand-text small{white-space:nowrap;letter-spacing:.1em;font-size:10px}
+.brand-text{align-items:flex-start;text-align:left}
+.brand span{font-size:20px;letter-spacing:.04em}
+.brand-text small{font-size:9.5px;letter-spacing:.12em;white-space:nowrap}
