@@ -373,11 +373,8 @@ def examples(lang):
         "corporate": [("text", g("entry"), cats)],
         "ma": [("rows", g("deals"), _anon_rows(_DEALS, lang))],
         "commercial": [("rows", g("partners"), _anon_rows(_COMM_DEALS + _COMM_PROJ, lang)), ("rows", g("cdisp"), _anon_rows(_COMM_CASES, lang))],
-        "employment": [("rows", g("emp_r"), _anon_rows(RESTRUCTURING, lang)),
-                       ("text", g("emp_l"), [n(_COUNT(EMP_LITIGATION))]),
-                       ("text", g("emp_a"), [n(_COUNT(EMP_ADVISORY))]),
-                       ("text", g("emp_c"), [n(_COUNT(EMP_CONTRACTS))]),
-                       ("text", L["imm_c"][lang].split(":")[0].split(" :")[0], [imm])],
+        # Firm's instruction (Oct 2026): litigation/advisory/contracts counts and the immigration line removed.
+        "employment": [("rows", g("emp_r"), _anon_rows(RESTRUCTURING, lang))],
         "litigation": [("rows", g("cases"), _anon_rows(_CASES, lang))],
         "insolvency": [("rows", g("ins"), _anon_rows(_INSOLV_CASES + _INSOLV_DEALS, lang))],
         "ip": [("rows", g("ip"), _anon_rows(_IP_CASES + _IP_DEALS, lang))],
