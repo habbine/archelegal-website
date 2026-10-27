@@ -512,3 +512,6 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 .alt .pl-btn{border-color:var(--c-ink);color:var(--c-ink)}
 .alt .pl-btn:hover{background:var(--c-ink);color:#fff}
 .landing-tag-ko{font-family:"Noto Serif KR","Nanum Myeongjo","AppleMyungjo","Batang",serif;margin-top:-.2em}
+.alt .ind{border-top-color:var(--gold-d)}
+.alt .ind li{color:var(--c-text)}
+.alt .ind h3{color:var(--c-ink)}
