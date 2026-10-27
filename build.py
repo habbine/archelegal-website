@@ -178,6 +178,9 @@ def bridge(lang, t):
 
 def follow_card(lang, text):
     fl = {"en": ("Follow", "See more"), "fr": ("Suivre", "Voir plus"), "ko": ("팔로우", "더 보기")}[lang]
+    head = {"en": ("Follow · Archè", "The firm: website, news and updates."),
+            "fr": ("Suivre · Archè", "Le cabinet : site, actualités et mises à jour."),
+            "ko": ("팔로우 · 아르케", "법인 웹사이트, 소식 및 업데이트.")}[lang]
     rows = "".join(
         f'<div class="fc-row"><span class="fc-ico" aria-hidden="true">{ico}</span><div class="fc-name"><strong>{e(name)}</strong><span>{e(handle)}</span></div>'
         f'<a class="btn ghost fc-btn" href="{e(url)}" rel="noopener">{e(lbl)} ↗</a></div>'
@@ -187,7 +190,7 @@ def follow_card(lang, text):
             ("Website", C.SITE_URL.replace("https://", ""), C.SITE_URL, fl[1], "◍"),
         ])
     return (f'<div class="follow-card"><div class="fc-head"><span class="fc-logo" aria-hidden="true">ARCHÈ</span>'
-            f'<div><strong>{e(C.FIRM_FULL)}</strong><p>{e(text)}</p></div></div><div class="fc-list">{rows}</div></div>')
+            f'<div><strong>{e(head[0])}</strong><p>{e(head[1])}</p></div></div><div class="fc-list">{rows}</div></div>')
 
 
 def page_home(lang, t):
