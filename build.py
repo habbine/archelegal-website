@@ -18,7 +18,7 @@ content_services.apply(T)
 ROOT = Path(__file__).resolve().parent
 LANGS = ["en", "fr", "ko"]
 LANG_LABEL = {"en": "EN", "fr": "FR", "ko": "한국어"}
-NAV = ["home", "services", "experience", "people", "insights", "contact"]
+NAV = ["home", "services", "people", "insights", "contact"]
 SLUG = {"home": "", "services": "services/", "experience": "experience/", "people": "team/", "insights": "insights/",
         "contact": "contact/", "legal": "legal/", "privacy": "privacy/"}
 OG_LOCALE = {"en": "en_GB", "fr": "fr_FR", "ko": "ko_KR"}
@@ -154,18 +154,18 @@ WHAT = {
 SIGNATURE = {
     "en": {"kicker": "Signature", "h": "A Paris firm with Korean roots",
            "case_more": "Read about the case",
-           "first_h": "The first Korean lawyer admitted to the French bar",
-           "first_p": "James Joong-ho Kim, admitted to the Paris Bar in 1997, was reported by Law Times (2016) as the first Korean lawyer in France.",
+           "first_h": "One of the first Korean lawyers admitted to the French bar",
+           "first_p": "Admitted to the Paris Bar in 1997, James Joong-ho Kim is one of the first Korean lawyers to practise in France.",
            "first_more": "Meet the team"},
     "fr": {"kicker": "Repères", "h": "Un cabinet parisien aux racines coréennes",
            "case_more": "En savoir plus sur l'affaire",
-           "first_h": "Le premier avocat coréen inscrit au barreau en France",
-           "first_p": "James Joong-ho Kim, inscrit au Barreau de Paris en 1997, a été présenté par le Law Times (2016) comme le premier avocat coréen en France.",
+           "first_h": "L'un des premiers avocats coréens inscrits au barreau en France",
+           "first_p": "Inscrit au Barreau de Paris en 1997, James Joong-ho Kim est l'un des premiers avocats coréens à exercer en France.",
            "first_more": "Découvrir l'équipe"},
     "ko": {"kicker": "대표 이력", "h": "한국에 뿌리를 둔 파리 로펌",
            "case_more": "사건 자세히 보기",
-           "first_h": "한국인 최초의 프랑스 변호사",
-           "first_p": "1997년 파리 변호사로 등록한 김중호 변호사는 법률신문(2016)에서 한국인 첫 프랑스 변호사로 소개되었습니다.",
+           "first_h": "프랑스 변호사회에 등록한 첫 한국인 변호사 중 한 명",
+           "first_p": "1997년 파리 변호사회에 등록한 김중호 변호사는 프랑스에서 활동한 첫 한국인 변호사 중 한 명입니다.",
            "first_more": "구성원 보기"},
 }
 TEAM_H = {"en": ("Who will handle your matter", "Partner-led work in French, English and Korean."),
@@ -363,9 +363,12 @@ def page_home(lang, t):
 <div class="press">''' + press_items(lang, C.PRESS[:C.PRESS_HOME], "../" * depth(lang, "home")) + f'</div><p style="margin-top:20px"><a href="{rel(lang, "home", lang, "insights")}">{e(h["press_more"])}</a></p></div></section>'
     mt = ""
     if t.get("matters"):
-        firsts = "".join(f'<div class="rule-top"><h3 style="font-size:1.05rem">{e(g[0])}</h3><p>{e(g[1][0])}</p></div>' for g in t["matters"]["groups"])
-        mt = f'''<section><div class="wrap"><div class="section-head"><h2>{e(h["matters_h"])}</h2><p class="lede">{e(h["matters_intro"])}</p></div>
-<div class="cols c3">{firsts}</div><p style="margin-top:28px"><a href="{rel(lang, "home", lang, "experience")}">{e(h["matters_more"])}</a></p></div></section>'''
+        import experience6 as X6, content_services as CS
+        area_title = {sid: title for sid, title, _, _ in CS.SERVICES8[lang]}
+        svc_url = rel(lang, "home", lang, "services")
+        firsts = "".join(f'<div class="rule-top"><h3 style="font-size:1.05rem"><a href="{svc_url}#{sid}" style="color:inherit;text-decoration:none">{e(area_title[sid])}</a></h3><p>{e(txt)}</p></div>' for sid, txt in X6.featured(lang))
+        mt = f'''<section><div class="wrap"><div class="section-head"><h2>{e(h["matters_h"])}</h2></div>
+<div class="cols c3">{firsts}</div><p style="margin-top:28px"><a href="{svc_url}">{e(h["matters_more"])}</a></p></div></section>'''
     up = "../" * depth(lang, "home")
     cov = {"en": ("Boutique international law firm", "Paris · Seoul · Hong Kong", "Enter the site"), "fr": ("Cabinet d'avocats international", "Paris · Séoul · Hong Kong", "Découvrir le cabinet"), "ko": ("국제 부티크 로펌", "파리 · 서울 · 홍콩", "사이트 둘러보기")}[lang]
     hc = {"en": {"label": "Contact", "kicker": "Write to us", "cities": "Paris · Seoul · Hong Kong", "note": "Write in English, French or Korean."}, "fr": {"label": "Contact", "kicker": "Écrivez-nous", "cities": "Paris · Séoul · Hong Kong", "note": "En français, en anglais ou en coréen."}, "ko": {"label": "문의", "kicker": "문의하기", "cities": "파리 · 서울 · 홍콩", "note": "한국어, 프랑스어, 영어로 문의해 주세요."}}[lang]
@@ -420,7 +423,21 @@ def page_services(lang, t):
             body = f'<dl class="svc-dl">{rows}</dl>'
         else:
             body = "<ul>" + "".join(f"<li>{e(b)}</li>" for b in bullets) + "</ul>"
-        items += f'<div class="service" id="{key}"><div><p class="svc-sub">{e(intro)}</p><h2>{e(title)}</h2></div>{body}</div>'
+        import experience6 as X6
+        ex_html = ""
+        exl = {"en": ("Key examples", "See all"), "fr": ("Exemples de dossiers", "Voir tout"), "ko": ("주요 사례", "전체 보기")}[lang]
+        for kind, sub, data in X6.examples(lang).get(key, []):
+            if kind == "rows":
+                lis = [f'<li><strong>{e(n)}</strong> — {e(tx)}</li>' for n, tx in data]
+            elif kind == "names":
+                lis = [f'<li class="ex-names">{" · ".join(e(n) for n in data)}</li>']
+            else:
+                lis = [f'<li><strong>{e(c)}</strong> — {e(" · ".join(ns))}</li>' for c, ns in data]
+            head, tail = "".join(lis[:3]), "".join(lis[3:])
+            more = f'<details class="ex-more"><summary>{e(exl[1])} ({len(lis)})</summary><ul class="ex-list">{tail}</ul></details>' if tail else ""
+            ex_html += f'<p class="ex-sub">{e(sub)}</p><ul class="ex-list">{head}</ul>{more}'
+        ex_block = f'<div class="ex"><h3 class="ex-h">{e(exl[0])}</h3>{ex_html}</div>' if ex_html else ""
+        items += f'<div class="service" id="{key}"><div><p class="svc-sub">{e(intro)}</p><h2>{e(title)}</h2></div>{body}{ex_block}</div>'
     faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in s["faq"])
     ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in s["faq"]]}
@@ -432,8 +449,12 @@ def page_services(lang, t):
         chips_by_group = "".join(f'<li><a class="practice-chip" href="#{k}" data-group="{k}">{e(lbl)}</a></li>' for lbl, k in s["index"])
         idx = f'<nav class="practice-index" aria-labelledby="pi-h"><h2 id="pi-h">{e(s["index_h"])}</h2><div class="practice-all">{chips}</div><ul class="practice-chips">{chips_by_group}</ul></nav>'
 
-    return f'''<div class="page-head"><div class="wrap"><h1>{e(s["h1"])}</h1><p class="lede">{e(s["lede"])}</p>{idx}</div></div>
-<section style="padding-top:0"><div class="wrap" id="services-list">{items}</div></section>
+    import experience6 as X6
+    figs, _ = X6.figures(lang)
+    fig_note = {"en": "Indicative figures, counted from the examples listed on this page.", "fr": "Chiffres indicatifs, comptés à partir des exemples cités sur cette page.", "ko": "참고용 수치이며, 이 페이지에 소개된 사례를 기준으로 집계했습니다."}[lang]
+    fig_html = '<div class="figs"><dl>' + "".join(f'<div><dt>{e(v)}</dt><dd>{e(l)}</dd></div>' for v, l in figs) + f'</dl><p class="figs-note">{e(fig_note)}</p></div>'
+    return f'''<div class="page-head"><div class="wrap"><h1>{e(s["h1"])}</h1><p class="lede">{e(s["lede"])}</p>{fig_html}{idx}</div></div>
+<section style="padding-top:0"><div class="wrap" id="services-list">{items}</div><div class="wrap"><p class="xp-note">{e(X6.FOOTNOTE[lang])}</p></div></section>
 {services_js}
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(s["faq_h"])}</h2></div><div class="faq" style="max-width:760px">{faq}</div></div></section>
 {cta_band(lang, "services", t, s["cta_h"], s["cta_p"])}''', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>"
@@ -653,7 +674,7 @@ def main():
     for f in ["index.html", "404.html", "sitemap.xml", "robots.txt", "CNAME", ".nojekyll"]:
         (ROOT / f).unlink(missing_ok=True)
 
-    builders = {"home": page_home, "services": page_services, "experience": page_experience, "people": page_people,
+    builders = {"home": page_home, "services": page_services, "people": page_people,
                 "insights": page_insights, "contact": page_contact, "legal": page_legal, "privacy": page_privacy}
     urls = []
     for lang in LANGS:
@@ -670,6 +691,15 @@ def main():
             out = shell(lang, page, t, body, ld)
             write(url_path(lang, page) + "index.html", out)
             urls.append((lang, page))
+
+    # Former Experience page: redirect to Services (content now lives there as key examples)
+    for lang in LANGS:
+        target = abs_url(lang, "services")
+        write(url_path(lang, "experience") + "index.html",
+              f'<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><title>Archè</title>'
+              f'<meta name="robots" content="noindex"><link rel="canonical" href="{target}">'
+              f'<meta http-equiv="refresh" content="0; url={target}"></head>'
+              f'<body><p><a href="{target}">{e(T[lang]["nav"]["services"])}</a></p></body></html>')
 
     # 404 (absolute asset paths so it works at any depth)
     t = T["en"]

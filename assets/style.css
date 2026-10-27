@@ -617,3 +617,23 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 .site-footer li{margin-bottom:2px}
 .office a,.press-more summary,.what-more a,.who-cta a{min-height:24px}
 .office a{display:inline-block;padding:2px 0}
+
+/* Services: key examples and indicative figures */
+.ex{margin-top:20px;padding-top:16px;border-top:1px solid var(--green-line)}
+.ex-h{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+.ex-sub{margin:14px 0 6px;font-size:14px;font-weight:600;color:var(--ink)}
+.ex-list{margin:0;padding-left:1.1em}
+.ex-list li{margin-bottom:.4em;font-size:14px;line-height:1.5;color:var(--text)}
+.ex-list li strong{color:var(--ink);font-weight:600}
+.ex-list li.ex-names{list-style:none;margin-left:-1.1em}
+.ex-more summary{cursor:pointer;min-height:24px;font-size:14px;color:var(--gold);margin:4px 0 8px}
+.ex-more summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.figs{margin:28px 0 8px}
+.figs dl{margin:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:1px solid var(--green-mid)}
+.figs dl div{padding:16px 16px 0 0}
+.figs dt{font-family:var(--serif);font-size:clamp(28px,3vw,40px);line-height:1;color:var(--ink)}
+.figs dd{margin:8px 0 0;font-size:14px;line-height:1.4;color:var(--muted)}
+.figs-note{margin:14px 0 0;font-size:13px;color:var(--muted)}
+@media(max-width:1000px){.figs dl{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:16px}}
+@media(max-width:520px){.figs dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.strip-b dd{font-size:clamp(15px,1.25vw,17px)}
