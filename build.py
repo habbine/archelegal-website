@@ -76,9 +76,16 @@ def press_by_theme(lang, up, shown=3):
         head, rest = items[:shown], items[shown:]
         more = (f'<details class="press-more"><summary>{e(PRESS_MORE[lang].format(n=len(rest)))}</summary>'
                 f'<div class="press">{press_items(lang, rest, up)}</div></details>') if rest else ""
-        out += (f'<div class="press-theme"><h3>{e(labels[lang])} <small>{len(items)}</small></h3>'
+        out += (f'<div class="press-theme" id="press-{key}"><h3>{e(labels[lang])} <small>{len(items)}</small></h3>'
                 f'<div class="press">{press_items(lang, head, up)}</div>{more}</div>')
     return out
+
+
+HERITAGE = {
+    "en": ("The Oegyujanggak case", "Since 2007, James Joong-ho Kim has acted in the claim for the return of Korea's Oegyujanggak royal manuscripts before the Paris Administrative Court. At the December 2009 hearing, the French State used the word \u201cpillage\u201d for the first time.", "Read the press coverage"),
+    "fr": ("L'affaire de l'Oegyujanggak", "Depuis 2007, James Joong-ho Kim agit dans la demande de restitution des manuscrits royaux coréens de l'Oegyujanggak devant le tribunal administratif de Paris. À l'audience de décembre 2009, l'État français a employé pour la première fois le mot \u00ab pillage \u00bb.", "Lire la presse"),
+    "ko": ("외규장각 반환 소송", "김중호 변호사는 2007년부터 파리 행정법원에서 외규장각 의궤 반환 소송을 맡아 왔습니다. 2009년 12월 변론에서 프랑스 정부는 처음으로 '약탈'이라는 표현을 사용했습니다.", "언론 보도 보기"),
+}
 
 
 def url_path(lang, page):
@@ -261,10 +268,10 @@ def page_home(lang, t):
 <div id="hero-start"></div>
 <section class="hero"><div class="wrap">
 <div><h1>{e(h["h1"])}</h1><p class="lede">{e(h["lede"])}</p>
-<div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{e(t["cta"])}</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{e(h["see_services"])}</a><a class="btn ghost" href="#follow">{ {"en": "Follow us", "fr": "Nous suivre", "ko": "팔로우하기"}[lang] }</a></div></div>
+<div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{ {"en": "Discuss your matter", "fr": "Parlez-nous de votre dossier", "ko": "사안 상담하기"}[lang] }</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{ {"en": "Explore our expertise", "fr": "Découvrir nos expertises", "ko": "업무분야 보기"}[lang] }</a></div></div>
 <aside class="hero-card" aria-label="{e(hc['label'])}"><p class="hero-card-kicker">{e(hc['kicker'])}</p><p class="hero-card-email"><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p><p class="hero-card-cities">{e(hc['cities'])}</p><p class="hero-card-note">{e(hc['note'])}</p></aside></div></section>
 <section><div class="wrap"><div class="section-head"><h2>{e(h["creds_h"])}</h2><p class="lede">{e(h["creds_p"])}</p></div><div class="cols c3">{creds}</div></div></section>
-<section class="alt"><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS)}</ul></div></section>
+<section class="alt"><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><div><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS[:6])}</ul><p style="margin-top:12px"><a href="{rel(lang, "home", lang, "people")}">{ {"en": "All affiliations", "fr": "Toutes les affiliations", "ko": "전체 소속 보기"}[lang] } →</a></p></div></div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["who_h"])}</h2></div><div class="cols c3">{who}</div></div></section>
 <section><div class="wrap"><div class="section-head"><h2>{e(h["services_h"])}</h2></div><div class="cols c4">{svcs}</div>
 <p style="margin-top:28px"><a href="{rel(lang, "home", lang, "services")}">{e(h["services_more"])}</a></p></div></section>
@@ -274,7 +281,7 @@ def page_home(lang, t):
 <section><div class="wrap"><div class="section-head"><h2>{e(h["industries_h"])}</h2><p class="lede">{e(h["industries_p"])}</p></div><div class="industries">{inds}</div></div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["offices_h"])}</h2></div><div class="offices">{offices}</div></div></section>
 {press}
-<section class="alt"><div class="wrap"><h2>{e(t["insights"]["events_h"])}</h2><p class="lead-in">{e(t["insights"]["events_p"])}</p><ul>{"".join(f"<li>{e(x)}</li>" for x in t["insights"]["events"])}</ul></div></section>
+<section><div class="wrap"><div class="section-head"><h2>{e(HERITAGE[lang][0])}</h2><p class="lede">{e(HERITAGE[lang][1])}</p></div><p><a class="btn ghost" href="{rel(lang, "home", lang, "insights")}#press-heritage">{e(HERITAGE[lang][2])}</a></p></div></section>
 <section class="alt" id="follow"><div class="wrap"><h2>{e(t["insights"]["follow_h"])}</h2>{follow_card(lang, t["insights"]["follow_p"])}</div></section>
 {cta_band(lang, "home", t, h["cta_h"], h["cta_p"])}'''
     return body
