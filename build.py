@@ -52,7 +52,7 @@ def header(lang, page, t):
         switch += f'<a href="{rel(lang, page, l, page)}" hreflang="{l}" lang="{l}"{cur}>{LANG_LABEL[l]}</a>'
     return f'''<a class="skip" href="#main">{e(t["skip"])}</a>
 <header class="site-header"><div class="wrap">
-<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo.svg" width="40" height="40" alt=""><span class="brand-text"><span>{e(C.FIRM)}</span><small>SELARL</small></span></a>
+<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo-mark.png" width="43" height="48" alt=""><span class="brand-text"><span>{e(C.FIRM)}</span><small>SELARL</small></span></a>
 <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" type="button">{e(t["menu"])}</button>
 <nav class="primary" id="primary-nav" aria-label="{e(t["menu"])}">{nav}<a class="btn" href="{cta_href(lang, page)}">{e(t["cta"])}</a><div class="lang" role="group" aria-label="Language">{switch}</div></nav>
 </div></header>'''
@@ -97,7 +97,7 @@ def head(lang, page, t, extra_ld=""):
 <meta property="og:image" content="{C.SITE_URL.rstrip("/")}/assets/og.svg">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#1B2B2B">
-<link rel="icon" href="{up}assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="{up}assets/favicon.png" type="image/png"><link rel="apple-touch-icon" href="{up}assets/apple-touch-icon.png">
 <link rel="stylesheet" href="{up}assets/style.css">
 <script defer src="{up}assets/site.js"></script>
 {extra_ld}
@@ -112,7 +112,7 @@ def org_ld():
     d = {
         "@context": "https://schema.org", "@type": "LegalService", "name": C.FIRM_FULL,
         "url": C.SITE_URL, "email": C.EMAIL, "telephone": C.PHONE,
-        "logo": C.SITE_URL.rstrip("/") + "/assets/logo.svg",
+        "logo": C.SITE_URL.rstrip("/") + "/assets/logo.png",
         "address": {"@type": "PostalAddress", "streetAddress": C.ADDRESS_LINES[0], "postalCode": "75015",
                     "addressLocality": "Paris", "addressCountry": "FR"},
         "areaServed": ["FR", "KR", "HK"], "knowsLanguage": ["en", "fr", "ko"],
@@ -334,7 +334,7 @@ def main():
     t = T["en"]
     base = C.SITE_URL.rstrip("/") + "/"
     nf = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{e(t["meta"]["404"][0])}</title><meta name="robots" content="noindex"><link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="{base}assets/style.css">
+<title>{e(t["meta"]["404"][0])}</title><meta name="robots" content="noindex"><link rel="icon" href="{base}assets/favicon.png" type="image/png"><link rel="stylesheet" href="{base}assets/style.css">
 </head><body><main id="main"><section><div class="wrap"><h1>{e(t["nf"]["h1"])}</h1><p class="lede">{e(t["nf"]["p"])}</p><p><a class="btn" href="{base}">{e(t["nf"]["back"])}</a></p></div></section></main></body></html>'''
     write("404.html", nf)
 
