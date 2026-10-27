@@ -643,7 +643,7 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 .cf-note{margin:4px 0 20px;font-size:13px;line-height:1.5;color:var(--muted)}
 .figs dl{grid-template-columns:repeat(7,minmax(0,1fr))}
 @media(max-width:1100px){.figs dl{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:16px}}
-@media(max-width:560px){.figs dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.figs>dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .profile{margin-top:22px}
 .profile-h{margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
 .profile dl{display:grid;grid-template-columns:none;border-top:0;gap:6px}
@@ -653,3 +653,14 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 @media(max-width:640px){.profile dl div{grid-template-columns:1fr;gap:2px}}
 .close-line .close-h{margin:0 0 6px;font-size:clamp(22px,2.4vw,30px);line-height:1.25;max-width:none}
 .close-p{margin:0;font-size:16px;color:var(--c-text)}
+
+/* figures: heading + title/comment tiles, all per year */
+.figs-h{font-family:var(--serif);font-size:clamp(22px,2.2vw,28px);margin:0 0 6px;color:var(--ink)}
+.figs-l{margin:0 0 16px;color:var(--muted);font-size:15px}
+.figs>dl{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:20px}
+.figs .profile dl{display:block;border-top:0}
+.figs .profile dl div{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:6px 0}
+@media(max-width:640px){.figs .profile dl div{grid-template-columns:1fr;gap:2px}}
+.fig-t{display:block;color:var(--ink);font-weight:600;font-size:15px}
+.fig-c{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+@media(max-width:560px){.figs>dl{grid-template-columns:repeat(2,minmax(0,1fr))}}

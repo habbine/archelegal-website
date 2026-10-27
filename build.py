@@ -460,11 +460,12 @@ def page_services(lang, t):
 
     import experience6 as X6
     figs, _ = X6.figures(lang)
-    fig_note = {"en": "Indicative figures from the firm's records. Immigration is a yearly figure; the others count selected matters across the firm's history.", "fr": "Chiffres indicatifs issus des dossiers du cabinet. L'immigration est un chiffre annuel ; les autres recensent des dossiers choisis sur l'ensemble de l'histoire du cabinet.", "ko": "아르케 업무 기록에 따른 참고용 수치입니다. 취업 이민은 연간 수치이며, 나머지는 설립 이후 주요 사례를 집계한 것입니다."}[lang]
+    fig_note = {"en": "Indicative annual figures from the firm's records.", "fr": "Chiffres annuels indicatifs issus des dossiers du cabinet.", "ko": "아르케 업무 기록에 따른 연간 참고 수치입니다."}[lang]
+    fh, fl = X6.FIG_HEAD[lang]
     prof, _ = X6.client_profile(lang)
     prof_h = {"en": "Client profile", "fr": "Profil des clients", "ko": "고객 구성"}[lang]
     prof_html = f'<div class="profile"><p class="profile-h">{e(prof_h)}</p><dl>' + "".join(f'<div><dt>{e(a)}</dt><dd>{e(c)}</dd></div>' for a, c in prof) + '</dl></div>'
-    fig_html = '<div class="figs"><dl>' + "".join(f'<div><dt>{e(v)}</dt><dd>{e(l)}</dd></div>' for v, l in figs) + f'</dl>{prof_html}<p class="figs-note">{e(fig_note)}</p></div>'
+    fig_html = f'<div class="figs"><h2 class="figs-h">{e(fh)}</h2><p class="figs-l">{e(fl)}</p><dl>' + "".join(f'<div><dt>{e(v)}</dt><dd><span class="fig-t">{e(a)}</span><span class="fig-c">{e(c)}</span></dd></div>' for v, a, c in figs) + f'</dl>{prof_html}<p class="figs-note">{e(fig_note)}</p></div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(s["h1"])}</h1><p class="lede">{e(s["lede"])}</p>{fig_html}{idx}</div></div>
 <section style="padding-top:0"><div class="wrap" id="services-list">{items}</div><div class="wrap"><p class="xp-note">{e(X6.FOOTNOTE[lang])}</p></div></section>
 {services_js}
