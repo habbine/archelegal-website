@@ -408,7 +408,24 @@ def page_people(lang, t):
         links = '<ul class="person-links">' + "".join(
             f'<li><a class="pl-btn" href="{e(url)}"' + ("" if url.startswith("mailto:") else ' rel="noopener"')
             + (f' title="{e(tip)}"' if tip else "") + f'>{e(lbl)}</a></li>' for lbl, url, tip in btns) + "</ul>"
-        out += f'<div class="person"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div><h2 style="font-size:1.6rem;margin-bottom:.1em">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>{see_more(p["bios"][k], lang, 4)}{links}</div></div>'
+        import team_profiles as TP, content_services as CS
+        pr, L = TP.PROFILES[k][lang], TP.LABELS[lang]
+        area_title = {sid: title for sid, title, _, _ in CS.SERVICES8[lang]}
+        svc = rel(lang, "people", lang, "services")
+        areas = "".join(f'<li><a class="pf-area" href="{svc}#{a}">{e(area_title[a])}</a></li>' for a in TP.PROFILES[k]["areas"])
+        facts = "".join(f'<div><dt>{e(L[f])}</dt><dd>{e(pr[f])}</dd></div>' for f in ("bar", "lang", "edu", "prev"))
+        roles = ""
+        if pr["roles"]:
+            label = {"en": "See all", "fr": "Voir tout", "ko": "전체 보기"}[lang]
+            head = "".join(f"<li>{e(x)}</li>" for x in pr["roles"][:3])
+            tail = "".join(f"<li>{e(x)}</li>" for x in pr["roles"][3:])
+            more = f'<details class="see-more"><summary>{label}</summary><ul class="pf-roles">{tail}</ul></details>' if tail else ""
+            roles = f'<h3 class="pf-h">{e(L["roles"])}</h3><ul class="pf-roles">{head}</ul>{more}'
+        out += (f'<article class="person" id="{k}"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div class="pf">'
+                f'<h2 class="pf-name">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>'
+                f'<p class="pf-lead">{e(pr["lead"])}</p>'
+                f'<h3 class="pf-h">{e(L["areas"])}</h3><ul class="pf-areas">{areas}</ul>'
+                f'<dl class="pf-facts">{facts}</dl>{roles}{links}</div></article>')
     return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1></div></div>
 <section style="padding-top:0"><div class="wrap">{out}</div></section>'''
 

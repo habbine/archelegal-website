@@ -1,0 +1,62 @@
+"""Structured lawyer profiles. Facts come only from the existing bios and the firm's own description; do not add any."""
+
+LABELS = {
+    "en": {"areas": "Practice areas", "bar": "Bar admissions", "lang": "Languages", "edu": "Education", "prev": "Previous experience", "roles": "Professional roles"},
+    "fr": {"areas": "Domaines d'intervention", "bar": "Barreaux", "lang": "Langues", "edu": "Formation", "prev": "Parcours", "roles": "Fonctions et mandats"},
+    "ko": {"areas": "업무 분야", "bar": "변호사 자격", "lang": "언어", "edu": "학력", "prev": "주요 경력", "roles": "대외 활동"},
+}
+
+# areas = ids of the eight practice areas (content_services.SERVICES8)
+PROFILES = {
+ "jk": {
+  "areas": ["corporate", "ma", "advice", "litigation"],
+  "en": {"lead": "Advises Korean and international companies and public bodies on corporate matters, M&A, international projects, foreign investment and restructuring in France and Asia, and represents them in related litigation and arbitration.",
+         "bar": "Paris Bar (1997) · New York Bar (1998)", "lang": "French · English · Korean",
+         "edu": "LL.M., Northwestern University · Ph.D. in law, Université Paris II Panthéon-Assas · B.A. in political science, Yonsei University",
+         "prev": "Founded Archè in 2014 · Founder and head of the Asian desk, Alerion (2003–2013) · Head of legal, TSW Consulting (Singapore) · Head of M&A and the Europe desk, Daeryook International (Seoul) · General legal counsel, Samsung Electronics headquarters (Seoul) · Kim & Chang (Seoul)",
+         "roles": ["President, Korea-France Chamber of Commerce and Industry (CCICF), 2012–2015 and 2018–2026", "Legal counsel to the Embassy of Korea in France and to KOTRA Paris, since 2005", "Arbitrator, Korean Commercial Arbitration Board", "Legal counsel, HEC incubator at Station F", "Member, content business advisory board, Korea Creative Content Agency (KOCCA)", "Founding member, In-house Counsels Forum (IHCF)", "International legal adviser on foreign asset recovery, Korea Deposit Insurance Corporation (KDIC)"]},
+  "fr": {"lead": "Conseille des entreprises coréennes et internationales et des organismes publics en droit des sociétés, fusions-acquisitions, projets internationaux, investissements étrangers et restructurations en France et en Asie, et les représente dans les contentieux et arbitrages liés.",
+         "bar": "Barreau de Paris (1997) · Barreau de New York (1998)", "lang": "Français · Anglais · Coréen",
+         "edu": "LL.M., Northwestern University · Doctorat en droit, Université Paris II Panthéon-Assas · Licence de sciences politiques, Université Yonsei",
+         "prev": "Fondateur d'Archè en 2014 · Fondateur et responsable du desk Asie, Alerion (2003–2013) · Directeur juridique, TSW Consulting (Singapour) · Responsable M&A et du desk Europe, Daeryook International (Séoul) · Directeur juridique, siège de Samsung Electronics (Séoul) · Kim & Chang (Séoul)",
+         "roles": ["Président, Chambre de commerce et d'industrie Corée-France (CCICF), 2012–2015 et 2018–2026", "Conseil juridique de l'Ambassade de Corée en France et de KOTRA Paris, depuis 2005", "Arbitre, Korean Commercial Arbitration Board", "Conseil juridique, incubateur HEC à Station F", "Membre du comité consultatif sur les contenus, Korea Creative Content Agency (KOCCA)", "Membre fondateur, Forum des juristes d'entreprise (IHCF)", "Conseil juridique international pour le recouvrement d'actifs à l'étranger, Korea Deposit Insurance Corporation (KDIC)"]},
+  "ko": {"lead": "한국 및 해외 기업과 공공기관을 대상으로 프랑스와 아시아에서의 기업법, 인수합병, 국제 프로젝트, 해외 투자, 구조조정을 자문하고 관련 소송과 중재를 대리합니다.",
+         "bar": "파리 변호사(1997) · 뉴욕주 변호사(1998)", "lang": "프랑스어 · 영어 · 한국어",
+         "edu": "노스웨스턴대 LL.M. · 파리 제2대학(팡테옹 아사스) 법학 박사 · 연세대 정치외교학 학사",
+         "prev": "2014년 아르케 설립 · Alerion 설립자 겸 아시아 데스크 총괄(2003–2013) · TSW Consulting(싱가포르) 법무 총괄 · Daeryook International(서울) M&A·유럽 데스크 총괄 · 삼성전자 본사(서울) 법무 총괄 · 김&장(서울)",
+         "roles": ["주불한국상공회의소(CCICF) 회장, 2012–2015, 2018–2026", "2005년부터 주프랑스 대한민국 대사관 및 KOTRA 파리 법률 자문", "대한상사중재원 중재인", "스테이션 F HEC 인큐베이터 법률 자문", "한국콘텐츠진흥원(KOCCA) 콘텐츠 비즈니스 자문위원", "인하우스 카운슬 포럼(IHCF) 창립 회원", "예금보험공사(KDIC) 해외 재산 환수 국제 법률 자문"]},
+ },
+ "hk": {
+  "areas": ["litigation", "employment", "ip", "corporate"],
+  "en": {"lead": "Represents companies in cross-border litigation and arbitration (commercial, civil, employment and IP) and advises them on legal and regulatory compliance.",
+         "bar": "Paris Bar · New York Bar", "lang": "French · English · Korean · Spanish (B1)",
+         "edu": "Master's in law, economics and management (EU law), Université Paris 1 Panthéon-Sorbonne · LL.B., University College London",
+         "prev": "Partner at Archè since 2019 · Legal and compliance, Samsung Electronics UK (Europe office)",
+         "roles": ["General secretary, Korea-France Chamber of Commerce and Industry (CCICF), since 2025", "Regional governor for France, International Association of Korean Lawyers (IAKL), since 2021", "Legal expert, HEC incubator at Station F, since 2022", "Member, content business advisory board, Korea Creative Content Agency (KOCCA)", "International legal adviser on foreign asset recovery, Korea Deposit Insurance Corporation (KDIC)", "Member, French Association of Competition Law Studies (AFEC)", "Annual guest lecturer, Université Paris Cité and Aix-Marseille Université", "Pro bono: lawyer for athletes before the Court of Arbitration for Sport at the Paris 2024 Olympic Games"]},
+  "fr": {"lead": "Représente des entreprises dans des contentieux et arbitrages transnationaux (commercial, civil, social et propriété intellectuelle) et les conseille en conformité juridique et réglementaire.",
+         "bar": "Barreau de Paris · Barreau de New York", "lang": "Français · Anglais · Coréen · Espagnol (B1)",
+         "edu": "Master en droit, économie et gestion (droit de l'UE), Université Paris 1 Panthéon-Sorbonne · LL.B., University College London",
+         "prev": "Associée chez Archè depuis 2019 · Juridique et conformité, Samsung Electronics UK (siège européen)",
+         "roles": ["Secrétaire générale, Chambre de commerce et d'industrie Corée-France (CCICF), depuis 2025", "Gouverneure régionale pour la France, Association internationale des avocats coréens (IAKL), depuis 2021", "Experte juridique, incubateur HEC à Station F, depuis 2022", "Membre du comité consultatif sur les contenus, Korea Creative Content Agency (KOCCA)", "Conseil juridique international pour le recouvrement d'actifs à l'étranger, Korea Deposit Insurance Corporation (KDIC)", "Membre de l'Association française d'études de la concurrence (AFEC)", "Chargée de cours invitée chaque année, Université Paris Cité et Aix-Marseille Université", "Pro bono : avocate d'athlètes devant le Tribunal arbitral du sport lors des Jeux olympiques de Paris 2024"]},
+  "ko": {"lead": "국경을 넘는 소송과 중재(상사·민사·노동·지식재산)에서 기업을 대리하고, 법률·규제 컴플라이언스를 자문합니다.",
+         "bar": "파리 변호사 · 뉴욕주 변호사", "lang": "프랑스어 · 영어 · 한국어 · 스페인어(B1)",
+         "edu": "파리 제1대학 팡테옹-소르본 법·경제·경영(EU법) 석사 · 런던대학교(UCL) LL.B.",
+         "prev": "2019년부터 아르케 파트너 · 삼성전자 영국법인(유럽 본부) 법무·컴플라이언스",
+         "roles": ["2025년부터 주불한국상공회의소(CCICF) 사무총장", "2021년부터 국제한인법률가협회(IAKL) 프랑스 지역 총무", "2022년부터 스테이션 F HEC 인큐베이터 법률 전문가", "한국콘텐츠진흥원(KOCCA) 콘텐츠 비즈니스 자문위원", "예금보험공사(KDIC) 해외 재산 환수 국제 법률 자문", "프랑스 경쟁법연구협회(AFEC) 회원", "파리 시테 대학교, 엑스마르세유 대학교 연간 초빙 강사", "공익활동: 파리 2024 올림픽 스포츠중재재판소(CAS) 선수 지원 변호"]},
+ },
+ "dk": {
+  "areas": ["employment", "corporate"],
+  "en": {"lead": "Advises companies and their staff on French immigration and mobility (work permits, Talent and EU Blue Card, intra-group transfers, posted workers), on company incorporation, changes and dissolution, and on legal translation.",
+         "bar": "New York Bar", "lang": "French · English · Korean",
+         "edu": "LL.B., Queen Mary University of London · Master's 1 and 2 in international corporate law, Université Paris Cité",
+         "prev": "Joined Archè in 2023 · Yulchon LLC (Seoul) · NYD Avocats (Paris)", "roles": []},
+  "fr": {"lead": "Conseille les entreprises et leurs collaborateurs en immigration et mobilité en France (autorisations de travail, passeport Talent et carte bleue européenne, mobilités intragroupe, travailleurs détachés), en création, modification et dissolution de sociétés, et en traduction juridique.",
+         "bar": "Barreau de New York", "lang": "Français · Anglais · Coréen",
+         "edu": "LL.B., Queen Mary University of London · Masters 1 et 2 en droit international des affaires, Université Paris Cité",
+         "prev": "A rejoint Archè en 2023 · Yulchon LLC (Séoul) · NYD Avocats (Paris)", "roles": []},
+  "ko": {"lead": "기업과 임직원을 대상으로 프랑스 이민·인력 이동(취업 허가, 탤런트 체류증·EU 블루카드, 그룹 내 전보, 파견 근로자), 회사 설립·변경·청산, 법률 번역을 자문합니다.",
+         "bar": "뉴욕주 변호사", "lang": "프랑스어 · 영어 · 한국어",
+         "edu": "런던 퀸메리대 LL.B. · 파리 시테 대학교 국제 기업법 석사 1·2과정",
+         "prev": "2023년 아르케 합류 · 율촌(서울) · NYD Avocats(파리)", "roles": []},
+ },
+}
