@@ -257,6 +257,17 @@ def page_services(lang, t):
 {cta_band(lang, "services", t, s["cta_h"], s["cta_p"])}''', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>"
 
 
+AFFILIATIONS = [
+    "European Law Institute (ELI)", "France Esports", "France-Korea Chamber of Commerce and Industry (CCICF)",
+    "French Association for Competition Law Studies (AFEC)", "Impulse Partners",
+    "Korea Creative Content Agency (KOCCA)", "Korea Deposit Insurance Corporation (KDIC)",
+    "International Association of Korean Lawyers (IAKL)", "Mensa", "Paris 2024 Olympic & Paralympic Games",
+    "Samsung Electronics UK", "Station F · HEC Incubator", "Korean Commercial Arbitration Board (KCAB)",
+    "In-house Counsels Forum (IHCF)", "Embassy of Korea in France", "KOTRA Paris",
+]
+AFF_H = {"en": "Experience & affiliations", "fr": "Expériences et affiliations", "ko": "경력 및 소속"}
+
+
 def page_people(lang, t):
     p = t["people"]
     out = ""
@@ -275,6 +286,7 @@ def page_people(lang, t):
         out += f'<div class="person"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div><h2 style="font-size:1.6rem;margin-bottom:.1em">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>{see_more(p["bios"][k], lang, 4)}{links}</div></div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1></div></div>
 <section style="padding-top:0"><div class="wrap">{out}</div></section>
+<section class="alt"><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS)}</ul></div></section>
 {cta_band(lang, "people", t, t["home"]["cta_h"], t["home"]["cta_p"])}'''
 
 
