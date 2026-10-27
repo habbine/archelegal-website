@@ -271,7 +271,7 @@ def page_experience(lang, t):
     for title, items in m["groups"]:
         lis = "".join(f"<li>{e(x)}</li>" for x in items)
         groups += f'<div class="service"><div><h2>{e(title)}</h2></div><ul>{lis}</ul></div>'
-    return f'''<div class="page-head"><div class="wrap"><h1>{e(m["h1"])}</h1><p class="lede">{e(m["lede"])}</p></div></div>
+    return f'''<div class="page-head"><div class="wrap"><h1>{e(m["h1"])}</h1></div></div>
 <section style="padding-top:0"><div class="wrap">{groups}</div></section>
 {cta_band(lang, "experience", t, m["cta_h"], m["cta_p"])}'''
 
