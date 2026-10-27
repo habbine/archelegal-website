@@ -503,3 +503,11 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 .cf-year{font-family:var(--serif);font-size:22px;color:#fff;line-height:1.2}
 @media(max-width:860px){.cf-grid{grid-template-columns:1fr}}
 @media(max-width:420px){.cf-timeline li{grid-template-columns:60px minmax(0,1fr)}}
+
+/* Team: profile link buttons */
+.person-links{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 0;padding:0}
+.pl-btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid var(--gold);color:var(--ink);font-size:15px;text-decoration:none;background:transparent}
+.pl-btn:hover{background:var(--gold);color:var(--green)}
+.pl-btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.alt .pl-btn{border-color:var(--c-ink);color:var(--c-ink)}
+.alt .pl-btn:hover{background:var(--c-ink);color:#fff}

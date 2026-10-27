@@ -206,7 +206,7 @@ def footer(lang, page, t):
     f = t["footer"]
     links = "".join(f'<li><a href="{rel(lang, page, lang, k)}">{e(t["nav"][k])}</a></li>' for k in NAV)
     soc = (f'<li><a href="{C.LINKEDIN}" rel="noopener">LinkedIn</a></li><li><a href="{C.INSTAGRAM}" rel="noopener">Instagram</a></li>'
-           + "".join(f'<li><a href="{e(u)}" rel="noopener">{e(l)}</a></li>' for l, u in C.HK_LINKS if "archelegal" not in u and l not in ("ORCID", "SSRN")))
+           + "".join(f'<li><a href="{e(u)}" rel="noopener">{e(l)}</a></li>' for l, u in C.FOOTER_PERSONAL))
     return f'''<footer class="site-footer"><div class="wrap">
 <div class="cols c4">
 <div><h3>{e(C.FIRM_FULL)}</h3><p>{e(f["lawyers"])}</p></div>
@@ -399,12 +399,13 @@ def page_people(lang, t):
         up = "../" * depth(lang, "people")
         av = (f'<img src="{up}{e(person["photo"])}" alt="{e(t["people"].get("photo_alt", "{}").format(person["name"]))}" width="480" height="600" loading="lazy" decoding="async">'
               if person["photo"] else e(person["initials"]))
-        links = f'<p>{e(p["email_label"])}: <a href="mailto:{person["email"]}">{e(person["email"])}</a>'
+        btns = [(p["email_label"], f'mailto:{person["email"]}', person["email"])]
         if person["linkedin"]:
-            links += f' · <a href="{e(person["linkedin"])}" rel="noopener">{e(p["linkedin_label"])}</a>'
-        for lbl, url in person.get("links", []):
-            links += f' · <a href="{e(url)}" rel="noopener">{e(lbl)}</a>'
-        links += "</p>"
+            btns.append(("LinkedIn", person["linkedin"], None))
+        btns += [(lbl, url, None) for lbl, url in person.get("links", [])]
+        links = '<ul class="person-links">' + "".join(
+            f'<li><a class="pl-btn" href="{e(url)}"' + ("" if url.startswith("mailto:") else ' rel="noopener"')
+            + (f' title="{e(tip)}"' if tip else "") + f'>{e(lbl)}</a></li>' for lbl, url, tip in btns) + "</ul>"
         out += f'<div class="person"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div><h2 style="font-size:1.6rem;margin-bottom:.1em">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>{see_more(p["bios"][k], lang, 4)}{links}</div></div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1></div></div>
 <section style="padding-top:0"><div class="wrap">{out}</div></section>'''

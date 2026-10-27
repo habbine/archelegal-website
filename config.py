@@ -29,11 +29,15 @@ HONGKONG = {"address": "Arche Asia Ltd., Level 1901, Cheung Kong Center, 2 Queen
 
 # Founder's profile links (team page; footer shows all except the firm site).
 HK_LINKS = [
-    ("kimavocat.com", "https://www.kimavocat.com/"),
+    ("GitHub", "https://github.com/habbine"),
     ("ORCID", "https://orcid.org/0000-0003-4990-584X"),
     ("SSRN", "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=4745485"),
     ("Instagram", "https://www.instagram.com/kim_avocat/"),
-    ("archelegal.com", "https://archelegal.com/"),
+]
+# Founder links kept in the footer.
+FOOTER_PERSONAL = [
+    ("kimavocat.com", "https://www.kimavocat.com/"),
+    ("Instagram · kim_avocat", "https://www.instagram.com/kim_avocat/"),
 ]
 
 PEOPLE = [
@@ -43,7 +47,7 @@ PEOPLE = [
         "photo": "assets/img/team-jk.webp",  # e.g. "assets/img/james-kim.jpg" once you add the file
         "name": "James Joong-ho Kim",
         "email": "james.kim@archelegal.com",
-        "linkedin": "",
+        "linkedin": "https://www.linkedin.com/in/jameskim-arche/",
     },
     {
         "slug": "hk",
