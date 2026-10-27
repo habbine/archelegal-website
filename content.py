@@ -82,7 +82,7 @@ T["en"] = {
         "faq_h": "Common questions",
         "faq": [
             ("In which languages can we work?", "English, French and Korean. Documents can be prepared in the language each party needs."),
-            ("Do you offer fixed fees?", "For defined tasks such as a company incorporation we can quote a fixed fee after a first conversation. Ask us when you get in touch."),
+            ("Do you offer fixed fees?", "Yes. Where appropriate, we offer fixed fees for clearly defined assignments, providing transparency and predictability over legal costs. For matters requiring ongoing support or involving greater complexity, we may propose hourly rates or tailored fee arrangements. Our fees are agreed with you in advance, taking into account the nature, scope and complexity of the matter, so that you can make informed decisions from the outset."),
         ],
         "cta_h": "Not sure which practice fits?",
         "cta_p": "Describe the situation and we will tell you what is involved and what to prepare.",
@@ -251,7 +251,7 @@ T["fr"] = {
         "faq_h": "Questions fréquentes",
         "faq": [
             ("Dans quelles langues travaillez-vous ?", "En français, en anglais et en coréen. Les documents peuvent être préparés dans la langue dont chaque partie a besoin."),
-            ("Proposez-vous des honoraires forfaitaires ?", "Pour des missions bien définies, comme une création de société, nous pouvons proposer un forfait après un premier échange. Posez-nous la question."),
+            ("Proposez-vous des honoraires forfaitaires ?", "Oui. Lorsque cela est adapté, nous proposons des honoraires forfaitaires pour des missions clairement définies, afin de vous offrir transparence et visibilité sur vos frais juridiques. Pour les dossiers nécessitant un accompagnement suivi ou présentant une plus grande complexité, nous pouvons proposer une facturation au temps passé ou des modalités d'honoraires adaptées. Nos honoraires sont convenus avec vous à l'avance, en fonction de la nature, de l'étendue et de la complexité du dossier, afin que vous puissiez décider en connaissance de cause dès le départ."),
         ],
         "cta_h": "Vous ne savez pas quelle expertise choisir ?",
         "cta_p": "Décrivez votre situation. Nous vous indiquons ce qu'elle implique et ce qu'il faut préparer.",
@@ -420,7 +420,7 @@ T["ko"] = {
         "faq_h": "자주 묻는 질문",
         "faq": [
             ("어떤 언어로 상담할 수 있나요?", "한국어, 프랑스어, 영어로 상담하며, 각 당사자에게 필요한 언어로 문서를 작성합니다."),
-            ("정액 보수가 가능한가요?", "법인 설립처럼 범위가 명확한 업무는 첫 상담 후 정액 보수를 안내해 드릴 수 있습니다. 문의 시 말씀해 주세요."),
+            ("정액 보수가 가능한가요?", "네. 업무 범위가 명확한 사안에는 적절한 경우 정액 보수를 제안하여 법률 비용의 투명성과 예측 가능성을 높여 드립니다. 지속적인 지원이 필요하거나 복잡도가 높은 사안에는 시간제 보수 또는 사안에 맞춘 보수 방식을 제안할 수 있습니다. 보수는 사안의 성격, 범위, 복잡도를 고려하여 사전에 고객과 합의하므로, 처음부터 충분한 정보를 바탕으로 결정하실 수 있습니다."),
         ],
         "cta_h": "어떤 분야에 해당하는지 모르시겠나요?",
         "cta_p": "상황을 설명해 주시면 필요한 절차와 준비 사항을 안내해 드립니다.",
