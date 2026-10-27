@@ -118,7 +118,7 @@ X["en"] = {
         "Guest lectures, Université Paris Cité and Aix-Marseille Université",
     ],
     "matters_more": "All selected matters",
-    "matters_intro": "Examples of past work for clients between France and Asia.",
+    "matters_intro": "Examples of past work for clients.",
 }
 
 # ───────────────────────────── FRANÇAIS ─────────────────────────────
@@ -234,7 +234,7 @@ X["fr"] = {
         "Cours invités, Université Paris Cité et Aix-Marseille Université",
     ],
     "matters_more": "Toutes les références",
-    "matters_intro": "Exemples de missions pour des clients entre la France et l'Asie.",
+    "matters_intro": "Exemples de missions pour des clients.",
 }
 
 # ───────────────────────────── 한국어 ─────────────────────────────
@@ -350,7 +350,7 @@ X["ko"] = {
         "파리 시테 대학교, 엑스마르세유 대학교 초빙 강의",
     ],
     "matters_more": "수행 사례 전체 보기",
-    "matters_intro": "프랑스와 아시아를 오가는 고객을 위한 과거 업무 사례입니다.",
+    "matters_intro": "고객을 위한 과거 업무 사례입니다.",
 }
 
 
