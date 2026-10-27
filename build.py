@@ -56,6 +56,31 @@ def press_items(lang, items, up=""):
     return out
 
 
+PRESS_THEMES = [
+    ("heritage", {"en": "Cultural heritage", "fr": "Patrimoine culturel", "ko": "문화유산"}),
+    ("books", {"en": "Books", "fr": "Livres", "ko": "도서"}),
+    ("sport", {"en": "Sport", "fr": "Sport", "ko": "스포츠"}),
+    ("business", {"en": "Business and market entry", "fr": "Entreprises et implantation", "ko": "기업 및 시장 진출"}),
+    ("law", {"en": "Law and justice", "fr": "Droit et justice", "ko": "법과 사법"}),
+    ("profile", {"en": "Profile and profession", "fr": "Parcours et profession", "ko": "프로필 및 법조 경력"}),
+]
+PRESS_MORE = {"en": "Show {n} more", "fr": "Voir {n} de plus", "ko": "{n}건 더 보기"}
+
+
+def press_by_theme(lang, up, shown=3):
+    out = ""
+    for key, labels in PRESS_THEMES:
+        items = [p for p in C.PRESS if C.PRESS_THEME.get(p["url"]) == key]
+        if not items:
+            continue
+        head, rest = items[:shown], items[shown:]
+        more = (f'<details class="press-more"><summary>{e(PRESS_MORE[lang].format(n=len(rest)))}</summary>'
+                f'<div class="press">{press_items(lang, rest, up)}</div></details>') if rest else ""
+        out += (f'<div class="press-theme"><h3>{e(labels[lang])} <small>{len(items)}</small></h3>'
+                f'<div class="press">{press_items(lang, head, up)}</div>{more}</div>')
+    return out
+
+
 def url_path(lang, page):
     return ("" if lang == "en" else lang + "/") + SLUG[page]
 
@@ -336,7 +361,7 @@ def page_insights(lang, t):
     i = t["insights"]
     events = "".join(f"<li>{e(x)}</li>" for x in i["events"])
     up = "../" * depth(lang, "insights")
-    press = press_items(lang, C.PRESS, up)
+    press = press_by_theme(lang, up)
     gallery = ""
     if getattr(C, "GALLERY", None):
         figs = ""
@@ -357,7 +382,7 @@ def page_insights(lang, t):
     follow_rows = f'<div class="fc-list">{follow_rows}</div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p></div></div>
 
-<section><div class="wrap"><h2>{e(i["press_h"])}</h2><div class="press">{press}</div></div></section>
+<section><div class="wrap"><h2>{e(i["press_h"])}</h2>{press}</div></section>
 <section class="alt"><div class="wrap"><h2>{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul>{events}</ul></div></section>
 {gallery}'''
 
