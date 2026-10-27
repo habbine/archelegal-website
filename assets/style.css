@@ -637,3 +637,6 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 @media(max-width:1000px){.figs dl{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:16px}}
 @media(max-width:520px){.figs dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .strip-b dd{font-size:clamp(15px,1.25vw,17px)}
+.sig-src{font-size:14px;color:var(--c-text)}
+.sig-src a{color:var(--c-ink);text-decoration:underline;text-decoration-color:var(--gold-d);text-underline-offset:3px;display:inline-block;min-height:24px}
+.featured-press{padding-top:0}
