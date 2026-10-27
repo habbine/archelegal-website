@@ -103,15 +103,15 @@ nav.primary a.btn,nav.primary a.btn:hover{color:var(--green)}
 .bridge .row{display:grid;grid-template-columns:auto 1fr;column-gap:16px;align-items:end;margin-bottom:16px}
 .bridge .city{font-family:var(--serif);font-size:20px;color:var(--ink)}
 .bridge .time{font-variant-numeric:tabular-nums;font-size:24px;font-family:var(--serif);text-align:right;color:var(--ink)}
-.bridge .state{grid-column:1/-1;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:8px;margin-top:2px}
+.bridge .state{grid-column:1/-1;font-size:15px;color:var(--muted);display:flex;align-items:center;gap:8px;margin-top:2px}
 .dot{width:9px;height:9px;border-radius:50%;background:#7a8b95;display:inline-block}
 .dot.open{background:#6fd3a8;box-shadow:0 0 0 3px rgba(111,211,168,.25)}
 .track{grid-column:1/-1;position:relative;display:grid;grid-template-columns:repeat(24,1fr);gap:2px;height:14px;margin-top:6px}
 .track i{background:var(--green-line)}
 .track i.on{background:var(--gold)}
 .track .now{position:absolute;top:-4px;bottom:-4px;width:2px;background:#fff}
-.axis{display:grid;grid-template-columns:repeat(4,1fr);font-size:12px;color:var(--muted);margin:-4px 0 14px;font-variant-numeric:tabular-nums}
-.bridge .note{font-size:14px;color:var(--muted);margin:0;max-width:none}
+.axis{display:grid;grid-template-columns:repeat(4,1fr);font-size:13px;color:var(--muted);margin:-4px 0 14px;font-variant-numeric:tabular-nums}
+.bridge .note{font-size:16px;color:var(--muted);margin:0;max-width:none}
 
 /* sections */
 section{padding:clamp(64px,9vw,112px) 0}
@@ -130,7 +130,7 @@ section{padding:clamp(64px,9vw,112px) 0}
 .service h2{font-size:clamp(24px,2.6vw,30px)}
 .service ul{margin:0;padding-left:1.1em}
 .service li{margin-bottom:.5em}
-.tag{display:inline-block;font-size:14px;font-weight:500;border:1px solid var(--green-mid);padding:4px 12px;margin:0 6px 8px 0;color:var(--ink)}
+.tag{display:inline-block;font-size:15px;font-weight:500;border:1px solid var(--green-mid);padding:4px 12px;margin:0 6px 8px 0;color:var(--ink)}
 .alt .tag{border-color:var(--c-line);background:var(--white);color:var(--c-ink)}
 .offices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .office{border-left:3px solid var(--gold);padding-left:18px}
@@ -141,7 +141,7 @@ section{padding:clamp(64px,9vw,112px) 0}
 .person{display:grid;grid-template-columns:120px minmax(0,1fr);gap:28px;padding:40px 0;border-top:1px solid var(--green-line)}
 .avatar{width:120px;height:120px;background:var(--green-card);border:2px solid var(--green-mid);color:var(--gold);display:grid;place-items:center;font-family:var(--serif);font-size:38px;overflow:hidden}
 .avatar img{width:100%;height:100%;object-fit:cover}
-.person .role{color:var(--gold);font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1em}
+.person .role{color:var(--gold);font-size:14px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1em}
 .person ul{margin:0 0 1em;color:var(--text)}
 .person li{margin-bottom:.35em}
 .faq details{border-top:1px solid var(--green-line);padding:16px 0}
@@ -159,7 +159,7 @@ section{padding:clamp(64px,9vw,112px) 0}
 .press .quote{display:block;margin-top:4px;font-family:var(--serif);font-style:italic;color:var(--gold)}
 .press q{quotes:none}
 .alt .press .quote{color:var(--gold-d)}
-.press small{display:block;margin-top:4px;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.press small{display:block;margin-top:4px;font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums}
 .alt .press a{border-top-color:var(--c-line);color:var(--c-ink)}
 .alt .press a:hover strong{color:var(--gold-d)}
 .alt .press .about{color:var(--c-text)}
@@ -178,7 +178,7 @@ form.contact .check input{width:auto;min-height:0;margin-top:5px}
 .form-status{min-height:1.4em;font-size:15px}
 .contact-list{list-style:none;padding:0;margin:0 0 24px}
 .contact-list li{padding:12px 0;border-top:1px solid var(--green-line)}
-.contact-list span{display:block;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.contact-list span{display:block;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .alt .contact-list li{border-top-color:var(--c-line)}
 .alt .contact-list span{color:var(--c-muted)}
 
@@ -194,9 +194,9 @@ section:has(> .prose){background:var(--paper);color:var(--c-text);padding-top:cl
 .prose th,.prose td{text-align:left;padding:10px 12px;border-top:1px solid var(--c-line);vertical-align:top}
 .prose th{width:34%;font-weight:600;color:var(--c-ink)}
 .todo{background:#FFF3C4;color:#3D2E00;padding:0 4px}
-.lead-in{font-size:15px;color:var(--muted)}
+.lead-in{font-size:16px;color:var(--muted)}
 .alt .lead-in{color:var(--c-muted)}
-.breadcrumb{font-size:14px;color:var(--muted);margin-bottom:18px}
+.breadcrumb{font-size:15px;color:var(--muted);margin-bottom:18px}
 
 /* footer */
 .site-footer{background:var(--green-deep);border-top:1px solid var(--green-line);color:var(--muted);padding:64px 0 32px;font-size:15px}
@@ -278,3 +278,13 @@ h3 a:hover{text-decoration:underline!important}
 .practice-index a{display:inline-block;padding:8px 0;text-decoration:none;border-bottom:1px solid transparent}
 .practice-index a:hover{border-bottom-color:var(--gold)}
 .service{scroll-margin-top:96px}
+
+.landing{position:relative;min-height:min(78vh,620px);display:grid;place-items:center;background-size:cover;background-position:center;background-color:var(--green);padding:56px 16px;text-align:center;color:#fff}
+.landing::before{content:"";position:absolute;inset:0;background:rgba(20,32,32,.18)}
+.landing-panel{position:relative;width:min(92vw,620px);padding:40px 24px}
+.landing-name{font-family:var(--serif);font-size:clamp(36px,6vw,64px);letter-spacing:.06em;margin:0 0 14px;color:#fff;line-height:1.1}
+.landing-tag{font-family:var(--serif);font-size:clamp(16px,2vw,20px);letter-spacing:.08em;margin:0 0 6px;color:#fff}
+.landing-cities{font-size:clamp(14px,1.6vw,17px);letter-spacing:.14em;text-transform:uppercase;margin:0 0 28px;color:var(--gold)}
+.landing-link{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;color:#fff;border-bottom:1px solid var(--gold);text-decoration:none;font-family:var(--serif);letter-spacing:.14em;text-transform:uppercase;font-size:13px}
+.landing-link:hover{color:var(--gold)}
+.landing-link:focus-visible{outline:2px solid var(--gold);outline-offset:4px}

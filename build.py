@@ -208,11 +208,17 @@ def page_home(lang, t):
         firsts = "".join(f'<div class="rule-top"><h3 style="font-size:1.05rem">{e(g[0])}</h3><p>{e(g[1][0])}</p></div>' for g in t["matters"]["groups"])
         mt = f'''<section><div class="wrap"><div class="section-head"><h2>{e(h["matters_h"])}</h2><p class="lede">{e(h["matters_intro"])}</p></div>
 <div class="cols c4">{firsts}</div><p style="margin-top:28px"><a href="{rel(lang, "home", lang, "experience")}">{e(h["matters_more"])}</a></p></div></section>'''
-    body = f'''<section class="hero"><div class="wrap">
+    up = "../" * depth(lang, "home")
+    cov = {"en": ("International boutique law firm", "Paris · Seoul · Hong Kong", "Enter the site"), "fr": ("Cabinet d'avocats international", "Paris · Séoul · Hong Kong", "Découvrir le cabinet"), "ko": ("국제 부티크 로펌", "파리 · 서울 · 홍콩", "사이트 둘러보기")}[lang]
+    body = f'''<section class="landing" style="background-image:url('{up}assets/img/landing-bg.webp')" aria-labelledby="landing-title"><div class="landing-panel">
+<p class="landing-name" id="landing-title">ARCHÈ SELARL</p><p class="landing-tag">{e(cov[0])}</p><p class="landing-cities">{e(cov[1])}</p>
+<p><a class="landing-link" href="#hero-start">{e(cov[2])}</a></p></div></section>
+<div id="hero-start"></div>
+<section class="hero"><div class="wrap">
 <div><h1>{e(h["h1"])}</h1><p class="lede">{e(h["lede"])}</p>
 <div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{e(t["cta"])}</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{e(h["see_services"])}</a></div></div>
-{bridge(lang, t)}
 </div></section>
+<section><div class="wrap"><div class="section-head"><h2>{e(h["creds_h"])}</h2><p class="lede">{e(h["creds_p"])}</p></div><div class="cols c3">{creds}</div></div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["who_h"])}</h2></div><div class="cols c3">{who}</div></div></section>
 <section><div class="wrap"><div class="section-head"><h2>{e(h["services_h"])}</h2></div><div class="cols c4">{svcs}</div>
 <p style="margin-top:28px"><a href="{rel(lang, "home", lang, "services")}">{e(h["services_more"])}</a></p></div></section>
@@ -220,7 +226,6 @@ def page_home(lang, t):
 <section class="alt"><div class="wrap cols c2"><div><h2>{e(h["firm_h"])}</h2><p>{e(h["firm_p"])}</p></div>
 </div></section>
 <section><div class="wrap"><div class="section-head"><h2>{e(h["industries_h"])}</h2><p class="lede">{e(h["industries_p"])}</p></div><div class="industries">{inds}</div></div></section>
-<section><div class="wrap"><div class="section-head"><h2>{e(h["creds_h"])}</h2><p class="lede">{e(h["creds_p"])}</p></div><div class="cols c3">{creds}</div></div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["offices_h"])}</h2></div><div class="offices">{offices}</div></div></section>
 {press}
 {cta_band(lang, "home", t, h["cta_h"], h["cta_p"])}'''
