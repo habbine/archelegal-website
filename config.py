@@ -262,6 +262,16 @@ PRESS += [
 ]
 PRESS.sort(key=lambda p: p["date"], reverse=True)
 
+PRESS += [
+    {"date": "2010-02-26", "outlet": _o("Munhwa Journal 21", "문화저널21"), "lang": "ko",
+     "url": "https://www.mhj21.com/news/articleView.html?idxno=25877",
+     "title": "문화연대 \"영구임대는 무슨? 반드시 돌려받겠다!\"",
+     "about": {"en": "Appeal filed in the Oegyujanggak restitution case: the first claim for looted cultural property brought by a civil society group",
+               "fr": "Appel dans l'affaire de l'Oegyujanggak : la première action en restitution de biens culturels pillés menée par une association",
+               "ko": "외규장각 반환 소송 항소: 민간단체가 제기한 최초의 약탈 문화재 소송"}},
+]
+PRESS.sort(key=lambda p: p["date"], reverse=True)
+
 # Coverage shown first on the Press page and on the home page.
 PRESS_FEATURED = [
     "https://www.joongang.co.kr/article/3752927",
@@ -344,6 +354,7 @@ GALLERY = [
 
 # Press theme per article (used to group the Press page); keyed by URL
 PRESS_THEME = {
+    'https://www.mhj21.com/news/articleView.html?idxno=25877': 'heritage',
     'https://www.francezone.com/news/articleView.html?idxno=95669': 'heritage',
     'https://gallerym9.com/somme-des-parties-m-': 'business',
     'https://placedeparis.com/community/bbs/board.php?bo_table=news_issue&wr_id=1402': 'business',
