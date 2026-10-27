@@ -119,7 +119,7 @@ def header(lang, page, t):
         switch += f'<a href="{rel(lang, page, l, page)}" hreflang="{l}" lang="{l}"{cur}>{LANG_LABEL[l]}</a>'
     return f'''<a class="skip" href="#main">{e(t["skip"])}</a>
 <header class="site-header"><div class="wrap">
-<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo-mark.png" width="38" height="48" alt=""><span class="brand-text"><span>{e(C.FIRM)} Avocats</span><small>{e({"en": "International law firm", "fr": "Cabinet d'avocats international", "ko": "국제 로펌"}[lang])}</small></span></a>
+<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo-mark.png" width="38" height="48" alt=""><span class="brand-text"><span>{e(C.FIRM)} Legal</span><small>{e({"en": "International law firm", "fr": "Cabinet d'avocats international", "ko": "국제 로펌"}[lang])}</small></span></a>
 <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" type="button">{e(t["menu"])}</button>
 <nav class="primary" id="primary-nav" aria-label="{e(t["menu"])}">{nav}<div class="lang" role="group" aria-label="Language">{switch}</div></nav>
 </div></header>'''
