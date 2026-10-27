@@ -27,6 +27,7 @@ PROFILES = {
  },
  "hk": {
   "areas": [("advice", {"en": "International Business", "fr": "Affaires internationales", "ko": "국제 비즈니스"}),
+            ("corporate", {"en": "Corporate", "fr": "Droit des sociétés", "ko": "기업법"}),
             ("employment", {"en": "Employment", "fr": "Droit du travail", "ko": "노동"}),
             ("litigation", {"en": "Litigation", "fr": "Contentieux", "ko": "소송"}),
             ("corporate", {"en": "Compliance", "fr": "Conformité", "ko": "컴플라이언스"})],
