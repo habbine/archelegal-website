@@ -519,3 +519,4 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 .cred-strip.strip-b{border-bottom:1px solid var(--c-line)}
 /* Cover photo: short decorative band */
 .landing{min-height:0;height:clamp(140px,24vh,240px);padding:0}
+.brand-ko{white-space:nowrap}
