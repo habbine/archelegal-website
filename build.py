@@ -331,14 +331,14 @@ def page_home(lang, t):
         mt = f'''<section><div class="wrap"><div class="section-head"><h2>{e(h["matters_h"])}</h2><p class="lede">{e(h["matters_intro"])}</p></div>
 <div class="cols c4">{firsts}</div><p style="margin-top:28px"><a href="{rel(lang, "home", lang, "experience")}">{e(h["matters_more"])}</a></p></div></section>'''
     up = "../" * depth(lang, "home")
-    cov = {"en": ("International boutique law firm", "Paris · Seoul · Hong Kong", "Enter the site"), "fr": ("Cabinet d'avocats international", "Paris · Séoul · Hong Kong", "Découvrir le cabinet"), "ko": ("국제 부티크 로펌", "파리 · 서울 · 홍콩", "사이트 둘러보기")}[lang]
+    cov = {"en": ("Boutique international law firm", "Paris · Seoul · Hong Kong", "Enter the site"), "fr": ("Cabinet d'avocats international", "Paris · Séoul · Hong Kong", "Découvrir le cabinet"), "ko": ("국제 부티크 로펌", "파리 · 서울 · 홍콩", "사이트 둘러보기")}[lang]
     hc = {"en": {"label": "Contact", "kicker": "Write to us", "cities": "Paris · Seoul · Hong Kong", "note": "Write in English, French or Korean."}, "fr": {"label": "Contact", "kicker": "Écrivez-nous", "cities": "Paris · Séoul · Hong Kong", "note": "En français, en anglais ou en coréen."}, "ko": {"label": "문의", "kicker": "문의하기", "cities": "파리 · 서울 · 홍콩", "note": "한국어, 프랑스어, 영어로 문의해 주세요."}}[lang]
     body = f'''<section class="landing" style="background-image:url('{up}assets/img/landing-bg.webp')" aria-labelledby="landing-title"><div class="landing-panel">
-<p class="landing-name" id="landing-title">ARCHÈ <span class="landing-ko" lang="ko">아르케</span></p><p class="landing-tag">{e(cov[0])}</p><p class="landing-cities">{e(cov[1])}</p>
+<p class="landing-name" id="landing-title">ARCHÈ <span class="landing-ko" lang="ko">아르케</span></p><p class="landing-tag">{e(cov[0])}</p><p class="landing-tag landing-tag-ko" lang="ko">법무법인 아르케</p><p class="landing-cities">{e(cov[1])}</p>
 </div></section>
 <div id="hero-start"></div>
 <section class="hero hero-b" aria-labelledby="hero-name"><div class="wrap"><h1 class="hero-name" id="hero-name"><span lang="fr">Archè</span> <span class="hero-name-ko" lang="ko">아르케</span></h1><p class="hero-cities">{e(cov[1])}</p><p class="lede">{e(BRIDGE[lang])}</p></div></section>
-<section class="hero hero-a"><div class="wrap"><div><p class="kicker hero-kicker">{e(h["kicker"])}</p><h2 class="hero-a-h">{e(h["h1"])}</h2><p class="lede">{e(h["lede"])}</p>
+<section class="hero hero-a"><div class="wrap"><div><h2 class="hero-a-h">{e(h["h1"])}</h2><p class="lede">{e(h["lede"])}</p>
 <div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{ {"en": "Discuss your matter", "fr": "Parlez-nous de votre dossier", "ko": "사안 상담하기"}[lang] }</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{ {"en": "Explore our expertise", "fr": "Découvrir nos expertises", "ko": "업무분야 보기"}[lang] }</a></div></div></div></section>
 <section class="cred-strip" aria-label="{e(h["strip"][0][0])}"><div class="wrap"><dl>{"".join(f"<div><dt>{e(a)}</dt><dd>{e(c)}</dd></div>" for a, c in h["strip"])}</dl></div></section>
 <section class="what"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHAT[lang]["kicker"])}</p><h2>{e(h["services_h"])}</h2><p class="lede">{e(WHAT[lang]["lede"])}</p></div><div class="cols c4">{what_cards(lang)}</div>
