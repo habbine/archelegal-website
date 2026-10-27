@@ -350,3 +350,5 @@ nav.primary a.btn:hover{background:var(--ink);border-color:var(--ink);outline-co
 .brand-text{align-items:flex-start;text-align:left}
 .brand span{font-size:20px;letter-spacing:.04em}
 .brand-text small{font-size:9.5px;letter-spacing:.12em;white-space:nowrap}
+nav.primary a.btn{white-space:nowrap}
+nav.primary .lang a{min-width:0;padding:0 7px;min-height:32px;font-size:11px;letter-spacing:.04em}
