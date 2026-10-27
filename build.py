@@ -160,7 +160,6 @@ def cta_band(lang, page, t, h, p, dark=True):
 <div><h2>{e(h)}</h2><p class="lede">{e(p)}</p></div>
 <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
 <a class="btn on-dark" href="{cta_href(lang, page)}">{e(t["cta"])}</a>
-<p style="flex-basis:100%;margin:4px 0 0"><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p>
 </div></div></section>'''
 
 
