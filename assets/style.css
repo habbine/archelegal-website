@@ -402,3 +402,11 @@ nav.primary .lang a{min-width:0;padding:0 7px;min-height:32px;font-size:11px;let
 /* Four practice areas: 2x2 on desktop */
 #services-list{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
 #services-list .service h2{min-height:0;text-wrap:balance}
+
+/* Press by theme: two-column grid, compact headings like Selected matters */
+.press-themes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px clamp(32px,5vw,72px);align-items:start}
+.press-themes .press-theme{margin-top:0}
+.press-themes .press-theme h3{font-family:var(--sans);font-weight:600;font-size:15px;letter-spacing:.12em;text-transform:uppercase;padding-top:14px;margin-bottom:4px}
+.press-themes .press a{padding:16px 0}
+.press-themes .press a.has-cover{grid-template-columns:56px minmax(0,1fr);gap:14px}
+.press-themes .press img.cover{width:56px}

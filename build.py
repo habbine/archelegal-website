@@ -80,7 +80,7 @@ def press_by_theme(lang, up, shown=3):
                 f'<div class="press">{press_items(lang, rest, up)}</div></details>') if rest else ""
         out += (f'<div class="press-theme" id="press-{key}"><h3>{e(labels[lang])} <small>{len(items)}</small></h3>'
                 f'<div class="press">{press_items(lang, head, up)}</div>{more}</div>')
-    return out
+    return f'<div class="press-themes">{out}</div>'
 
 
 HERITAGE = {
