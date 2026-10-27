@@ -353,8 +353,7 @@ def page_home(lang, t):
 </div></section>
 <section class="alt"><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS)}</ul></div></section>
 {press}
-<section class="alt" id="follow"><div class="wrap"><h2>{e(t["insights"]["follow_h"])}</h2>{follow_card(lang, t["insights"]["follow_p"])}</div></section>
-{cta_band(lang, "home", t, h["cta_h"], h["cta_p"])}'''
+<section class="alt" id="follow"><div class="wrap"><h2>{e(t["insights"]["follow_h"])}</h2>{follow_card(lang, t["insights"]["follow_p"])}</div></section>'''
     return body
 
 
@@ -410,8 +409,7 @@ def page_people(lang, t):
         links += "</p>"
         out += f'<div class="person"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div><h2 style="font-size:1.6rem;margin-bottom:.1em">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>{see_more(p["bios"][k], lang, 4)}{links}</div></div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1></div></div>
-<section style="padding-top:0"><div class="wrap">{out}</div></section>
-{cta_band(lang, "people", t, t["home"]["cta_h"], t["home"]["cta_p"])}'''
+<section style="padding-top:0"><div class="wrap">{out}</div></section>'''
 
 
 def see_more(items, lang, keep=4):
