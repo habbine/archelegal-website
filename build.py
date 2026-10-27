@@ -153,7 +153,9 @@ WHAT = {
 
 def what_cards(lang):
     out = ""
-    for sid, title, text in WHAT[lang]["cards"]:
+    import content_services as CS
+    cards = [(sid, title, " · ".join(term for term, _ in rows[:4])) for sid, title, _, rows in CS.SERVICES8[lang]]
+    for sid, title, text in cards:
         href = f'{rel(lang, "home", lang, "services")}#{sid}'
         out += (f'<div class="what-card"><h3>{e(title)}</h3><p>{e(text)}</p>'
                 f'<a class="what-link" href="{href}" aria-label="{e(WHAT[lang]["learn"])}: {e(title)}">{e(WHAT[lang]["learn"])} →</a></div>')
@@ -191,7 +193,7 @@ def header(lang, page, t):
         switch += f'<a href="{rel(lang, page, l, page)}" hreflang="{l}" lang="{l}"{cur}>{LANG_LABEL[l]}</a>'
     return f'''<a class="skip" href="#main">{e(t["skip"])}</a>
 <header class="site-header"><div class="wrap">
-<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo-mark.png" width="38" height="48" alt=""><span class="brand-text"><span>{e(C.FIRM)} <i class="brand-ko" lang="ko">법무법인 아르케</i></span><small>{e({"en": "Boutique international law firm", "fr": "Cabinet d'avocats international", "ko": "국제 부티크 로펌"}[lang])}</small></span></a>
+<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo-mark.png" width="38" height="48" alt=""><span class="brand-text"><span>{e(C.FIRM)} Legal <i class="brand-ko" lang="ko">법무법인 아르케</i></span><small>{e({"en": "Boutique international law firm", "fr": "Cabinet d'avocats international", "ko": "국제 부티크 로펌"}[lang])}</small></span></a>
 <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" type="button">{e(t["menu"])}</button>
 <nav class="primary" id="primary-nav" aria-label="{e(t["menu"])}">{nav}<div class="lang" role="group" aria-label="Language">{switch}</div></nav>
 </div></header>'''
@@ -355,8 +357,12 @@ def page_services(lang, t):
     s = t["services"]
     items = ""
     for key, title, intro, bullets in s["items"]:
-        lis = "".join(f"<li>{e(b)}</li>" for b in bullets)
-        items += f'<div class="service" id="{key}"><div><h2>{e(title)}</h2><p>{e(intro)}</p></div><ul>{lis}</ul></div>'
+        if bullets and isinstance(bullets[0], tuple):
+            rows = "".join(f'<div><dt>{e(term)}</dt>' + (f'<dd>{e(desc)}</dd>' if desc else '') + '</div>' for term, desc in bullets)
+            body = f'<dl class="svc-dl">{rows}</dl>'
+        else:
+            body = "<ul>" + "".join(f"<li>{e(b)}</li>" for b in bullets) + "</ul>"
+        items += f'<div class="service" id="{key}"><div><p class="svc-sub">{e(intro)}</p><h2>{e(title)}</h2></div>{body}</div>'
     faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in s["faq"])
     ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in s["faq"]]}
