@@ -305,3 +305,12 @@ nav.primary a.btn:hover{background:var(--ink);border-color:var(--ink);outline-co
 .hero-card-email a:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .hero-card-cities{font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
 .hero-card-note{font-size:16px;color:var(--text);margin:0}
+[hidden]{display:none!important}
+.practice-index .practice-all{margin:0 0 14px}
+.practice-index ul.practice-chips{display:flex;flex-wrap:wrap;gap:10px;columns:auto;column-gap:0}
+.practice-index li{display:block}
+.practice-chip{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;margin:0;border:1px solid var(--ink);background:transparent;color:var(--ink);font-family:var(--sans);font-size:16px;text-decoration:none;cursor:pointer;line-height:1.3;text-align:left}
+.practice-chip:hover,.practice-chip[aria-pressed="true"]{background:var(--ink);color:var(--green)}
+.practice-chip:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.practice-index a.practice-chip{padding:8px 16px;border-bottom:1px solid var(--ink)}
+.practice-index a.practice-chip:hover,.practice-index a.practice-chip[aria-pressed="true"]{border-bottom-color:var(--ink)}

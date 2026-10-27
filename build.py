@@ -243,10 +243,16 @@ def page_services(lang, t):
     ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in s["faq"]]}
     idx = ""
+    services_js = """<script>(function(){var list=document.getElementById('services-list');if(!list)return;var chips=document.querySelectorAll('.practice-chip');var blocks=list.querySelectorAll('.service');function show(g){blocks.forEach(function(b){b.hidden=(g!=='all'&&b.id!==g)});chips.forEach(function(c){c.setAttribute('aria-pressed',String(c.getAttribute('data-group')===g))});}chips.forEach(function(c){c.addEventListener('click',function(ev){var g=c.getAttribute('data-group');ev.preventDefault();show(g);if(history.replaceState)history.replaceState(null,'','#'+(g==='all'?'services-list':g));list.scrollIntoView({behavior:'smooth',block:'start'});});});var h=location.hash.slice(1);if(h&&h!=='services-list'&&document.getElementById(h)&&h!=='all'){show(h);}})();</script>"""
     if s.get("index"):
-        idx = f'<nav class="practice-index" aria-labelledby="pi-h"><h2 id="pi-h">{e(s["index_h"])}</h2><ul>' + "".join(f'<li><a href="#{k}">{e(lbl)}</a></li>' for lbl, k in s["index"]) + "</ul></nav>"
+        all_lbl = {"en": "All", "fr": "Tous", "ko": "전체"}[lang]
+        chips = f'<button type="button" class="practice-chip" data-group="all" aria-pressed="true">{e(all_lbl)}</button>'
+        chips_by_group = "".join(f'<li><a class="practice-chip" href="#{k}" data-group="{k}" aria-pressed="false">{e(lbl)}</a></li>' for lbl, k in s["index"])
+        idx = f'<nav class="practice-index" aria-labelledby="pi-h"><h2 id="pi-h">{e(s["index_h"])}</h2><div class="practice-all">{chips}</div><ul class="practice-chips">{chips_by_group}</ul></nav>'
+
     return f'''<div class="page-head"><div class="wrap"><h1>{e(s["h1"])}</h1><p class="lede">{e(s["lede"])}</p>{idx}</div></div>
-<section style="padding-top:0"><div class="wrap">{items}</div></section>
+<section style="padding-top:0"><div class="wrap" id="services-list">{items}</div></section>
+{services_js}
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(s["faq_h"])}</h2></div><div class="faq" style="max-width:760px">{faq}</div></div></section>
 {cta_band(lang, "services", t, s["cta_h"], s["cta_p"])}''', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>"
 

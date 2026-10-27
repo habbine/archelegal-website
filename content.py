@@ -83,7 +83,6 @@ T["en"] = {
         "faq": [
             ("In which languages can we work?", "English, French and Korean. Documents can be prepared in the language each party needs."),
             ("Do you offer fixed fees?", "For defined tasks such as a company incorporation we can quote a fixed fee after a first conversation. Ask us when you get in touch."),
-            ("Which office handles my matter?", "The Paris office coordinates all matters. Our partners work with colleagues and local counsel in Seoul and Hong Kong when the matter requires it."),
         ],
         "cta_h": "Not sure which practice fits?",
         "cta_p": "Describe the situation and we will tell you what is involved and what to prepare.",
@@ -253,7 +252,6 @@ T["fr"] = {
         "faq": [
             ("Dans quelles langues travaillez-vous ?", "En français, en anglais et en coréen. Les documents peuvent être préparés dans la langue dont chaque partie a besoin."),
             ("Proposez-vous des honoraires forfaitaires ?", "Pour des missions bien définies, comme une création de société, nous pouvons proposer un forfait après un premier échange. Posez-nous la question."),
-            ("Quel bureau traite mon dossier ?", "Le bureau de Paris coordonne tous les dossiers. Nos associés travaillent avec leurs collègues et des conseils locaux à Séoul et à Hong Kong lorsque le dossier l'exige."),
         ],
         "cta_h": "Vous ne savez pas quelle expertise choisir ?",
         "cta_p": "Décrivez votre situation. Nous vous indiquons ce qu'elle implique et ce qu'il faut préparer.",
@@ -423,7 +421,6 @@ T["ko"] = {
         "faq": [
             ("어떤 언어로 상담할 수 있나요?", "한국어, 프랑스어, 영어로 상담하며, 각 당사자에게 필요한 언어로 문서를 작성합니다."),
             ("정액 보수가 가능한가요?", "법인 설립처럼 범위가 명확한 업무는 첫 상담 후 정액 보수를 안내해 드릴 수 있습니다. 문의 시 말씀해 주세요."),
-            ("어느 사무소가 사건을 맡나요?", "모든 사건은 파리 사무소가 총괄합니다. 필요한 경우 서울, 홍콩의 동료 및 현지 변호사와 함께 진행합니다."),
         ],
         "cta_h": "어떤 분야에 해당하는지 모르시겠나요?",
         "cta_p": "상황을 설명해 주시면 필요한 절차와 준비 사항을 안내해 드립니다.",
