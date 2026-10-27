@@ -664,3 +664,7 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 .fig-t{display:block;color:var(--ink);font-weight:600;font-size:15px}
 .fig-c{display:block;color:var(--muted);font-size:14px;margin-top:2px}
 @media(max-width:560px){.figs>dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* team snapshot: smaller photos (firm request, Oct 2026) */
+.tm-grid{grid-template-columns:repeat(3,minmax(0,240px));gap:32px}
+@media(max-width:640px){.tm-grid{grid-template-columns:repeat(2,minmax(0,180px));gap:20px}}
