@@ -414,3 +414,13 @@ nav.primary .lang a{min-width:0;padding:0 7px;min-height:32px;font-size:11px;let
 /* Recent news and events: ruled two-column list */
 ul.events{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));column-gap:clamp(32px,5vw,72px);max-width:none}
 ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c-line);font-size:17px;line-height:1.5;color:var(--c-ink)}
+
+/* Hero A + credentials strip + bilingual cover (design direction) */
+.hero-kicker{margin:0 0 20px;font-size:13px;letter-spacing:.14em;max-width:none;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(38px,5.4vw,64px)}
+.cred-strip{border-top:1px solid var(--green-line);border-bottom:1px solid var(--green-line);padding:24px 0}
+.cred-strip dl{margin:0;display:grid;grid-template-columns:1fr 1fr 1.6fr;gap:24px clamp(24px,4vw,56px)}
+.cred-strip dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.cred-strip dd{margin:0;font-size:15px;line-height:1.5;color:var(--muted)}
+@media(max-width:760px){.cred-strip dl{grid-template-columns:1fr}}
+.landing-ko{font-family:"Noto Serif KR","Nanum Myeongjo",serif;letter-spacing:0;margin-left:.3em;color:var(--gold)}
