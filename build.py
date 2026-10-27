@@ -270,7 +270,7 @@ def page_contact(lang, t):
 <p class="form-status" role="status" aria-live="polite"></p>
 <p class="lead-in">{e(c["confidential"])}</p>
 </form></div>
-<div><div class="dark" style="border-radius:14px;padding:28px"><h2 style="font-size:1.4rem">{e(c["details_h"])}</h2>
+<div><div class="dark" style="padding:28px"><h2 style="font-size:1.4rem">{e(c["details_h"])}</h2>
 <ul class="contact-list"><li><span>{e(c["email"])}</span><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></li>
 <li><span>{e(c["phone"])}</span><a href="tel:{C.PHONE_TEL}">{e(C.PHONE)}</a></li>
 <li><span>{e(c["address"])}</span>{"<br>".join(e(x) for x in C.ADDRESS_LINES)}<br><a href="{C.MAPS_URL}" rel="noopener">{e(c["map"])}</a></li>{msgs}</ul>{book}

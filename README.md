@@ -1,6 +1,6 @@
 # Archè website
 
-Static website for Archè SELARL (English, French, Korean). No framework, no external requests, no cookies.
+Static website for Archè SELARL (English, French, Korean). No framework, no external requests, no cookies. Fonts (Anton, Cinzel; SIL OFL) are self-hosted in `assets/fonts/`.
 Hosted on GitHub Pages in **its own repository**, separate from `habbine.github.io`.
 
 ## Edit the site
