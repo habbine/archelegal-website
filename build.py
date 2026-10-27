@@ -263,18 +263,27 @@ def page_people(lang, t):
         if person["linkedin"]:
             links += f' · <a href="{e(person["linkedin"])}" rel="noopener">{e(p["linkedin_label"])}</a>'
         links += "</p>"
-        out += f'<div class="person"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div><h2 style="font-size:1.6rem;margin-bottom:.1em">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p><ul>{lis}</ul>{links}</div></div>'
+        out += f'<div class="person"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div><h2 style="font-size:1.6rem;margin-bottom:.1em">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>{see_more(p["bios"][k], lang, 4)}{links}</div></div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1></div></div>
 <section style="padding-top:0"><div class="wrap">{out}</div></section>
 {cta_band(lang, "people", t, t["home"]["cta_h"], t["home"]["cta_p"])}'''
+
+
+def see_more(items, lang, keep=4):
+    head = "".join(f"<li>{e(x)}</li>" for x in items[:keep])
+    rest = items[keep:]
+    if not rest:
+        return f"<ul>{head}</ul>"
+    tail = "".join(f"<li>{e(x)}</li>" for x in rest)
+    label = {"en": "See more", "fr": "Voir plus", "ko": "더 보기"}[lang]
+    return f'<ul>{head}</ul><details class="see-more"><summary>{label}</summary><ul>{tail}</ul></details>'
 
 
 def page_experience(lang, t):
     m = t["matters"]
     groups = ""
     for title, items in m["groups"]:
-        lis = "".join(f"<li>{e(x)}</li>" for x in items)
-        groups += f'<div class="service"><div><h2>{e(title)}</h2></div><ul>{lis}</ul></div>'
+        groups += f'<div class="service"><div><h2>{e(title)}</h2></div>{see_more(items, lang, 6)}</div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(m["h1"])}</h1><p class="lede">{e(m["lede"])}</p></div></div>
 <section style="padding-top:0"><div class="wrap">{groups}</div></section>
 {cta_band(lang, "experience", t, m["cta_h"], m["cta_p"])}'''

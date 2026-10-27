@@ -288,3 +288,10 @@ h3 a:hover{text-decoration:underline!important}
 .landing-link{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;color:#fff;border-bottom:1px solid var(--gold);text-decoration:none;font-family:var(--serif);letter-spacing:.14em;text-transform:uppercase;font-size:13px}
 .landing-link:hover{color:var(--gold)}
 .landing-link:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
+.see-more{margin-top:10px}
+.see-more summary{cursor:pointer;color:var(--gold);font-weight:600;letter-spacing:.06em;min-height:44px;display:inline-flex;align-items:center;list-style:none}
+.see-more summary::-webkit-details-marker{display:none}
+.see-more summary::after{content:" +";}
+.see-more[open] summary::after{content:" −"}
+.see-more summary:focus-visible{outline:2px solid var(--gold);outline-offset:4px}

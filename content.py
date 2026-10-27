@@ -15,8 +15,8 @@ T["en"] = {
     "skip": "Skip to content",
     "menu": "Menu",
     "meta": {
-        "home": ("Archè | Cross-border law firm in Paris | Europe, Asia, US, Middle East",
-                 "Archè advises large groups, SMEs, startups and sole traders on inbound and outbound business between Europe, Asia, the US and the Middle East, in English, French and Korean."),
+        "home": ("Archè | Cross-border law firm in Paris | Europe, Asia, Africa, US, Middle East",
+                 "Archè advises large groups, SMEs, startups and sole traders on inbound and outbound business between Europe, Asia, Africa, the US and the Middle East, in English, French and Korean."),
         "services": ("Services | Archè Law Firm Paris", "Corporate and M&A, contracts, IP, employment and immigration, disputes, debt recovery, insolvency and international projects, inbound and outbound."),
         "people": ("Team | Archè Law Firm Paris", "Meet the partners of Archè: Paris-based lawyers working across France, Korea and Hong Kong."),
         "insights": ("Insights and press | Archè Law Firm Paris", "Press coverage and legal insights from Archè."),
@@ -27,7 +27,7 @@ T["en"] = {
     },
     "home": {
         "h1": "French law, global markets. Inbound and outbound.",
-        "lede": "Archè advises large groups, SMEs, startups and sole traders (auto-entrepreneurs) on inbound and outbound business between Europe, Asia, the United States and the Middle East: company setup, employment, disputes and cross-border projects, in English, French and Korean.",
+        "lede": "Archè advises large groups, SMEs, startups and sole traders (auto-entrepreneurs) on inbound and outbound business between Europe, Asia, Africa, the United States and the Middle East: company setup, employment, disputes and cross-border projects, in English, French and Korean.",
         "see_services": "See our services",
         "bridge_title": "Who is in the office right now",
         "bridge_open": "Open now",
@@ -35,7 +35,7 @@ T["en"] = {
         "bridge_note": "Office hours 09:00–18:00 local time, Monday to Friday. The bar shows each office's hours on a Paris-time day; the white line is now. Outside these hours you can still email us.",
         "cities": {"paris": "Paris", "seoul": "Seoul", "hk": "Hong Kong"},
         "who_h": "Who we help",
-        "who": [('Companies entering France and Europe', 'From Asia, the US or the Middle East: set up a subsidiary, hire your first team and handle contracts under French and EU law, with lawyers who understand how your head office works.'), ('French and European companies going abroad', 'Structure a venture in Asia, the US or the Middle East, negotiate with local partners and resolve disputes across borders.'), ('Startups, SMEs and auto-entrepreneurs', 'Founders and sole traders setting up or growing in France, including companies in the HEC incubator at Station F, where we act as legal experts.')],
+        "who": [('Companies entering France and Europe', 'From Asia, Africa, the US or the Middle East: set up a subsidiary, hire your first team and handle contracts under French and EU law, with lawyers who understand how your head office works.'), ('French and European companies going abroad', 'Structure a venture in Asia, Africa, the US or the Middle East, negotiate with local partners and resolve disputes across borders.'), ('Startups, SMEs and auto-entrepreneurs', 'Founders and sole traders setting up or growing in France, including companies in the HEC incubator at Station F, where we act as legal experts.')],
         "services_h": "What we do",
         "services_more": "Details on each practice",
         "firm_h": "A French firm with offices in three cities",
@@ -64,7 +64,7 @@ T["en"] = {
     },
     "services": {
         "h1": "Services",
-        "lede": "Four practices for inbound and outbound business across Europe, Asia, the US and the Middle East.",
+        "lede": "Four practices for inbound and outbound business across Europe, Asia, Africa, the US and the Middle East.",
         "items": [
             ("corporate", "Corporate, M&A, contracts and IP",
              "Everything a company needs to start or restructure its presence in France, Korea or Hong Kong.",
@@ -186,7 +186,7 @@ T["fr"] = {
     "menu": "Menu",
     "meta": {
         "home": ("Archè | Cabinet d'avocats international à Paris | Europe, Asie, États-Unis, Moyen-Orient",
-                 "Archè accompagne grands groupes, PME, startups et auto-entrepreneurs dans leurs opérations entrantes et sortantes entre l'Europe, l'Asie, les États-Unis et le Moyen-Orient."),
+                 "Archè accompagne grands groupes, PME, startups et auto-entrepreneurs dans leurs opérations entrantes et sortantes entre l'Europe, l'Asie, l'Afrique, les États-Unis et le Moyen-Orient."),
         "services": ("Expertises | Archè Cabinet d'avocats Paris", "Sociétés et fusions-acquisitions, contrats, propriété intellectuelle, travail et immigration, contentieux, recouvrement, procédures collectives et projets internationaux, dans les deux sens."),
         "people": ("Équipe | Archè Cabinet d'avocats Paris", "Les associés d'Archè : des avocats parisiens qui travaillent entre la France, la Corée et Hong Kong."),
         "insights": ("Actualités et presse | Archè", "La presse parle d'Archè et nos publications."),
@@ -197,7 +197,7 @@ T["fr"] = {
     },
     "home": {
         "h1": "Le droit français, les marchés du monde. Dans les deux sens.",
-        "lede": "Archè accompagne grands groupes, PME, startups et auto-entrepreneurs dans leurs opérations entrantes et sortantes entre l'Europe, l'Asie, les États-Unis et le Moyen-Orient : création de société, droit du travail, litiges et projets internationaux, en français, en anglais et en coréen.",
+        "lede": "Archè accompagne grands groupes, PME, startups et auto-entrepreneurs dans leurs opérations entrantes et sortantes entre l'Europe, l'Asie, l'Afrique, les États-Unis et le Moyen-Orient : création de société, droit du travail, litiges et projets internationaux, en français, en anglais et en coréen.",
         "see_services": "Voir nos expertises",
         "bridge_title": "Qui est au bureau en ce moment",
         "bridge_open": "Ouvert",
@@ -205,7 +205,7 @@ T["fr"] = {
         "bridge_note": "Horaires 9h–18h, heure locale, du lundi au vendredi. La barre montre les horaires de chaque bureau sur une journée à l'heure de Paris ; le trait blanc indique l'heure actuelle. En dehors de ces horaires, vous pouvez nous écrire par e-mail.",
         "cities": {"paris": "Paris", "seoul": "Séoul", "hk": "Hong Kong"},
         "who_h": "Qui nous accompagnons",
-        "who": [("Les entreprises qui s'implantent en France et en Europe", "Depuis l'Asie, les États-Unis ou le Moyen-Orient : créer une filiale, recruter une première équipe et contracter en droit français et européen, avec des avocats qui comprennent le fonctionnement de votre siège."), ("Les entreprises françaises et européennes qui partent à l'international", 'Structurer un projet en Asie, aux États-Unis ou au Moyen-Orient, négocier avec des partenaires locaux et régler les litiges transfrontaliers.'), ('Startups, PME et auto-entrepreneurs', "Fondateurs et entrepreneurs individuels qui s'installent ou se développent en France, notamment au sein de l'incubateur HEC à Station F, où nous intervenons comme experts juridiques.")],
+        "who": [("Les entreprises qui s'implantent en France et en Europe", "Depuis l'Asie, l'Afrique, les États-Unis ou le Moyen-Orient : créer une filiale, recruter une première équipe et contracter en droit français et européen, avec des avocats qui comprennent le fonctionnement de votre siège."), ("Les entreprises françaises et européennes qui partent à l'international", 'Structurer un projet en Asie, en Afrique, aux États-Unis ou au Moyen-Orient, négocier avec des partenaires locaux et régler les litiges transfrontaliers.'), ('Startups, PME et auto-entrepreneurs', "Fondateurs et entrepreneurs individuels qui s'installent ou se développent en France, notamment au sein de l'incubateur HEC à Station F, où nous intervenons comme experts juridiques.")],
         "services_h": "Ce que nous faisons",
         "services_more": "Le détail de chaque expertise",
         "firm_h": "Un cabinet français présent dans trois villes",
@@ -234,7 +234,7 @@ T["fr"] = {
     },
     "services": {
         "h1": "Expertises",
-        "lede": "Quatre pratiques pour vos opérations entrantes et sortantes entre l'Europe, l'Asie, les États-Unis et le Moyen-Orient.",
+        "lede": "Quatre pratiques pour vos opérations entrantes et sortantes entre l'Europe, l'Asie, l'Afrique, les États-Unis et le Moyen-Orient.",
         "items": [
             ("corporate", "Sociétés, fusions-acquisitions, contrats et propriété intellectuelle",
              "Tout ce dont une entreprise a besoin pour s'installer ou se restructurer en France, en Corée ou à Hong Kong.",
@@ -355,8 +355,8 @@ T["ko"] = {
     "skip": "본문으로 건너뛰기",
     "menu": "메뉴",
     "meta": {
-        "home": ("아르케 Archè | 파리 국제 법무법인 | 유럽·아시아·미국·중동",
-                 "대기업, 중소기업, 스타트업, 개인사업자를 위한 유럽·아시아·미국·중동 간 인바운드·아웃바운드 법률 자문. 한국어, 영어, 프랑스어로 상담합니다."),
+        "home": ("아르케 Archè | 파리 국제 법무법인 | 유럽·아시아·아프리카·미국·중동",
+                 "대기업, 중소기업, 스타트업, 개인사업자를 위한 유럽·아시아·아프리카·미국·중동 간 인바운드·아웃바운드 법률 자문. 한국어, 영어, 프랑스어로 상담합니다."),
         "services": ("업무분야 | 아르케 프랑스 법무법인 파리", "기업법·M&A, 계약, 지식재산, 노동·이민, 분쟁, 채권 회수, 도산, 국제 프로젝트를 인바운드·아웃바운드로 자문합니다."),
         "people": ("구성원 | 아르케 프랑스 법무법인 파리", "프랑스, 한국, 홍콩을 아우르는 파리 기반 변호사들을 소개합니다."),
         "insights": ("소식과 언론 보도 | 아르케", "아르케 관련 언론 보도와 법률 소식."),
@@ -367,7 +367,7 @@ T["ko"] = {
     },
     "home": {
         "h1": "프랑스 법, 세계 시장. 인바운드와 아웃바운드 모두.",
-        "lede": "아르케는 대기업, 중소기업, 스타트업, 개인사업자(auto-entrepreneur)의 유럽·아시아·미국·중동 간 인바운드 및 아웃바운드 업무를 법인 설립, 노동, 분쟁, 국제 프로젝트 전반에 걸쳐 한국어, 영어, 프랑스어로 자문합니다.",
+        "lede": "아르케는 대기업, 중소기업, 스타트업, 개인사업자(auto-entrepreneur)의 유럽·아시아·아프리카·미국·중동 간 인바운드 및 아웃바운드 업무를 법인 설립, 노동, 분쟁, 국제 프로젝트 전반에 걸쳐 한국어, 영어, 프랑스어로 자문합니다.",
         "see_services": "업무분야 보기",
         "bridge_title": "지금 근무 중인 사무소",
         "bridge_open": "근무 중",
@@ -375,7 +375,7 @@ T["ko"] = {
         "bridge_note": "근무시간은 현지 기준 월~금 09:00–18:00입니다. 막대는 파리 시간 기준 하루에 각 사무소의 근무시간을 나타내고, 흰 선이 현재 시각입니다.",
         "cities": {"paris": "파리", "seoul": "서울", "hk": "홍콩"},
         "who_h": "이런 고객을 돕습니다",
-        "who": [('프랑스·유럽에 진출하는 기업', '아시아, 미국, 중동에서 프랑스·유럽으로: 현지 법인 설립, 첫 채용, 프랑스·EU 법에 따른 계약까지 본사의 업무 방식을 이해하는 변호사가 함께합니다.'), ('해외로 진출하는 프랑스·유럽 기업', '아시아, 미국, 중동에서 사업을 구조화하고 현지 파트너와 협상하며 국경을 넘는 분쟁을 해결합니다.'), ('스타트업·중소기업·개인사업자', '프랑스에서 창업하거나 성장하는 창업자와 개인사업자. 스테이션 F HEC 인큐베이터에서 법률 전문가로 활동하고 있습니다.')],
+        "who": [('프랑스·유럽에 진출하는 기업', '아시아, 아프리카, 미국, 중동에서 프랑스·유럽으로: 현지 법인 설립, 첫 채용, 프랑스·EU 법에 따른 계약까지 본사의 업무 방식을 이해하는 변호사가 함께합니다.'), ('해외로 진출하는 프랑스·유럽 기업', '아시아, 아프리카, 미국, 중동에서 사업을 구조화하고 현지 파트너와 협상하며 국경을 넘는 분쟁을 해결합니다.'), ('스타트업·중소기업·개인사업자', '프랑스에서 창업하거나 성장하는 창업자와 개인사업자. 스테이션 F HEC 인큐베이터에서 법률 전문가로 활동하고 있습니다.')],
         "services_h": "업무분야",
         "services_more": "업무분야 자세히 보기",
         "firm_h": "세 도시에 사무소를 둔 프랑스 로펌",
@@ -404,7 +404,7 @@ T["ko"] = {
     },
     "services": {
         "h1": "업무분야",
-        "lede": "유럽, 아시아, 미국, 중동을 잇는 인바운드·아웃바운드 업무를 위한 네 가지 업무분야.",
+        "lede": "유럽, 아시아, 아프리카, 미국, 중동을 잇는 인바운드·아웃바운드 업무를 위한 네 가지 업무분야.",
         "items": [
             ("corporate", "기업법·M&A·계약·지식재산",
              "프랑스, 한국, 홍콩에서 사업을 시작하거나 재편하는 데 필요한 모든 법률 업무.",
