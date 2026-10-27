@@ -234,7 +234,7 @@ def header(lang, page, t):
         switch += f'<a href="{rel(lang, page, l, page)}" hreflang="{l}" lang="{l}"{cur}>{LANG_LABEL[l]}</a>'
     return f'''<a class="skip" href="#main">{e(t["skip"])}</a>
 <header class="site-header"><div class="wrap">
-<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo-mark.png" width="38" height="48" alt=""><span class="brand-text"><span>{e(C.FIRM)} Legal <i class="brand-ko" lang="ko">법무법인 아르케</i></span><small>{e({"en": "Boutique international law firm", "fr": "Cabinet d'avocats international", "ko": "국제 부티크 로펌"}[lang])}</small></span></a>
+<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo-mark.png" width="38" height="48" alt=""><span class="brand-text"><span>{e(C.FIRM)} Legal <i class="brand-ko" lang="ko">법무법인 아르케</i></span><small>{e({"en": "International boutique law firm", "fr": "Cabinet d'avocats international", "ko": "국제 부티크 로펌"}[lang])}</small></span></a>
 <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" type="button">{e(t["menu"])}</button>
 <nav class="primary" id="primary-nav" aria-label="{e(t["menu"])}">{nav}<div class="lang" role="group" aria-label="Language">{switch}</div></nav>
 </div></header>'''
@@ -377,7 +377,7 @@ def page_home(lang, t):
         mt = f'''<section><div class="wrap"><div class="section-head"><h2>{e(h["matters_h"])}</h2></div>
 <div class="cols c3">{firsts}</div><p style="margin-top:28px"><a href="{svc_url}">{e(h["matters_more"])}</a></p></div></section>'''
     up = "../" * depth(lang, "home")
-    cov = {"en": ("Boutique international law firm", "Paris · Seoul · Hong Kong", "Enter the site"), "fr": ("Cabinet d'avocats international", "Paris · Séoul · Hong Kong", "Découvrir le cabinet"), "ko": ("국제 부티크 로펌", "파리 · 서울 · 홍콩", "사이트 둘러보기")}[lang]
+    cov = {"en": ("International boutique law firm", "Paris · Seoul · Hong Kong", "Enter the site"), "fr": ("Cabinet d'avocats international", "Paris · Séoul · Hong Kong", "Découvrir le cabinet"), "ko": ("국제 부티크 로펌", "파리 · 서울 · 홍콩", "사이트 둘러보기")}[lang]
     hc = {"en": {"label": "Contact", "kicker": "Write to us", "cities": "Paris · Seoul · Hong Kong", "note": "Write in English, French or Korean."}, "fr": {"label": "Contact", "kicker": "Écrivez-nous", "cities": "Paris · Séoul · Hong Kong", "note": "En français, en anglais ou en coréen."}, "ko": {"label": "문의", "kicker": "문의하기", "cities": "파리 · 서울 · 홍콩", "note": "한국어, 프랑스어, 영어로 문의해 주세요."}}[lang]
     sig = SIGNATURE[lang]
     sig_html = (f'<section class="alt signature" aria-labelledby="sig-h"><div class="wrap"><div class="section-head"><p class="kicker">{e(sig["kicker"])}</p><h2 id="sig-h">{e(sig["h"])}</h2></div><div class="cols c2">'
@@ -557,7 +557,7 @@ def page_experience(lang, t):
 {cta_band(lang, "experience", t, m["cta_h"], m["cta_p"])}'''
 
 
-BRIDGE = {"en": "A boutique international law firm headquartered in Paris, working in French, English and Korean for businesses that cross borders.",
+BRIDGE = {"en": "An international boutique law firm headquartered in Paris, working in French, English and Korean for businesses that cross borders.",
           "fr": "Un cabinet d'avocats international de taille humaine, basé à Paris, qui accompagne en français, en anglais et en coréen les entreprises actives à l'international.",
           "ko": "파리에 본사를 둔 부티크 국제 로펌으로, 국경을 넘나드는 기업을 한국어, 프랑스어, 영어로 지원합니다."}
 
