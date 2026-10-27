@@ -343,7 +343,7 @@ def page_home(lang, t):
 <aside class="hero-card" aria-label="{e(hc['label'])}"><p class="hero-card-kicker">{e(hc['kicker'])}</p><p class="hero-card-email"><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p><p class="hero-card-cities">{e(hc['cities'])}</p><p class="hero-card-note">{e(hc['note'])}</p></aside></div></section>
 <section class="cred-strip" aria-label="{e(h["strip"][0][0])}"><div class="wrap"><dl>{"".join(f"<div><dt>{e(a)}</dt><dd>{e(c)}</dd></div>" for a, c in h["strip"])}</dl></div></section>
 <section><div class="wrap"><div class="section-head"><h2>{e(h["creds_h"])}</h2><p class="lede">{e(h["creds_p"])}</p></div><div class="cols c3">{creds}</div></div></section>
-<section class="alt"><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><div><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS[:6])}</ul><p style="margin-top:12px"><a href="{rel(lang, "home", lang, "people")}">{ {"en": "All affiliations", "fr": "Toutes les affiliations", "ko": "전체 소속 보기"}[lang] } →</a></p></div></div></section>
+<section class="alt"><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><div><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS[:6])}</ul></div></div></section>
 <section class="alt who"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHO[lang]["kicker"])}</p><h2>{e(WHO[lang]["h"])}</h2><p class="lede">{e(WHO[lang]["lede"])}</p></div><div class="cols c3">{who_cards(lang)}</div><div class="who-cta"><div><p class="who-cta-h">{e(WHO[lang]["cta_h"])}</p><p>{e(WHO[lang]["cta_p"])}</p></div><a class="btn ghost" href="{cta_href(lang, "home")}">{e(WHO[lang]["cta_b"])} ↗</a></div></div></section>
 <section class="what"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHAT[lang]["kicker"])}</p><h2>{e(h["services_h"])}</h2><p class="lede">{e(WHAT[lang]["lede"])}</p></div><div class="cols c4">{what_cards(lang)}</div>
 <p class="what-more"><a href="{rel(lang, "home", lang, "services")}">{e(WHAT[lang]["more"])} →</a></p></div></section>
@@ -412,7 +412,6 @@ def page_people(lang, t):
         out += f'<div class="person"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div><h2 style="font-size:1.6rem;margin-bottom:.1em">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>{see_more(p["bios"][k], lang, 4)}{links}</div></div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1></div></div>
 <section style="padding-top:0"><div class="wrap">{out}</div></section>
-<section class="alt"><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS)}</ul></div></section>
 {cta_band(lang, "people", t, t["home"]["cta_h"], t["home"]["cta_p"])}'''
 
 
