@@ -2,6 +2,8 @@
 """Static site generator for Archè. Run from the repo root:  python3 build.py
 Writes en pages at the repo root, fr/ and ko/ for the other languages."""
 import html, json, os, re, shutil, sys
+import hashlib
+CSS_V = hashlib.md5(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets', 'style.css'), 'rb').read()).hexdigest()[:10]
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -133,7 +135,7 @@ def head(lang, page, t, extra_ld=""):
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#1B2B2B">
 <link rel="icon" href="{up}assets/favicon.png" type="image/png"><link rel="apple-touch-icon" href="{up}assets/apple-touch-icon.png">
-<link rel="preload" href="{up}assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="{up}assets/style.css?v=4659359746">
+<link rel="preload" href="{up}assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="{up}assets/style.css?v={CSS_V}">
 <script defer src="{up}assets/site.js"></script>
 {extra_ld}
 </head>'''
@@ -446,7 +448,7 @@ def main():
     t = T["en"]
     base = C.SITE_URL.rstrip("/") + "/"
     nf = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{e(t["meta"]["404"][0])}</title><meta name="robots" content="noindex"><link rel="icon" href="{base}assets/favicon.png" type="image/png"><link rel="stylesheet" href="{base}assets/style.css?v=4659359746">
+<title>{e(t["meta"]["404"][0])}</title><meta name="robots" content="noindex"><link rel="icon" href="{base}assets/favicon.png" type="image/png"><link rel="stylesheet" href="{base}assets/style.css?v={CSS_V}">
 </head><body><main id="main"><section><div class="wrap"><h1>{e(t["nf"]["h1"])}</h1><p class="lede">{e(t["nf"]["p"])}</p><p><a class="btn" href="{base}">{e(t["nf"]["back"])}</a></p></div></section></main></body></html>'''
     write("404.html", nf)
 
