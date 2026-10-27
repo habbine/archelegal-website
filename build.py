@@ -99,7 +99,8 @@ def cta_href(lang, page):
 def footer(lang, page, t):
     f = t["footer"]
     links = "".join(f'<li><a href="{rel(lang, page, lang, k)}">{e(t["nav"][k])}</a></li>' for k in NAV)
-    soc = f'<li><a href="{C.LINKEDIN}" rel="noopener">LinkedIn</a></li><li><a href="{C.INSTAGRAM}" rel="noopener">Instagram</a></li>'
+    soc = (f'<li><a href="{C.LINKEDIN}" rel="noopener">LinkedIn</a></li><li><a href="{C.INSTAGRAM}" rel="noopener">Instagram</a></li>'
+           + "".join(f'<li><a href="{e(u)}" rel="noopener">{e(l)}</a></li>' for l, u in C.HK_LINKS if "archelegal" not in u))
     return f'''<footer class="site-footer"><div class="wrap">
 <div class="cols c4">
 <div><h3>{e(C.FIRM_FULL)}</h3><p>{e(f["lawyers"])}</p></div>
@@ -268,6 +269,8 @@ def page_people(lang, t):
         links = f'<p>{e(p["email_label"])}: <a href="mailto:{person["email"]}">{e(person["email"])}</a>'
         if person["linkedin"]:
             links += f' · <a href="{e(person["linkedin"])}" rel="noopener">{e(p["linkedin_label"])}</a>'
+        for lbl, url in person.get("links", []):
+            links += f' · <a href="{e(url)}" rel="noopener">{e(lbl)}</a>'
         links += "</p>"
         out += f'<div class="person"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div><h2 style="font-size:1.6rem;margin-bottom:.1em">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>{see_more(p["bios"][k], lang, 4)}{links}</div></div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1></div></div>
@@ -312,7 +315,7 @@ def page_insights(lang, t):
 <section style="padding-top:0"><div class="wrap cols c2">
 <div><h2>{e(i["press_h"])}</h2><div class="press">{press}</div>
 <h2 style="margin-top:2em">{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul>{events}</ul></div>
-<div><h2>{e(i["follow_h"])}</h2><p>{e(i["follow_p"])}</p><p><a class="btn ghost" href="{C.LINKEDIN}" rel="noopener">{e(i["follow_cta"])}</a></p>
+<div><h2>{e(i["follow_h"])}</h2><p>{e(i["follow_p"])}</p><p><a class="btn ghost" href="{C.LINKEDIN}" rel="noopener">{e(i["follow_cta"])}</a></p><p>{" · ".join(f'<a href="{e(u)}" rel="noopener">{e(l)}</a>' for l, u in C.HK_LINKS if l in ("SSRN", "ORCID"))}</p>
 <h2 style="margin-top:2em">{e(i["ask_h"])}</h2><p>{e(i["ask_p"])}</p><p><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p></div>
 </div></section>
 {gallery}'''
