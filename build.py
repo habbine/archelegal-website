@@ -189,7 +189,7 @@ def follow_card(lang, text):
             ("Instagram", "@archelegal", C.INSTAGRAM, fl[0], "◎"),
             ("Website", C.SITE_URL.replace("https://", ""), C.SITE_URL, fl[1], "◍"),
         ])
-    return (f'<div class="follow-card"><div class="fc-head"><span class="fc-logo" aria-hidden="true">ARCHÈ</span>'
+    return (f'<div class="follow-card"><div class="fc-head"><span class="fc-logo" aria-hidden="true">ARCHÈ<small>Avocats</small></span>'
             f'<div><strong>{e(head[0])}</strong><p>{e(head[1])}</p></div></div><div class="fc-list">{rows}</div></div>')
 
 
