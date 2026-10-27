@@ -12,6 +12,8 @@ C.PRESS.sort(key=lambda p: p["date"], reverse=True)  # newest first, whatever or
 from content import T
 import content_extra
 content_extra.apply(T)
+import content_services
+content_services.apply(T)
 
 ROOT = Path(__file__).resolve().parent
 LANGS = ["en", "fr", "ko"]
@@ -78,7 +80,7 @@ def press_by_theme(lang, up, shown=3):
                 f'<div class="press">{press_items(lang, rest, up)}</div></details>') if rest else ""
         out += (f'<div class="press-theme" id="press-{key}"><h3>{e(labels[lang])} <small>{len(items)}</small></h3>'
                 f'<div class="press">{press_items(lang, head, up)}</div>{more}</div>')
-    return out
+    return f'<div class="press-themes">{out}</div>'
 
 
 HERITAGE = {
@@ -86,6 +88,76 @@ HERITAGE = {
     "fr": ("L'affaire de l'Oegyujanggak", "Depuis 2007, James Joong-ho Kim agit dans la demande de restitution des manuscrits royaux coréens de l'Oegyujanggak devant le tribunal administratif de Paris. À l'audience de décembre 2009, l'État français a employé pour la première fois le mot \u00ab pillage \u00bb.", "Lire la presse"),
     "ko": ("외규장각 반환 소송", "김중호 변호사는 2007년부터 파리 행정법원에서 외규장각 의궤 반환 소송을 맡아 왔습니다. 2009년 12월 변론에서 프랑스 정부는 처음으로 '약탈'이라는 표현을 사용했습니다.", "언론 보도 보기"),
 }
+
+
+_I = {
+ "globe": '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>',
+ "swap": '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 8h15M15 4l4 4-4 4M20 16H5M9 12l-4 4 4 4"/></svg>',
+ "build": '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 21V8l6-3v16M10 21h10V11l-6-2M14 14h2M14 18h2"/></svg>',
+}
+# (icon, title, text, [(tag, service id)])
+WHO = {
+ "en": {"kicker": "Archè · International business law", "h": "Who we work with",
+  "lede": "Legal counsel for businesses operating across borders, from market entry to international growth and complex commercial matters.",
+  "cta_h": "Navigating a cross-border legal challenge?", "cta_p": "Let's discuss your business and how we can help.", "cta_b": "Contact Archè",
+  "cards": [
+   ("globe", "International businesses entering Europe", "For companies from Asia, North America, the Middle East and beyond establishing or expanding their presence in France and Europe.", [("Market entry", "advice"), ("Corporate structuring", "corporate"), ("Employment", "employment"), ("Commercial contracts", "corporate")]),
+   ("swap", "French and European businesses expanding internationally", "For businesses entering new markets, negotiating cross-border partnerships and managing legal risks across jurisdictions.", [("International expansion", "advice"), ("Partnerships", "corporate"), ("Compliance", "advice"), ("Disputes", "litigation")]),
+   ("build", "Entrepreneurs, startups and growing businesses", "For founders, SMEs and independent professionals seeking practical legal support to structure, operate and grow their businesses.", [("Business formation", "corporate"), ("Contracts", "corporate"), ("Employment", "employment"), ("Restructuring", "corporate")])]},
+ "fr": {"kicker": "Archè · Droit international des affaires", "h": "Qui nous accompagnons",
+  "lede": "Conseil juridique pour les entreprises qui opèrent au-delà des frontières, de l'implantation à la croissance internationale et aux dossiers commerciaux complexes.",
+  "cta_h": "Un enjeu juridique transfrontalier ?", "cta_p": "Parlons de votre activité et de la manière dont nous pouvons vous aider.", "cta_b": "Nous contacter",
+  "cards": [
+   ("globe", "Entreprises internationales qui s'implantent en Europe", "Pour les sociétés d'Asie, d'Amérique du Nord, du Moyen-Orient et d'ailleurs qui s'établissent ou se développent en France et en Europe.", [("Implantation", "advice"), ("Structuration juridique", "corporate"), ("Droit du travail", "employment"), ("Contrats commerciaux", "corporate")]),
+   ("swap", "Entreprises françaises et européennes qui se développent à l'international", "Pour les entreprises qui abordent de nouveaux marchés, négocient des partenariats transfrontaliers et maîtrisent les risques juridiques dans plusieurs juridictions.", [("Développement international", "advice"), ("Partenariats", "corporate"), ("Conformité", "advice"), ("Contentieux", "litigation")]),
+   ("build", "Entrepreneurs, startups et entreprises en croissance", "Pour les fondateurs, PME et indépendants qui cherchent un appui juridique concret pour structurer, exploiter et développer leur activité.", [("Création d'entreprise", "corporate"), ("Contrats", "corporate"), ("Droit du travail", "employment"), ("Restructuration", "corporate")])]},
+ "ko": {"kicker": "아르케 · 국제 비즈니스 법", "h": "이런 고객과 함께합니다",
+  "lede": "국경을 넘어 사업하는 기업을 위한 법률 자문. 시장 진출에서 해외 성장, 복잡한 상사 사안까지.",
+  "cta_h": "국경을 넘는 법적 과제를 안고 계신가요?", "cta_p": "귀사의 사업과 저희가 어떻게 도울 수 있는지 이야기해 보시죠.", "cta_b": "아르케에 문의",
+  "cards": [
+   ("globe", "유럽에 진출하는 해외 기업", "아시아, 북미, 중동 등에서 프랑스와 유럽에 진출하거나 사업을 확장하려는 기업을 위해.", [("시장 진출", "advice"), ("법인 구조 설계", "corporate"), ("노동·고용", "employment"), ("상사 계약", "corporate")]),
+   ("swap", "해외로 확장하는 프랑스·유럽 기업", "새로운 시장에 진출하고 국경을 넘는 파트너십을 협상하며 여러 관할의 법적 리스크를 관리하려는 기업을 위해.", [("해외 확장", "advice"), ("파트너십", "corporate"), ("컴플라이언스", "advice"), ("분쟁", "litigation")]),
+   ("build", "창업가, 스타트업, 성장 기업", "사업을 구조화하고 운영하고 키우는 데 실무적인 법률 지원이 필요한 창업가, 중소기업, 독립 전문가를 위해.", [("법인 설립", "corporate"), ("계약", "corporate"), ("노동·고용", "employment"), ("구조조정", "corporate")])]},
+}
+
+
+def who_cards(lang):
+    out = ""
+    for ico, title, text, tags in WHO[lang]["cards"]:
+        links = "".join(f'<li><a href="{rel(lang, "home", lang, "services")}#{sid}">{e(lbl)}</a></li>' for lbl, sid in tags)
+        out += f'<div class="who-card"><h3>{e(title)}</h3><p>{e(text)}</p><ul class="who-tags">{links}</ul></div>'
+    return out
+
+
+WHAT = {
+ "en": {"kicker": "Archè · International business law", "learn": "Learn more", "more": "Explore our practice areas",
+  "lede": "We advise businesses, founders and international groups on corporate, employment and commercial matters, combining practical legal advice with a cross-border perspective.",
+  "cards": [("corporate", "Corporate, M&A and commercial contracts", "From company formation and corporate structuring to acquisitions, commercial negotiations and intellectual property, we help businesses build, operate and grow with confidence."),
+            ("employment", "Employment law and workforce mobility", "We advise employers on French employment law, workplace relations and employment disputes, as well as the legal aspects of international workforce mobility, from recruitment to termination."),
+            ("litigation", "Disputes, debt recovery and insolvency", "We represent businesses in litigation and arbitration, pursue debt recovery and advise on insolvency-related matters, developing a strategy tailored to each case from the outset through resolution."),
+            ("advice", "International business and cross-border transactions", "We support international projects involving multiple jurisdictions, coordinate with local counsel and help businesses navigate differences in legal systems, regulatory requirements and commercial practices.")]},
+ "fr": {"kicker": "Archè · Droit international des affaires", "learn": "En savoir plus", "more": "Découvrir nos expertises",
+  "lede": "Nous conseillons les entreprises, les fondateurs et les groupes internationaux en droit des sociétés, droit du travail et droit commercial, en alliant conseil juridique pratique et regard transfrontalier.",
+  "cards": [("corporate", "Sociétés, fusions-acquisitions et contrats commerciaux", "De la création de société et de la structuration aux acquisitions, négociations commerciales et propriété intellectuelle, nous aidons les entreprises à se construire, à opérer et à se développer en confiance."),
+            ("employment", "Droit du travail et mobilité internationale", "Nous conseillons les employeurs en droit du travail français, relations de travail et contentieux, ainsi que sur les aspects juridiques de la mobilité internationale des salariés, du recrutement à la rupture."),
+            ("litigation", "Contentieux, recouvrement et procédures collectives", "Nous représentons les entreprises en contentieux et en arbitrage, menons des recouvrements de créances et conseillons sur les procédures collectives, avec une stratégie adaptée à chaque dossier, de l'origine à son issue."),
+            ("advice", "Affaires internationales et opérations transfrontalières", "Nous accompagnons des projets internationaux impliquant plusieurs juridictions, coordonnons avec des conseils locaux et aidons les entreprises à s'orienter entre systèmes juridiques, exigences réglementaires et pratiques commerciales.")]},
+ "ko": {"kicker": "아르케 · 국제 비즈니스 법", "learn": "자세히 보기", "more": "업무분야 전체 보기",
+  "lede": "기업, 창업가, 국제 그룹을 대상으로 기업법·노동법·상사 사안을 자문하며, 실무적인 법률 자문과 국경을 넘는 시각을 결합합니다.",
+  "cards": [("corporate", "기업법·M&A·상사 계약", "회사 설립과 구조 설계, 인수, 상사 협상, 지식재산에 이르기까지 기업이 자신 있게 구축하고 운영하고 성장하도록 돕습니다."),
+            ("employment", "노동법 및 인력 이동", "프랑스 노동법, 노사 관계, 노동 분쟁은 물론 채용부터 종료까지 국제 인력 이동의 법적 측면에 대해 사용자를 자문합니다."),
+            ("litigation", "분쟁·채권 회수·도산", "소송과 중재에서 기업을 대리하고 채권 회수를 진행하며 도산 관련 사안을 자문하고, 사건마다 처음부터 종결까지 맞춤 전략을 세웁니다."),
+            ("advice", "국제 비즈니스 및 국경 간 거래", "여러 관할이 얽힌 국제 프로젝트를 지원하고 현지 변호사와 협력하며, 법체계·규제 요건·상관행의 차이를 헤쳐 나가도록 돕습니다.")]},
+}
+
+
+def what_cards(lang):
+    out = ""
+    for sid, title, text in WHAT[lang]["cards"]:
+        href = f'{rel(lang, "home", lang, "services")}#{sid}'
+        out += (f'<div class="what-card"><h3>{e(title)}</h3><p>{e(text)}</p>'
+                f'<a class="what-link" href="{href}" aria-label="{e(WHAT[lang]["learn"])}: {e(title)}">{e(WHAT[lang]["learn"])} →</a></div>')
+    return out
 
 
 def url_path(lang, page):
@@ -119,7 +191,7 @@ def header(lang, page, t):
         switch += f'<a href="{rel(lang, page, l, page)}" hreflang="{l}" lang="{l}"{cur}>{LANG_LABEL[l]}</a>'
     return f'''<a class="skip" href="#main">{e(t["skip"])}</a>
 <header class="site-header"><div class="wrap">
-<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo-mark.png" width="38" height="48" alt=""><span class="brand-text"><span>{e(C.FIRM)} Avocats</span><small>{e({"en": "International law firm", "fr": "Cabinet d'avocats international", "ko": "국제 로펌"}[lang])}</small></span></a>
+<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo-mark.png" width="38" height="48" alt=""><span class="brand-text"><span>{e(C.FIRM)} Legal</span><small>{e({"en": "International law firm", "fr": "Cabinet d'avocats international", "ko": "국제 로펌"}[lang])}</small></span></a>
 <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" type="button">{e(t["menu"])}</button>
 <nav class="primary" id="primary-nav" aria-label="{e(t["menu"])}">{nav}<div class="lang" role="group" aria-label="Language">{switch}</div></nav>
 </div></header>'''
@@ -230,10 +302,9 @@ def follow_card(lang, text):
 def page_home(lang, t):
     h = t["home"]
     svc = t["services"]["items"]
-    who = "".join(f'<div class="rule-top"><h3>{e(a)}</h3><p>{e(b)}</p></div>' for a, b in h["who"])
     svcs = "".join(f'<div class="rule-top"><h3><a href="{rel(lang, "home", lang, "services")}#{s[0]}" style="color:inherit;text-decoration:none">{e(s[1])}</a></h3><p>{e(s[2])}</p></div>' for s in svc)
     creds = "".join(f'<div class="rule-top"><h3 style="font-size:1.1rem">{e(a)}</h3><p>{e(b)}</p></div>' for a, b in h["creds"])
-    inds = "".join(f'<div class="ind"><h3>{e(g)}</h3><ul>' + "".join(f"<li>{e(x)}</li>" for x in items) + "</ul></div>" for g, items in h["industries"])
+    inds = "".join(f'<div class="ind">{f"<h3>{e(g)}</h3>" if g else ""}<ul>' + "".join(f"<li>{e(x)}</li>" for x in items) + "</ul></div>" for g, items in h["industries"])
     def office(name, d, main=False):
         extra = ""
         if main:
@@ -263,18 +334,19 @@ def page_home(lang, t):
     cov = {"en": ("International boutique law firm", "Paris · Seoul · Hong Kong", "Enter the site"), "fr": ("Cabinet d'avocats international", "Paris · Séoul · Hong Kong", "Découvrir le cabinet"), "ko": ("국제 부티크 로펌", "파리 · 서울 · 홍콩", "사이트 둘러보기")}[lang]
     hc = {"en": {"label": "Contact", "kicker": "Write to us", "cities": "Paris · Seoul · Hong Kong", "note": "Write in English, French or Korean."}, "fr": {"label": "Contact", "kicker": "Écrivez-nous", "cities": "Paris · Séoul · Hong Kong", "note": "En français, en anglais ou en coréen."}, "ko": {"label": "문의", "kicker": "문의하기", "cities": "파리 · 서울 · 홍콩", "note": "한국어, 프랑스어, 영어로 문의해 주세요."}}[lang]
     body = f'''<section class="landing" style="background-image:url('{up}assets/img/landing-bg.webp')" aria-labelledby="landing-title"><div class="landing-panel">
-<p class="landing-name" id="landing-title">ARCHÈ</p><p class="landing-tag">{e(cov[0])}</p><p class="landing-cities">{e(cov[1])}</p>
+<p class="landing-name" id="landing-title">ARCHÈ <span class="landing-ko" lang="ko">아르케</span></p><p class="landing-tag">{e(cov[0])}</p><p class="landing-cities">{e(cov[1])}</p>
 </div></section>
 <div id="hero-start"></div>
 <section class="hero"><div class="wrap">
-<div><h1>{e(h["h1"])}</h1><p class="lede">{e(h["lede"])}</p>
+<div><p class="kicker hero-kicker">{e(h["kicker"])}</p><h1>{e(h["h1"])}</h1><p class="lede">{e(h["lede"])}</p>
 <div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{ {"en": "Discuss your matter", "fr": "Parlez-nous de votre dossier", "ko": "사안 상담하기"}[lang] }</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{ {"en": "Explore our expertise", "fr": "Découvrir nos expertises", "ko": "업무분야 보기"}[lang] }</a></div></div>
 <aside class="hero-card" aria-label="{e(hc['label'])}"><p class="hero-card-kicker">{e(hc['kicker'])}</p><p class="hero-card-email"><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p><p class="hero-card-cities">{e(hc['cities'])}</p><p class="hero-card-note">{e(hc['note'])}</p></aside></div></section>
+<section class="cred-strip" aria-label="{e(h["strip"][0][0])}"><div class="wrap"><dl>{"".join(f"<div><dt>{e(a)}</dt><dd>{e(c)}</dd></div>" for a, c in h["strip"])}</dl></div></section>
 <section><div class="wrap"><div class="section-head"><h2>{e(h["creds_h"])}</h2><p class="lede">{e(h["creds_p"])}</p></div><div class="cols c3">{creds}</div></div></section>
 <section class="alt"><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><div><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS[:6])}</ul><p style="margin-top:12px"><a href="{rel(lang, "home", lang, "people")}">{ {"en": "All affiliations", "fr": "Toutes les affiliations", "ko": "전체 소속 보기"}[lang] } →</a></p></div></div></section>
-<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["who_h"])}</h2></div><div class="cols c3">{who}</div></div></section>
-<section><div class="wrap"><div class="section-head"><h2>{e(h["services_h"])}</h2></div><div class="cols c4">{svcs}</div>
-<p style="margin-top:28px"><a href="{rel(lang, "home", lang, "services")}">{e(h["services_more"])}</a></p></div></section>
+<section class="alt who"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHO[lang]["kicker"])}</p><h2>{e(WHO[lang]["h"])}</h2><p class="lede">{e(WHO[lang]["lede"])}</p></div><div class="cols c3">{who_cards(lang)}</div><div class="who-cta"><div><p class="who-cta-h">{e(WHO[lang]["cta_h"])}</p><p>{e(WHO[lang]["cta_p"])}</p></div><a class="btn ghost" href="{cta_href(lang, "home")}">{e(WHO[lang]["cta_b"])} ↗</a></div></div></section>
+<section class="what"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHAT[lang]["kicker"])}</p><h2>{e(h["services_h"])}</h2><p class="lede">{e(WHAT[lang]["lede"])}</p></div><div class="cols c4">{what_cards(lang)}</div>
+<p class="what-more"><a href="{rel(lang, "home", lang, "services")}">{e(WHAT[lang]["more"])} →</a></p></div></section>
 {mt}
 <section class="alt"><div class="wrap cols c2"><div><h2>{e(h["firm_h"])}</h2><p>{e(h["firm_p"])}</p></div>
 </div></section>
@@ -390,7 +462,7 @@ def page_insights(lang, t):
     return f'''<div class="page-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p></div></div>
 
 <section><div class="wrap"><h2>{e(i["press_h"])}</h2>{press}</div></section>
-<section class="alt"><div class="wrap"><h2>{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul>{events}</ul></div></section>
+<section class="alt"><div class="wrap"><h2>{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul class="events">{events}</ul></div></section>
 {gallery}'''
 
 
