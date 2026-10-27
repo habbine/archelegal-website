@@ -205,6 +205,9 @@ def examples(lang):
     }
 
 
+IMMIGRATION_CLIENTS_STATED = "200+"  # stated by the firm, Oct 2026
+
+
 def figures(lang):
     """Indicative figures counted from the lists above (rounded down to the nearest 5, shown with '+')."""
     def plus(n):
@@ -219,7 +222,8 @@ def figures(lang):
         "fr": ["ans d'exercice", "entreprises et institutions accompagnées en France", "opérations et projets internationaux", "litiges et arbitrages", "employeurs conseillés en droit du travail", "clients accompagnés en immigration"],
         "ko": ["년 이상의 경력", "프랑스 진출 지원 기업·기관", "거래 및 국제 프로젝트", "분쟁·중재 사건", "노동 자문 고객", "취업 이민 지원 고객"],
     }[lang]
-    vals = ["25+", plus(entry), plus(deals), plus(cases), plus(emp), plus(imm)]
+    # Immigration: the firm's own count of clients supported (more than 200), not just the names listed.
+    vals = ["25+", plus(entry), plus(deals), plus(cases), plus(emp), IMMIGRATION_CLIENTS_STATED]
     return list(zip(vals, labels)), {"entry": entry, "deals": deals, "cases": cases, "emp": emp, "imm": imm}
 
 

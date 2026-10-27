@@ -640,3 +640,4 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 .sig-src{font-size:14px;color:var(--c-text)}
 .sig-src a{color:var(--c-ink);text-decoration:underline;text-decoration-color:var(--gold-d);text-underline-offset:3px;display:inline-block;min-height:24px}
 .featured-press{padding-top:0}
+.cf-note{margin:4px 0 20px;font-size:13px;line-height:1.5;color:var(--muted)}
