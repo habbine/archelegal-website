@@ -340,7 +340,7 @@ def page_home(lang, t):
 <section class="hero"><div class="wrap">
 <div><p class="kicker hero-kicker">{e(h["kicker"])}</p><h1>{e(h["h1"])}</h1><p class="lede">{e(h["lede"])}</p>
 <div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{ {"en": "Discuss your matter", "fr": "Parlez-nous de votre dossier", "ko": "사안 상담하기"}[lang] }</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{ {"en": "Explore our expertise", "fr": "Découvrir nos expertises", "ko": "업무분야 보기"}[lang] }</a></div></div>
-<aside class="hero-card" aria-label="{e(hc['label'])}"><p class="hero-card-kicker">{e(hc['kicker'])}</p><p class="hero-card-email"><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p><p class="hero-card-cities">{e(hc['cities'])}</p><p class="hero-card-note">{e(hc['note'])}</p></aside></div></section>
+</div></section>
 <section class="cred-strip" aria-label="{e(h["strip"][0][0])}"><div class="wrap"><dl>{"".join(f"<div><dt>{e(a)}</dt><dd>{e(c)}</dd></div>" for a, c in h["strip"])}</dl></div></section>
 <section class="what"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHAT[lang]["kicker"])}</p><h2>{e(h["services_h"])}</h2><p class="lede">{e(WHAT[lang]["lede"])}</p></div><div class="cols c4">{what_cards(lang)}</div>
 <p class="what-more"><a href="{rel(lang, "home", lang, "services")}">{e(WHAT[lang]["more"])} →</a></p></div></section>
