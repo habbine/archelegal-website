@@ -56,6 +56,38 @@ def press_items(lang, items, up=""):
     return out
 
 
+PRESS_THEMES = [
+    ("heritage", {"en": "Cultural heritage", "fr": "Patrimoine culturel", "ko": "문화유산"}),
+    ("books", {"en": "Books", "fr": "Livres", "ko": "도서"}),
+    ("sport", {"en": "Sport", "fr": "Sport", "ko": "스포츠"}),
+    ("business", {"en": "Business and market entry", "fr": "Entreprises et implantation", "ko": "기업 및 시장 진출"}),
+    ("law", {"en": "Law and justice", "fr": "Droit et justice", "ko": "법과 사법"}),
+    ("profile", {"en": "Profile and profession", "fr": "Parcours et profession", "ko": "프로필 및 법조 경력"}),
+]
+PRESS_MORE = {"en": "Show {n} more", "fr": "Voir {n} de plus", "ko": "{n}건 더 보기"}
+
+
+def press_by_theme(lang, up, shown=3):
+    out = ""
+    for key, labels in PRESS_THEMES:
+        items = [p for p in C.PRESS if C.PRESS_THEME.get(p["url"]) == key]
+        if not items:
+            continue
+        head, rest = items[:shown], items[shown:]
+        more = (f'<details class="press-more"><summary>{e(PRESS_MORE[lang].format(n=len(rest)))}</summary>'
+                f'<div class="press">{press_items(lang, rest, up)}</div></details>') if rest else ""
+        out += (f'<div class="press-theme" id="press-{key}"><h3>{e(labels[lang])} <small>{len(items)}</small></h3>'
+                f'<div class="press">{press_items(lang, head, up)}</div>{more}</div>')
+    return out
+
+
+HERITAGE = {
+    "en": ("The Oegyujanggak case", "Since 2007, James Joong-ho Kim has acted in the claim for the return of Korea's Oegyujanggak royal manuscripts before the Paris Administrative Court. At the December 2009 hearing, the French State used the word \u201cpillage\u201d for the first time.", "Read the press coverage"),
+    "fr": ("L'affaire de l'Oegyujanggak", "Depuis 2007, James Joong-ho Kim agit dans la demande de restitution des manuscrits royaux coréens de l'Oegyujanggak devant le tribunal administratif de Paris. À l'audience de décembre 2009, l'État français a employé pour la première fois le mot \u00ab pillage \u00bb.", "Lire la presse"),
+    "ko": ("외규장각 반환 소송", "김중호 변호사는 2007년부터 파리 행정법원에서 외규장각 의궤 반환 소송을 맡아 왔습니다. 2009년 12월 변론에서 프랑스 정부는 처음으로 '약탈'이라는 표현을 사용했습니다.", "언론 보도 보기"),
+}
+
+
 def url_path(lang, page):
     return ("" if lang == "en" else lang + "/") + SLUG[page]
 
@@ -89,7 +121,7 @@ def header(lang, page, t):
 <header class="site-header"><div class="wrap">
 <a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo-mark.png" width="38" height="48" alt=""><span class="brand-text"><span>{e(C.FIRM)} Avocats</span><small>{e({"en": "International law firm", "fr": "Cabinet d'avocats international", "ko": "국제 로펌"}[lang])}</small></span></a>
 <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" type="button">{e(t["menu"])}</button>
-<nav class="primary" id="primary-nav" aria-label="{e(t["menu"])}">{nav}<a class="btn" href="{cta_href(lang, page)}">{e(t["cta"])}</a><div class="lang" role="group" aria-label="Language">{switch}</div></nav>
+<nav class="primary" id="primary-nav" aria-label="{e(t["menu"])}">{nav}<div class="lang" role="group" aria-label="Language">{switch}</div></nav>
 </div></header>'''
 
 
@@ -236,9 +268,10 @@ def page_home(lang, t):
 <div id="hero-start"></div>
 <section class="hero"><div class="wrap">
 <div><h1>{e(h["h1"])}</h1><p class="lede">{e(h["lede"])}</p>
-<div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{e(t["cta"])}</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{e(h["see_services"])}</a><a class="btn ghost" href="#follow">{ {"en": "Follow us", "fr": "Nous suivre", "ko": "팔로우하기"}[lang] }</a></div></div>
+<div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{ {"en": "Discuss your matter", "fr": "Parlez-nous de votre dossier", "ko": "사안 상담하기"}[lang] }</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{ {"en": "Explore our expertise", "fr": "Découvrir nos expertises", "ko": "업무분야 보기"}[lang] }</a></div></div>
 <aside class="hero-card" aria-label="{e(hc['label'])}"><p class="hero-card-kicker">{e(hc['kicker'])}</p><p class="hero-card-email"><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p><p class="hero-card-cities">{e(hc['cities'])}</p><p class="hero-card-note">{e(hc['note'])}</p></aside></div></section>
 <section><div class="wrap"><div class="section-head"><h2>{e(h["creds_h"])}</h2><p class="lede">{e(h["creds_p"])}</p></div><div class="cols c3">{creds}</div></div></section>
+<section class="alt"><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><div><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS[:6])}</ul><p style="margin-top:12px"><a href="{rel(lang, "home", lang, "people")}">{ {"en": "All affiliations", "fr": "Toutes les affiliations", "ko": "전체 소속 보기"}[lang] } →</a></p></div></div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["who_h"])}</h2></div><div class="cols c3">{who}</div></div></section>
 <section><div class="wrap"><div class="section-head"><h2>{e(h["services_h"])}</h2></div><div class="cols c4">{svcs}</div>
 <p style="margin-top:28px"><a href="{rel(lang, "home", lang, "services")}">{e(h["services_more"])}</a></p></div></section>
@@ -248,6 +281,7 @@ def page_home(lang, t):
 <section><div class="wrap"><div class="section-head"><h2>{e(h["industries_h"])}</h2><p class="lede">{e(h["industries_p"])}</p></div><div class="industries">{inds}</div></div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["offices_h"])}</h2></div><div class="offices">{offices}</div></div></section>
 {press}
+<section><div class="wrap"><div class="section-head"><h2>{e(HERITAGE[lang][0])}</h2><p class="lede">{e(HERITAGE[lang][1])}</p></div><p><a class="btn ghost" href="{rel(lang, "home", lang, "insights")}#press-heritage">{e(HERITAGE[lang][2])}</a></p></div></section>
 <section class="alt" id="follow"><div class="wrap"><h2>{e(t["insights"]["follow_h"])}</h2>{follow_card(lang, t["insights"]["follow_p"])}</div></section>
 {cta_band(lang, "home", t, h["cta_h"], h["cta_p"])}'''
     return body
@@ -334,7 +368,7 @@ def page_insights(lang, t):
     i = t["insights"]
     events = "".join(f"<li>{e(x)}</li>" for x in i["events"])
     up = "../" * depth(lang, "insights")
-    press = press_items(lang, C.PRESS, up)
+    press = press_by_theme(lang, up)
     gallery = ""
     if getattr(C, "GALLERY", None):
         figs = ""
@@ -355,7 +389,7 @@ def page_insights(lang, t):
     follow_rows = f'<div class="fc-list">{follow_rows}</div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p></div></div>
 
-<section><div class="wrap"><h2>{e(i["press_h"])}</h2><div class="press">{press}</div></div></section>
+<section><div class="wrap"><h2>{e(i["press_h"])}</h2>{press}</div></section>
 <section class="alt"><div class="wrap"><h2>{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul>{events}</ul></div></section>
 {gallery}'''
 
