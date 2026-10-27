@@ -352,3 +352,9 @@ nav.primary a.btn:hover{background:var(--ink);border-color:var(--ink);outline-co
 .brand-text small{font-size:9.5px;letter-spacing:.12em;white-space:nowrap}
 nav.primary a.btn{white-space:nowrap}
 nav.primary .lang a{min-width:0;padding:0 7px;min-height:32px;font-size:11px;letter-spacing:.04em}
+
+/* Alignment pass: equal card headings so body text starts on one line across columns */
+.rule-top{display:flex;flex-direction:column}
+.rule-top h3{text-wrap:pretty;min-height:2lh;margin-bottom:.5em}
+#services-list .service h3{text-wrap:pretty;min-height:2lh}
+.cols > *{min-width:0}
