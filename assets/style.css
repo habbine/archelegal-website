@@ -668,3 +668,8 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 /* team snapshot: smaller photos (firm request, Oct 2026) */
 .tm-grid{grid-template-columns:repeat(3,minmax(0,240px));gap:32px}
 @media(max-width:640px){.tm-grid{grid-template-columns:repeat(2,minmax(0,180px));gap:20px}}
+
+/* 9 practice areas: 3x3 tiles on home */
+.what-compact{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){.what-compact{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.what-compact{grid-template-columns:1fr}}

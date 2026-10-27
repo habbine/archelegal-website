@@ -71,8 +71,12 @@ SERVICES8 = {
    ("Employment Transfers & Mobility", "Business transfers, employee transfers, secondments and posted workers"),
    ("Employment Litigation", "Labour disputes before the Conseil de prud'hommes and competent courts"),
    ("International Employment & Social Security", "Cross-border employment, mobility and social security matters"),
-   ("Professional Immigration", "Visas, work permits and residence permits for executives, assignees and new hires"),
    ("Employment Compliance", "")]),
+ ("immigration", "Professional Immigration", "Business immigration", [
+   ("Visas & Residence Permits", "Short- and long-stay visas · Initial residence permit applications · Residence permit renewals · Changes of immigration status · Multi-year residence permits and resident cards"),
+   ("Business Immigration & Work Authorisation", "Work permits and work authorisation · Employee and executive visas · Talent Passport — qualified employees and other eligible categories · Intra-company transfers · Recruitment of foreign nationals · International assignments and secondments"),
+   ("Corporate Immigration & Global Mobility", "Immigration strategy for international businesses · Expatriate and executive mobility · Cross-border employee transfers · Immigration procedures for international projects · Employer obligations and immigration compliance · Coordination with HR and mobility teams"),
+   ("Entrepreneurs, Investors & Business Founders", "Entrepreneur and self-employed residence permits · Talent Passport — business creation · Talent Passport — innovative economic projects · Investor immigration · Immigration aspects of business establishment in France")]),
  ("litigation", "Dispute Resolution", "Litigation & arbitration", [
    ("Dispute Prevention & Risk Management", "Dispute avoidance and litigation risk assessment"),
    ("Provisional & Protective Measures", "Asset freezing, attachments, judicial mortgages and other protective measures"),
@@ -140,8 +144,12 @@ SERVICES8 = {
    ("Transferts et mobilité", "Transferts d'entreprise et de salariés, détachements et travailleurs détachés"),
    ("Contentieux du travail", "Litiges devant le conseil de prud'hommes et les juridictions compétentes"),
    ("Emploi international et sécurité sociale", "Emploi transfrontalier, mobilité et sécurité sociale"),
-   ("Immigration professionnelle", "Visas, autorisations de travail et titres de séjour pour dirigeants, salariés détachés et recrues"),
    ("Conformité sociale", "")]),
+ ("immigration", "Immigration professionnelle", "Immigration d'affaires", [
+   ("Visas et titres de séjour", "Visas de court et de long séjour · Premières demandes de titre de séjour · Renouvellements de titre de séjour · Changements de statut · Cartes de séjour pluriannuelles et cartes de résident"),
+   ("Immigration professionnelle et autorisations de travail", "Autorisations de travail · Visas salariés et dirigeants · Passeport Talent — salariés qualifiés et autres catégories éligibles · Mobilités intragroupe (ICT) · Recrutement de ressortissants étrangers · Missions internationales et détachements"),
+   ("Immigration d'entreprise et mobilité internationale", "Stratégie d'immigration pour les entreprises internationales · Mobilité des expatriés et des dirigeants · Transferts transfrontaliers de salariés · Procédures d'immigration pour les projets internationaux · Obligations de l'employeur et conformité en matière d'immigration · Coordination avec les équipes RH et mobilité"),
+   ("Entrepreneurs, investisseurs et fondateurs", "Titres de séjour entrepreneur et profession libérale · Passeport Talent — création d'entreprise · Passeport Talent — projet économique innovant · Immigration des investisseurs · Volet immigration de l'implantation d'une entreprise en France")]),
  ("litigation", "Règlement des litiges", "Contentieux et arbitrage", [
    ("Prévention des litiges", "Prévention des différends et évaluation du risque contentieux"),
    ("Mesures conservatoires", "Saisies conservatoires, hypothèques judiciaires et autres mesures conservatoires"),
@@ -209,8 +217,12 @@ SERVICES8 = {
    ("고용 승계 및 인력 이동", "사업 이전, 고용 승계, 파견 및 해외 파견 근로자"),
    ("노동 소송", "노동법원(Conseil de prud'hommes) 및 관할 법원 소송"),
    ("국제 고용 및 사회보장", "국경 간 고용, 인력 이동, 사회보장"),
-   ("취업 이민", "경영진, 주재원, 신규 채용 인력의 비자, 노동허가, 체류증"),
    ("노동법 컴플라이언스", "")]),
+ ("immigration", "취업 이민", "비즈니스 이민", [
+   ("비자 및 체류증", "단기·장기 체류 비자 · 최초 체류증 신청 · 체류증 갱신 · 체류 자격 변경 · 복수년 체류증 및 거주자 카드"),
+   ("비즈니스 이민 및 노동허가", "노동허가 및 취업 승인 · 임직원 비자 · 탤런트 패스포트 — 고급 인력 및 기타 해당 범주 · 그룹 내 전보(ICT) · 외국인 채용 · 해외 파견 및 주재원 발령"),
+   ("기업 이민 및 글로벌 모빌리티", "국제 기업의 이민 전략 · 주재원 및 임원 모빌리티 · 국경 간 인력 이동 · 국제 프로젝트 관련 이민 절차 · 사용자 의무 및 이민 규정 준수 · 인사·모빌리티 팀과의 협업"),
+   ("기업가·투자자·창업자", "기업가 및 자영업자 체류증 · 탤런트 패스포트 — 창업 · 탤런트 패스포트 — 혁신적 경제 프로젝트 · 투자 이민 · 프랑스 법인 설립 관련 이민 사항")]),
  ("litigation", "분쟁 해결", "소송 및 중재", [
    ("분쟁 예방 및 리스크 관리", "분쟁 회피 및 소송 리스크 평가"),
    ("보전 처분", "자산 동결, 가압류, 가처분, 법원 저당권 등 보전 조치"),

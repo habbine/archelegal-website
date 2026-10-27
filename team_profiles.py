@@ -49,7 +49,7 @@ PROFILES = {
  },
  "dk": {
   "areas": [("corporate", {"en": "Corporate", "fr": "Droit des sociétés", "ko": "기업법"}),
-            ("employment", {"en": "International Mobility & Immigration", "fr": "Mobilité internationale et immigration", "ko": "국제 인력 이동 및 이민"})],
+            ("immigration", {"en": "International Mobility & Immigration", "fr": "Mobilité internationale et immigration", "ko": "국제 인력 이동 및 이민"})],
   "en": {"lead": "Advises companies and their staff on French immigration and mobility (work permits, Talent and EU Blue Card, intra-group transfers, posted workers), on company incorporation, changes and dissolution, and on legal translation.",
     "bar": "New York Bar", "lang": "French · English · Korean",
     "career": ["Archè, Paris: lawyer, since 2023", "Former experience: NYD Avocats, Paris (2017) · Yulchon, Seoul (2016) · Alerion, Paris (2015)"],
