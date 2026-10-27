@@ -64,7 +64,7 @@ PEOPLE = [
         "photo": "assets/img/team-dk.webp",
         "name": "Dabin Kevin Kim",
         "email": "dabin.kim@archelegal.com",
-        "linkedin": "",
+        "linkedin": "https://www.linkedin.com/in/dabin-kevin-kim-0082a9113/",
     },
 ]
 
