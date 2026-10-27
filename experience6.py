@@ -431,9 +431,9 @@ def client_profile(lang):
     # Firm's instruction (Oct 2026): no nationality row and no counts in the client profile.
     # Client types: firm's own wording (Oct 2026).
     clients = {
-        "en": ("Clients", "Serving a diverse range of clients, including multinational groups, SMEs, start-ups, sole traders, public institutions and government agencies, in both regulated and unregulated sectors."),
-        "fr": ("Clients", "Une clientèle diversifiée : groupes multinationaux, PME, start-ups, entrepreneurs individuels, institutions publiques et administrations, dans des secteurs réglementés comme non réglementés."),
-        "ko": ("고객", "다국적 그룹, 중소기업, 스타트업, 개인사업자, 공공기관 및 정부 기관 등 규제 산업과 비규제 산업 전반의 다양한 고객을 지원합니다."),
+        "en": ("Clients", "Multinational groups, SMEs, start-ups, sole traders, public institutions and government agencies, in both regulated and unregulated sectors."),
+        "fr": ("Clients", "Groupes multinationaux, PME, start-ups, entrepreneurs individuels, institutions publiques et administrations, dans des secteurs réglementés comme non réglementés."),
+        "ko": ("고객", "다국적 그룹, 중소기업, 스타트업, 개인사업자, 공공기관 및 정부 기관(규제 산업 및 비규제 산업)."),
     }[lang]
     sectors = SECTORS_COVERED[lang]
     return [clients, (lab["sec"], ", ".join(sectors))], len(sectors)
