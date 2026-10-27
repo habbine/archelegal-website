@@ -100,7 +100,7 @@ def footer(lang, page, t):
     f = t["footer"]
     links = "".join(f'<li><a href="{rel(lang, page, lang, k)}">{e(t["nav"][k])}</a></li>' for k in NAV)
     soc = (f'<li><a href="{C.LINKEDIN}" rel="noopener">LinkedIn</a></li><li><a href="{C.INSTAGRAM}" rel="noopener">Instagram</a></li>'
-           + "".join(f'<li><a href="{e(u)}" rel="noopener">{e(l)}</a></li>' for l, u in C.HK_LINKS if "archelegal" not in u))
+           + "".join(f'<li><a href="{e(u)}" rel="noopener">{e(l)}</a></li>' for l, u in C.HK_LINKS if "archelegal" not in u and l not in ("ORCID", "SSRN")))
     return f'''<footer class="site-footer"><div class="wrap">
 <div class="cols c4">
 <div><h3>{e(C.FIRM_FULL)}</h3><p>{e(f["lawyers"])}</p></div>
