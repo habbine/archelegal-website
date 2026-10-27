@@ -100,7 +100,7 @@ def footer(lang, page, t):
     f = t["footer"]
     links = "".join(f'<li><a href="{rel(lang, page, lang, k)}">{e(t["nav"][k])}</a></li>' for k in NAV)
     soc = (f'<li><a href="{C.LINKEDIN}" rel="noopener">LinkedIn</a></li><li><a href="{C.INSTAGRAM}" rel="noopener">Instagram</a></li>'
-           + "".join(f'<li><a href="{e(u)}" rel="noopener">{e(l)}</a></li>' for l, u in C.HK_LINKS if "archelegal" not in u))
+           + "".join(f'<li><a href="{e(u)}" rel="noopener">{e(l)}</a></li>' for l, u in C.HK_LINKS if "archelegal" not in u and l not in ("ORCID", "SSRN")))
     return f'''<footer class="site-footer"><div class="wrap">
 <div class="cols c4">
 <div><h3>{e(C.FIRM_FULL)}</h3><p>{e(f["lawyers"])}</p></div>
@@ -176,6 +176,20 @@ def bridge(lang, t):
 <p class="note">{e(h["bridge_note"])}</p></aside>'''
 
 
+def follow_card(lang, text):
+    fl = {"en": ("Follow", "See more"), "fr": ("Suivre", "Voir plus"), "ko": ("팔로우", "더 보기")}[lang]
+    rows = "".join(
+        f'<div class="fc-row"><span class="fc-ico" aria-hidden="true">{ico}</span><div class="fc-name"><strong>{e(name)}</strong><span>{e(handle)}</span></div>'
+        f'<a class="btn ghost fc-btn" href="{e(url)}" rel="noopener">{e(lbl)} ↗</a></div>'
+        for name, handle, url, lbl, ico in [
+            ("LinkedIn", "archelegalparis", C.LINKEDIN, fl[0], "in"),
+            ("Instagram", "@archelegal", C.INSTAGRAM, fl[0], "◎"),
+            ("Website", C.SITE_URL.replace("https://", ""), C.SITE_URL, fl[1], "◍"),
+        ])
+    return (f'<div class="follow-card"><div class="fc-head"><span class="fc-logo" aria-hidden="true">ARCHÈ</span>'
+            f'<div><strong>{e(C.FIRM_FULL)}</strong><p>{e(text)}</p></div></div><div class="fc-list">{rows}</div></div>')
+
+
 def page_home(lang, t):
     h = t["home"]
     svc = t["services"]["items"]
@@ -213,7 +227,7 @@ def page_home(lang, t):
     hc = {"en": {"label": "Contact", "kicker": "Write to us", "cities": "Paris · Seoul · Hong Kong", "note": "Write in English, French or Korean."}, "fr": {"label": "Contact", "kicker": "Écrivez-nous", "cities": "Paris · Séoul · Hong Kong", "note": "En français, en anglais ou en coréen."}, "ko": {"label": "문의", "kicker": "문의하기", "cities": "파리 · 서울 · 홍콩", "note": "한국어, 프랑스어, 영어로 문의해 주세요."}}[lang]
     body = f'''<section class="landing" style="background-image:url('{up}assets/img/landing-bg.webp')" aria-labelledby="landing-title"><div class="landing-panel">
 <p class="landing-name" id="landing-title">ARCHÈ SELARL</p><p class="landing-tag">{e(cov[0])}</p><p class="landing-cities">{e(cov[1])}</p>
-<p><a class="landing-link" href="#hero-start">{e(cov[2])}</a></p></div></section>
+</div></section>
 <div id="hero-start"></div>
 <section class="hero"><div class="wrap">
 <div><h1>{e(h["h1"])}</h1><p class="lede">{e(h["lede"])}</p>
@@ -229,6 +243,7 @@ def page_home(lang, t):
 <section><div class="wrap"><div class="section-head"><h2>{e(h["industries_h"])}</h2><p class="lede">{e(h["industries_p"])}</p></div><div class="industries">{inds}</div></div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["offices_h"])}</h2></div><div class="offices">{offices}</div></div></section>
 {press}
+<section class="alt"><div class="wrap"><h2>{e(t["insights"]["follow_h"])}</h2>{follow_card(lang, t["insights"]["follow_p"])}</div></section>
 {cta_band(lang, "home", t, h["cta_h"], h["cta_p"])}'''
     return body
 
@@ -257,6 +272,17 @@ def page_services(lang, t):
 {cta_band(lang, "services", t, s["cta_h"], s["cta_p"])}''', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>"
 
 
+AFFILIATIONS = [
+    "European Law Institute (ELI)", "France Esports", "France-Korea Chamber of Commerce and Industry (CCICF)",
+    "French Association for Competition Law Studies (AFEC)", "Impulse Partners",
+    "Korea Creative Content Agency (KOCCA)", "Korea Deposit Insurance Corporation (KDIC)",
+    "International Association of Korean Lawyers (IAKL)", "Mensa", "Paris 2024 Olympic & Paralympic Games",
+    "Samsung Electronics UK", "Station F · HEC Incubator", "Korean Commercial Arbitration Board (KCAB)",
+    "In-house Counsels Forum (IHCF)", "Embassy of Korea in France", "KOTRA Paris",
+]
+AFF_H = {"en": "Experience & affiliations", "fr": "Expériences et affiliations", "ko": "경력 및 소속"}
+
+
 def page_people(lang, t):
     p = t["people"]
     out = ""
@@ -275,6 +301,7 @@ def page_people(lang, t):
         out += f'<div class="person"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div><h2 style="font-size:1.6rem;margin-bottom:.1em">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>{see_more(p["bios"][k], lang, 4)}{links}</div></div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1></div></div>
 <section style="padding-top:0"><div class="wrap">{out}</div></section>
+<section class="alt"><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS)}</ul></div></section>
 {cta_band(lang, "people", t, t["home"]["cta_h"], t["home"]["cta_p"])}'''
 
 
@@ -311,13 +338,24 @@ def page_insights(lang, t):
             figs += (f'<figure><img src="{up}{e(g["src"])}" alt="{e(g["alt"][lang])}" width="{g["w"]}" height="{g["h"]}" loading="lazy" decoding="async">'
                      f'<figcaption>{e(g["caption"][lang])}{when}</figcaption></figure>')
         gallery = f'<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(i["gallery_h"])}</h2></div><div class="gallery">{figs}</div></div></section>'
+    fl = {"en": ("Follow", "See more"), "fr": ("Suivre", "Voir plus"), "ko": ("팔로우", "더 보기")}[lang]
+    follow_rows = "".join(
+        f'<div class="fc-row"><span class="fc-ico" aria-hidden="true">{ico}</span><div class="fc-name"><strong>{e(name)}</strong><span>{e(handle)}</span></div>'
+        f'<a class="btn ghost fc-btn" href="{e(url)}" rel="noopener">{e(lbl)} ↗</a></div>'
+        for name, handle, url, lbl, ico in [
+            ("LinkedIn", "archelegalparis", C.LINKEDIN, fl[0], "in"),
+            ("Instagram", "@archelegal", C.INSTAGRAM, fl[0], "◎"),
+            ("Website", C.SITE_URL.replace("https://", ""), C.SITE_URL, fl[1], "◍"),
+        ])
+    follow_rows = f'<div class="fc-list">{follow_rows}</div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p></div></div>
-<section style="padding-top:0"><div class="wrap cols c2">
-<div><h2>{e(i["press_h"])}</h2><div class="press">{press}</div>
-<h2 style="margin-top:2em">{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul>{events}</ul></div>
-<div><h2>{e(i["follow_h"])}</h2><p>{e(i["follow_p"])}</p><p><a class="btn ghost" href="{C.LINKEDIN}" rel="noopener">{e(i["follow_cta"])}</a></p><p>{" · ".join(f'<a href="{e(u)}" rel="noopener">{e(l)}</a>' for l, u in C.HK_LINKS if l in ("SSRN", "ORCID"))}</p>
-<h2 style="margin-top:2em">{e(i["ask_h"])}</h2><p>{e(i["ask_p"])}</p><p><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p></div>
+<section style="padding-top:0"><div class="wrap">
+<h2>{e(i["follow_h"])}</h2>
+<div class="follow-card"><div class="fc-head"><span class="fc-logo" aria-hidden="true">ARCHÈ</span><div><strong>{e(C.FIRM_FULL)}</strong><p>{e(i["follow_p"])}</p></div></div>
+{follow_rows}
 </div></section>
+<section><div class="wrap"><h2>{e(i["press_h"])}</h2><div class="press">{press}</div></div></section>
+<section class="alt"><div class="wrap"><h2>{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul>{events}</ul></div></section>
 {gallery}'''
 
 
