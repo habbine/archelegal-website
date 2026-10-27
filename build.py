@@ -31,7 +31,9 @@ MONTHS = {"en": "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(),
 
 
 def fmt_date(lang, d):
-    parts = d.split("-")  # "YYYY-MM-DD", or "YYYY-MM" when only the month is known
+    parts = d.split("-")  # "YYYY-MM-DD", "YYYY-MM" when only the month is known, or "YYYY"
+    if len(parts) == 1:
+        return parts[0]
     y, m = parts[0], parts[1]
     day = parts[2] if len(parts) > 2 else None
     if lang == "ko":
@@ -68,6 +70,11 @@ PRESS_THEMES = [
 ]
 PRESS_MORE = {"en": "Show {n} more", "fr": "Voir {n} de plus", "ko": "{n}건 더 보기"}
 
+
+
+def press_featured():
+    by_url = {p["url"]: p for p in C.PRESS}
+    return [by_url[u] for u in getattr(C, "PRESS_FEATURED", []) if u in by_url]
 
 def press_by_theme(lang, up, shown=3):
     out = ""
@@ -156,17 +163,17 @@ SIGNATURE = {
            "case_more": "Read about the case",
            "first_h": "One of the first Korean lawyers admitted to the French bar",
            "first_p": "Admitted to the Paris Bar in 1997, James Joong-ho Kim is one of the first Korean lawyers to practise in France.",
-           "first_more": "Meet the team"},
+           "first_more": "Read the coverage", "src": "Reported by:"},
     "fr": {"kicker": "Repères", "h": "Un cabinet parisien aux racines coréennes",
            "case_more": "En savoir plus sur l'affaire",
            "first_h": "L'un des premiers avocats coréens inscrits au barreau en France",
            "first_p": "Inscrit au Barreau de Paris en 1997, James Joong-ho Kim est l'un des premiers avocats coréens à exercer en France.",
-           "first_more": "Découvrir l'équipe"},
+           "first_more": "Lire la presse", "src": "Selon :"},
     "ko": {"kicker": "대표 이력", "h": "한국에 뿌리를 둔 파리 로펌",
            "case_more": "사건 자세히 보기",
            "first_h": "프랑스 변호사회에 등록한 첫 한국인 변호사 중 한 명",
            "first_p": "1997년 파리 변호사회에 등록한 김중호 변호사는 프랑스에서 활동한 첫 한국인 변호사 중 한 명입니다.",
-           "first_more": "구성원 보기"},
+           "first_more": "보도 보기", "src": "보도:"},
 }
 TEAM_H = {"en": ("Who will handle your matter", "Partner-led work in French, English and Korean."),
           "fr": ("Qui suivra votre dossier", "Des dossiers suivis par les associés, en français, en anglais et en coréen."),
@@ -174,9 +181,9 @@ TEAM_H = {"en": ("Who will handle your matter", "Partner-led work in French, Eng
 NETWORK = {"en": "Through long-standing cooperation with local law firms, we also advise in other countries across Europe, Asia, Africa and the Middle East.",
            "fr": "Grâce à une coopération de longue date avec des cabinets locaux, nous intervenons aussi dans d'autres pays d'Europe, d'Asie, d'Afrique et du Moyen-Orient.",
            "ko": "현지 로펌들과의 오랜 협력 관계를 통해 유럽, 아시아, 아프리카, 중동의 다른 국가에서도 자문을 제공합니다."}
-CLOSE = {"en": ("Tell us briefly what you need, in English, French or Korean.", "Discuss your matter"),
-         "fr": ("Décrivez-nous brièvement votre besoin, en français, en anglais ou en coréen.", "Parlez-nous de votre dossier"),
-         "ko": ("필요하신 내용을 한국어, 프랑스어, 영어로 간단히 알려 주세요.", "사안 상담하기")}
+CLOSE = {"en": ("Your business. Your challenges. Our legal expertise.", "Discuss your matter", "Get in touch in English, French or Korean."),
+         "fr": ("Votre activité. Vos enjeux. Notre expertise juridique.", "Parlez-nous de votre dossier", "Écrivez-nous en français, en anglais ou en coréen."),
+         "ko": ("귀사의 비즈니스. 귀사의 과제. 아르케의 법률 전문성.", "사안 상담하기", "한국어, 프랑스어, 영어로 문의해 주세요.")}
 
 
 def what_compact(lang):
@@ -360,7 +367,7 @@ def page_home(lang, t):
     press = ""
     if C.PRESS:
         press = f'''<section><div class="wrap"><div class="section-head"><h2>{e(h["press_h"])}</h2><p class="lede">{e(h["press_p"])}</p></div>
-<div class="press">''' + press_items(lang, C.PRESS[:C.PRESS_HOME], "../" * depth(lang, "home")) + f'</div><p style="margin-top:20px"><a href="{rel(lang, "home", lang, "insights")}">{e(h["press_more"])}</a></p></div></section>'
+<div class="press">''' + press_items(lang, (press_featured() or C.PRESS)[:4], "../" * depth(lang, "home")) + f'</div><p style="margin-top:20px"><a href="{rel(lang, "home", lang, "insights")}">{e(h["press_more"])}</a></p></div></section>'
     mt = ""
     if t.get("matters"):
         import experience6 as X6, content_services as CS
@@ -375,7 +382,7 @@ def page_home(lang, t):
     sig = SIGNATURE[lang]
     sig_html = (f'<section class="alt signature" aria-labelledby="sig-h"><div class="wrap"><div class="section-head"><p class="kicker">{e(sig["kicker"])}</p><h2 id="sig-h">{e(sig["h"])}</h2></div><div class="cols c2">'
                 f'<div class="sig-card"><h3>{e(HERITAGE[lang][0])}</h3><p>{e(HERITAGE[lang][1])}</p><a class="sig-link" href="{rel(lang, "home", lang, "insights")}#oegyujanggak">{e(sig["case_more"])} →</a></div>'
-                f'<div class="sig-card"><h3>{e(sig["first_h"])}</h3><p>{e(sig["first_p"])}</p><a class="sig-link" href="{rel(lang, "home", lang, "people")}#jk">{e(sig["first_more"])} →</a></div>'
+                f'<div class="sig-card"><h3>{e(sig["first_h"])}</h3><p>{e(sig["first_p"])}</p><p class="sig-src">{e(sig["src"])} ' + ", ".join(f'<a href="{e(p["url"])}" rel="noopener" target="_blank">{e(p["outlet"][lang])} ({e(p["date"][:4])})</a>' for p in press_featured()[:3]) + f'</p><a class="sig-link" href="{rel(lang, "home", lang, "insights")}#fp-h">{e(sig["first_more"])} →</a></div>'
                 '</div></div></section>')
     import team_profiles as TP
     team_cards = "".join(
@@ -385,7 +392,7 @@ def page_home(lang, t):
     team_html = (f'<section aria-labelledby="tm-h"><div class="wrap"><div class="section-head"><h2 id="tm-h">{e(TEAM_H[lang][0])}</h2><p class="lede">{e(TEAM_H[lang][1])}</p></div>'
                  f'<div class="tm-grid">{team_cards}</div></div></section>')
     close = CLOSE[lang]
-    close_html = (f'<section class="alt close-line"><div class="wrap"><p class="close-h">{e(close[0])}</p>'
+    close_html = (f'<section class="alt close-line"><div class="wrap"><div><h2 class="close-h">{e(close[0])}</h2><p class="close-p">{e(close[2])}</p></div>'
                   f'<a class="btn" href="{cta_href(lang, "home")}">{e(close[1])}</a></div></section>')
     primary = {"en": "Discuss your matter", "fr": "Parlez-nous de votre dossier", "ko": "사안 상담하기"}[lang]
     secondary = {"en": "Explore our expertise", "fr": "Découvrir nos expertises", "ko": "업무분야 보기"}[lang]
@@ -431,6 +438,8 @@ def page_services(lang, t):
                 lis = [f'<li><strong>{e(n)}</strong> — {e(tx)}</li>' for n, tx in data]
             elif kind == "names":
                 lis = [f'<li class="ex-names">{" · ".join(e(n) for n in data)}</li>']
+            elif kind == "text":
+                lis = [f'<li class="ex-names">{e(" · ".join(data))}</li>']
             else:
                 lis = [f'<li><strong>{e(c)}</strong> — {e(" · ".join(ns))}</li>' for c, ns in data]
             head, tail = "".join(lis[:3]), "".join(lis[3:])
@@ -451,8 +460,11 @@ def page_services(lang, t):
 
     import experience6 as X6
     figs, _ = X6.figures(lang)
-    fig_note = {"en": "Indicative figures, counted from the examples listed on this page.", "fr": "Chiffres indicatifs, comptés à partir des exemples cités sur cette page.", "ko": "참고용 수치이며, 이 페이지에 소개된 사례를 기준으로 집계했습니다."}[lang]
-    fig_html = '<div class="figs"><dl>' + "".join(f'<div><dt>{e(v)}</dt><dd>{e(l)}</dd></div>' for v, l in figs) + f'</dl><p class="figs-note">{e(fig_note)}</p></div>'
+    fig_note = {"en": "Indicative figures from the firm's records. Immigration is a yearly figure; the others count selected matters across the firm's history.", "fr": "Chiffres indicatifs issus des dossiers du cabinet. L'immigration est un chiffre annuel ; les autres recensent des dossiers choisis sur l'ensemble de l'histoire du cabinet.", "ko": "아르케 업무 기록에 따른 참고용 수치입니다. 취업 이민은 연간 수치이며, 나머지는 설립 이후 주요 사례를 집계한 것입니다."}[lang]
+    prof, _ = X6.client_profile(lang)
+    prof_h = {"en": "Client profile", "fr": "Profil des clients", "ko": "고객 구성"}[lang]
+    prof_html = f'<div class="profile"><p class="profile-h">{e(prof_h)}</p><dl>' + "".join(f'<div><dt>{e(a)}</dt><dd>{e(c)}</dd></div>' for a, c in prof) + '</dl></div>'
+    fig_html = '<div class="figs"><dl>' + "".join(f'<div><dt>{e(v)}</dt><dd>{e(l)}</dd></div>' for v, l in figs) + f'</dl>{prof_html}<p class="figs-note">{e(fig_note)}</p></div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(s["h1"])}</h1><p class="lede">{e(s["lede"])}</p>{fig_html}{idx}</div></div>
 <section style="padding-top:0"><div class="wrap" id="services-list">{items}</div><div class="wrap"><p class="xp-note">{e(X6.FOOTNOTE[lang])}</p></div></section>
 {services_js}
@@ -549,23 +561,43 @@ BRIDGE = {"en": "A boutique international law firm headquartered in Paris, worki
           "ko": "파리에 본사를 둔 부티크 국제 로펌으로, 국경을 넘나드는 기업을 한국어, 프랑스어, 영어로 지원합니다."}
 
 CASE = {
-    "en": {"kicker": "Signature historical case", "src": "Timeline from press coverage",
+    "en": {"kicker": "Signature historical case", "src": "Timeline from press coverage and a 2017 government case study",
            "rows": [("2007", "Restitution claim brought before the Paris Administrative Court in February."),
                     ("2009", "At the December hearing, the French State uses the word “pillage” for the first time."),
-                    ("2010", "Appeal filed in February after the first-instance ruling.")],
+                    ("2010", "Appeal filed on 24 February after the first-instance ruling. In November, the two heads of state announce the return of the manuscripts."),
+                    ("2011", "Transfer of the manuscripts to Korea completed in May.")],
+           "note": "Sources: press coverage listed on this page; National Human Resources Development Institute (Korea), case study on the Korea–France Oegyujanggak negotiation, September 2017.",
            "more": "See the coverage below"},
-    "fr": {"kicker": "Affaire historique", "src": "Chronologie d'après la presse",
+    "fr": {"kicker": "Affaire historique", "src": "Chronologie d'après la presse et une étude de cas gouvernementale (2017)",
            "rows": [("2007", "Requête en restitution déposée en février devant le tribunal administratif de Paris."),
                     ("2009", "À l'audience de décembre, l'État français emploie pour la première fois le mot « pillage »."),
-                    ("2010", "Appel interjeté en février après le jugement de première instance.")],
+                    ("2010", "Appel interjeté le 24 février après le jugement de première instance. En novembre, les deux chefs d'État annoncent le retour des manuscrits."),
+                    ("2011", "Transfert des manuscrits en Corée achevé en mai.")],
+           "note": "Sources : articles de presse cités sur cette page ; Institut national de développement des ressources humaines (Corée), étude de cas sur la négociation franco-coréenne relative à l'Oegyujanggak, septembre 2017.",
            "more": "Voir la couverture ci-dessous"},
-    "ko": {"kicker": "대표 역사 사건", "src": "언론 보도로 본 경과",
+    "ko": {"kicker": "대표 역사 사건", "src": "언론 보도 및 2017년 정부 사례 연구로 본 경과",
            "rows": [("2007", "2월, 파리 행정법원에 반환 청구 소송 제기."),
                     ("2009", "12월 변론에서 프랑스 정부가 처음으로 ‘약탈’이라는 표현을 사용."),
-                    ("2010", "2월, 1심 판결 후 항소 제기.")],
+                    ("2010", "2월 24일, 1심 판결 후 항소 제기. 11월, 한불 정상이 의궤 반환을 발표."),
+                    ("2011", "5월, 의궤의 한국 이관 완료.")],
+           "note": "출처: 이 페이지의 언론 보도, 국가공무원인재개발원 「한-프랑스 외규장각 의궤 반환협상 사례」(2017년 9월).",
            "more": "아래 보도 보기"},
 }
 
+
+
+FEATURED_H = {"en": ("Featured coverage", "One of the first Korean lawyers in France, as reported in the Korean press since 1998."),
+              "fr": ("À la une", "L'un des premiers avocats coréens en France, selon la presse coréenne depuis 1998."),
+              "ko": ("주요 보도", "1998년부터 국내 언론이 소개한 프랑스의 첫 한국인 변호사 중 한 명.")}
+
+
+def featured_block(lang, up):
+    items = press_featured()
+    if not items:
+        return ""
+    h, p = FEATURED_H[lang]
+    return (f'<section class="featured-press" aria-labelledby="fp-h"><div class="wrap"><div class="section-head"><h2 id="fp-h">{e(h)}</h2><p class="lede">{e(p)}</p></div>'
+            f'<div class="press">{press_items(lang, items, up)}</div></div></section>')
 
 def case_file(lang):
     c = CASE[lang]
@@ -573,7 +605,7 @@ def case_file(lang):
     return (f'<section class="case-file" id="oegyujanggak" aria-labelledby="cf-h"><div class="wrap cf-grid">'
             f'<div><p class="kicker cf-kicker">{e(c["kicker"])}</p><h2 id="cf-h">{e(HERITAGE[lang][0])}</h2><p class="lede">{e(HERITAGE[lang][1])}</p>'
             f'<p class="cf-more"><a href="#press-heritage">{e(c["more"])} ↓</a></p></div>'
-            f'<div class="cf-panel"><p class="cf-src">{e(c["src"])}</p><ol class="cf-timeline">{rows}</ol></div></div></section>')
+            f'<div class="cf-panel"><p class="cf-src">{e(c["src"])}</p><ol class="cf-timeline">{rows}</ol><p class="cf-note">{e(c.get("note", ""))}</p></div></div></section>')
 
 
 def page_insights(lang, t):
@@ -601,6 +633,7 @@ def page_insights(lang, t):
         ])
     follow_rows = f'<div class="fc-list">{follow_rows}</div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p></div></div>
+{featured_block(lang, up)}
 {case_file(lang)}
 
 <section><div class="wrap"><h2>{e(i["press_h"])}</h2>{press}</div></section>

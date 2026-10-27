@@ -129,7 +129,7 @@ PRESS = [
      "about": {"en": "After the first-instance ruling: the appeal and the French State's acknowledgement of 'pillage'",
                "fr": "Après le jugement de première instance : l'appel et la reconnaissance du « pillage » par l'État français"}},
     {"date": "2010-02-26", "outlet": _o("Seoul Shinmun", "서울신문"), "lang": "ko",
-     "url": "http://www.seoul.co.kr/news/newsView.php?id=20100226029023",
+     "url": "https://www.seoul.co.kr/news/society/2010/02/26/20100226029023",
      "title": "佛행정법원에 외규장각 문서반환 항소한 김중호 변호사",
      "about": {"en": "Appeal in the Oegyujanggak royal manuscripts restitution case against the French State",
                "fr": "Appel dans l'action en restitution des manuscrits royaux de l'Oegyujanggak contre l'État français"}},
@@ -214,6 +214,73 @@ PRESS = [
      "about": {"en": "The first Korean to qualify as a lawyer in France",
                "fr": "Le premier Coréen à obtenir le titre d'avocat en France"}},
 ]
+PRESS += [
+    {"date": "2017-10-12", "outlet": _o("Legal Times", "리걸타임즈"), "lang": "ko",
+     "url": "https://www.legaltimes.co.kr/news/articleView.html?idxno=34302",
+     "title": "프랑스서 로펌 운영하는 김중호 변호사",
+     "about": {"en": "Profile: the first Korean to become a French lawyer, on running a law firm in France",
+               "fr": "Portrait : le premier Coréen devenu avocat en France, à la tête d'un cabinet à Paris",
+               "ko": "한국인 최초의 프랑스 변호사, 프랑스에서 로펌을 운영하는 김중호 변호사"}},
+    {"date": "1998", "outlet": _o("JoongAng Ilbo", "중앙일보"), "lang": "ko",
+     "url": "https://www.joongang.co.kr/article/3752927",
+     "title": "김중호씨, 美·佛 변호사 자격증 동시취득",
+     "about": {"en": "The first Korean national to qualify as both a US and a French lawyer",
+               "fr": "Le premier ressortissant coréen à obtenir à la fois les qualifications d'avocat aux États-Unis et en France",
+               "ko": "한국 국적자로는 처음으로 미국과 프랑스 변호사 자격을 동시에 취득"}},
+]
+PRESS.sort(key=lambda p: p["date"], reverse=True)
+
+PRESS += [
+    {"date": "2023-05", "outlet": _o("Gallery M9", "갤러리 엠나인", "Galerie M9"), "lang": "ko",
+     "url": "https://gallerym9.com/somme-des-parties-m-",
+     "title": "Somme des Parties: Récupération et Unité",
+     "about": {"en": "K-Art exhibition in Paris hosted by the CCICF, chaired by James Joong-ho Kim, with Sisley (22 May–30 June 2023)",
+               "fr": "Exposition K-Art à Paris organisée par la CCICF, présidée par James Joong-ho Kim, avec Sisley (22 mai–30 juin 2023)",
+               "ko": "김중호 회장의 한불상공회의소 주최, 시슬리 그룹과 함께한 파리 K-Art 특별전(2023.5.22–6.30)"}},
+    {"date": "2017", "outlet": _o("Place de Paris", "파리 광장"), "lang": "ko",
+     "url": "https://placedeparis.com/community/bbs/board.php?bo_table=news_issue&wr_id=1402",
+     "title": "주 프랑스 한불상공회의소 주최 제 12회 2017 취업 및 창업 세미나",
+     "about": {"en": "CCICF's 12th jobs and start-up seminar: James Joong-ho Kim on company formation and administrative procedures in France",
+               "fr": "12ᵉ séminaire emploi et création d'entreprise de la CCICF : James Joong-ho Kim sur la création de société et les démarches en France",
+               "ko": "한불상공회의소 제12회 취업·창업 세미나: 김중호 변호사의 프랑스 법인 설립 및 행정 절차 강연"}},
+    {"date": "2015-06-12", "outlet": _o("France Zone", "프랑스존"), "lang": "ko",
+     "url": "https://www.francezone.com/news/articleView.html?idxno=664353",
+     "title": "김중호 변호사, 프랑스 체류관련 생활법률 설명회",
+     "about": {"en": "Legal information session at the Embassy of Korea for Koreans living in France: residence permits, leases and starting a business",
+               "fr": "Séance d'information juridique à l'Ambassade de Corée pour les Coréens de France : titres de séjour, baux et création d'entreprise",
+               "ko": "주프랑스 대한민국 대사관에서 열린 교민 대상 생활법률 설명회: 체류증, 임대차, 창업"}},
+]
+PRESS.sort(key=lambda p: p["date"], reverse=True)
+
+PRESS += [
+    {"date": "2007-02-07", "outlet": _o("France Zone", "프랑스존"), "lang": "ko",
+     "url": "https://www.francezone.com/news/articleView.html?idxno=95669",
+     "title": "김중호 변호사, 9일 외규장각 도서 반환 소송",
+     "about": {"en": "Announcement of the Oegyujanggak restitution claim against the French State, to be filed on 9 February 2007",
+               "fr": "Annonce de l'action en restitution de l'Oegyujanggak contre l'État français, déposée le 9 février 2007",
+               "ko": "2007년 2월 9일 프랑스 정부 상대 외규장각 도서 반환 소송 제기 예고"}},
+]
+PRESS.sort(key=lambda p: p["date"], reverse=True)
+
+PRESS += [
+    {"date": "2010-02-26", "outlet": _o("Munhwa Journal 21", "문화저널21"), "lang": "ko",
+     "url": "https://www.mhj21.com/news/articleView.html?idxno=25877",
+     "title": "문화연대 \"영구임대는 무슨? 반드시 돌려받겠다!\"",
+     "about": {"en": "Appeal filed in the Oegyujanggak restitution case: the first claim for looted cultural property brought by a civil society group",
+               "fr": "Appel dans l'affaire de l'Oegyujanggak : la première action en restitution de biens culturels pillés menée par une association",
+               "ko": "외규장각 반환 소송 항소: 민간단체가 제기한 최초의 약탈 문화재 소송"}},
+]
+PRESS.sort(key=lambda p: p["date"], reverse=True)
+
+# Coverage shown first on the Press page and on the home page.
+PRESS_FEATURED = [
+    "https://www.joongang.co.kr/article/3752927",
+    "https://www.lawtimes.co.kr/news/articleView.html?idxno=98725",
+    "https://www.legaltimes.co.kr/news/articleView.html?idxno=34302",
+    "https://www.yna.co.kr/view/AKR20080910160900005",
+    "https://www.seoul.co.kr/news/society/2010/02/26/20100226029023",
+    "http://www.legaltimes.co.kr/news/articleView.html?idxno=89709",
+]
 PRESS_HOME = 3  # how many of the latest items the home page shows
 
 # Legal notice fields (French law requires these). Fill them in; build.py warns about blanks.
@@ -287,9 +354,16 @@ GALLERY = [
 
 # Press theme per article (used to group the Press page); keyed by URL
 PRESS_THEME = {
+    'https://www.mhj21.com/news/articleView.html?idxno=25877': 'heritage',
+    'https://www.francezone.com/news/articleView.html?idxno=95669': 'heritage',
+    'https://gallerym9.com/somme-des-parties-m-': 'business',
+    'https://placedeparis.com/community/bbs/board.php?bo_table=news_issue&wr_id=1402': 'business',
+    'https://www.francezone.com/news/articleView.html?idxno=664353': 'law',
+    'https://www.legaltimes.co.kr/news/articleView.html?idxno=34302': 'profile',
+    'https://www.joongang.co.kr/article/3752927': 'profile',
     'https://www.khan.co.kr/article/201002281735075': 'heritage',
     'https://www.donga.com/news/Culture/article/all/20100225/26453075/1': 'heritage',
-    'http://www.seoul.co.kr/news/newsView.php?id=20100226029023': 'heritage',
+    'https://www.seoul.co.kr/news/society/2010/02/26/20100226029023': 'heritage',
     'https://n.news.naver.com/mnews/article/079/0002133525': 'heritage',
     'https://n.news.naver.com/mnews/article/003/0003107446?sid=102': 'heritage',
     'https://www.donga.com/news/article/all/20091216/24831994/1': 'heritage',

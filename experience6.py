@@ -205,6 +205,9 @@ def examples(lang):
     }
 
 
+IMMIGRATION_CLIENTS_STATED = "200+"  # stated by the firm, Oct 2026
+
+
 def figures(lang):
     """Indicative figures counted from the lists above (rounded down to the nearest 5, shown with '+')."""
     def plus(n):
@@ -215,11 +218,12 @@ def figures(lang):
     emp = len({n for n, _ in RESTRUCTURING} | set(EMP_LITIGATION) | set(EMP_ADVISORY) | set(EMP_CONTRACTS))
     imm = len(set(IMMIGRATION_CLIENTS))
     labels = {
-        "en": ["years of practice", "companies and institutions supported in France", "transactions and international projects", "disputes and arbitrations", "employers advised on employment law", "clients supported on immigration"],
-        "fr": ["ans d'exercice", "entreprises et institutions accompagnées en France", "opérations et projets internationaux", "litiges et arbitrages", "employeurs conseillés en droit du travail", "clients accompagnés en immigration"],
-        "ko": ["년 이상의 경력", "프랑스 진출 지원 기업·기관", "거래 및 국제 프로젝트", "분쟁·중재 사건", "노동 자문 고객", "취업 이민 지원 고객"],
+        "en": ["years of practice", "companies and institutions supported in France", "transactions and international projects", "disputes and arbitrations", "employers advised on employment law", "clients supported on immigration each year", "industry sectors"],
+        "fr": ["ans d'exercice", "entreprises et institutions accompagnées en France", "opérations et projets internationaux", "litiges et arbitrages", "employeurs conseillés en droit du travail", "clients accompagnés en immigration chaque année", "secteurs d'activité"],
+        "ko": ["년 이상의 경력", "프랑스 진출 지원 기업·기관", "거래 및 국제 프로젝트", "분쟁·중재 사건", "노동 자문 고객", "연간 취업 이민 지원 고객", "산업 분야"],
     }[lang]
-    vals = ["25+", plus(entry), plus(deals), plus(cases), plus(emp), plus(imm)]
+    # Immigration: the firm's own count of clients supported (more than 200), not just the names listed.
+    vals = ["25+", plus(entry), plus(deals), plus(cases), plus(emp), IMMIGRATION_CLIENTS_STATED, plus(len(SECTORS_COVERED["en"]))]
     return list(zip(vals, labels)), {"entry": entry, "deals": deals, "cases": cases, "emp": emp, "imm": imm}
 
 
@@ -229,3 +233,185 @@ def featured(lang):
     first = lambda sid, k=0: "{}: {}".format(*[b for b in ex[sid] if b[0] == "rows"][0][2][k])
     return [("ma", first("ma")), ("advice", first("advice")), ("litigation", first("litigation")),
             ("litigation", first("litigation", 1)), ("employment", first("employment")), ("ma", first("ma", 2))]
+
+
+# ---------------------------------------------------------------------------
+# Anonymisation (firm's instruction, Oct 2026): no company or counterparty names in examples.
+# ANON maps each client name to a neutral descriptor; DESC_ANON replaces descriptions that name a counterparty.
+ANON = {
+ "Naver Corporation (Korea)": T("Korean internet group", "Groupe internet coréen", "한국 인터넷 그룹"),
+ "Naver France": T("French subsidiary of a Korean internet group", "Filiale française d'un groupe internet coréen", "한국 인터넷 그룹의 프랑스 법인"),
+ "Korean Asset Management & Energy Consortium": T("Korean asset management and energy consortium", "Consortium coréen de gestion d'actifs et d'énergie", "한국 자산운용·에너지 컨소시엄"),
+ "Korean Group D": T("Korean group", "Groupe coréen", "한국 그룹"),
+ "KEPCO & KHNP (Korea)": T("Korean state-owned power companies", "Énergéticiens publics coréens", "한국 전력 공기업"),
+ "Systra SA (France)": T("French state-owned engineering group", "Groupe public français d'ingénierie", "프랑스 국영 엔지니어링 그룹"),
+ "Systra SA": T("French state-owned engineering group", "Groupe public français d'ingénierie", "프랑스 국영 엔지니어링 그룹"),
+ "INSEEC Group (France)": T("French education group", "Groupe français d'enseignement", "프랑스 교육 그룹"),
+ "Samsung Climate Control Co.": T("Korean automotive climate-control manufacturer", "Fabricant coréen de systèmes de climatisation automobile", "한국 자동차 공조 부품 제조사"),
+ "Samsung C&T": T("Korean trading and construction group", "Groupe coréen de négoce et de construction", "한국 종합상사·건설 그룹"),
+ "Samsung C&T France": T("French subsidiary of a Korean trading group", "Filiale française d'un groupe coréen de négoce", "한국 종합상사의 프랑스 법인"),
+ "Samsung Otelinox (Romania)": T("Romanian steel subsidiary of a Korean group", "Filiale sidérurgique roumaine d'un groupe coréen", "한국 그룹의 루마니아 철강 계열사"),
+ "Samsung Otelinox Romania": T("Romanian steel subsidiary of a Korean group", "Filiale sidérurgique roumaine d'un groupe coréen", "한국 그룹의 루마니아 철강 계열사"),
+ "Samsung Techwin (Korea)": T("Korean imaging and electronics manufacturer", "Fabricant coréen d'imagerie et d'électronique", "한국 영상·전자 제조사"),
+ "Samsung Techwin France": T("French subsidiary of a Korean imaging manufacturer", "Filiale française d'un fabricant coréen d'imagerie", "한국 영상 기기 제조사의 프랑스 법인"),
+ "Samsung Techwin UK": T("UK subsidiary of a Korean imaging manufacturer", "Filiale britannique d'un fabricant coréen d'imagerie", "한국 영상 기기 제조사의 영국 법인"),
+ "Korean Mobile Phone Manufacturer": T("Korean mobile phone manufacturer", "Fabricant coréen de téléphones mobiles", "한국 휴대폰 제조사"),
+ "Singapore-based IT & Media Group": T("Singapore-based IT and media group", "Groupe informatique et médias basé à Singapour", "싱가포르 소재 IT·미디어 그룹"),
+ "SG": T("Industrial buyer", "Repreneur industriel", "산업 인수자"),
+ "AIF Group": T("Logistics group", "Groupe logistique", "물류 그룹"),
+ "Delitoon": T("Webtoon publisher", "Éditeur de webtoons", "웹툰 플랫폼"),
+ "KOSDAQ-listed webtoon company": T("KOSDAQ-listed content company", "Société de contenus cotée au KOSDAQ", "코스닥 상장 콘텐츠 기업"),
+ "Hanall Pharma": T("Korean pharmaceutical company", "Laboratoire pharmaceutique coréen", "한국 제약사"),
+ "Hanmi Pharma Group": T("Korean pharmaceutical group", "Groupe pharmaceutique coréen", "한국 제약 그룹"),
+ "Modetour": T("Korean travel group", "Groupe de voyages coréen", "한국 여행 그룹"),
+ "KBS Media": T("Korean broadcasting group", "Groupe audiovisuel coréen", "한국 방송 그룹"),
+ "Korean Company J": T("Korean fashion company", "Société de mode coréenne", "한국 패션 기업"),
+ "Korean Consortium": T("Korean consortium", "Consortium coréen", "한국 컨소시엄"),
+ "Company D": T("Consumer goods company", "Société de biens de consommation", "소비재 기업"),
+ "LG Corporation": T("Korean holding company", "Holding coréenne", "한국 지주회사"),
+ "KEPCO E&C": T("Korean power engineering company", "Société coréenne d'ingénierie électrique", "한국 전력 엔지니어링 기업"),
+ "KEPCO": T("Korean state-owned power utility", "Énergéticien public coréen", "한국 전력 공기업"),
+ "Samsung SDI / EDF": T("Korean battery maker, with a French power utility", "Fabricant coréen de batteries, avec un électricien français", "한국 배터리 제조사(프랑스 전력회사와 함께)"),
+ "POSCO E&C": T("Korean engineering and construction company", "Société coréenne d'ingénierie et de construction", "한국 엔지니어링·건설사"),
+ "Korea Aerospace Industries (KAI)": T("Korean aerospace manufacturer", "Constructeur aéronautique coréen", "한국 항공우주 제조사"),
+ "Korean Air": T("Korean airline", "Compagnie aérienne coréenne", "한국 항공사"),
+ "Korean Air France": T("French branch of a Korean airline", "Représentation française d'une compagnie aérienne coréenne", "한국 항공사의 프랑스 지사"),
+ "LG Chem": T("Korean chemicals and battery group", "Groupe coréen de chimie et de batteries", "한국 화학·배터리 그룹"),
+ "Korean Government": T("Korean public authority", "Autorité publique coréenne", "한국 공공기관"),
+ "TUOK Group (Hong Kong)": T("Hong Kong hospitality group", "Groupe hôtelier hongkongais", "홍콩 호텔 그룹"),
+ "Hynix Germany": T("German subsidiary of a Korean semiconductor group", "Filiale allemande d'un groupe coréen de semi-conducteurs", "한국 반도체 그룹의 독일 법인"),
+ "Kumho Tire France": T("French subsidiary of a Korean tyre maker", "Filiale française d'un fabricant coréen de pneumatiques", "한국 타이어 제조사의 프랑스 법인"),
+ "Nexen Tire": T("Korean tyre maker", "Fabricant coréen de pneumatiques", "한국 타이어 제조사"),
+ "Pantos": T("Korean logistics company", "Société coréenne de logistique", "한국 물류 기업"),
+ "Korean Investors Consortium": T("Korean investors' consortium", "Consortium d'investisseurs coréens", "한국 투자자 컨소시엄"),
+ "Korean Investor": T("Korean investor", "Investisseur coréen", "한국 투자자"),
+ "Korean Company S": T("Korean shipbuilder", "Constructeur naval coréen", "한국 조선사"),
+ "Korean Company D": T("Korean defence company", "Société coréenne de défense", "한국 방산 기업"),
+ "The People of Korea": T("Korean claimants", "Demandeurs coréens", "한국 측 원고"),
+ "Company K": T("Korean construction company", "Entreprise coréenne de construction", "한국 건설사"),
+ "Daelim Industrial": T("Korean engineering and construction company", "Société coréenne d'ingénierie et de construction", "한국 엔지니어링·건설사"),
+ "Dongbu Group": T("Korean industrial group", "Groupe industriel coréen", "한국 산업 그룹"),
+ "Dongbu Hitek": T("Korean semiconductor foundry", "Fonderie coréenne de semi-conducteurs", "한국 반도체 파운드리"),
+ "Korean Ministry of National Defense & Navy": T("Korean public authority", "Autorité publique coréenne", "한국 공공기관"),
+ "Group G (Germany)": T("German semiconductor group", "Groupe allemand de semi-conducteurs", "독일 반도체 그룹"),
+ "Indako (Indonesia)": T("Indonesian developer", "Promoteur indonésien", "인도네시아 개발사"),
+ "Sangji Construction": T("Korean construction company", "Entreprise coréenne de construction", "한국 건설사"),
+ "Samsung Electronics": T("Korean electronics group", "Groupe coréen d'électronique", "한국 전자 그룹"),
+ "Samsung Electronics France": T("French subsidiary of a Korean electronics group", "Filiale française d'un groupe coréen d'électronique", "한국 전자 그룹의 프랑스 법인"),
+ "Samsung Electro-Mechanics France": T("French subsidiary of a Korean components maker", "Filiale française d'un fabricant coréen de composants", "한국 부품 제조사의 프랑스 법인"),
+ "Samsung CP Inox France": T("French steel subsidiary of a Korean group", "Filiale sidérurgique française d'un groupe coréen", "한국 그룹의 프랑스 철강 계열사"),
+ "Dongbu Fire Insurance": T("Korean insurer", "Assureur coréen", "한국 보험사"),
+ "Meritz Insurance": T("Korean insurer", "Assureur coréen", "한국 보험사"),
+ "Vatech": T("Korean dental equipment manufacturer", "Fabricant coréen d'équipements dentaires", "한국 치과 장비 제조사"),
+ "Hyosung Corp.": T("Korean industrial group", "Groupe industriel coréen", "한국 산업 그룹"),
+ "HJC Helmet": T("Korean helmet manufacturer", "Fabricant coréen de casques", "한국 헬멧 제조사"),
+ "Seoul National Opera": T("Korean cultural institution", "Institution culturelle coréenne", "한국 문화 기관"),
+ "Atelier Choux": T("French fashion brand", "Marque de mode française", "프랑스 패션 브랜드"),
+ "LG Electronics France": T("French subsidiary of a Korean electronics group", "Filiale française d'un groupe coréen d'électronique", "한국 전자 그룹의 프랑스 법인"),
+ "LG Mobile R&D France": T("French R&D centre of a Korean electronics group", "Centre de R&D français d'un groupe coréen d'électronique", "한국 전자 그룹의 프랑스 연구소"),
+ "Naver Labs Europe": T("European AI research laboratory of a Korean internet group", "Laboratoire européen de recherche en IA d'un groupe internet coréen", "한국 인터넷 그룹의 유럽 AI 연구소"),
+ "Louis Quatorze France": T("French subsidiary of a Korean leather goods brand", "Filiale française d'une marque coréenne de maroquinerie", "한국 가죽 제품 브랜드의 프랑스 법인"),
+}
+
+DESC_ANON = {
+ ("Samsung Climate Control Co.", "Equity sale"): T("Equity sale to the French affiliate of a European automotive supplier through share and asset transfers.", "Cession de participation à la filiale française d'un équipementier automobile européen par transferts d'actions et d'actifs.", "유럽 자동차 부품 그룹의 프랑스 계열사 대상 주식·자산 이전을 통한 지분 매각"),
+ ("Samsung C&T", "Partnership with PSA"): T("Partnership with a French carmaker for aluminium wheel development and production.", "Partenariat avec un constructeur automobile français pour le développement et la production de jantes en aluminium.", "프랑스 자동차 제조사와의 알루미늄 휠 개발·생산 파트너십"),
+ ("Samsung C&T France", "Transfer of the petrochemical"): T("Transfer of the petrochemical business to a German affiliate.", "Transfert de l'activité pétrochimique à une société sœur allemande.", "석유화학 사업의 독일 계열사 이전"),
+ ("Samsung Techwin (Korea)", "Acquisition of the digital"): T("Acquisition of a digital camera business from a group affiliate in France.", "Reprise d'une activité d'appareils photo numériques auprès d'une société sœur en France.", "프랑스 계열사로부터 디지털카메라 사업 인수"),
+ ("SG", "Acquisition of L Foundry"): T("Acquisition of a semiconductor foundry's production assets through judicial auction.", "Acquisition des actifs de production d'une fonderie de semi-conducteurs par adjudication judiciaire.", "법원 경매를 통한 반도체 파운드리 생산 자산 인수"),
+ ("Korean Company J", "Tender"): T("Tender for the acquisition of a French fashion house's brand and assets.", "Offre de reprise de la marque et des actifs d'une maison de mode française.", "프랑스 패션 하우스의 브랜드 및 자산 인수 입찰"),
+ ("KEPCO & KHNP (Korea)", "JV share transfer"): T("JV share transfer with a French nuclear group for a uranium project in Niger.", "Cession de parts de joint-venture avec un groupe nucléaire français pour un projet d'uranium au Niger.", "니제르 우라늄 프로젝트 관련 프랑스 원자력 그룹과의 합작사 지분 양수도"),
+ ("KEPCO E&C", "French business expansion"): T("French business expansion and the international nuclear fusion project in southern France.", "Développement en France et projet international de fusion nucléaire dans le sud de la France.", "프랑스 사업 확장 및 남프랑스 국제핵융합 프로젝트"),
+ ("LG Chem", "Investment in French electric"): T("Investment in French battery projects and partnership with a French carmaker.", "Investissement dans des projets français de batteries et partenariat avec un constructeur automobile français.", "프랑스 배터리 프로젝트 투자 및 프랑스 자동차 제조사와의 파트너십"),
+ ("TUOK Group (Hong Kong)", "Renovation"): T("Renovation and opening of a five-star hotel in Paris.", "Rénovation et ouverture d'un hôtel cinq étoiles à Paris.", "파리 5성급 호텔 리노베이션 및 개관"),
+ ("Daelim Industrial", "Litigation concerning a guarantee"): T("Litigation concerning a guarantee bond issued by a French bank for a Saudi Arabian project.", "Contentieux relatif à une garantie émise par une banque française pour un projet en Arabie saoudite.", "사우디 프로젝트 관련 프랑스 은행 발행 보증 이행 소송"),
+ ("Dongbu Group", "Multi-level"): T("Multi-level litigation against a French telecoms group concerning defective mobile phone baseband chips; claim valued at approximately US$100 million.", "Contentieux à plusieurs degrés contre un groupe français de télécoms au sujet de puces de bande de base défectueuses ; demande évaluée à environ 100 millions de dollars.", "휴대폰 베이스밴드 칩 하자 관련 프랑스 통신 그룹 상대 다단계 소송(청구액 약 1억 달러)"),
+}
+
+
+def _anon_rows(rows, lang):
+    out = []
+    for name, d in rows:
+        who = ANON.get(name, T(name, name, name))[lang]
+        desc = next((v[lang] for (n, pre), v in DESC_ANON.items() if n == name and d["en"].startswith(pre)), d[lang])
+        out.append((who, desc))
+    return out
+
+
+_COUNT = lambda names: len(set(names))
+
+
+def examples(lang):
+    """Key examples per practice area id, anonymised. Blocks: ("rows", subtitle, [(descriptor, text)]) or ("text", subtitle, [lines])."""
+    g = lambda k: L[k][lang]
+    n = lambda k: {"en": "{} employers", "fr": "{} employeurs", "ko": "{}곳"}[lang].format(k)
+    cats = [f"{c[lang]} ({len(names)})" for c, names in ENTRY]
+    imm = {"en": "More than 200 clients a year, including Korean groups, airlines, broadcasters, public bodies and mid-sized companies.",
+           "fr": "Plus de 200 clients par an, dont des groupes coréens, des compagnies aériennes, des chaînes de télévision, des organismes publics et des ETI.",
+           "ko": "매년 200곳 이상의 고객 지원(한국 그룹사, 항공사, 방송사, 공공기관, 중견기업 등)."}[lang]
+    return {
+        "corporate": [("text", g("entry"), cats)],
+        "ma": [("rows", g("deals"), _anon_rows(_DEALS, lang))],
+        "commercial": [("rows", g("partners"), _anon_rows(_COMM_DEALS + _COMM_PROJ, lang)), ("rows", g("cdisp"), _anon_rows(_COMM_CASES, lang))],
+        "employment": [("rows", g("emp_r"), _anon_rows(RESTRUCTURING, lang)),
+                       ("text", g("emp_l"), [n(_COUNT(EMP_LITIGATION))]),
+                       ("text", g("emp_a"), [n(_COUNT(EMP_ADVISORY))]),
+                       ("text", g("emp_c"), [n(_COUNT(EMP_CONTRACTS))]),
+                       ("text", L["imm_c"][lang].split(":")[0].split(" :")[0], [imm])],
+        "litigation": [("rows", g("cases"), _anon_rows(_CASES, lang))],
+        "insolvency": [("rows", g("ins"), _anon_rows(_INSOLV_CASES + _INSOLV_DEALS, lang))],
+        "ip": [("rows", g("ip"), _anon_rows(_IP_CASES + _IP_DEALS, lang))],
+        "advice": [("rows", g("proj"), _anon_rows(_PROJ, lang))],
+    }
+
+
+# ---------------------------------------------------------------------------
+# Client profile statistics (firm's instruction, Oct 2026). Classification of the firm's client list (ENTRY) by
+# size and nationality; names are never displayed. Default: Korean. Sizes: large / mid (mid-sized & SMEs) / startup / public.
+_SIZE_BY_CAT = {0: "large", 1: "mid", 11: "startup", 10: "public"}
+_SIZE = {
+ "Hyundai Motor": "large", "Kia": "large", "Kumho Tire": "large", "Nexen Tire": "large", "Hankook Tire": "large", "Wooshin Systems": "mid",
+ "Korean Air": "large", "Asiana Airlines": "large", "T'way Air (Trinity)": "mid", "LX Pantos": "large", "AIF": "mid", "FC Logistique": "mid",
+ "Samsung Securities": "large", "Samchully Asset Management": "mid", "Woori Investment": "large", "Hana Bank (KEB)": "large", "BNP Paribas": "large", "Société Générale": "large",
+ "MBC": "large", "SBS": "large", "KBS": "large", "KBS Media": "large", "Iyuno Media Group": "mid",
+ "Delitoon": "mid", "Kidari Studio": "mid", "Osstem Implant": "large", "Hanmi Pharm": "large", "Hanall Biopharma": "mid",
+ "BLD": "mid", "LBM Corp. (London Bagel Museum)": "mid", "Red Deli (Suzie Cuisine)": "mid", "Terarosa": "mid",
+ "Solid Homme & Wooyoungmi": "mid", "Songzio": "mid", "DHC Group": "large", "Yonwoo": "mid", "LG H&H": "large", "Amorepacific": "large", "Newlife (China)": "mid",
+}
+_NATION = {"BNP Paribas": "fr", "Société Générale": "fr", "FC Logistique": "fr", "Delitoon": "fr", "French National Olympic Committee": "fr",
+           "DHC Group": "other", "Newlife (China)": "other"}
+
+# Industry sectors in which the firm has acted, each traceable to the examples and client list above.
+SECTORS_COVERED = T(
+ ["Electronics and semiconductors", "Batteries and energy storage", "Chemicals and petrochemicals", "Energy and nuclear", "Automotive and tyres", "Aerospace and defence", "Shipbuilding", "Construction and infrastructure", "Rail and transport", "Airlines and logistics", "Banking, asset management and insurance", "Broadcasting and media", "Internet, AI and webtoons", "Telecoms", "Pharmaceuticals and biotech", "Medical and dental devices", "Food and beverage", "Fashion and luxury", "Cosmetics", "Hospitality and travel", "Real estate", "Steel and metals", "Education", "Culture and the arts", "Public sector"],
+ ["Électronique et semi-conducteurs", "Batteries et stockage d'énergie", "Chimie et pétrochimie", "Énergie et nucléaire", "Automobile et pneumatiques", "Aéronautique et défense", "Construction navale", "Construction et infrastructures", "Ferroviaire et transport", "Aérien et logistique", "Banque, gestion d'actifs et assurance", "Audiovisuel et médias", "Internet, IA et webtoons", "Télécommunications", "Pharmacie et biotechnologies", "Dispositifs médicaux et dentaires", "Restauration et boissons", "Mode et luxe", "Cosmétiques", "Hôtellerie et voyage", "Immobilier", "Sidérurgie et métaux", "Enseignement", "Culture et arts", "Secteur public"],
+ ["전자·반도체", "배터리·에너지 저장", "화학·석유화학", "에너지·원자력", "자동차·타이어", "항공우주·방산", "조선", "건설·인프라", "철도·운송", "항공·물류", "은행·자산운용·보험", "방송·미디어", "인터넷·AI·웹툰", "통신", "제약·바이오", "의료·치과 기기", "식음료", "패션·명품", "화장품", "호텔·여행", "부동산", "철강·금속", "교육", "문화·예술", "공공 부문"])
+
+
+def client_profile(lang):
+    """Counts by size and nationality over the firm's client list (ENTRY), plus the number of sectors."""
+    seen, size, nat = set(), {}, {}
+    for i, (_, names) in enumerate(ENTRY):
+        for n in names:
+            if n in seen:
+                continue
+            seen.add(n)
+            s = _SIZE.get(n) or _SIZE_BY_CAT.get(i, "mid")
+            size[s] = size.get(s, 0) + 1
+            k = _NATION.get(n, "kr")
+            nat[k] = nat.get(k, 0) + 1
+    lab = {
+        "en": {"size": "By company size", "nat": "By nationality", "sec": "Industry sectors",
+               "large": "large groups", "mid": "mid-sized companies and SMEs", "startup": "startups", "public": "public bodies and institutions",
+               "kr": "Korean", "fr": "French", "other": "other (Japan, China)"},
+        "fr": {"size": "Par taille", "nat": "Par nationalité", "sec": "Secteurs d'activité",
+               "large": "grands groupes", "mid": "ETI et PME", "startup": "startups", "public": "organismes publics et institutions",
+               "kr": "coréens", "fr": "français", "other": "autres (Japon, Chine)"},
+        "ko": {"size": "기업 규모별", "nat": "국적별", "sec": "산업 분야",
+               "large": "대기업", "mid": "중견·중소기업", "startup": "스타트업", "public": "공공기관",
+               "kr": "한국", "fr": "프랑스", "other": "기타(일본, 중국)"},
+    }[lang]
+    size_line = " · ".join(f"{size[k]} {lab[k]}" for k in ("large", "mid", "startup", "public") if size.get(k))
+    nat_line = " · ".join(f"{nat[k]} {lab[k]}" for k in ("kr", "fr", "other") if nat.get(k))
+    sectors = SECTORS_COVERED[lang]
+    return [(lab["size"], size_line), (lab["nat"], nat_line), (lab["sec"], f"{len(sectors)}: " + ", ".join(sectors))], len(sectors)
