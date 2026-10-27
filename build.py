@@ -311,13 +311,13 @@ def page_insights(lang, t):
             figs += (f'<figure><img src="{up}{e(g["src"])}" alt="{e(g["alt"][lang])}" width="{g["w"]}" height="{g["h"]}" loading="lazy" decoding="async">'
                      f'<figcaption>{e(g["caption"][lang])}{when}</figcaption></figure>')
         gallery = f'<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(i["gallery_h"])}</h2></div><div class="gallery">{figs}</div></div></section>'
+    links = " · ".join(f'<a href="{e(u)}" rel="noopener">{e(l)}</a>' for l, u in C.HK_LINKS if l in ("SSRN", "ORCID"))
     return f'''<div class="page-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p></div></div>
-<section style="padding-top:0"><div class="wrap cols c2">
-<div><h2>{e(i["press_h"])}</h2><div class="press">{press}</div>
-<h2 style="margin-top:2em">{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul>{events}</ul></div>
-<div><h2>{e(i["follow_h"])}</h2><p>{e(i["follow_p"])}</p><p><a class="btn ghost" href="{C.LINKEDIN}" rel="noopener">{e(i["follow_cta"])}</a></p><p>{" · ".join(f'<a href="{e(u)}" rel="noopener">{e(l)}</a>' for l, u in C.HK_LINKS if l in ("SSRN", "ORCID"))}</p>
-<h2 style="margin-top:2em">{e(i["ask_h"])}</h2><p>{e(i["ask_p"])}</p><p><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p></div>
+<section style="padding-top:0"><div class="wrap">
+<h2>{e(i["follow_h"])}</h2><p>{e(i["follow_p"])}</p><p><a class="btn ghost" href="{C.LINKEDIN}" rel="noopener">{e(i["follow_cta"])}</a></p><p>{links}</p>
 </div></section>
+<section><div class="wrap"><h2>{e(i["press_h"])}</h2><div class="press">{press}</div></div></section>
+<section class="alt"><div class="wrap"><h2>{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul>{events}</ul></div></section>
 {gallery}'''
 
 
