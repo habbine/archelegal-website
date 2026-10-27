@@ -45,13 +45,13 @@ X["en"] = {
           "Projects for public institutions"]),
     ],
     "people_lede": "Lawyers based in Paris who work every day with clients and institutions in Korea, Hong Kong and France.",
-    "roles": {"jk": "Founder and Managing Partner", "hk": "Partner", "dk": "International jurist"},
+    "roles": {"jk": "Founder and Managing Partner", "hk": "Partner", "dk": "Of Counsel"},
     "bios": {
         "jk": ["Admitted at the Paris Bar (1997) and the New York Bar (1998). Native French, English and Korean.",
                "Founded Archè; practising in Paris since 2014. Before that, founder and head of the Asian desk at Alerion (2003–2013).",
                "Earlier career: head of legal at TSW Consulting (Singapore), head of M&A and the Europe desk at Daeryook International (Seoul), general legal counsel at Samsung Electronics headquarters (Seoul), Kim & Chang (Seoul).",
                "Education: LL.M., Northwestern University; Ph.D. in law, Université Paris II Panthéon-Assas; B.A. in political science, Yonsei University.",
-               "President, Korea-France Chamber of Commerce and Industry (CCICF), 2012–2015 and 2019–2026",
+               "President, Korea-France Chamber of Commerce and Industry (CCICF), 2012–2015 and 2018–2026",
                "Legal counsel to the Embassy of Korea in France and to KOTRA Paris, since 2005",
                "Legal counsel, HEC incubator at Station F",
                "Arbitrator, Korean Commercial Arbitration Board",
@@ -70,8 +70,8 @@ X["en"] = {
                "Member, French Association of Competition Law Studies (AFEC)",
                "Annual guest lecturer, Université Paris Cité and Aix-Marseille Université",
                "Pro bono: lawyer for athletes before the Court of Arbitration for Sport at the Paris 2024 Olympic Games"],
-        "dk": ["Passed the New York Bar exam in April 2025. Native French, English and Korean.",
-               "Joined Archè in 2023. Works on company incorporation, modification and closure, and on legal translation (English, French, Korean).",
+        "dk": ["New York Bar. Native French, English and Korean.",
+               "Joined Archè in 2023. Advises on French immigration and mobility (work permits, Talent and EU Blue Card, intra-group transfers, posted workers), company incorporation, changes and dissolution, and legal translation (English, French, Korean).",
                "Education: LL.B., Queen Mary University of London; Master's 1 and 2 in international corporate law, Université Paris Cité.",
                "Earlier: Yulchon LLC (Seoul), NYD Avocats (Paris)."],
     },
@@ -161,13 +161,13 @@ X["fr"] = {
           "Projets pour des institutions publiques"]),
     ],
     "people_lede": "Des avocats installés à Paris qui travaillent chaque jour avec des clients et des institutions en Corée, à Hong Kong et en France.",
-    "roles": {"jk": "Fondateur et associé gérant", "hk": "Associée", "dk": "Juriste international"},
+    "roles": {"jk": "Fondateur et associé gérant", "hk": "Associée", "dk": "Of Counsel"},
     "bios": {
         "jk": ["Inscrit au Barreau de Paris (1997) et au Barreau de New York (1998). Langues maternelles : français, anglais et coréen.",
                "Fondateur d'Archè ; exerce à Paris depuis 2014. Auparavant, fondateur et responsable du desk Asie chez Alerion (2003–2013).",
                "Parcours antérieur : directeur juridique de TSW Consulting (Singapour), responsable M&A et du desk Europe chez Daeryook International (Séoul), directeur juridique au siège de Samsung Electronics (Séoul), Kim & Chang (Séoul).",
                "Formation : LL.M., Northwestern University ; doctorat en droit, Université Paris II Panthéon-Assas ; licence de sciences politiques, Université Yonsei.",
-               "Président, Chambre de commerce et d'industrie Corée-France (CCICF), 2012–2015 et 2019–2026",
+               "Président, Chambre de commerce et d'industrie Corée-France (CCICF), 2012–2015 et 2018–2026",
                "Conseil juridique de l'Ambassade de Corée en France et de KOTRA Paris, depuis 2005",
                "Conseil juridique, incubateur HEC à Station F",
                "Arbitre, Korean Commercial Arbitration Board",
@@ -186,8 +186,8 @@ X["fr"] = {
                "Membre de l'Association française d'études de la concurrence (AFEC)",
                "Chargée de cours invitée chaque année, Université Paris Cité et Aix-Marseille Université",
                "Pro bono : avocate d'athlètes devant le Tribunal arbitral du sport lors des Jeux olympiques de Paris 2024"],
-        "dk": ["A réussi l'examen du Barreau de New York en avril 2025. Langues maternelles : français, anglais et coréen.",
-               "A rejoint Archè en 2023. Travaille sur la création, la modification et la clôture de sociétés, et sur la traduction juridique (anglais, français, coréen).",
+        "dk": ["Barreau de New York. Langues maternelles : français, anglais et coréen.",
+               "A rejoint Archè en 2023. Conseille en immigration et mobilité en France (autorisations de travail, passeport Talent et carte bleue européenne, détachements et mobilités intragroupe), en création, modification et dissolution de sociétés, et en traduction juridique (anglais, français, coréen).",
                "Formation : LL.B., Queen Mary University of London ; masters 1 et 2 en droit international des affaires, Université Paris Cité.",
                "Auparavant : Yulchon LLC (Séoul), NYD Avocats (Paris)."],
     },
@@ -277,13 +277,13 @@ X["ko"] = {
           "공공기관 프로젝트 지원"]),
     ],
     "people_lede": "파리에 기반을 두고 한국, 홍콩, 프랑스의 고객 및 기관과 매일 일하는 변호사들입니다.",
-    "roles": {"jk": "설립자·대표 파트너", "hk": "파트너", "dk": "국제 법률가"},
+    "roles": {"jk": "설립자·대표 파트너", "hk": "파트너", "dk": "오브 카운슬(Of Counsel)"},
     "bios": {
         "jk": ["파리 변호사(1997), 뉴욕주 변호사(1998). 프랑스어, 영어, 한국어 모국어 수준.",
                "아르케 설립자, 2014년부터 파리에서 활동. 이전에는 Alerion 설립자 겸 아시아 데스크 총괄(2003–2013).",
                "이전 경력: TSW Consulting(싱가포르) 법무 총괄, Daeryook International(서울) M&A·유럽 데스크 총괄, 삼성전자 본사(서울) 법무 총괄, 김&장(서울).",
                "학력: 노스웨스턴대 LL.M., 파리 제2대학(팡테옹 아사스) 법학 박사, 연세대 정치외교학 학사.",
-               "주불한국상공회의소(CCICF) 회장, 2012–2015, 2019–2026",
+               "주불한국상공회의소(CCICF) 회장, 2012–2015, 2018–2026",
                "2005년부터 주프랑스 대한민국 대사관 및 KOTRA 파리 법률 자문",
                "스테이션 F HEC 인큐베이터 법률 자문",
                "대한상사중재원 중재인",
@@ -302,8 +302,8 @@ X["ko"] = {
                "프랑스 경쟁법연구협회(AFEC) 회원",
                "파리 시테 대학교, 엑스마르세유 대학교 연간 초빙 강사",
                "공익활동: 파리 2024 올림픽 스포츠중재재판소(CAS) 선수 지원 변호"],
-        "dk": ["2025년 4월 뉴욕주 변호사 시험 합격. 프랑스어, 영어, 한국어 모국어 수준.",
-               "2023년 아르케 합류. 회사 설립·변경·청산 업무와 법률 번역(영어·프랑스어·한국어) 담당.",
+        "dk": ["뉴욕주 변호사. 프랑스어, 영어, 한국어 모국어 수준.",
+               "2023년 아르케 합류. 프랑스 이민·인력 이동(취업 허가, 탤런트 체류증·EU 블루카드, 그룹 내 전보, 파견 근로자), 회사 설립·변경·청산, 법률 번역(영어·프랑스어·한국어) 담당.",
                "학력: 런던 퀸메리대 LL.B., 파리 시테 대학교 국제 기업법 석사 1·2과정.",
                "이전 경력: 율촌(서울), NYD Avocats(파리)."],
     },
@@ -357,6 +357,8 @@ X["ko"] = {
 def apply(T):
     for lang, x in X.items():
         t = T[lang]
+        t["people"]["photo_alt"] = {"en": "Portrait of {}", "fr": "Portrait de {}", "ko": "{} 프로필 사진"}[lang]
+        t["insights"]["gallery_h"] = {"en": "In pictures", "fr": "En images", "ko": "사진으로 보는 아르케"}[lang]
         t["nav"]["experience"] = x["nav_experience"]
         t["meta"]["experience"] = x["meta_experience"]
         t["services"]["items"] = x["services_items"]

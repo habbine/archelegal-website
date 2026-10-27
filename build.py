@@ -39,16 +39,18 @@ def fmt_date(lang, d):
     return f"{int(day)} {mon} {y}"
 
 
-def press_items(lang, items):
+def press_items(lang, items, up=""):
     out = ""
     for p in items:
+        cover = (f'<img class="cover" src="{up}{e(p["cover"])}" alt="" width="72" height="108" loading="lazy" decoding="async">'
+                 if p.get("cover") else "")
         about = p.get("about", {}).get(lang, "")
         about_html = f'<span class="about">{e(about)}</span>' if about else ""
         q = p.get("quote")
         quote_html = (f'<span class="quote">« <q lang="{q["lang"]}">{e(q["text"])}</q> » — {e(q["by"])}, '
                       f'<time datetime="{q["date"]}">{fmt_date(lang, q["date"])}</time></span>') if q else ""
-        out += (f'<a href="{e(p["url"])}" rel="noopener" target="_blank"><strong lang="{p["lang"]}">{e(p["title"])}</strong>'
-                f'{about_html}{quote_html}<small>{e(p["outlet"][lang])} · <time datetime="{p["date"]}">{fmt_date(lang, p["date"])}</time></small></a>')
+        out += (f'<a href="{e(p["url"])}" rel="noopener" target="_blank"{' class="has-cover"' if cover else ''}>{cover}<span class="txt"><strong lang="{p["lang"]}">{e(p["title"])}</strong>'
+                f'{about_html}{quote_html}<small>{e(p["outlet"][lang])} · <time datetime="{p["date"]}">{fmt_date(lang, p["date"])}</time></small></span></a>')
     return out
 
 
@@ -90,7 +92,8 @@ def header(lang, page, t):
 
 
 def cta_href(lang, page):
-    return C.BOOKING_URL or rel(lang, page, lang, "contact") + "#form"
+    # The firm prefers first contact by email; a booking link, if set, takes over.
+    return C.BOOKING_URL or f"mailto:{C.EMAIL}"
 
 
 def footer(lang, page, t):
@@ -157,7 +160,8 @@ def cta_band(lang, page, t, h, p, dark=True):
 <div><h2>{e(h)}</h2><p class="lede">{e(p)}</p></div>
 <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
 <a class="btn on-dark" href="{cta_href(lang, page)}">{e(t["cta"])}</a>
-<a class="btn ghost" style="color:#fff;border-color:#fff" href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a>
+<a class="btn ghost" style="color:#fff;border-color:#fff;outline-color:#fff" href="{rel(lang, page, lang, "contact")}#form">{e(t["cta_alt"])}</a>
+<p style="flex-basis:100%;margin:4px 0 0"><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p>
 </div></div></section>'''
 
 
@@ -189,6 +193,8 @@ def page_home(lang, t):
                 extra += f'<p>{e(d["address"])}</p>'
             if d.get("phone"):
                 extra += f'<p><a href="tel:{e(d["phone"])}">{e(d["phone"])}</a></p>'
+            if d.get("address") and d.get("email"):
+                extra += f'<p><a href="mailto:{e(d["email"])}">{e(d["email"])}</a></p>'
             if not extra:
                 extra = f'<p>{e(h["contact_office"])}: <a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p>'
         tag = f'<p><strong>{e(h["main_office"])}</strong></p>' if main else ""
@@ -197,7 +203,7 @@ def page_home(lang, t):
     press = ""
     if C.PRESS:
         press = f'''<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["press_h"])}</h2><p class="lede">{e(h["press_p"])}</p></div>
-<div class="press">''' + press_items(lang, C.PRESS[:C.PRESS_HOME]) + f'</div><p style="margin-top:20px"><a href="{rel(lang, "home", lang, "insights")}">{e(h["press_more"])}</a></p></div></section>'
+<div class="press">''' + press_items(lang, C.PRESS[:C.PRESS_HOME], "../" * depth(lang, "home")) + f'</div><p style="margin-top:20px"><a href="{rel(lang, "home", lang, "insights")}">{e(h["press_more"])}</a></p></div></section>'
     mt = ""
     if t.get("matters"):
         firsts = "".join(f'<div class="rule-top"><h3 style="font-size:1.05rem">{e(g[0])}</h3><p>{e(g[1][0])}</p></div>' for g in t["matters"]["groups"])
@@ -242,7 +248,9 @@ def page_people(lang, t):
     for person in C.PEOPLE:
         k = person["slug"]
         lis = "".join(f"<li>{e(x)}</li>" for x in p["bios"][k])
-        av = f'<img src="{e(person["photo"])}" alt="{e(person["name"])}" width="120" height="120">' if person["photo"] else e(person["initials"])
+        up = "../" * depth(lang, "people")
+        av = (f'<img src="{up}{e(person["photo"])}" alt="{e(t["people"].get("photo_alt", "{}").format(person["name"]))}" width="480" height="600" loading="lazy" decoding="async">'
+              if person["photo"] else e(person["initials"]))
         links = f'<p>{e(p["email_label"])}: <a href="mailto:{person["email"]}">{e(person["email"])}</a>'
         if person["linkedin"]:
             links += f' · <a href="{e(person["linkedin"])}" rel="noopener">{e(p["linkedin_label"])}</a>'
@@ -267,14 +275,24 @@ def page_experience(lang, t):
 def page_insights(lang, t):
     i = t["insights"]
     events = "".join(f"<li>{e(x)}</li>" for x in i["events"])
-    press = press_items(lang, C.PRESS)
+    up = "../" * depth(lang, "insights")
+    press = press_items(lang, C.PRESS, up)
+    gallery = ""
+    if getattr(C, "GALLERY", None):
+        figs = ""
+        for g in C.GALLERY:
+            when = f' <time datetime="{g["date"]}">{fmt_date(lang, g["date"])}</time>' if g.get("date") else ""
+            figs += (f'<figure><img src="{up}{e(g["src"])}" alt="{e(g["alt"][lang])}" width="{g["w"]}" height="{g["h"]}" loading="lazy" decoding="async">'
+                     f'<figcaption>{e(g["caption"][lang])}{when}</figcaption></figure>')
+        gallery = f'<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(i["gallery_h"])}</h2></div><div class="gallery">{figs}</div></div></section>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p></div></div>
 <section style="padding-top:0"><div class="wrap cols c2">
 <div><h2>{e(i["press_h"])}</h2><div class="press">{press}</div>
 <h2 style="margin-top:2em">{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul>{events}</ul></div>
 <div><h2>{e(i["follow_h"])}</h2><p>{e(i["follow_p"])}</p><p><a class="btn ghost" href="{C.LINKEDIN}" rel="noopener">{e(i["follow_cta"])}</a></p>
 <h2 style="margin-top:2em">{e(i["ask_h"])}</h2><p>{e(i["ask_p"])}</p><p><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p></div>
-</div></section>'''
+</div></section>
+{gallery}'''
 
 
 def page_contact(lang, t):

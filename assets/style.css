@@ -243,3 +243,18 @@ section:has(> .prose){background:var(--paper);color:var(--c-text);padding-top:cl
 .faq ul,.press+ul,section ul li{max-width:70ch}
 h3 a{display:inline-block;padding:3px 0}
 h3 a:hover{text-decoration:underline!important}
+
+/* press items with a book cover */
+.press a.has-cover{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;align-items:start}
+.press img.cover{width:72px;height:auto;border:1px solid var(--green-line)}
+.alt .press img.cover{border-color:var(--c-line)}
+/* team portraits */
+@media (min-width:761px){.person:has(.avatar img){grid-template-columns:180px minmax(0,1fr)}}
+.avatar:has(img){width:180px;height:225px;border-color:var(--green-mid)}
+@media (max-width:760px){.avatar:has(img){width:160px;height:200px}}
+/* photo gallery */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:32px 28px}
+.gallery figure{margin:0}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--c-line);background:var(--white)}
+.gallery figcaption{margin-top:10px;font-size:15px;line-height:1.5;color:var(--c-text)}
+.gallery figcaption time{display:block;margin-top:2px;font-size:14px;color:var(--c-muted);font-variant-numeric:tabular-nums}
