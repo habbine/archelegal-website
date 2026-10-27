@@ -107,3 +107,7 @@
     });
   });
 })();
+
+(function(){var d=document.querySelector('dialog.lightbox');if(!d)return;var im=d.querySelector('img'),cap=d.querySelector('p');
+document.querySelectorAll('.gallery .g-open').forEach(function(b){b.addEventListener('click',function(){var f=b.closest('figure'),i=b.querySelector('img');im.src=i.currentSrc||i.src;im.alt=i.alt;cap.textContent=f.querySelector('figcaption').textContent;if(d.showModal)d.showModal();});});
+d.addEventListener('click',function(e){if(e.target===d)d.close();});})();
