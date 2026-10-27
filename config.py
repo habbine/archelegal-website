@@ -60,6 +60,12 @@ def _o(en, ko, fr=None):
     return {"en": en, "fr": fr or en, "ko": ko}
 
 PRESS = [
+    {"date": "2025-10-17", "outlet": _o("Book · Amazon", "도서 · 아마존", "Livre · Amazon"), "lang": "en",
+     "url": "https://www.amazon.fr/dp/B0FWZS7SYM",
+     "title": "A Forgotten Promise: The Secrets of the Royal Protocols (James J. Kim, ISBN 979-8270335410)",
+     "about": {"en": "English edition of James Joong-ho Kim's novel, based on the Oegyujanggak restitution case",
+               "fr": "Édition anglaise du roman de James Joong-ho Kim, inspiré de l'affaire de l'Oegyujanggak",
+               "ko": "외규장각 반환 소송을 바탕으로 한 김중호 변호사 소설 「잊혀진 약속」의 영문판"}},
     {"date": "2025-10-19", "outlet": _o("Legal Times", "리걸타임즈"), "lang": "ko",
      "url": "http://www.legaltimes.co.kr/news/articleView.html?idxno=89709",
      "title": "[신간소개] 파리에서 활동하는 김중호 변호사의 《잊혀진 약속》",

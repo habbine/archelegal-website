@@ -6,6 +6,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import config as C
+C.PRESS.sort(key=lambda p: p["date"], reverse=True)  # newest first, whatever order config.py lists them in
 from content import T
 import content_extra
 content_extra.apply(T)
