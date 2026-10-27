@@ -125,7 +125,7 @@ def who_cards(lang):
     out = ""
     for ico, title, text, tags in WHO[lang]["cards"]:
         links = "".join(f'<li><a href="{rel(lang, "home", lang, "services")}#{sid}">{e(lbl)}</a></li>' for lbl, sid in tags)
-        out += f'<div class="who-card"><span class="who-ico">{_I[ico]}</span><h3>{e(title)}</h3><p>{e(text)}</p><ul class="who-tags">{links}</ul></div>'
+        out += f'<div class="who-card"><h3>{e(title)}</h3><p>{e(text)}</p><ul class="who-tags">{links}</ul></div>'
     return out
 
 
