@@ -338,7 +338,7 @@ def page_home(lang, t):
     body = f'''<section class="landing" style="background-image:url('{up}assets/img/landing-bg.webp')" aria-hidden="true"></section>
 <div id="hero-start"></div>
 <section class="hero hero-b" aria-labelledby="hero-name"><div class="wrap"><h1 class="hero-name" id="hero-name"><span lang="fr">Archè</span> <span class="hero-name-ko" lang="ko">아르케</span></h1><p class="hero-cities">{e(cov[1])}</p><p class="lede">{e(BRIDGE[lang])}</p></div></section>
-<section class="cred-strip strip-b" aria-label="{e(h["strip"][0][0])}"><div class="wrap"><dl>{"".join(f"<div><dt>{e(a)}</dt><dd>{e(c)}</dd></div>" for a, c in h["strip"])}</dl></div></section>
+<section class="cred-strip strip-b" aria-label="{e(h["strip"][0][0])}"><div class="wrap"><dl>{"".join(f"<div><dt>{e(a)}</dt><dd>" + " ".join(f'<span class="nw">{e(x)}{"&nbsp;·" if i < len(c.split(" · ")) - 1 else ""}</span>' for i, x in enumerate(c.split(" · "))) + "</dd></div>" for a, c in h["strip"])}</dl></div></section>
 <section class="hero hero-a"><div class="wrap"><div><h2 class="hero-a-h">{e(h["h1"])}</h2><p class="lede">{e(h["lede"])}</p>
 <div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{ {"en": "Discuss your matter", "fr": "Parlez-nous de votre dossier", "ko": "사안 상담하기"}[lang] }</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{ {"en": "Explore our expertise", "fr": "Découvrir nos expertises", "ko": "업무분야 보기"}[lang] }</a></div></div></div></section>
 <section class="what"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHAT[lang]["kicker"])}</p><h2>{e(h["services_h"])}</h2><p class="lede">{e(WHAT[lang]["lede"])}</p></div><div class="cols c4">{what_cards(lang)}</div>
