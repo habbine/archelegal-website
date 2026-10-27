@@ -48,7 +48,7 @@ X["en"] = {
     "roles": {"jk": "Founder and Managing Partner", "hk": "Partner", "dk": "Of Counsel"},
     "bios": {
         "jk": ["Admitted at the Paris Bar (1997) and the New York Bar (1998). Native French, English and Korean.",
-               "Founded Archè; practising in Paris since 2014. Before that, founder and head of the Asian desk at Alerion (2003–2013).",
+               "Founded Archè in 2014; 25 years of legal experience. Before that, founder and head of the Asian desk at Alerion (2003–2013).",
                "Earlier career: head of legal at TSW Consulting (Singapore), head of M&A and the Europe desk at Daeryook International (Seoul), general legal counsel at Samsung Electronics headquarters (Seoul), Kim & Chang (Seoul).",
                "Education: LL.M., Northwestern University; Ph.D. in law, Université Paris II Panthéon-Assas; B.A. in political science, Yonsei University.",
                "President, Korea-France Chamber of Commerce and Industry (CCICF), 2012–2015 and 2018–2026",
@@ -164,7 +164,7 @@ X["fr"] = {
     "roles": {"jk": "Fondateur et associé gérant", "hk": "Associée", "dk": "Of Counsel"},
     "bios": {
         "jk": ["Inscrit au Barreau de Paris (1997) et au Barreau de New York (1998). Langues maternelles : français, anglais et coréen.",
-               "Fondateur d'Archè ; exerce à Paris depuis 2014. Auparavant, fondateur et responsable du desk Asie chez Alerion (2003–2013).",
+               "Fondateur d'Archè en 2014 ; 25 ans d'expérience juridique. Auparavant, fondateur et responsable du desk Asie chez Alerion (2003–2013).",
                "Parcours antérieur : directeur juridique de TSW Consulting (Singapour), responsable M&A et du desk Europe chez Daeryook International (Séoul), directeur juridique au siège de Samsung Electronics (Séoul), Kim & Chang (Séoul).",
                "Formation : LL.M., Northwestern University ; doctorat en droit, Université Paris II Panthéon-Assas ; licence de sciences politiques, Université Yonsei.",
                "Président, Chambre de commerce et d'industrie Corée-France (CCICF), 2012–2015 et 2018–2026",
@@ -280,7 +280,7 @@ X["ko"] = {
     "roles": {"jk": "설립자·대표 파트너", "hk": "파트너", "dk": "오브 카운슬(Of Counsel)"},
     "bios": {
         "jk": ["파리 변호사(1997), 뉴욕주 변호사(1998). 프랑스어, 영어, 한국어 모국어 수준.",
-               "아르케 설립자, 2014년부터 파리에서 활동. 이전에는 Alerion 설립자 겸 아시아 데스크 총괄(2003–2013).",
+               "아르케를 2014년에 설립, 25년의 법률 경력. 이전에는 Alerion 설립자 겸 아시아 데스크 총괄(2003–2013).",
                "이전 경력: TSW Consulting(싱가포르) 법무 총괄, Daeryook International(서울) M&A·유럽 데스크 총괄, 삼성전자 본사(서울) 법무 총괄, 김&장(서울).",
                "학력: 노스웨스턴대 LL.M., 파리 제2대학(팡테옹 아사스) 법학 박사, 연세대 정치외교학 학사.",
                "주불한국상공회의소(CCICF) 회장, 2012–2015, 2018–2026",
