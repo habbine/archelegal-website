@@ -155,6 +155,9 @@ section{padding:clamp(64px,9vw,112px) 0}
 .press a strong{font-weight:600}
 .press a:hover strong{text-decoration:underline;color:var(--gold)}
 .press .about{display:block;margin-top:4px;color:var(--text)}
+.press .quote{display:block;margin-top:4px;font-family:var(--serif);font-style:italic;color:var(--gold)}
+.press q{quotes:none}
+.alt .press .quote{color:var(--gold-d)}
 .press small{display:block;margin-top:4px;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
 .alt .press a{border-top-color:var(--c-line);color:var(--c-ink)}
 .alt .press a:hover strong{color:var(--gold-d)}
