@@ -231,7 +231,7 @@ def page_home(lang, t):
 <div id="hero-start"></div>
 <section class="hero"><div class="wrap">
 <div><h1>{e(h["h1"])}</h1><p class="lede">{e(h["lede"])}</p>
-<div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{e(t["cta"])}</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{e(h["see_services"])}</a><a class="btn ghost" href="#follow">{e(t["insights"]["follow_h"])}</a></div></div>
+<div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{e(t["cta"])}</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{e(h["see_services"])}</a><a class="btn ghost" href="#follow">{ {"en": "Follow us", "fr": "Nous suivre", "ko": "팔로우하기"}[lang] }</a></div></div>
 <aside class="hero-card" aria-label="{e(hc['label'])}"><p class="hero-card-kicker">{e(hc['kicker'])}</p><p class="hero-card-email"><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p><p class="hero-card-cities">{e(hc['cities'])}</p><p class="hero-card-note">{e(hc['note'])}</p></aside></div></section>
 <section><div class="wrap"><div class="section-head"><h2>{e(h["creds_h"])}</h2><p class="lede">{e(h["creds_p"])}</p></div><div class="cols c3">{creds}</div></div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["who_h"])}</h2></div><div class="cols c3">{who}</div></div></section>
