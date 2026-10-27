@@ -231,7 +231,7 @@ def page_home(lang, t):
 <div id="hero-start"></div>
 <section class="hero"><div class="wrap">
 <div><h1>{e(h["h1"])}</h1><p class="lede">{e(h["lede"])}</p>
-<div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{e(t["cta"])}</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{e(h["see_services"])}</a></div></div>
+<div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{e(t["cta"])}</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{e(h["see_services"])}</a><a class="btn ghost" href="#follow">{ {"en": "Follow us", "fr": "Nous suivre", "ko": "팔로우하기"}[lang] }</a></div></div>
 <aside class="hero-card" aria-label="{e(hc['label'])}"><p class="hero-card-kicker">{e(hc['kicker'])}</p><p class="hero-card-email"><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p><p class="hero-card-cities">{e(hc['cities'])}</p><p class="hero-card-note">{e(hc['note'])}</p></aside></div></section>
 <section><div class="wrap"><div class="section-head"><h2>{e(h["creds_h"])}</h2><p class="lede">{e(h["creds_p"])}</p></div><div class="cols c3">{creds}</div></div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["who_h"])}</h2></div><div class="cols c3">{who}</div></div></section>
@@ -243,7 +243,7 @@ def page_home(lang, t):
 <section><div class="wrap"><div class="section-head"><h2>{e(h["industries_h"])}</h2><p class="lede">{e(h["industries_p"])}</p></div><div class="industries">{inds}</div></div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["offices_h"])}</h2></div><div class="offices">{offices}</div></div></section>
 {press}
-<section class="alt"><div class="wrap"><h2>{e(t["insights"]["follow_h"])}</h2>{follow_card(lang, t["insights"]["follow_p"])}</div></section>
+<section class="alt" id="follow"><div class="wrap"><h2>{e(t["insights"]["follow_h"])}</h2>{follow_card(lang, t["insights"]["follow_p"])}</div></section>
 {cta_band(lang, "home", t, h["cta_h"], h["cta_p"])}'''
     return body
 
@@ -349,11 +349,7 @@ def page_insights(lang, t):
         ])
     follow_rows = f'<div class="fc-list">{follow_rows}</div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p></div></div>
-<section style="padding-top:0"><div class="wrap">
-<h2>{e(i["follow_h"])}</h2>
-<div class="follow-card"><div class="fc-head"><span class="fc-logo" aria-hidden="true">ARCHÈ</span><div><strong>{e(C.FIRM_FULL)}</strong><p>{e(i["follow_p"])}</p></div></div>
-{follow_rows}
-</div></section>
+
 <section><div class="wrap"><h2>{e(i["press_h"])}</h2><div class="press">{press}</div></div></section>
 <section class="alt"><div class="wrap"><h2>{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul>{events}</ul></div></section>
 {gallery}'''

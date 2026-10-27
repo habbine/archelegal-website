@@ -26,8 +26,8 @@ T["en"] = {
         "404": ("Page not found | Archè", "This page does not exist."),
     },
     "home": {
-        "h1": "French law, global markets. Inbound and outbound.",
-        "lede": "Archè advises large groups, SMEs, startups and sole traders (auto-entrepreneurs) on inbound and outbound business between Europe, Asia, Africa, the United States and the Middle East: company setup, employment, disputes and cross-border projects, in English, French and Korean.",
+        "h1": "French law for cross-border business.",
+        "lede": "Archè advises large groups, SMEs, startups and sole traders on business between Europe, Asia, Africa, the United States and the Middle East: company set-up, employment, disputes and cross-border projects. We work in English, French and Korean.",
         "see_services": "See our services",
         "bridge_title": "Who is in the office right now",
         "bridge_open": "Open now",
@@ -39,7 +39,7 @@ T["en"] = {
         "services_h": "What we do",
         "services_more": "Details on each practice",
         "firm_h": "A French firm with offices in three cities",
-        "firm_p": "Archè is a French international boutique law firm whose practice is dedicated to Asia and to French-speaking countries in Europe, Africa and the Middle East, both inbound and outbound, with offices in Paris, Seoul and Hong Kong. Our members bring more than twenty-five years of experience in these regions and come from major Anglo-Saxon, French and Korean law firms. We represent, assist and advise French and international startups, SMEs and multinational groups worldwide, in English, French and Korean.",
+        "firm_p": "Archè is a French boutique law firm focused on Asia and on French-speaking countries in Europe, Africa and the Middle East. Our offices are in Paris, Seoul and Hong Kong. Our members have more than twenty-five years of experience in these regions, including at major Anglo-Saxon, French and Korean firms. We advise French and international startups, SMEs and multinational groups, in English, French and Korean.",
         "offices_h": "Offices",
         "main_office": "Main office",
         "contact_office": "Reach this office through Paris",
@@ -64,13 +64,13 @@ T["en"] = {
     },
     "services": {
         "h1": "Services",
-        "lede": "Four practices for inbound and outbound business across Europe, Asia, Africa, the US and the Middle East.",
+        "lede": "Practice areas covering inbound and outbound business in Europe, Asia, Africa, the US and the Middle East.",
         "items": [
             ("corporate", "Corporate, M&A, contracts and IP",
              "Everything a company needs to start or restructure its presence in France, Korea or Hong Kong.",
              ["Incorporating a subsidiary, branch or joint venture", "Shareholder agreements and governance", "Commercial contracts, distribution and licensing", "Mergers, acquisitions and investments", "Startup financing and legal support for founders"]),
             ("employment", "Employment and professional immigration",
-             "French employment law is protective and procedural. We help foreign employers get it right from the first hire.",
+             "French employment law is protective and procedural. We help foreign employers comply from the first hire.",
              ["Employment contracts and posted or expatriate staff", "Policies, works councils and collective issues", "Restructuring and dismissals", "Employment disputes before French courts"]),
             ("litigation", "Disputes, debt recovery and insolvency",
              "Representation in court and arbitration, with a partner following the case from start to finish.",
@@ -89,7 +89,7 @@ T["en"] = {
     },
     "people": {
         "h1": "Team",
-        "lede": "Lawyers based in Paris who work every day with clients and institutions in Korea, Hong Kong and France.",
+        "lede": "Lawyers based in Paris, working daily with clients and institutions in Korea, Hong Kong and France.",
         "roles": {"jk": "Founder and Managing Partner", "hk": "Partner"},
         "bios": {
             "jk": ["Legal counsel, Embassy of Korea in France", "President, Korea-France Chamber of Commerce and Industry (CCICF), 2012–2015 and 2018–2026", "Legal counsel, HEC incubator at Station F", "Member, content business advisory board, Korea Creative Content Agency (KOCCA)", "Founding member, In-house Counsels Forum (IHCF)", "International legal adviser on foreign asset recovery, Korea Deposit Insurance Corporation (KDIC)"],
@@ -195,8 +195,8 @@ T["fr"] = {
         "404": ("Page introuvable | Archè", "Cette page n'existe pas."),
     },
     "home": {
-        "h1": "Le droit français, les marchés du monde. Dans les deux sens.",
-        "lede": "Archè accompagne grands groupes, PME, startups et auto-entrepreneurs dans leurs opérations entrantes et sortantes entre l'Europe, l'Asie, l'Afrique, les États-Unis et le Moyen-Orient : création de société, droit du travail, litiges et projets internationaux, en français, en anglais et en coréen.",
+        "h1": "Le droit français pour les opérations transfrontalières.",
+        "lede": "Archè accompagne grands groupes, PME, startups et auto-entrepreneurs dans leurs affaires entre l'Europe, l'Asie, l'Afrique, les États-Unis et le Moyen-Orient : création de société, droit du travail, litiges et projets transfrontaliers. Nous travaillons en français, en anglais et en coréen.",
         "see_services": "Voir nos expertises",
         "bridge_title": "Qui est au bureau en ce moment",
         "bridge_open": "Ouvert",
@@ -208,7 +208,7 @@ T["fr"] = {
         "services_h": "Ce que nous faisons",
         "services_more": "Le détail de chaque expertise",
         "firm_h": "Un cabinet français présent dans trois villes",
-        "firm_p": "Archè est un cabinet d'avocats français international, de taille humaine, dont la pratique est tournée vers l'Asie et les pays francophones d'Europe, d'Afrique et du Moyen-Orient, dans les deux sens, avec des bureaux à Paris, Séoul et Hong Kong. Nos membres réunissent plus de vingt-cinq ans d'expérience dans ces régions et viennent de grands cabinets anglo-saxons, français et coréens. Nous représentons, assistons et conseillons des startups, des PME et des groupes multinationaux, français et internationaux, partout dans le monde, en français, en anglais et en coréen.",
+        "firm_p": "Archè est un cabinet d'avocats français de taille humaine, spécialisé dans l'Asie et les pays francophones d'Europe, d'Afrique et du Moyen-Orient. Nos bureaux se trouvent à Paris, Séoul et Hong Kong. Nos membres ont plus de vingt-cinq ans d'expérience dans ces régions, notamment au sein de grands cabinets anglo-saxons, français et coréens. Nous conseillons des startups, PME et groupes multinationaux français et internationaux, en français, en anglais et en coréen.",
         "offices_h": "Bureaux",
         "main_office": "Bureau principal",
         "contact_office": "Contact via le bureau de Paris",
@@ -233,13 +233,13 @@ T["fr"] = {
     },
     "services": {
         "h1": "Expertises",
-        "lede": "Quatre pratiques pour vos opérations entrantes et sortantes entre l'Europe, l'Asie, l'Afrique, les États-Unis et le Moyen-Orient.",
+        "lede": "Domaines de pratique couvrant vos opérations entrantes et sortantes entre l'Europe, l'Asie, l'Afrique, les États-Unis et le Moyen-Orient.",
         "items": [
             ("corporate", "Sociétés, fusions-acquisitions, contrats et propriété intellectuelle",
              "Tout ce dont une entreprise a besoin pour s'installer ou se restructurer en France, en Corée ou à Hong Kong.",
              ["Création de filiale, succursale ou joint-venture", "Pactes d'associés et gouvernance", "Contrats commerciaux, distribution et licences", "Fusions-acquisitions et investissements", "Financement des startups et accompagnement des fondateurs"]),
             ("employment", "Droit du travail et immigration professionnelle",
-             "Le droit du travail français est protecteur et formaliste. Nous aidons les employeurs étrangers à bien faire dès la première embauche.",
+             "Le droit du travail français est protecteur et formaliste. Nous aidons les employeurs étrangers à se conformer dès la première embauche.",
              ["Contrats de travail, salariés détachés ou expatriés", "Règlements, représentation du personnel et sujets collectifs", "Restructurations et licenciements", "Contentieux prud'homal"]),
             ("litigation", "Contentieux, recouvrement et procédures collectives",
              "Représentation devant les tribunaux et en arbitrage, avec un associé qui suit le dossier du début à la fin.",
@@ -258,7 +258,7 @@ T["fr"] = {
     },
     "people": {
         "h1": "Équipe",
-        "lede": "Des avocats installés à Paris qui travaillent chaque jour avec des clients et des institutions en Corée, à Hong Kong et en France.",
+        "lede": "Des avocats basés à Paris, qui travaillent au quotidien avec des clients et des institutions en Corée, à Hong Kong et en France.",
         "roles": {"jk": "Fondateur et associé gérant", "hk": "Associée"},
         "bios": {
             "jk": ["Conseil juridique, Ambassade de Corée en France", "Président, Chambre de commerce et d'industrie Corée-France (CCICF), 2012–2015 et 2018–2026", "Conseil juridique, incubateur HEC à Station F", "Membre du comité consultatif sur les contenus, Korea Creative Content Agency (KOCCA)", "Membre fondateur, Forum des juristes d'entreprise (IHCF)", "Conseil juridique international pour le recouvrement d'actifs à l'étranger, Korea Deposit Insurance Corporation (KDIC)"],
@@ -364,8 +364,8 @@ T["ko"] = {
         "404": ("페이지를 찾을 수 없습니다 | 아르케", "존재하지 않는 페이지입니다."),
     },
     "home": {
-        "h1": "프랑스 법, 세계 시장. 인바운드와 아웃바운드 모두.",
-        "lede": "아르케는 대기업, 중소기업, 스타트업, 개인사업자(auto-entrepreneur)의 유럽·아시아·아프리카·미국·중동 간 인바운드 및 아웃바운드 업무를 법인 설립, 노동, 분쟁, 국제 프로젝트 전반에 걸쳐 한국어, 영어, 프랑스어로 자문합니다.",
+        "h1": "국경을 넘는 거래를 위한 프랑스 법률 자문.",
+        "lede": "아르케는 대기업, 중소기업, 스타트업, 개인사업자를 대상으로 유럽·아시아·아프리카·미국·중동 간 거래에 대해 자문합니다. 법인 설립, 노동, 분쟁, 국제 프로젝트를 다루며 한국어, 영어, 프랑스어로 업무를 진행합니다.",
         "see_services": "업무분야 보기",
         "bridge_title": "지금 근무 중인 사무소",
         "bridge_open": "근무 중",
@@ -377,7 +377,7 @@ T["ko"] = {
         "services_h": "업무분야",
         "services_more": "업무분야 자세히 보기",
         "firm_h": "세 도시에 사무소를 둔 프랑스 로펌",
-        "firm_p": "아르케는 아시아와 유럽·아프리카·중동의 프랑스어권 국가를 전문으로 인바운드·아웃바운드 업무를 수행하는 프랑스 국제 부티크 로펌으로, 파리·서울·홍콩에 사무소를 두고 있습니다. 구성원들은 이 지역에서 25년 이상의 경험을 쌓았으며 영미계, 프랑스, 한국의 주요 로펌 출신입니다. 국내외 스타트업, 중소기업, 다국적 그룹을 전 세계에서 한국어, 영어, 프랑스어로 대리하고 자문합니다.",
+        "firm_p": "아르케는 아시아와 유럽·아프리카·중동의 프랑스어권 국가에 특화된 프랑스 부티크 로펌입니다. 사무소는 파리, 서울, 홍콩에 있습니다. 구성원들은 이 지역에서 25년 이상의 경험을 가지고 있으며, 영미권·프랑스·한국의 주요 로펌 출신입니다. 프랑스 및 해외 스타트업, 중소기업, 다국적 그룹을 한국어, 영어, 프랑스어로 자문합니다.",
         "offices_h": "사무소",
         "main_office": "본사무소",
         "contact_office": "파리 사무소를 통해 문의하세요",
@@ -402,13 +402,13 @@ T["ko"] = {
     },
     "services": {
         "h1": "업무분야",
-        "lede": "유럽, 아시아, 아프리카, 미국, 중동을 잇는 인바운드·아웃바운드 업무를 위한 네 가지 업무분야.",
+        "lede": "유럽, 아시아, 아프리카, 미국, 중동을 잇는 인바운드·아웃바운드 업무를 다루는 업무분야.",
         "items": [
             ("corporate", "기업법·M&A·계약·지식재산",
              "프랑스, 한국, 홍콩에서 사업을 시작하거나 재편하는 데 필요한 모든 법률 업무.",
              ["자회사·지점·합작회사 설립", "주주간 계약과 지배구조", "상거래·유통·라이선스 계약", "인수합병과 투자", "스타트업 투자 유치와 창업자 지원"]),
             ("employment", "노동·고용 및 취업 이민",
-             "프랑스 노동법은 근로자 보호가 강하고 절차가 엄격합니다. 첫 채용부터 제대로 하실 수 있도록 돕습니다.",
+             "프랑스 노동법은 근로자 보호가 강하고 절차가 엄격합니다. 첫 채용부터 외국계 고용주가 규정을 준수할 수 있도록 돕습니다.",
              ["근로계약, 파견·주재 직원", "사내 규정, 근로자 대표, 집단 노사 사안", "구조조정과 해고", "프랑스 법원 노동 분쟁"]),
             ("litigation", "분쟁·채권 회수·도산",
              "법원과 중재에서 대리하며, 파트너가 사건을 처음부터 끝까지 맡습니다.",
@@ -427,7 +427,7 @@ T["ko"] = {
     },
     "people": {
         "h1": "구성원",
-        "lede": "파리에 기반을 두고 한국, 홍콩, 프랑스의 고객 및 기관과 매일 일하는 변호사들입니다.",
+        "lede": "파리에 기반을 둔 변호사들로, 한국, 홍콩, 프랑스의 고객 및 기관과 매일 업무를 진행합니다.",
         "roles": {"jk": "설립자·대표 파트너", "hk": "파트너"},
         "bios": {
             "jk": ["주프랑스 대한민국 대사관 법률 자문", "주불한국상공회의소(CCICF) 회장, 2012–2015, 2018–2026", "스테이션 F HEC 인큐베이터 법률 자문", "한국콘텐츠진흥원(KOCCA) 콘텐츠 비즈니스 자문위원", "인하우스 카운슬 포럼(IHCF) 창립 회원", "예금보험공사(KDIC) 해외 재산 환수 국제 법률 자문"],
