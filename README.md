@@ -64,5 +64,4 @@ Redirects: set `SITE_URL` in `config.py` to the version you want as canonical (`
 - [ ] Add Seoul and Hong Kong addresses if the offices have them.
 - [ ] Selected matters (Experience page) are anonymised summaries from the old Competence page. Brand and client names that appeared there (e.g. carmakers, luxury houses, a coffee chain) were left out. Add them back only with client consent, and check bar advertising rules.
 - [ ] CCICF presidency dates differ on the old site (home page: 2019–2026; profile slide: since 2018). Confirm and fix in `content.py` and `content_extra.py`.
-- [ ] Replace `assets/logo.svg` with the firm's real logo file (keep the name, or edit `build.py`).
 - [ ] Personal mobile numbers shown on the old profile slides were intentionally not copied.
