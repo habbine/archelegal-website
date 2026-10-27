@@ -528,3 +528,26 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 .svc-dl dt{font-weight:600;color:var(--ink)}
 .svc-dl dd{margin:0;color:var(--muted);font-size:15px;line-height:1.5}
 .what .what-card p{font-size:15px}
+/* Credentials strip: larger, more visible */
+.cred-strip.strip-b{padding:32px 0 36px}
+.strip-b dt{font-size:13px;font-weight:600;letter-spacing:.18em;margin-bottom:10px}
+.strip-b dd{font-family:var(--serif);font-size:clamp(18px,1.7vw,22px);line-height:1.4;color:var(--c-ink)}
+.strip-b .nw{white-space:nowrap}
+
+/* Team: structured lawyer profiles */
+.pf-name{font-size:1.6rem;margin-bottom:.1em}
+.pf-lead{font-size:clamp(17px,1.5vw,19px);line-height:1.55;color:var(--ink);max-width:44em;margin:14px 0 0}
+.pf-h{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:24px 0 10px}
+.pf-areas{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.pf-area{display:inline-flex;align-items:center;min-height:36px;padding:0 12px;border:1px solid var(--green-mid);color:var(--ink);font-size:14px;text-decoration:none}
+.pf-area:hover{border-color:var(--gold);color:var(--gold)}
+.pf-area:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.pf-facts{margin:22px 0 0;display:grid;gap:12px}
+.pf-facts div{display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding-top:12px;border-top:1px solid var(--green-line)}
+.pf-facts dt{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding-top:3px}
+.pf-facts dd{margin:0;font-size:15px;line-height:1.55;color:var(--text)}
+.pf-roles{margin:0;padding-left:1.1em}
+.pf-roles li{margin-bottom:.35em;font-size:15px;color:var(--text)}
+@media(max-width:640px){.pf-facts div{grid-template-columns:1fr;gap:4px}}
+.pf-list{margin:0;padding-left:1.1em}
+.pf-list li{margin-bottom:.35em;font-size:15px;line-height:1.5;color:var(--text)}

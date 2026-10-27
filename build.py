@@ -338,7 +338,7 @@ def page_home(lang, t):
     body = f'''<section class="landing" style="background-image:url('{up}assets/img/landing-bg.webp')" aria-hidden="true"></section>
 <div id="hero-start"></div>
 <section class="hero hero-b" aria-labelledby="hero-name"><div class="wrap"><h1 class="hero-name" id="hero-name"><span lang="fr">Archè</span> <span class="hero-name-ko" lang="ko">아르케</span></h1><p class="hero-cities">{e(cov[1])}</p><p class="lede">{e(BRIDGE[lang])}</p></div></section>
-<section class="cred-strip strip-b" aria-label="{e(h["strip"][0][0])}"><div class="wrap"><dl>{"".join(f"<div><dt>{e(a)}</dt><dd>{e(c)}</dd></div>" for a, c in h["strip"])}</dl></div></section>
+<section class="cred-strip strip-b" aria-label="{e(h["strip"][0][0])}"><div class="wrap"><dl>{"".join(f"<div><dt>{e(a)}</dt><dd>" + " ".join(f'<span class="nw">{e(x)}{"&nbsp;·" if i < len(c.split(" · ")) - 1 else ""}</span>' for i, x in enumerate(c.split(" · "))) + "</dd></div>" for a, c in h["strip"])}</dl></div></section>
 <section class="hero hero-a"><div class="wrap"><div><h2 class="hero-a-h">{e(h["h1"])}</h2><p class="lede">{e(h["lede"])}</p>
 <div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{ {"en": "Discuss your matter", "fr": "Parlez-nous de votre dossier", "ko": "사안 상담하기"}[lang] }</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{ {"en": "Explore our expertise", "fr": "Découvrir nos expertises", "ko": "업무분야 보기"}[lang] }</a></div></div></div></section>
 <section class="what"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHAT[lang]["kicker"])}</p><h2>{e(h["services_h"])}</h2><p class="lede">{e(WHAT[lang]["lede"])}</p></div><div class="cols c4">{what_cards(lang)}</div>
@@ -408,7 +408,28 @@ def page_people(lang, t):
         links = '<ul class="person-links">' + "".join(
             f'<li><a class="pl-btn" href="{e(url)}"' + ("" if url.startswith("mailto:") else ' rel="noopener"')
             + (f' title="{e(tip)}"' if tip else "") + f'>{e(lbl)}</a></li>' for lbl, url, tip in btns) + "</ul>"
-        out += f'<div class="person"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div><h2 style="font-size:1.6rem;margin-bottom:.1em">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>{see_more(p["bios"][k], lang, 4)}{links}</div></div>'
+        import team_profiles as TP, content_services as CS
+        pr, L = TP.PROFILES[k][lang], TP.LABELS[lang]
+        area_title = {sid: title for sid, title, _, _ in CS.SERVICES8[lang]}
+        svc = rel(lang, "people", lang, "services")
+        areas = "".join(
+            f'<li><a class="pf-area" href="{svc}#{a[0] if isinstance(a, tuple) else a}">{e(a[1][lang] if isinstance(a, tuple) else area_title[a])}</a></li>'
+            for a in TP.PROFILES[k]["areas"])
+        facts = "".join(f'<div><dt>{e(L[f])}</dt><dd>{e(pr[f])}</dd></div>' for f in ("bar", "lang"))
+        def plist(key, keep=None):
+            items = pr[key]
+            if not items:
+                return ""
+            head = "".join(f"<li>{e(x)}</li>" for x in (items[:keep] if keep else items))
+            tail = "".join(f"<li>{e(x)}</li>" for x in items[keep:]) if keep else ""
+            more = f'<details class="see-more"><summary>{e(L["all"])}</summary><ul class="pf-list">{tail}</ul></details>' if tail else ""
+            return f'<h3 class="pf-h">{e(L[key])}</h3><ul class="pf-list">{head}</ul>{more}'
+        roles = plist("career") + plist("edu") + plist("roles", 4)
+        out += (f'<article class="person" id="{k}"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div class="pf">'
+                f'<h2 class="pf-name">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>'
+                f'<p class="pf-lead">{e(pr["lead"])}</p>'
+                f'<h3 class="pf-h">{e(L["areas"])}</h3><ul class="pf-areas">{areas}</ul>'
+                f'<dl class="pf-facts">{facts}</dl>{roles}{links}</div></article>')
     return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1></div></div>
 <section style="padding-top:0"><div class="wrap">{out}</div></section>'''
 
