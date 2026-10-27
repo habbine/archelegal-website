@@ -63,8 +63,8 @@ ul{padding-left:1.1em}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);min-width:0}
 .brand img{width:40px;height:auto;flex-shrink:0}
 .brand-text{display:flex;flex-direction:column;gap:2px}
-.brand span{font-family:var(--sans);font-size:19px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;line-height:1.2}
-.brand small{display:block;font-family:var(--sans);font-size:13px;font-weight:400;color:var(--muted);letter-spacing:.12em;line-height:1.2}
+.brand span{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:.06em;line-height:1.2}
+.brand small{display:block;font-family:var(--serif);font-size:13px;font-weight:400;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;line-height:1.2}
 nav.primary{margin-left:auto;display:flex;align-items:center;gap:26px}
 nav.primary a{color:var(--ink);text-decoration:none;font-weight:500;font-size:16px;padding:10px 0;border-bottom:2px solid transparent}
 nav.primary a:hover{color:var(--gold)}
@@ -295,3 +295,13 @@ h3 a:hover{text-decoration:underline!important}
 .see-more summary::after{content:" +";}
 .see-more[open] summary::after{content:" −"}
 .see-more summary:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
+nav.primary a.btn,nav.primary a.btn:hover{background:var(--gold);border-color:var(--gold);outline-color:var(--gold);color:var(--green)}
+nav.primary a.btn:hover{background:var(--ink);border-color:var(--ink);outline-color:var(--ink)}
+.hero-card{align-self:center;border:1px solid var(--green-mid);background:var(--green-card);padding:clamp(24px,3vw,40px)}
+.hero-card-kicker{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+.hero-card-email{font-family:var(--serif);font-size:clamp(20px,2.4vw,28px);margin:0 0 18px;word-break:break-word}
+.hero-card-email a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+.hero-card-email a:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.hero-card-cities{font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.hero-card-note{font-size:16px;color:var(--text);margin:0}

@@ -132,7 +132,7 @@ def head(lang, page, t, extra_ld=""):
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#1B2B2B">
 <link rel="icon" href="{up}assets/favicon.png" type="image/png"><link rel="apple-touch-icon" href="{up}assets/apple-touch-icon.png">
-<link rel="preload" href="{up}assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="{up}assets/style.css">
+<link rel="preload" href="{up}assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="{up}assets/style.css?v=4659359746">
 <script defer src="{up}assets/site.js"></script>
 {extra_ld}
 </head>'''
@@ -210,6 +210,7 @@ def page_home(lang, t):
 <div class="cols c4">{firsts}</div><p style="margin-top:28px"><a href="{rel(lang, "home", lang, "experience")}">{e(h["matters_more"])}</a></p></div></section>'''
     up = "../" * depth(lang, "home")
     cov = {"en": ("International boutique law firm", "Paris · Seoul · Hong Kong", "Enter the site"), "fr": ("Cabinet d'avocats international", "Paris · Séoul · Hong Kong", "Découvrir le cabinet"), "ko": ("국제 부티크 로펌", "파리 · 서울 · 홍콩", "사이트 둘러보기")}[lang]
+    hc = {"en": {"label": "Contact", "kicker": "Write to us", "cities": "Paris · Seoul · Hong Kong", "note": "Write in English, French or Korean."}, "fr": {"label": "Contact", "kicker": "Écrivez-nous", "cities": "Paris · Séoul · Hong Kong", "note": "En français, en anglais ou en coréen."}, "ko": {"label": "문의", "kicker": "문의하기", "cities": "파리 · 서울 · 홍콩", "note": "한국어, 프랑스어, 영어로 문의해 주세요."}}[lang]
     body = f'''<section class="landing" style="background-image:url('{up}assets/img/landing-bg.webp')" aria-labelledby="landing-title"><div class="landing-panel">
 <p class="landing-name" id="landing-title">ARCHÈ SELARL</p><p class="landing-tag">{e(cov[0])}</p><p class="landing-cities">{e(cov[1])}</p>
 <p><a class="landing-link" href="#hero-start">{e(cov[2])}</a></p></div></section>
@@ -217,7 +218,7 @@ def page_home(lang, t):
 <section class="hero"><div class="wrap">
 <div><h1>{e(h["h1"])}</h1><p class="lede">{e(h["lede"])}</p>
 <div class="actions"><a class="btn" href="{cta_href(lang, "home")}">{e(t["cta"])}</a><a class="btn ghost" href="{rel(lang, "home", lang, "services")}">{e(h["see_services"])}</a></div></div>
-</div></section>
+<aside class="hero-card" aria-label="{e(hc['label'])}"><p class="hero-card-kicker">{e(hc['kicker'])}</p><p class="hero-card-email"><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p><p class="hero-card-cities">{e(hc['cities'])}</p><p class="hero-card-note">{e(hc['note'])}</p></aside></div></section>
 <section><div class="wrap"><div class="section-head"><h2>{e(h["creds_h"])}</h2><p class="lede">{e(h["creds_p"])}</p></div><div class="cols c3">{creds}</div></div></section>
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["who_h"])}</h2></div><div class="cols c3">{who}</div></div></section>
 <section><div class="wrap"><div class="section-head"><h2>{e(h["services_h"])}</h2></div><div class="cols c4">{svcs}</div>
@@ -400,7 +401,7 @@ def main():
     t = T["en"]
     base = C.SITE_URL.rstrip("/") + "/"
     nf = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{e(t["meta"]["404"][0])}</title><meta name="robots" content="noindex"><link rel="icon" href="{base}assets/favicon.png" type="image/png"><link rel="stylesheet" href="{base}assets/style.css">
+<title>{e(t["meta"]["404"][0])}</title><meta name="robots" content="noindex"><link rel="icon" href="{base}assets/favicon.png" type="image/png"><link rel="stylesheet" href="{base}assets/style.css?v=4659359746">
 </head><body><main id="main"><section><div class="wrap"><h1>{e(t["nf"]["h1"])}</h1><p class="lede">{e(t["nf"]["p"])}</p><p><a class="btn" href="{base}">{e(t["nf"]["back"])}</a></p></div></section></main></body></html>'''
     write("404.html", nf)
 
