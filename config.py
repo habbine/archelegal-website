@@ -27,6 +27,15 @@ FORM_ENDPOINT = ""
 SEOUL = {"address": "Humanstarville #1101, Dosandae-ro 454, Gangnam-gu, Seoul, South Korea", "phone": "", "email": "seoul@archelegal.com"}
 HONGKONG = {"address": "Arche Asia Ltd., Level 1901, Cheung Kong Center, 2 Queen's Road Central, Central, Hong Kong", "phone": "", "email": "hk@archelegal.com"}
 
+# Founder's profile links (team page; footer shows all except the firm site).
+HK_LINKS = [
+    ("kimavocat.com", "https://www.kimavocat.com/"),
+    ("ORCID", "https://orcid.org/0000-0003-4990-584X"),
+    ("SSRN", "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=4745485"),
+    ("Instagram", "https://www.instagram.com/kim_avocat/"),
+    ("archelegal.com", "https://archelegal.com/"),
+]
+
 PEOPLE = [
     {
         "slug": "jk",
@@ -42,7 +51,8 @@ PEOPLE = [
         "photo": "assets/img/team-hk.webp",
         "name": "Habbine Estelle Kim",
         "email": "habbine.kim@archelegal.com",
-        "linkedin": "https://www.linkedin.com/in/habbine-kim-avocat/",
+        "linkedin": "https://www.linkedin.com/in/kim-avocat/",
+        "links": HK_LINKS,
     },
     {
         "slug": "dk",
