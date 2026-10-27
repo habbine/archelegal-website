@@ -209,22 +209,42 @@ IMMIGRATION_CLIENTS_STATED = "200+"  # stated by the firm, Oct 2026
 
 
 def figures(lang):
-    """Indicative figures counted from the lists above (rounded down to the nearest 5, shown with '+')."""
-    def plus(n):
-        return f"{(n // 5) * 5}+" if n >= 10 else str(n)
+    """Headline figures, all per year (firm's instruction, Oct 2026). Values are the firm's stated figures.
+    Returns ([(value, title, comment)], counts) where counts are the list-based tallies kept for reference."""
     entry = len({n for _, names in ENTRY for n in names})
     deals = len(TRANSACTIONS) + len(PROJECTS)
     cases = len(CASES)
     emp = len({n for n, _ in RESTRUCTURING} | set(EMP_LITIGATION) | set(EMP_ADVISORY) | set(EMP_CONTRACTS))
     imm = len(set(IMMIGRATION_CLIENTS))
-    labels = {
-        "en": ["years of practice", "companies and institutions supported in France", "transactions and international projects", "disputes and arbitrations", "employers advised on employment law", "clients supported on immigration each year", "industry sectors"],
-        "fr": ["ans d'exercice", "entreprises et institutions accompagnées en France", "opérations et projets internationaux", "litiges et arbitrages", "employeurs conseillés en droit du travail", "clients accompagnés en immigration chaque année", "secteurs d'activité"],
-        "ko": ["년 이상의 경력", "프랑스 진출 지원 기업·기관", "거래 및 국제 프로젝트", "분쟁·중재 사건", "노동 자문 고객", "연간 취업 이민 지원 고객", "산업 분야"],
+    vals = ["250+", "45+", "20+", "30+", IMMIGRATION_CLIENTS_STATED, "25+"]
+    rows = {
+        "en": [("Businesses and institutions", "Supported in France each year"),
+               ("Transactions and projects", "International business matters each year"),
+               ("Disputes and arbitrations", "Contentious matters each year"),
+               ("Employers advised", "On employment law each year"),
+               ("Immigration clients", "Supported each year"),
+               ("Industry sectors", "Served each year")],
+        "fr": [("Entreprises et institutions", "Accompagnées en France chaque année"),
+               ("Opérations et projets", "Dossiers internationaux chaque année"),
+               ("Litiges et arbitrages", "Dossiers contentieux chaque année"),
+               ("Employeurs conseillés", "En droit du travail chaque année"),
+               ("Clients en immigration", "Accompagnés chaque année"),
+               ("Secteurs d'activité", "Couverts chaque année")],
+        "ko": [("기업·기관", "연간 프랑스 진출 지원"),
+               ("거래·프로젝트", "연간 국제 비즈니스 사건"),
+               ("분쟁·중재", "연간 쟁송 사건"),
+               ("노동 자문 고객", "연간 노동법 자문"),
+               ("취업 이민 고객", "연간 지원 고객"),
+               ("산업 분야", "연간 담당 분야")],
     }[lang]
-    # Immigration: the firm's own count of clients supported (more than 200), not just the names listed.
-    vals = ["25+", plus(entry), plus(deals), plus(cases), plus(emp), IMMIGRATION_CLIENTS_STATED, plus(len(SECTORS_COVERED["en"]))]
-    return list(zip(vals, labels)), {"entry": entry, "deals": deals, "cases": cases, "emp": emp, "imm": imm}
+    return [(v, a, b) for v, (a, b) in zip(vals, rows)], {"entry": entry, "deals": deals, "cases": cases, "emp": emp, "imm": imm}
+
+
+FIG_HEAD = {
+    "en": ("Experience that moves business forward.", "A track record spanning business law, cross-border projects and employment and immigration matters. All figures are per year."),
+    "fr": ("Une expérience qui fait avancer les entreprises.", "Un savoir-faire en droit des affaires, projets transfrontaliers, droit du travail et immigration. Tous les chiffres sont annuels."),
+    "ko": ("비즈니스를 앞으로 나아가게 하는 경험.", "기업법, 국경 간 프로젝트, 노동 및 취업 이민 분야의 실적. 모든 수치는 연간 기준입니다."),
+}
 
 
 def featured(lang):
@@ -411,7 +431,12 @@ def client_profile(lang):
                "large": "대기업", "mid": "중견·중소기업", "startup": "스타트업", "public": "공공기관",
                "kr": "한국", "fr": "프랑스", "other": "기타(일본, 중국)"},
     }[lang]
-    size_line = " · ".join(f"{size[k]} {lab[k]}" for k in ("large", "mid", "startup", "public") if size.get(k))
-    nat_line = " · ".join(f"{nat[k]} {lab[k]}" for k in ("kr", "fr", "other") if nat.get(k))
+    # Firm's instruction (Oct 2026): no nationality row and no counts in the client profile.
+    # Client types: firm's own wording (Oct 2026).
+    clients = {
+        "en": ("Clients", "Serving a diverse range of clients, including multinational groups, SMEs, start-ups, sole traders, public institutions and government agencies, in both regulated and unregulated sectors."),
+        "fr": ("Clients", "Une clientèle diversifiée : groupes multinationaux, PME, start-ups, entrepreneurs individuels, institutions publiques et administrations, dans des secteurs réglementés comme non réglementés."),
+        "ko": ("고객", "다국적 그룹, 중소기업, 스타트업, 개인사업자, 공공기관 및 정부 기관 등 규제 산업과 비규제 산업 전반의 다양한 고객을 지원합니다."),
+    }[lang]
     sectors = SECTORS_COVERED[lang]
-    return [(lab["size"], size_line), (lab["nat"], nat_line), (lab["sec"], f"{len(sectors)}: " + ", ".join(sectors))], len(sectors)
+    return [clients, (lab["sec"], ", ".join(sectors))], len(sectors)
