@@ -14,7 +14,7 @@ content_extra.apply(T)
 ROOT = Path(__file__).resolve().parent
 LANGS = ["en", "fr", "ko"]
 LANG_LABEL = {"en": "EN", "fr": "FR", "ko": "한국어"}
-NAV = ["services", "experience", "people", "insights", "contact"]
+NAV = ["home", "services", "experience", "people", "insights", "contact"]
 SLUG = {"home": "", "services": "services/", "experience": "experience/", "people": "team/", "insights": "insights/",
         "contact": "contact/", "legal": "legal/", "privacy": "privacy/"}
 OG_LOCALE = {"en": "en_GB", "fr": "fr_FR", "ko": "ko_KR"}
