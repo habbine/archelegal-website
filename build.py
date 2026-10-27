@@ -181,9 +181,9 @@ TEAM_H = {"en": ("Who will handle your matter", "Partner-led work in French, Eng
 NETWORK = {"en": "Through long-standing cooperation with local law firms, we also advise in other countries across Europe, Asia, Africa and the Middle East.",
            "fr": "Grâce à une coopération de longue date avec des cabinets locaux, nous intervenons aussi dans d'autres pays d'Europe, d'Asie, d'Afrique et du Moyen-Orient.",
            "ko": "현지 로펌들과의 오랜 협력 관계를 통해 유럽, 아시아, 아프리카, 중동의 다른 국가에서도 자문을 제공합니다."}
-CLOSE = {"en": ("Tell us briefly what you need, in English, French or Korean.", "Discuss your matter"),
-         "fr": ("Décrivez-nous brièvement votre besoin, en français, en anglais ou en coréen.", "Parlez-nous de votre dossier"),
-         "ko": ("필요하신 내용을 한국어, 프랑스어, 영어로 간단히 알려 주세요.", "사안 상담하기")}
+CLOSE = {"en": ("Your business. Your challenges. Our legal expertise.", "Discuss your matter", "Get in touch in English, French or Korean."),
+         "fr": ("Votre activité. Vos enjeux. Notre expertise juridique.", "Parlez-nous de votre dossier", "Écrivez-nous en français, en anglais ou en coréen."),
+         "ko": ("귀사의 비즈니스. 귀사의 과제. 아르케의 법률 전문성.", "사안 상담하기", "한국어, 프랑스어, 영어로 문의해 주세요.")}
 
 
 def what_compact(lang):
@@ -392,7 +392,7 @@ def page_home(lang, t):
     team_html = (f'<section aria-labelledby="tm-h"><div class="wrap"><div class="section-head"><h2 id="tm-h">{e(TEAM_H[lang][0])}</h2><p class="lede">{e(TEAM_H[lang][1])}</p></div>'
                  f'<div class="tm-grid">{team_cards}</div></div></section>')
     close = CLOSE[lang]
-    close_html = (f'<section class="alt close-line"><div class="wrap"><p class="close-h">{e(close[0])}</p>'
+    close_html = (f'<section class="alt close-line"><div class="wrap"><div><h2 class="close-h">{e(close[0])}</h2><p class="close-p">{e(close[2])}</p></div>'
                   f'<a class="btn" href="{cta_href(lang, "home")}">{e(close[1])}</a></div></section>')
     primary = {"en": "Discuss your matter", "fr": "Parlez-nous de votre dossier", "ko": "사안 상담하기"}[lang]
     secondary = {"en": "Explore our expertise", "fr": "Découvrir nos expertises", "ko": "업무분야 보기"}[lang]
@@ -438,6 +438,8 @@ def page_services(lang, t):
                 lis = [f'<li><strong>{e(n)}</strong> — {e(tx)}</li>' for n, tx in data]
             elif kind == "names":
                 lis = [f'<li class="ex-names">{" · ".join(e(n) for n in data)}</li>']
+            elif kind == "text":
+                lis = [f'<li class="ex-names">{e(" · ".join(data))}</li>']
             else:
                 lis = [f'<li><strong>{e(c)}</strong> — {e(" · ".join(ns))}</li>' for c, ns in data]
             head, tail = "".join(lis[:3]), "".join(lis[3:])
@@ -458,8 +460,11 @@ def page_services(lang, t):
 
     import experience6 as X6
     figs, _ = X6.figures(lang)
-    fig_note = {"en": "Indicative figures. Immigration: the firm's own count of clients supported; other figures count only the examples listed on this page.", "fr": "Chiffres indicatifs. Immigration : décompte du cabinet ; les autres chiffres ne comptent que les exemples cités sur cette page.", "ko": "참고용 수치입니다. 취업 이민은 아르케 자체 집계이며, 나머지는 이 페이지에 소개된 사례만 집계했습니다."}[lang]
-    fig_html = '<div class="figs"><dl>' + "".join(f'<div><dt>{e(v)}</dt><dd>{e(l)}</dd></div>' for v, l in figs) + f'</dl><p class="figs-note">{e(fig_note)}</p></div>'
+    fig_note = {"en": "Indicative figures from the firm's records. Immigration is a yearly figure; the others count selected matters across the firm's history.", "fr": "Chiffres indicatifs issus des dossiers du cabinet. L'immigration est un chiffre annuel ; les autres recensent des dossiers choisis sur l'ensemble de l'histoire du cabinet.", "ko": "아르케 업무 기록에 따른 참고용 수치입니다. 취업 이민은 연간 수치이며, 나머지는 설립 이후 주요 사례를 집계한 것입니다."}[lang]
+    prof, _ = X6.client_profile(lang)
+    prof_h = {"en": "Client profile", "fr": "Profil des clients", "ko": "고객 구성"}[lang]
+    prof_html = f'<div class="profile"><p class="profile-h">{e(prof_h)}</p><dl>' + "".join(f'<div><dt>{e(a)}</dt><dd>{e(c)}</dd></div>' for a, c in prof) + '</dl></div>'
+    fig_html = '<div class="figs"><dl>' + "".join(f'<div><dt>{e(v)}</dt><dd>{e(l)}</dd></div>' for v, l in figs) + f'</dl>{prof_html}<p class="figs-note">{e(fig_note)}</p></div>'
     return f'''<div class="page-head"><div class="wrap"><h1>{e(s["h1"])}</h1><p class="lede">{e(s["lede"])}</p>{fig_html}{idx}</div></div>
 <section style="padding-top:0"><div class="wrap" id="services-list">{items}</div><div class="wrap"><p class="xp-note">{e(X6.FOOTNOTE[lang])}</p></div></section>
 {services_js}
