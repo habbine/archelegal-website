@@ -88,6 +88,45 @@ HERITAGE = {
 }
 
 
+_I = {
+ "globe": '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>',
+ "swap": '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 8h15M15 4l4 4-4 4M20 16H5M9 12l-4 4 4 4"/></svg>',
+ "build": '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 21V8l6-3v16M10 21h10V11l-6-2M14 14h2M14 18h2"/></svg>',
+}
+# (icon, title, text, [(tag, service id)])
+WHO = {
+ "en": {"kicker": "Archè · International business law", "h": "Who we work with",
+  "lede": "Legal counsel for businesses operating across borders, from market entry to international growth and complex commercial matters.",
+  "cta_h": "Navigating a cross-border legal challenge?", "cta_p": "Let's discuss your business and how we can help.", "cta_b": "Contact Archè",
+  "cards": [
+   ("globe", "International businesses entering Europe", "For companies from Asia, North America, the Middle East and beyond establishing or expanding their presence in France and Europe.", [("Market entry", "projects"), ("Corporate structuring", "corporate"), ("Employment", "employment"), ("Commercial contracts", "corporate")]),
+   ("swap", "French and European businesses expanding internationally", "For businesses entering new markets, negotiating cross-border partnerships and managing legal risks across jurisdictions.", [("International expansion", "projects"), ("Partnerships", "corporate"), ("Compliance", "corporate"), ("Disputes", "litigation")]),
+   ("build", "Entrepreneurs, startups and growing businesses", "For founders, SMEs and independent professionals seeking practical legal support to structure, operate and grow their businesses.", [("Business formation", "corporate"), ("Contracts", "corporate"), ("Employment", "employment"), ("Restructuring", "litigation")])]},
+ "fr": {"kicker": "Archè · Droit international des affaires", "h": "Qui nous accompagnons",
+  "lede": "Conseil juridique pour les entreprises qui opèrent au-delà des frontières, de l'implantation à la croissance internationale et aux dossiers commerciaux complexes.",
+  "cta_h": "Un enjeu juridique transfrontalier ?", "cta_p": "Parlons de votre activité et de la manière dont nous pouvons vous aider.", "cta_b": "Nous contacter",
+  "cards": [
+   ("globe", "Entreprises internationales qui s'implantent en Europe", "Pour les sociétés d'Asie, d'Amérique du Nord, du Moyen-Orient et d'ailleurs qui s'établissent ou se développent en France et en Europe.", [("Implantation", "projects"), ("Structuration juridique", "corporate"), ("Droit du travail", "employment"), ("Contrats commerciaux", "corporate")]),
+   ("swap", "Entreprises françaises et européennes qui se développent à l'international", "Pour les entreprises qui abordent de nouveaux marchés, négocient des partenariats transfrontaliers et maîtrisent les risques juridiques dans plusieurs juridictions.", [("Développement international", "projects"), ("Partenariats", "corporate"), ("Conformité", "corporate"), ("Contentieux", "litigation")]),
+   ("build", "Entrepreneurs, startups et entreprises en croissance", "Pour les fondateurs, PME et indépendants qui cherchent un appui juridique concret pour structurer, exploiter et développer leur activité.", [("Création d'entreprise", "corporate"), ("Contrats", "corporate"), ("Droit du travail", "employment"), ("Restructuration", "litigation")])]},
+ "ko": {"kicker": "아르케 · 국제 비즈니스 법", "h": "이런 고객과 함께합니다",
+  "lede": "국경을 넘어 사업하는 기업을 위한 법률 자문. 시장 진출에서 해외 성장, 복잡한 상사 사안까지.",
+  "cta_h": "국경을 넘는 법적 과제를 안고 계신가요?", "cta_p": "귀사의 사업과 저희가 어떻게 도울 수 있는지 이야기해 보시죠.", "cta_b": "아르케에 문의",
+  "cards": [
+   ("globe", "유럽에 진출하는 해외 기업", "아시아, 북미, 중동 등에서 프랑스와 유럽에 진출하거나 사업을 확장하려는 기업을 위해.", [("시장 진출", "projects"), ("법인 구조 설계", "corporate"), ("노동·고용", "employment"), ("상사 계약", "corporate")]),
+   ("swap", "해외로 확장하는 프랑스·유럽 기업", "새로운 시장에 진출하고 국경을 넘는 파트너십을 협상하며 여러 관할의 법적 리스크를 관리하려는 기업을 위해.", [("해외 확장", "projects"), ("파트너십", "corporate"), ("컴플라이언스", "corporate"), ("분쟁", "litigation")]),
+   ("build", "창업가, 스타트업, 성장 기업", "사업을 구조화하고 운영하고 키우는 데 실무적인 법률 지원이 필요한 창업가, 중소기업, 독립 전문가를 위해.", [("법인 설립", "corporate"), ("계약", "corporate"), ("노동·고용", "employment"), ("구조조정", "litigation")])]},
+}
+
+
+def who_cards(lang):
+    out = ""
+    for ico, title, text, tags in WHO[lang]["cards"]:
+        links = "".join(f'<li><a href="{rel(lang, "home", lang, "services")}#{sid}">{e(lbl)}</a></li>' for lbl, sid in tags)
+        out += f'<div class="who-card"><span class="who-ico">{_I[ico]}</span><h3>{e(title)}</h3><p>{e(text)}</p><ul class="who-tags">{links}</ul></div>'
+    return out
+
+
 def url_path(lang, page):
     return ("" if lang == "en" else lang + "/") + SLUG[page]
 
@@ -230,7 +269,6 @@ def follow_card(lang, text):
 def page_home(lang, t):
     h = t["home"]
     svc = t["services"]["items"]
-    who = "".join(f'<div class="rule-top"><h3>{e(a)}</h3><p>{e(b)}</p></div>' for a, b in h["who"])
     svcs = "".join(f'<div class="rule-top"><h3><a href="{rel(lang, "home", lang, "services")}#{s[0]}" style="color:inherit;text-decoration:none">{e(s[1])}</a></h3><p>{e(s[2])}</p></div>' for s in svc)
     creds = "".join(f'<div class="rule-top"><h3 style="font-size:1.1rem">{e(a)}</h3><p>{e(b)}</p></div>' for a, b in h["creds"])
     inds = "".join(f'<div class="ind"><h3>{e(g)}</h3><ul>' + "".join(f"<li>{e(x)}</li>" for x in items) + "</ul></div>" for g, items in h["industries"])
@@ -272,7 +310,7 @@ def page_home(lang, t):
 <aside class="hero-card" aria-label="{e(hc['label'])}"><p class="hero-card-kicker">{e(hc['kicker'])}</p><p class="hero-card-email"><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a></p><p class="hero-card-cities">{e(hc['cities'])}</p><p class="hero-card-note">{e(hc['note'])}</p></aside></div></section>
 <section><div class="wrap"><div class="section-head"><h2>{e(h["creds_h"])}</h2><p class="lede">{e(h["creds_p"])}</p></div><div class="cols c3">{creds}</div></div></section>
 <section class="alt"><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><div><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS[:6])}</ul><p style="margin-top:12px"><a href="{rel(lang, "home", lang, "people")}">{ {"en": "All affiliations", "fr": "Toutes les affiliations", "ko": "전체 소속 보기"}[lang] } →</a></p></div></div></section>
-<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["who_h"])}</h2></div><div class="cols c3">{who}</div></div></section>
+<section class="alt who"><div class="wrap"><div class="section-head"><p class="kicker">{e(WHO[lang]["kicker"])}</p><h2>{e(WHO[lang]["h"])}</h2><p class="lede">{e(WHO[lang]["lede"])}</p></div><div class="cols c3">{who_cards(lang)}</div><div class="who-cta"><div><p class="who-cta-h">{e(WHO[lang]["cta_h"])}</p><p>{e(WHO[lang]["cta_p"])}</p></div><a class="btn ghost" href="{cta_href(lang, "home")}">{e(WHO[lang]["cta_b"])} ↗</a></div></div></section>
 <section><div class="wrap"><div class="section-head"><h2>{e(h["services_h"])}</h2></div><div class="cols c4">{svcs}</div>
 <p style="margin-top:28px"><a href="{rel(lang, "home", lang, "services")}">{e(h["services_more"])}</a></p></div></section>
 {mt}
