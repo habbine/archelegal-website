@@ -99,8 +99,8 @@ T["en"] = {
         "linkedin_label": "LinkedIn profile",
     },
     "insights": {
-        "h1": "Press",
-        "lede": "Press coverage of the firm, and where we publish.",
+        "h1": "ALEEDA 알리다",
+        "lede": "Press coverage, News and Events",
         "press_h": "Coverage by theme",
         "follow_h": "Follow our work",
         "follow_p": "Follow Archè on social media.",
@@ -268,8 +268,8 @@ T["fr"] = {
         "linkedin_label": "Profil LinkedIn",
     },
     "insights": {
-        "h1": "Actualités et presse",
-        "lede": "La presse parle du cabinet, et voici où nous publions.",
+        "h1": "ALEEDA 알리다",
+        "lede": "Presse, actualités et événements",
         "press_h": "Couverture par thème",
         "follow_h": "Suivre nos publications",
         "follow_p": "Suivez Archè sur les réseaux sociaux.",
@@ -437,8 +437,8 @@ T["ko"] = {
         "linkedin_label": "LinkedIn 프로필",
     },
     "insights": {
-        "h1": "소식과 언론 보도",
-        "lede": "아르케 관련 언론 보도와 게시 채널.",
+        "h1": "ALEEDA 알리다",
+        "lede": "언론 보도, 뉴스 및 행사",
         "press_h": "주제별 보도",
         "follow_h": "소식 받아보기",
         "follow_p": "아르케를 소셜 미디어에서 팔로우하세요.",
