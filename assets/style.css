@@ -120,6 +120,8 @@ section{padding:clamp(48px,7vw,88px) 0}
 .press a:hover strong{text-decoration:underline}
 .press small{display:block;color:var(--muted)}
 .press .about{display:block;margin-top:2px}
+.press .quote{display:block;margin-top:4px;font-style:italic}
+.press q{quotes:none}
 
 /* form */
 form.contact{display:grid;gap:16px;max-width:620px}

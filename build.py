@@ -44,8 +44,11 @@ def press_items(lang, items):
     for p in items:
         about = p.get("about", {}).get(lang, "")
         about_html = f'<span class="about">{e(about)}</span>' if about else ""
+        q = p.get("quote")
+        quote_html = (f'<span class="quote">« <q lang="{q["lang"]}">{e(q["text"])}</q> » — {e(q["by"])}, '
+                      f'<time datetime="{q["date"]}">{fmt_date(lang, q["date"])}</time></span>') if q else ""
         out += (f'<a href="{e(p["url"])}" rel="noopener" target="_blank"><strong lang="{p["lang"]}">{e(p["title"])}</strong>'
-                f'{about_html}<small>{e(p["outlet"][lang])} · <time datetime="{p["date"]}">{fmt_date(lang, p["date"])}</time></small></a>')
+                f'{about_html}{quote_html}<small>{e(p["outlet"][lang])} · <time datetime="{p["date"]}">{fmt_date(lang, p["date"])}</time></small></a>')
     return out
 
 
