@@ -71,8 +71,10 @@ SERVICES8 = {
    ("Employment Transfers & Mobility", "Business transfers, employee transfers, secondments and posted workers"),
    ("Employment Litigation", "Labour disputes before the Conseil de prud'hommes and competent courts"),
    ("International Employment & Social Security", "Cross-border employment, mobility and social security matters"),
-   ("Professional Immigration", "Visas, work permits and residence permits for executives, assignees and new hires"),
    ("Employment Compliance", "")]),
+ ("immigration", "Professional Immigration", "Business immigration", [
+   ("Visas & Work Permits", "Visas and work permits for executives, assignees and new hires"),
+   ("Residence Permits", "Residence permits for executives, assignees and new hires")]),
  ("litigation", "Dispute Resolution", "Litigation & arbitration", [
    ("Dispute Prevention & Risk Management", "Dispute avoidance and litigation risk assessment"),
    ("Provisional & Protective Measures", "Asset freezing, attachments, judicial mortgages and other protective measures"),
@@ -140,8 +142,10 @@ SERVICES8 = {
    ("Transferts et mobilité", "Transferts d'entreprise et de salariés, détachements et travailleurs détachés"),
    ("Contentieux du travail", "Litiges devant le conseil de prud'hommes et les juridictions compétentes"),
    ("Emploi international et sécurité sociale", "Emploi transfrontalier, mobilité et sécurité sociale"),
-   ("Immigration professionnelle", "Visas, autorisations de travail et titres de séjour pour dirigeants, salariés détachés et recrues"),
    ("Conformité sociale", "")]),
+ ("immigration", "Immigration professionnelle", "Immigration d'affaires", [
+   ("Visas et autorisations de travail", "Visas et autorisations de travail pour dirigeants, salariés détachés et recrues"),
+   ("Titres de séjour", "Titres de séjour pour dirigeants, salariés détachés et recrues")]),
  ("litigation", "Règlement des litiges", "Contentieux et arbitrage", [
    ("Prévention des litiges", "Prévention des différends et évaluation du risque contentieux"),
    ("Mesures conservatoires", "Saisies conservatoires, hypothèques judiciaires et autres mesures conservatoires"),
@@ -209,8 +213,10 @@ SERVICES8 = {
    ("고용 승계 및 인력 이동", "사업 이전, 고용 승계, 파견 및 해외 파견 근로자"),
    ("노동 소송", "노동법원(Conseil de prud'hommes) 및 관할 법원 소송"),
    ("국제 고용 및 사회보장", "국경 간 고용, 인력 이동, 사회보장"),
-   ("취업 이민", "경영진, 주재원, 신규 채용 인력의 비자, 노동허가, 체류증"),
    ("노동법 컴플라이언스", "")]),
+ ("immigration", "취업 이민", "비즈니스 이민", [
+   ("비자·노동허가", "경영진, 주재원, 신규 채용 인력의 비자 및 노동허가"),
+   ("체류증", "경영진, 주재원, 신규 채용 인력의 체류증")]),
  ("litigation", "분쟁 해결", "소송 및 중재", [
    ("분쟁 예방 및 리스크 관리", "분쟁 회피 및 소송 리스크 평가"),
    ("보전 처분", "자산 동결, 가압류, 가처분, 법원 저당권 등 보전 조치"),
