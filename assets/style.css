@@ -119,6 +119,7 @@ section{padding:clamp(48px,7vw,88px) 0}
 .press a{display:block;padding:16px 0;border-top:1px solid var(--line);text-decoration:none;color:var(--ink)}
 .press a:hover strong{text-decoration:underline}
 .press small{display:block;color:var(--muted)}
+.press .about{display:block;margin-top:2px}
 
 /* form */
 form.contact{display:grid;gap:16px;max-width:620px}

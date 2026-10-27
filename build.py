@@ -21,6 +21,27 @@ e = html.escape
 warnings = []
 
 
+MONTHS = {"en": "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(),
+          "fr": "janv. févr. mars avr. mai juin juil. août sept. oct. nov. déc.".split()}
+
+
+def fmt_date(lang, d):
+    y, m, day = d.split("-")
+    if lang == "ko":
+        return f"{y}.{m}.{day}"
+    return f"{int(day)} {MONTHS[lang][int(m) - 1]} {y}"
+
+
+def press_items(lang, items):
+    out = ""
+    for p in items:
+        about = p.get("about", {}).get(lang, "")
+        about_html = f'<span class="about">{e(about)}</span>' if about else ""
+        out += (f'<a href="{e(p["url"])}" rel="noopener" target="_blank"><strong lang="{p["lang"]}">{e(p["title"])}</strong>'
+                f'{about_html}<small>{e(p["outlet"][lang])} · <time datetime="{p["date"]}">{fmt_date(lang, p["date"])}</time></small></a>')
+    return out
+
+
 def url_path(lang, page):
     return ("" if lang == "en" else lang + "/") + SLUG[page]
 
@@ -166,7 +187,7 @@ def page_home(lang, t):
     press = ""
     if C.PRESS:
         press = f'''<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["press_h"])}</h2><p class="lede">{e(h["press_p"])}</p></div>
-<div class="press">''' + "".join(f'<a href="{e(p["url"])}" rel="noopener" lang="{p["lang"]}"><strong>{e(h["press_item"])}</strong><small>{e(p["outlet"])}</small></a>' for p in C.PRESS) + "</div></div></section>"
+<div class="press">''' + press_items(lang, C.PRESS[:C.PRESS_HOME]) + f'</div><p style="margin-top:20px"><a href="{rel(lang, "home", lang, "insights")}">{e(h["press_more"])}</a></p></div></section>'
     mt = ""
     if t.get("matters"):
         firsts = "".join(f'<div class="rule-top"><h3 style="font-size:1.05rem">{e(g[0])}</h3><p>{e(g[1][0])}</p></div>' for g in t["matters"]["groups"])
@@ -236,7 +257,7 @@ def page_experience(lang, t):
 def page_insights(lang, t):
     i = t["insights"]
     events = "".join(f"<li>{e(x)}</li>" for x in i["events"])
-    press ="".join(f'<a href="{e(x["url"])}" rel="noopener" lang="{x["lang"]}"><strong>{e(t["home"]["press_item"])}</strong><small>{e(x["outlet"])}</small></a>' for x in C.PRESS)
+    press = press_items(lang, C.PRESS)
     return f'''<div class="page-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p></div></div>
 <section style="padding-top:0"><div class="wrap cols c2">
 <div><h2>{e(i["press_h"])}</h2><div class="press">{press}</div>
