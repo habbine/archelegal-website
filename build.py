@@ -125,7 +125,7 @@ def head(lang, page, t, extra_ld=""):
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#1B2B2B">
 <link rel="icon" href="{up}assets/favicon.png" type="image/png"><link rel="apple-touch-icon" href="{up}assets/apple-touch-icon.png">
-<link rel="stylesheet" href="{up}assets/style.css">
+<link rel="preload" href="{up}assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="{up}assets/style.css">
 <script defer src="{up}assets/site.js"></script>
 {extra_ld}
 </head>'''
