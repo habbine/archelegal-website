@@ -14,7 +14,7 @@ content_extra.apply(T)
 ROOT = Path(__file__).resolve().parent
 LANGS = ["en", "fr", "ko"]
 LANG_LABEL = {"en": "EN", "fr": "FR", "ko": "한국어"}
-NAV = ["services", "experience", "people", "insights", "contact"]
+NAV = ["home", "services", "experience", "people", "insights", "contact"]
 SLUG = {"home": "", "services": "services/", "experience": "experience/", "people": "team/", "insights": "insights/",
         "contact": "contact/", "legal": "legal/", "privacy": "privacy/"}
 OG_LOCALE = {"en": "en_GB", "fr": "fr_FR", "ko": "ko_KR"}
@@ -85,7 +85,7 @@ def header(lang, page, t):
         switch += f'<a href="{rel(lang, page, l, page)}" hreflang="{l}" lang="{l}"{cur}>{LANG_LABEL[l]}</a>'
     return f'''<a class="skip" href="#main">{e(t["skip"])}</a>
 <header class="site-header"><div class="wrap">
-<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo-mark.png" width="43" height="48" alt=""><span class="brand-text"><span>{e(C.FIRM)}</span><small>SELARL</small></span></a>
+<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo-mark.png" width="38" height="48" alt=""><span class="brand-text"><span>{e(C.FIRM)} SELARL</span><small>{e({"en": "International law firm", "fr": "Cabinet d'avocats international", "ko": "국제 로펌"}[lang])}</small></span></a>
 <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" type="button">{e(t["menu"])}</button>
 <nav class="primary" id="primary-nav" aria-label="{e(t["menu"])}">{nav}<a class="btn" href="{cta_href(lang, page)}">{e(t["cta"])}</a><div class="lang" role="group" aria-label="Language">{switch}</div></nav>
 </div></header>'''
@@ -178,6 +178,9 @@ def bridge(lang, t):
 
 def follow_card(lang, text):
     fl = {"en": ("Follow", "See more"), "fr": ("Suivre", "Voir plus"), "ko": ("팔로우", "더 보기")}[lang]
+    head = {"en": ("Follow · Archè", "The firm: website, news and updates."),
+            "fr": ("Suivre · Archè", "Le cabinet : site, actualités et mises à jour."),
+            "ko": ("팔로우 · 아르케", "법인 웹사이트, 소식 및 업데이트.")}[lang]
     rows = "".join(
         f'<div class="fc-row"><span class="fc-ico" aria-hidden="true">{ico}</span><div class="fc-name"><strong>{e(name)}</strong><span>{e(handle)}</span></div>'
         f'<a class="btn ghost fc-btn" href="{e(url)}" rel="noopener">{e(lbl)} ↗</a></div>'
@@ -186,8 +189,8 @@ def follow_card(lang, text):
             ("Instagram", "@archelegal", C.INSTAGRAM, fl[0], "◎"),
             ("Website", C.SITE_URL.replace("https://", ""), C.SITE_URL, fl[1], "◍"),
         ])
-    return (f'<div class="follow-card"><div class="fc-head"><span class="fc-logo" aria-hidden="true">ARCHÈ</span>'
-            f'<div><strong>{e(C.FIRM_FULL)}</strong><p>{e(text)}</p></div></div><div class="fc-list">{rows}</div></div>')
+    return (f'<div class="follow-card"><div class="fc-head"><img class="fc-logo" src="assets/logo-mark.png" width="38" height="48" alt="">'
+            f'<div><strong>{e(head[0])}</strong><p>{e(head[1])}</p></div></div><div class="fc-list">{rows}</div></div>')
 
 
 def page_home(lang, t):
