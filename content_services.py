@@ -264,15 +264,15 @@ HERO = {
     "en": {"kicker": "Boutique international law firm · Headquartered in Paris",
            "h1": "Cross-border law for international business.",
            "lede": "For over 25 years, we have advised companies doing business between Europe, Asia, Africa, the United States and the Middle East: company set-up, employment, disputes and international projects. In French, English and Korean.",
-           "strip": [("Bar admissions", "Paris Bar · New York Bar"), ("Working languages", "French · English · Korean"), ("Experience", "EU · UK · USA · Middle East · Asia · Africa")]},
+           "strip": [("Bar admissions", "Paris Bar · New York Bar"), ("Working languages", "French · English · Korean"), ("Experience", "Europe · UK · USA · Middle East · Asia · Africa")]},
     "fr": {"kicker": "Cabinet d'avocats international de type boutique · Siège à Paris",
            "h1": "Un droit transfrontalier pour les affaires internationales.",
            "lede": "Depuis plus de 25 ans, nous conseillons les entreprises qui exercent entre l'Europe, l'Asie, l'Afrique, les États-Unis et le Moyen-Orient : création de société, droit du travail, contentieux et projets internationaux. En français, en anglais et en coréen.",
-           "strip": [("Barreaux", "Barreau de Paris · Barreau de New York"), ("Langues de travail", "Français · Anglais · Coréen"), ("Expérience", "UE · Royaume-Uni · États-Unis · Moyen-Orient · Asie · Afrique")]},
+           "strip": [("Barreaux", "Barreau de Paris · Barreau de New York"), ("Langues de travail", "Français · Anglais · Coréen"), ("Expérience", "Europe · Royaume-Uni · États-Unis · Moyen-Orient · Asie · Afrique")]},
     "ko": {"kicker": "부티크 국제 로펌 · 파리 본사",
            "h1": "국제 비즈니스를 위한 국경 간 법률 자문.",
            "lede": "25년 넘게 유럽, 아시아, 아프리카, 미국, 중동 사이에서 사업하는 기업을 자문해 왔습니다. 회사 설립, 노동, 분쟁, 국제 프로젝트를 한국어, 프랑스어, 영어로 지원합니다.",
-           "strip": [("변호사 등록", "파리 변호사회 · 뉴욕 변호사회"), ("업무 언어", "프랑스어 · 영어 · 한국어"), ("업무 경험", "EU · 영국 · 미국 · 중동 · 아시아 · 아프리카")]},
+           "strip": [("변호사 등록", "파리 변호사회 · 뉴욕 변호사회"), ("업무 언어", "프랑스어 · 영어 · 한국어"), ("업무 경험", "유럽 · 영국 · 미국 · 중동 · 아시아 · 아프리카")]},
 }
 _apply_old = apply
 
@@ -282,3 +282,51 @@ def apply(T):
     for lang in ("en", "fr", "ko"):
         h = T[lang]["home"]
         h["h1"], h["lede"], h["kicker"], h["strip"] = HERO[lang]["h1"], HERO[lang]["lede"], HERO[lang]["kicker"], HERO[lang]["strip"]
+
+
+_apply_prev = apply
+
+
+def apply(T):
+    _apply_prev(T)
+    import experience6 as X6
+    for lang in ("en", "fr", "ko"):
+        T[lang]["matters"]["footnote"] = X6.FOOTNOTE[lang]
+
+
+META_OVERRIDES = {
+    "en": {
+        "services": ("Practice areas | Archè, Franco-Korean law firm in Paris", "Corporate, M&A, commercial contracts, employment and immigration, disputes and arbitration, insolvency, IP and international projects, in French, English and Korean."),
+        "experience": ("Selected cases | Archè, Franco-Korean law firm in Paris", "Anonymised cases: entering France and Europe, M&A and investment, energy and infrastructure projects, disputes and arbitration, employment restructuring and immigration."),
+        "people": ("Team | Archè, Franco-Korean law firm in Paris", "Partners admitted in Paris and New York who advise in French, English and Korean on corporate, M&A, disputes, employment and immigration."),
+        "insights": ("Press and events | Archè, Franco-Korean law firm in Paris", "Press coverage of Archè and its partners, including the Oegyujanggak restitution case, books, talks and events between France and Korea."),
+    },
+    "fr": {
+        "services": ("Domaines d'intervention | Archè, cabinet d'avocats franco-coréen à Paris", "Sociétés, fusions-acquisitions, contrats, droit du travail et immigration, contentieux et arbitrage, procédures collectives, PI et projets internationaux, en français, anglais et coréen."),
+        "experience": ("Références | Archè, cabinet d'avocats franco-coréen à Paris", "Dossiers anonymisés : implantation en France et en Europe, fusions-acquisitions, projets d'énergie et d'infrastructure, contentieux et arbitrage, restructurations et immigration."),
+        "people": ("Équipe | Archè, cabinet d'avocats franco-coréen à Paris", "Des associés inscrits à Paris et New York qui conseillent en français, anglais et coréen en sociétés, fusions-acquisitions, contentieux, droit du travail et immigration."),
+        "insights": ("Presse et événements | Archè, cabinet d'avocats franco-coréen à Paris", "Revue de presse d'Archè et de ses associés, dont l'affaire de restitution de l'Oegyujanggak, livres, conférences et événements entre la France et la Corée."),
+    },
+    "ko": {
+        "home": ("아르케 | 파리 한인 변호사 로펌 · 프랑스 법인 설립·노동·소송 자문", "파리에 본사를 둔 국제 로펌 아르케. 25년 넘게 프랑스·유럽 진출, 법인 설립, M&A, 노동·구조조정, 취업 이민, 소송·중재를 한국어, 프랑스어, 영어로 자문합니다."),
+        "services": ("업무 분야 | 아르케 파리 국제 로펌 · 프랑스 법인 설립, M&A, 노동, 소송", "기업법, 인수합병, 상거래 계약, 노동·취업 이민, 분쟁·중재, 도산, 지식재산권, 국제 프로젝트를 한국어, 프랑스어, 영어로 자문합니다."),
+        "experience": ("주요 사례 | 아르케 파리 국제 로펌", "프랑스·유럽 진출, 인수합병·투자, 에너지·인프라 프로젝트, 분쟁·중재, 노동·구조조정, 취업 이민 분야의 익명화된 주요 사례."),
+        "people": ("구성원 | 아르케 파리 국제 로펌 · 한국어 상담 변호사", "파리·뉴욕 변호사 자격을 갖춘 파트너들이 기업법, M&A, 분쟁, 노동, 이민 사안을 한국어, 프랑스어, 영어로 자문합니다."),
+        "insights": ("언론 보도·행사 | 아르케 파리 국제 로펌", "외규장각 반환 소송, 저서, 강연 및 한불 행사 등 아르케와 파트너에 관한 언론 보도와 활동."),
+        "contact": ("문의 | 아르케 파리 국제 로펌 · 파리, 서울, 홍콩", "파리, 서울, 홍콩 사무소에 한국어, 프랑스어, 영어로 문의하세요. 이메일 paris@archelegal.com"),
+        "legal": ("법적 고지 | 아르케 Archè SELARL", "파리 변호사회 소속 법무법인 Archè SELARL의 법적 고지: 등록 정보, 발행인, 호스팅."),
+        "privacy": ("개인정보 처리방침 | 아르케 Archè", "아르케 웹사이트에서 수집하는 개인정보와 처리 목적, 보관 기간, 정보주체의 권리."),
+    },
+}
+for _l in ("en", "fr"):
+    META_OVERRIDES[_l]["legal"] = {"en": ("Legal notice | Archè SELARL, law firm in Paris", "Legal notice of Archè SELARL, a law firm registered with the Paris Bar: company details, publisher and hosting."),
+                                   "fr": ("Mentions légales | Archè SELARL, cabinet d'avocats à Paris", "Mentions légales d'Archè SELARL, société d'avocats inscrite au Barreau de Paris : identification, directeur de la publication et hébergement.")}[_l]
+
+_apply_prev2 = apply
+
+
+def apply(T):
+    _apply_prev2(T)
+    for lang, pages in META_OVERRIDES.items():
+        for page, val in pages.items():
+            T[lang]["meta"][page] = val

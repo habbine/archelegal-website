@@ -117,7 +117,7 @@ X["en"] = {
         "AFEC EU and Sports Law conference",
         "Guest lectures, Université Paris Cité and Aix-Marseille Université",
     ],
-    "matters_more": "All selected matters",
+    "matters_more": "All key examples by practice area",
     "matters_intro": "Examples of past work for clients.",
 }
 
@@ -233,7 +233,7 @@ X["fr"] = {
         "Conférence de l'AFEC sur le droit de l'UE et le droit du sport",
         "Cours invités, Université Paris Cité et Aix-Marseille Université",
     ],
-    "matters_more": "Toutes les références",
+    "matters_more": "Tous les exemples par domaine",
     "matters_intro": "Exemples de missions pour des clients.",
 }
 
@@ -349,7 +349,7 @@ X["ko"] = {
         "AFEC EU·스포츠법 컨퍼런스",
         "파리 시테 대학교, 엑스마르세유 대학교 초빙 강의",
     ],
-    "matters_more": "수행 사례 전체 보기",
+    "matters_more": "업무 분야별 사례 전체 보기",
     "matters_intro": "고객을 위한 과거 업무 사례입니다.",
 }
 
