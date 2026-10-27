@@ -74,6 +74,7 @@ nav.primary .lang a{display:flex;align-items:center;justify-content:center;min-w
 nav.primary .lang a:hover{background:rgba(255,255,255,.08);color:var(--ink)}
 nav.primary .lang a[aria-current="true"]{background:var(--ink);color:var(--green)}
 nav.primary a.btn{min-width:0;min-height:44px;padding:0 18px;border-bottom:1px solid var(--ink)}
+nav.primary a.btn,nav.primary a.btn:hover{color:var(--green)}
 .nav-toggle{display:none;margin-left:auto;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--ink);background:transparent;color:var(--ink);font:inherit;font-size:15px;font-weight:600;cursor:pointer}
 
 /* buttons: square, serif capitals, double line */
@@ -258,3 +259,22 @@ h3 a:hover{text-decoration:underline!important}
 .gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--c-line);background:var(--white)}
 .gallery figcaption{margin-top:10px;font-size:15px;line-height:1.5;color:var(--c-text)}
 .gallery figcaption time{display:block;margin-top:2px;font-size:14px;color:var(--c-muted);font-variant-numeric:tabular-nums}
+
+/* industry families */
+.industries{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px}
+.ind{border-top:2px solid var(--gold);padding-top:16px}
+.ind h3{font-size:17px;margin-bottom:.6em}
+.ind ul{list-style:none;padding:0;margin:0}
+.ind li{padding:4px 0;color:var(--text);font-size:16px}
+@media (max-width:1020px){.industries{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.industries{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:380px){.industries{grid-template-columns:1fr}}
+
+/* practice-area index on the services page */
+.practice-index{margin-top:32px;border-top:1px solid var(--green-line);padding-top:20px}
+.practice-index h2{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.practice-index ul{list-style:none;padding:0;margin:0;columns:2 280px;column-gap:40px}
+.practice-index li{break-inside:avoid;max-width:none}
+.practice-index a{display:inline-block;padding:8px 0;text-decoration:none;border-bottom:1px solid transparent}
+.practice-index a:hover{border-bottom-color:var(--gold)}
+.service{scroll-margin-top:96px}
