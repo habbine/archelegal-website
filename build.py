@@ -412,15 +412,19 @@ def page_people(lang, t):
         pr, L = TP.PROFILES[k][lang], TP.LABELS[lang]
         area_title = {sid: title for sid, title, _, _ in CS.SERVICES8[lang]}
         svc = rel(lang, "people", lang, "services")
-        areas = "".join(f'<li><a class="pf-area" href="{svc}#{a}">{e(area_title[a])}</a></li>' for a in TP.PROFILES[k]["areas"])
-        facts = "".join(f'<div><dt>{e(L[f])}</dt><dd>{e(pr[f])}</dd></div>' for f in ("bar", "lang", "edu", "prev"))
-        roles = ""
-        if pr["roles"]:
-            label = {"en": "See all", "fr": "Voir tout", "ko": "전체 보기"}[lang]
-            head = "".join(f"<li>{e(x)}</li>" for x in pr["roles"][:3])
-            tail = "".join(f"<li>{e(x)}</li>" for x in pr["roles"][3:])
-            more = f'<details class="see-more"><summary>{label}</summary><ul class="pf-roles">{tail}</ul></details>' if tail else ""
-            roles = f'<h3 class="pf-h">{e(L["roles"])}</h3><ul class="pf-roles">{head}</ul>{more}'
+        areas = "".join(
+            f'<li><a class="pf-area" href="{svc}#{a[0] if isinstance(a, tuple) else a}">{e(a[1][lang] if isinstance(a, tuple) else area_title[a])}</a></li>'
+            for a in TP.PROFILES[k]["areas"])
+        facts = "".join(f'<div><dt>{e(L[f])}</dt><dd>{e(pr[f])}</dd></div>' for f in ("bar", "lang"))
+        def plist(key, keep=None):
+            items = pr[key]
+            if not items:
+                return ""
+            head = "".join(f"<li>{e(x)}</li>" for x in (items[:keep] if keep else items))
+            tail = "".join(f"<li>{e(x)}</li>" for x in items[keep:]) if keep else ""
+            more = f'<details class="see-more"><summary>{e(L["all"])}</summary><ul class="pf-list">{tail}</ul></details>' if tail else ""
+            return f'<h3 class="pf-h">{e(L[key])}</h3><ul class="pf-list">{head}</ul>{more}'
+        roles = plist("career") + plist("edu") + plist("roles", 4)
         out += (f'<article class="person" id="{k}"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div class="pf">'
                 f'<h2 class="pf-name">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>'
                 f'<p class="pf-lead">{e(pr["lead"])}</p>'
