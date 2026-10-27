@@ -55,7 +55,7 @@ T["en"] = {
         "industries_h": "Sectors we know best",
         "industries": [('Technology and media', ['Digital and IT', 'Artificial intelligence', 'New technology', 'Entertainment', 'Telecom', 'Media', 'Semiconductors', 'Electronics', 'Crypto']), ('Finance and real estate', ['Banking', 'Finance', 'Insurance', 'Commercial real estate']), ('Energy and industry', ['Energy', 'Infrastructure', 'Construction', 'Transport', 'Petrochemicals', 'Aerospace', 'Defence', 'Manufacturing']), ('Consumer and lifestyle', ['Food and beverage', 'Fashion', 'Cosmetics', 'Luxury brands', 'Art', 'Sports']), ('Health and life sciences', ['Healthcare', 'Biotechnology', 'Pharmaceuticals', 'Medical', 'Dental'])],
         "industries_p": "We also act for clients in other sectors. Tell us about yours.",
-        "matters_h": "Selected matters",
+        "matters_h": "Selected cases",
         "press_h": "In the press",
         "press_p": "Coverage of the firm and its partners (most articles are in Korean).",
         "press_more": "All press coverage",

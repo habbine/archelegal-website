@@ -8,7 +8,7 @@ X = {}
 # ───────────────────────────── ENGLISH ─────────────────────────────
 X["en"] = {
     "nav_experience": "Experience",
-    "meta_experience": ("Experience | Archè Law Firm Paris", "Selected matters handled by Archè for clients between France, Korea and Asia: energy and infrastructure, digital and media, fashion and cosmetics, arbitration and litigation."),
+    "meta_experience": ("Experience | Archè Law Firm Paris", "Selected cases handled by Archè for clients between France, Korea and Asia: energy and infrastructure, digital and media, fashion and cosmetics, arbitration and litigation."),
     "services_items": [
         ("corporate", "Corporate, M&A, contracts and IP",
          "Setting up and structuring companies, acquisitions, commercial contracts and intellectual property.",
@@ -77,7 +77,7 @@ X["en"] = {
     },
     "matters": {
         "h1": "Experience",
-        "lede": "Selected matters for clients between France, Korea and the rest of Asia. Descriptions are anonymised summaries of past work; outcomes depend on the facts of each case.",
+        "lede": "Selected cases for clients between France, Korea and the rest of Asia. Descriptions are anonymised summaries of past work; outcomes depend on the facts of each case.",
         "groups": [
             ("Energy, infrastructure and construction", [
                 "A financial consortium's acquisition of assets including 25 solar farms in France, and creation of renewable energy funds",
