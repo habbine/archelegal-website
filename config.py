@@ -347,6 +347,20 @@ GALLERY = [
      "alt": {"en": "Delegates holding a banner on stage in front of a screen reading 2025 Gyeongsangnam-do Investment Promotion Conference.",
              "fr": "Des délégués tenant une banderole sur scène devant un écran indiquant la conférence 2025 du Gyeongsangnam-do.",
              "ko": "2025 경상남도 투자유치 설명회 화면 앞 무대에서 현수막을 든 참석자들."}},
+    {"src": "assets/img/jk-forum-2014.webp", "w": 1000, "h": 667, "date": "2014-06-24",
+     "caption": {"en": "Creative Economy French-Korean Forum, CCI Paris Île-de-France, with KOTRA, the FKCCI and the CCICF: James Joong-ho Kim speaking.",
+                 "fr": "Creative Economy French-Korean Forum, CCI Paris Île-de-France, avec la KOTRA, la FKCCI et la CCICF : intervention de James Joong-ho Kim.",
+                 "ko": "한불 창조경제 포럼(Creative Economy French-Korean Forum), 파리 일드프랑스 상공회의소, KOTRA·FKCCI·CCICF 참여: 김중호 변호사 발표."},
+     "alt": {"en": "James Joong-ho Kim speaking at a lectern under a banner reading Creative Economy French-Korean Forum, June 24th, 2014, in front of a seated audience.",
+             "fr": "James Joong-ho Kim au pupitre sous une banderole « Creative Economy French-Korean Forum, June 24th, 2014 », devant un public assis.",
+             "ko": "\"Creative Economy French-Korean Forum, June 24th, 2014\" 현수막 아래 연단에서 청중을 향해 발표하는 김중호 변호사."}},
+    {"src": "assets/img/jk-breakfast.webp", "w": 960, "h": 529,
+     "caption": {"en": "James Joong-ho Kim speaking at a business breakfast.",
+                 "fr": "James Joong-ho Kim lors d'un petit-déjeuner d'affaires.",
+                 "ko": "비즈니스 조찬 모임에서 발언하는 김중호 변호사."},
+     "alt": {"en": "James Joong-ho Kim standing and speaking at a long breakfast table with flowers, in a red-walled reception room, with guests seated on either side.",
+             "fr": "James Joong-ho Kim debout, s'exprimant à une longue table de petit-déjeuner fleurie, dans un salon aux murs rouges, entouré d'invités assis.",
+             "ko": "붉은 벽의 응접실에서 꽃으로 장식된 긴 조찬 테이블 앞에 서서 발언하는 김중호 변호사와 양쪽에 앉은 참석자들."}},
 ]
 
 # Press theme per article (used to group the Press page); keyed by URL

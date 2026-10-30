@@ -699,7 +699,9 @@ def media_kit(lang, up):
     spk = ""
     for k in ("jk", "hk"):
         pp = people[k]
-        topics = "".join(f"<li>{e(x)}</li>" for x in m["spk"][k])
+        import press_extra as PX
+        tl = PX.HK_TOPICS[lang] if k == "hk" else m["spk"][k]
+        topics = "".join(f"<li>{e(x)}</li>" for x in tl)
         spk += (f'<div class="spk"><h4><a href="{team}#{k}">{e(pp["name"])}</a></h4>'
                 f'<p class="spk-mail"><a href="mailto:{e(pp["email"])}">{e(pp["email"])}</a></p><ul>{topics}</ul></div>')
     kit = f'<li><a href="{up}assets/logo.png" download>{e(m["logo"])}</a></li>'
@@ -719,7 +721,19 @@ def media_kit(lang, up):
 def page_insights(lang, t):
     i = t["insights"]
     m = PRESS_PAGE[lang]
-    events = "".join(f"<li>{e(x)}</li>" for x in i["events"])
+    import press_extra as PX
+    def ev_li(ev):
+        d, title, detail, url = ev
+        link = f' <a href="{e(url)}" rel="noopener">{e(PX.OPEN[lang])}<span class="sr-only"> ({e(title[lang])})</span> ↗</a>' if url else ""
+        return (f'<li><time datetime="{d}">{e(fmt_date(lang, d))}</time><strong>{e(title[lang])}</strong>'
+                f'<span class="ev-d">{e(detail[lang])}{link}</span></li>')
+    evs = sorted(PX.EVENTS, key=lambda x: x[0], reverse=True)
+    events = "".join(ev_li(x) for x in evs[:PX.EVENTS_SHOWN])
+    if len(evs) > PX.EVENTS_SHOWN:
+        events += f'</ul><details class="ev-more"><summary>{e(PX.SHOW_ALL[lang].format(len(evs)))}</summary><ul class="events">' + "".join(ev_li(x) for x in evs[PX.EVENTS_SHOWN:]) + "</ul></details><ul class=\"events\" hidden>"
+    pubs = "".join(f'<li><span class="pub-y">{y}</span><a href="{e(u)}" rel="noopener"><strong>{e(ti)}</strong></a><span class="ev-d">{e(dt[lang])}</span></li>' for y, ti, dt, u in PX.PUBS)
+    pubs_html = (f'<section class="alt" id="publications"><div class="wrap"><h2>{e(PX.PUBS_H[lang])}</h2><p class="lead-in">{e(PX.PUBS_P[lang])}</p>'
+                 f'<ul class="pubs">{pubs}</ul><p><a class="more" href="{PX.PUBS_ALL_URL}" rel="noopener">{e(PX.PUBS_ALL[lang])} ↗</a></p></div></section>')
     up = "../" * depth(lang, "insights")
     press = press_by_theme(lang, up)
     gallery = ""
@@ -746,6 +760,7 @@ def page_insights(lang, t):
             f'<section class="alt" id="latest"><div class="wrap"><h2>{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul class="events">{events}</ul></div></section>\n'
             f'{case_file(lang)}\n'
             f'<section><div class="wrap"><h2>{e(i["press_h"])}</h2>{press}</div></section>\n'
+            f'{pubs_html}\n'
             f'{gallery}\n{media_kit(lang, up)}')
     return body, press_ld(lang)
 
