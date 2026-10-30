@@ -651,7 +651,7 @@ PRESS_PAGE = {
         "featured_in": "Featured in",
         "media_h": "For journalists", "media_p": "For interviews, contact the partners directly. We answer in English, French or Korean.",
         "spk_h": "Available for comment", "kit_h": "Media kit", "about_h": "About Archè",
-        "about_p": "Archè (법무법인 아르케) is an international boutique law firm in Paris. It advises Korean, French and European businesses on corporate, employment, disputes and market entry between France, Korea and Europe, in English, French and Korean.",
+        "about_p": "Archè (법무법인 아르케) is an international boutique law firm in Paris. It advises Asian and European businesses on corporate, employment, disputes and international projects, in English, French and Korean.",
         "logo": "Firm logo (PNG)", "photo": "Portrait of {} (WebP)", "bios": "Partner biographies", "write": "Email the press contact",
         "subject": "Press enquiry", "spk": {
             "jk": ["Korean companies entering France: company formation and administrative steps", "Restitution of cultural property: the Oegyujanggak case", "Legal practice and the judiciary in France"],
@@ -661,7 +661,7 @@ PRESS_PAGE = {
         "featured_in": "Cité par",
         "media_h": "Espace presse", "media_p": "Pour une interview, contactez directement les associés. Nous répondons en français, en anglais ou en coréen.",
         "spk_h": "Disponibles pour commenter", "kit_h": "Kit média", "about_h": "À propos d'Archè",
-        "about_p": "Archè (법무법인 아르케) est un cabinet d'avocats international à Paris. Il conseille les entreprises coréennes, françaises et européennes en droit des sociétés, droit du travail, contentieux et implantation entre la France, la Corée et l'Europe, en français, anglais et coréen.",
+        "about_p": "Archè (법무법인 아르케) est un cabinet d'avocats international à Paris. Il conseille les entreprises asiatiques et européennes en droit des sociétés, droit du travail, contentieux et projets internationaux, en français, anglais et coréen.",
         "logo": "Logo du cabinet (PNG)", "photo": "Portrait de {} (WebP)", "bios": "Biographies des associés", "write": "Écrire au contact presse",
         "subject": "Demande presse", "spk": {
             "jk": ["Implantation des entreprises coréennes en France : création de société et démarches administratives", "Restitution des biens culturels : l'affaire de l'Oegyujanggak", "L'exercice du droit et la justice en France"],
@@ -671,7 +671,7 @@ PRESS_PAGE = {
         "featured_in": "보도 매체",
         "media_h": "언론 관계자용 안내", "media_p": "인터뷰는 파트너 변호사에게 직접 연락해 주십시오. 한국어, 영어, 프랑스어로 답변드립니다.",
         "spk_h": "논평 가능 분야", "kit_h": "미디어 키트", "about_h": "아르케 소개",
-        "about_p": "법무법인 아르케(Archè)는 파리의 국제 부티크 로펌으로, 한국·프랑스·유럽 기업에 기업법, 노동법, 분쟁 해결, 프랑스·한국 시장 진출 자문을 한국어, 영어, 프랑스어로 제공합니다.",
+        "about_p": "법무법인 아르케(Archè)는 파리의 국제 부티크 로펌으로, 아시아와 유럽 기업에 기업법, 노동법, 분쟁 해결, 국제 프로젝트 자문을 한국어, 영어, 프랑스어로 제공합니다.",
         "logo": "로고 (PNG)", "photo": "{} 프로필 사진 (WebP)", "bios": "파트너 소개", "write": "언론 문의 이메일 보내기",
         "subject": "언론 문의", "spk": {
             "jk": ["한국 기업의 프랑스 진출: 법인 설립과 행정 절차", "문화재 반환: 외규장각 소송", "프랑스의 법조 실무와 사법 제도"],
