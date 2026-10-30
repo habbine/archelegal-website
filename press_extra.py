@@ -116,6 +116,9 @@ EVENTS = [
      KA_TALKS),
 ]
 
+# date -> Services section it demonstrates (shown as a small link on the entry)
+EVENT_SERVICE = {"2026-10-10": "advice", "2026-01-01": "litigation"}
+RELATED = T("Related practice", "Expertise liée", "관련 업무")
 EVENTS_SHOWN = 6  # the rest go under "Show all"
 
 PUBS_H = T("Publications and institutional work", "Publications et travaux institutionnels", "논문 및 기관 활동")

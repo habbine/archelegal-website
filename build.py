@@ -636,12 +636,18 @@ CASE = {
 
 
 
+CASE_SVC = {"en": "Disputes involving public bodies: our practice",
+            "fr": "Contentieux impliquant des personnes publiques : notre pratique",
+            "ko": "공공기관 관련 분쟁: 업무 분야 보기"}
+
+
 def case_file(lang):
     c = CASE[lang]
     rows = "".join(f'<li><span class="cf-year">{y}</span><span>{e(x)}</span></li>' for y, x in c["rows"])
     return (f'<section class="case-file" id="oegyujanggak" aria-labelledby="cf-h"><div class="wrap cf-grid">'
             f'<div><p class="kicker cf-kicker">{e(c["kicker"])}</p><h2 id="cf-h">{e(HERITAGE[lang][0])}</h2><p class="lede">{e(HERITAGE[lang][1])}</p>'
-            f'<p class="cf-more"><a href="#press-heritage">{e(c["more"])} ↓</a></p></div>'
+            f'<p class="cf-more"><a href="#press-heritage">{e(c["more"])} ↓</a></p>'
+            f'<p class="cf-more cf-svc"><a href="{rel(lang, "insights", lang, "services")}#litigation">{e(CASE_SVC[lang])} →</a></p></div>'
             f'<div class="cf-panel"><p class="cf-src">{e(c["src"])}</p><ol class="cf-timeline">{rows}</ol><p class="cf-note">{e(c.get("note", ""))}</p></div></div></section>')
 
 
@@ -741,9 +747,15 @@ def page_insights(lang, t):
     i = t["insights"]
     m = PRESS_PAGE[lang]
     import press_extra as PX
+    import content_services as CS
+    svc_title = {sid: ti for sid, ti, _, _ in CS.SERVICES8[lang]}
     def ev_li(ev):
         d, title, detail, url = ev
         link = f' <a href="{e(url)}" rel="noopener">{e(PX.OPEN[lang])}<span class="sr-only"> ({e(title[lang])})</span> ↗</a>' if url else ""
+        sid = PX.EVENT_SERVICE.get(d)
+        if sid:
+            link += (f'<a class="ev-svc" href="{rel(lang, "insights", lang, "services")}#{sid}">'
+                     f'{e(PX.RELATED[lang])}{" : " if lang == "fr" else ": "}{e(svc_title[sid])} →</a>')
         return (f'<li><time datetime="{d}">{e(fmt_date(lang, d))}</time><strong>{e(title[lang])}</strong>'
                 f'<span class="ev-d">{e(detail[lang])}{link}</span></li>')
     evs = sorted(PX.EVENTS, key=lambda x: x[0], reverse=True)
@@ -792,7 +804,8 @@ def page_insights(lang, t):
             f'{case_file(lang)}\n'
             f'<section><div class="wrap"><h2>{e(i["press_h"])}</h2>{press}</div></section>\n'
             f'{pubs_html}\n'
-            f'{gallery}\n{media_kit(lang, up)}')
+            f'{gallery}\n{media_kit(lang, up)}\n'
+            f'{cta_band(lang, "insights", t, WHO[lang]["cta_h"], WHO[lang]["cta_p"], dark=False)}')
     return body, press_ld(lang)
 
 
