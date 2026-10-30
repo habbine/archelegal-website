@@ -250,8 +250,8 @@ h3 a:hover{text-decoration:underline!important}
 .press img.cover{width:72px;height:auto;border:1px solid var(--green-line)}
 .alt .press img.cover{border-color:var(--c-line)}
 /* team portraits */
-@media (min-width:761px){.person:has(.avatar img){grid-template-columns:180px minmax(0,1fr)}}
-.avatar:has(img){width:180px;height:225px;border-color:var(--green-mid)}
+@media (min-width:761px){.person:has(.avatar img){grid-template-columns:220px minmax(0,1fr);gap:40px}}
+.avatar:has(img){width:220px;height:275px;border-color:var(--green-mid)}
 @media (max-width:760px){.avatar:has(img){width:160px;height:200px}}
 /* photo gallery */
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:32px 28px}
@@ -537,20 +537,39 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 /* Team: structured lawyer profiles */
 .pf-name{font-size:1.6rem;margin-bottom:.1em}
 .pf-lead{font-size:clamp(17px,1.5vw,19px);line-height:1.55;color:var(--ink);max-width:44em;margin:14px 0 0}
-.pf-h{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:24px 0 10px}
+.pf-h{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:24px 0 10px}
 .pf-areas{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .pf-area{display:inline-flex;align-items:center;min-height:36px;padding:0 12px;border:1px solid var(--green-mid);color:var(--ink);font-size:14px;text-decoration:none}
 .pf-area:hover{border-color:var(--gold);color:var(--gold)}
 .pf-area:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .pf-facts{margin:22px 0 0;display:grid;gap:12px}
 .pf-facts div{display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding-top:12px;border-top:1px solid var(--green-line)}
-.pf-facts dt{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding-top:3px}
-.pf-facts dd{margin:0;font-size:15px;line-height:1.55;color:var(--text)}
+.pf-facts dt{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding-top:3px}
+.pf-facts dd{margin:0;font-size:16px;line-height:1.55;color:var(--text)}
 .pf-roles{margin:0;padding-left:1.1em}
 .pf-roles li{margin-bottom:.35em;font-size:15px;color:var(--text)}
 @media(max-width:640px){.pf-facts div{grid-template-columns:1fr;gap:4px}}
 .pf-list{margin:0;padding-left:1.1em}
-.pf-list li{max-width:none;margin-bottom:.35em;font-size:15px;line-height:1.5;color:var(--text)}
+.pf-list li{max-width:none;margin-bottom:.4em;font-size:16px;line-height:1.5;color:var(--text)}
+/* Team: one readable measure for text and dividers (~80 characters per line) */
+.pf{max-width:46rem}
+.person{scroll-margin-top:96px}
+.pf-area.is-static{border-style:dashed;color:var(--text)}
+.pf-contact{margin:18px 0 4px}
+.pf-contact .btn{min-height:44px}
+/* Team overview: one card per lawyer, linking to the full profile */
+.team-ov{margin-top:36px}
+.team-ov ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;max-width:none}
+.team-ov li{max-width:none;margin:0}
+.tov-card{display:flex;gap:16px;align-items:center;height:100%;padding:14px;border:1px solid var(--green-line);background:var(--green-card);color:var(--text);text-decoration:none;transition:border-color .2s}
+.tov-card:hover{border-color:var(--gold)}
+.tov-card:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.tov-card img,.tov-card>span[aria-hidden]{flex:0 0 64px;width:64px;height:80px;object-fit:cover;display:grid;place-items:center;color:var(--gold);font-family:var(--serif)}
+.tov-txt{display:grid;gap:3px;min-width:0}
+.tov-name{font-family:var(--serif);font-size:19px;color:var(--ink)}
+.tov-role{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.tov-lang{font-size:14px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.tov-card{transition:none}}
 .xp-note{margin:28px 0 0;font-size:14px;color:var(--muted);max-width:60em}
 
 /* Merged hero: name + promise in one block */

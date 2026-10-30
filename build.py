@@ -516,42 +516,55 @@ AFF_H = {"en": "Experience & affiliations", "fr": "Expériences et affiliations"
 
 def page_people(lang, t):
     p = t["people"]
-    out = ""
+    out = cards = ""
     for person in C.PEOPLE:
         k = person["slug"]
         lis = "".join(f"<li>{e(x)}</li>" for x in p["bios"][k])
         up = "../" * depth(lang, "people")
         av = (f'<img src="{up}{e(person["photo"])}" alt="{e(t["people"].get("photo_alt", "{}").format(person["name"]))}" width="480" height="600" loading="lazy" decoding="async">'
               if person["photo"] else e(person["initials"]))
-        btns = [(p["email_label"], f'mailto:{person["email"]}', person["email"])]
+        btns = []  # email now sits under the lead (pf-contact); this row keeps the profile links
         if person["linkedin"]:
             btns.append(("LinkedIn", person["linkedin"], None))
         btns += [(lbl, url, None) for lbl, url in person.get("links", [])]
         links = '<ul class="person-links">' + "".join(
             f'<li><a class="pl-btn" href="{e(url)}"' + ("" if url.startswith("mailto:") else ' rel="noopener"')
-            + (f' title="{e(tip)}"' if tip else "") + f'>{e(lbl)}</a></li>' for lbl, url, tip in btns) + "</ul>"
+            + (f' title="{e(tip)}"' if tip else "") + f'>{e(lbl)}</a></li>' for lbl, url, tip in btns) + "</ul>" if btns else ""
         import team_profiles as TP, content_services as CS
         pr, L = TP.PROFILES[k][lang], TP.LABELS[lang]
         area_title = {sid: title for sid, title, _, _ in CS.SERVICES8[lang]}
         svc = rel(lang, "people", lang, "services")
-        areas = "".join(
-            f'<li><a class="pf-area" href="{svc}#{a[0] if isinstance(a, tuple) else a}">{e(a[1][lang] if isinstance(a, tuple) else area_title[a])}</a></li>'
-            for a in TP.PROFILES[k]["areas"])
+        def area(a):
+            # A plain string is a Services section: same label and anchor as the Services page.
+            # (None, labels) is an area with no Services section, shown as a tag without a link.
+            if isinstance(a, tuple):
+                return f'<li><span class="pf-area is-static">{e(a[1][lang])}</span></li>'
+            return f'<li><a class="pf-area" href="{svc}#{a}">{e(area_title[a])}</a></li>'
+        areas = "".join(area(a) for a in TP.PROFILES[k]["areas"])
         facts = "".join(f'<div><dt>{e(L[f])}</dt><dd>{e(pr[f])}</dd></div>' for f in ("bar", "lang"))
         def plist(key, keep=None):
             items = pr[key]
             if not items:
                 return ""
             head = "".join(f"<li>{e(x)}</li>" for x in (items[:keep] if keep else items))
-            tail = "".join(f"<li>{e(x)}</li>" for x in items[keep:]) if keep else ""
-            more = f'<details class="see-more"><summary>{e(L["all"])}</summary><ul class="pf-list">{tail}</ul></details>' if tail else ""
+            rest = items[keep:] if keep else []
+            tail = "".join(f"<li>{e(x)}</li>" for x in rest)
+            more = (f'<details class="see-more"><summary>{e(L["more"].format(n=len(rest)))}</summary>'
+                    f'<ul class="pf-list">{tail}</ul></details>') if rest else ""
             return f'<h3 class="pf-h">{e(L[key])}</h3><ul class="pf-list">{head}</ul>{more}'
-        roles = plist("career") + plist("edu") + plist("roles", 4)
+        roles = plist("career") + plist("edu", 3) + plist("roles", TP.PROFILES[k].get("roles_keep", 4))
+        first = person["name"].split()[0]
+        mail = (f'<p class="pf-contact"><a class="btn pf-mail" href="mailto:{e(person["email"])}">'
+                f'{e(L["email"].format(first=first))}</a></p>')
         out += (f'<article class="person" id="{k}"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div class="pf">'
                 f'<h2 class="pf-name">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>'
-                f'<p class="pf-lead">{e(pr["lead"])}</p>'
+                f'<p class="pf-lead">{e(pr["lead"])}</p>{mail}'
                 f'<h3 class="pf-h">{e(L["areas"])}</h3><ul class="pf-areas">{areas}</ul>'
                 f'<dl class="pf-facts">{facts}</dl>{roles}{links}</div></article>')
+        thumb = (f'<img src="{up}{e(person["photo"])}" alt="" width="96" height="120" loading="lazy" decoding="async">'
+                 if person["photo"] else f'<span aria-hidden="true">{e(person["initials"])}</span>')
+        cards += (f'<li><a class="tov-card" href="#{k}">{thumb}<span class="tov-txt"><span class="tov-name">{e(person["name"])}</span>'
+                  f'<span class="tov-role">{e(p["roles"][k])}</span><span class="tov-lang">{e(pr["lang"])}</span></span></a></li>')
     import team_profiles as TP2
     people_ld = []
     for person in C.PEOPLE:
@@ -563,8 +576,12 @@ def page_people(lang, t):
                           **({"image": C.SITE_URL.rstrip("/") + "/" + person["photo"]} if person.get("photo") else {}),
                           **({"sameAs": same} if same else {})})
     ld = {"@context": "https://schema.org", "@graph": people_ld}
-    return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1></div></div>
-<section style="padding-top:0"><div class="wrap">{out}</div></section>''', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>"
+    import team_profiles as TP3
+    W = WHO[lang]
+    return f'''<div class="page-head"><div class="wrap"><h1>{e(p["h1"])}</h1><p class="lede">{e(p["lede"])}</p>
+<nav class="team-ov" aria-label="{e(TP3.LABELS[lang]["jump"])}"><ul>{cards}</ul></nav></div></div>
+<section style="padding-top:0"><div class="wrap">{out}</div></section>
+{cta_band(lang, "people", t, W["cta_h"], W["cta_p"])}''', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>"
 
 
 def see_more(items, lang, keep=4):
