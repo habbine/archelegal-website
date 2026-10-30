@@ -21,7 +21,7 @@ WHATSAPP_URL = ""     # e.g. https://wa.me/33143358410
 
 # Contact form. "" = the form opens the visitor's email app. For a real form,
 # create a free Formspree/Basin endpoint and paste its URL here.
-FORM_ENDPOINT = ""
+FORM_ENDPOINT = "https://formsubmit.co/ajax/paris@archelegal.com"  # FormSubmit relay to paris@archelegal.com (activate once via the confirmation email)
 
 # Seoul / Hong Kong. Add a street address and phone when available.
 SEOUL = {"address": "Humanstarville #1101, Dosandae-ro 454, Gangnam-gu, Seoul, South Korea", "phone": "", "email": "seoul@archelegal.com"}

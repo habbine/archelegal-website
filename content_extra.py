@@ -47,7 +47,7 @@ X["en"] = {
     "people_lede": "Lawyers based in Paris who work every day with clients and institutions in Korea, Hong Kong and France.",
     "roles": {"jk": "Founder and Managing Partner", "hk": "Partner", "dk": "Of Counsel"},
     "bios": {
-        "jk": ["Admitted at the Paris Bar (1997) and the New York Bar (1998). Native French, English and Korean.",
+        "jk": ["Admitted at the Paris Bar (1998) and the New York Bar (1997). Native French, English and Korean.",
                "Founded Archè in 2014; 25 years of legal experience. Before that, founder and head of the Asian desk at Alerion (2003–2013).",
                "Earlier career: head of legal at TSW Consulting (Singapore), head of M&A and the Europe desk at Daeryook International (Seoul), general legal counsel at Samsung Electronics headquarters (Seoul), Kim & Chang (Seoul).",
                "Education: LL.M., Northwestern University; Ph.D. in law, Université Paris II Panthéon-Assas; B.A. in political science, Yonsei University.",
@@ -163,7 +163,7 @@ X["fr"] = {
     "people_lede": "Des avocats installés à Paris qui travaillent chaque jour avec des clients et des institutions en Corée, à Hong Kong et en France.",
     "roles": {"jk": "Fondateur et associé gérant", "hk": "Associée", "dk": "Of Counsel"},
     "bios": {
-        "jk": ["Inscrit au Barreau de Paris (1997) et au Barreau de New York (1998). Langues maternelles : français, anglais et coréen.",
+        "jk": ["Inscrit au Barreau de Paris (1998) et au Barreau de New York (1997). Langues maternelles : français, anglais et coréen.",
                "Fondateur d'Archè en 2014 ; 25 ans d'expérience juridique. Auparavant, fondateur et responsable du desk Asie chez Alerion (2003–2013).",
                "Parcours antérieur : directeur juridique de TSW Consulting (Singapour), responsable M&A et du desk Europe chez Daeryook International (Séoul), directeur juridique au siège de Samsung Electronics (Séoul), Kim & Chang (Séoul).",
                "Formation : LL.M., Northwestern University ; doctorat en droit, Université Paris II Panthéon-Assas ; licence de sciences politiques, Université Yonsei.",
@@ -279,7 +279,7 @@ X["ko"] = {
     "people_lede": "파리에 기반을 두고 한국, 홍콩, 프랑스의 고객 및 기관과 매일 일하는 변호사들입니다.",
     "roles": {"jk": "설립자·대표 파트너", "hk": "파트너", "dk": "오브 카운슬(Of Counsel)"},
     "bios": {
-        "jk": ["파리 변호사(1997), 뉴욕주 변호사(1998). 프랑스어, 영어, 한국어 모국어 수준.",
+        "jk": ["파리 변호사(1998), 뉴욕주 변호사(1997). 프랑스어, 영어, 한국어 모국어 수준.",
                "아르케를 2014년에 설립, 25년의 법률 경력. 이전에는 Alerion 설립자 겸 아시아 데스크 총괄(2003–2013).",
                "이전 경력: TSW Consulting(싱가포르) 법무 총괄, Daeryook International(서울) M&A·유럽 데스크 총괄, 삼성전자 본사(서울) 법무 총괄, 김&장(서울).",
                "학력: 노스웨스턴대 LL.M., 파리 제2대학(팡테옹 아사스) 법학 박사, 연세대 정치외교학 학사.",
