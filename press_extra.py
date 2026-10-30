@@ -116,7 +116,7 @@ EVENTS = [
      KA_TALKS),
 ]
 
-EVENTS_SHOWN = 8  # the rest go under "Show all"
+EVENTS_SHOWN = 6  # the rest go under "Show all"
 
 PUBS_H = T("Publications and institutional work", "Publications et travaux institutionnels", "논문 및 기관 활동")
 PUBS_P = T("Selected research and contributions by Habbine Estelle Kim.",
@@ -159,11 +159,11 @@ PUBS = [
 ]
 
 HK_TOPICS = T(
-    ["International startups setting up in France", "French employment law for Korean groups' subsidiaries",
+    ["Setting up companies and doing business between Korea and France (inbound and outbound)", "French employment law for Korean groups' subsidiaries",
      "Sports law and CAS arbitration (Paris 2024)", "AI, EU law and digital regulation"],
-    ["Implantation des startups internationales en France", "Droit du travail français pour les filiales de groupes coréens",
+    ["Implantation et affaires entre la Corée et la France, dans les deux sens", "Droit du travail français pour les filiales de groupes coréens",
      "Droit du sport et arbitrage devant le TAS (Paris 2024)", "IA, droit de l'Union et régulation du numérique"],
-    ["해외 스타트업의 프랑스 법인 설립", "한국 기업 현지 법인을 위한 프랑스 노동법",
+    ["한국·프랑스 간 법인 설립과 비즈니스(진출 및 유치)", "한국 기업 현지 법인을 위한 프랑스 노동법",
      "스포츠법과 CAS 중재(파리 2024)", "AI, EU법과 디지털 규제"],
 )
 

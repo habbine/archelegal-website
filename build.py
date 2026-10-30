@@ -95,6 +95,8 @@ def press_featured():
 def press_by_theme(lang, up, shown=3):
     out = ""
     for key, labels in PRESS_THEMES:
+        if key == "books":  # shown under Publications instead
+            continue
         items = [p for p in C.PRESS if C.PRESS_THEME.get(p["url"]) == key]
         if not items:
             continue
@@ -644,32 +646,32 @@ def case_file(lang):
 
 
 PRESS_PAGE = {
- "en": {"kicker": "ALEEDA 알리다 · to make known", "media_btn": "Media enquiries", "latest_btn": "Latest news",
+ "en": {"media_btn": "Media enquiries", "latest_btn": "Latest news",
         "stat_since": "in the press since", "stat_items": "articles", "stat_outlets": "outlets", "stat_lang": "languages: Korean, English, French",
         "featured_in": "Featured in",
-        "media_h": "For journalists", "media_p": "For interviews, comment or background on business law between France, Korea and Europe, contact the partners directly. We answer in English, French or Korean.",
+        "media_h": "For journalists", "media_p": "For interviews, contact the partners directly. We answer in English, French or Korean.",
         "spk_h": "Available for comment", "kit_h": "Media kit", "about_h": "About Archè",
-        "about_p": "Archè (법무법인 아르케) is an international boutique law firm in Paris. It advises Korean, French and European businesses on corporate, employment, disputes and market entry between France, Korea and Europe, in English, French and Korean.",
+        "about_p": "Archè (법무법인 아르케) is an international boutique law firm in Paris. It advises Asian and European businesses on corporate, employment, disputes and international projects, in English, French and Korean.",
         "logo": "Firm logo (PNG)", "photo": "Portrait of {} (WebP)", "bios": "Partner biographies", "write": "Email the press contact",
         "subject": "Press enquiry", "spk": {
             "jk": ["Korean companies entering France: company formation and administrative steps", "Restitution of cultural property: the Oegyujanggak case", "Legal practice and the judiciary in France"],
             "hk": ["Sports law and CAS arbitration (Paris 2024)", "French employment law for Korean groups' subsidiaries", "EU law, technology and regulation"]}},
- "fr": {"kicker": "ALEEDA 알리다 · faire savoir", "media_btn": "Contact presse", "latest_btn": "Dernières actualités",
+ "fr": {"media_btn": "Contact presse", "latest_btn": "Dernières actualités",
         "stat_since": "dans la presse depuis", "stat_items": "articles", "stat_outlets": "médias", "stat_lang": "langues : coréen, anglais, français",
         "featured_in": "Cité par",
-        "media_h": "Espace presse", "media_p": "Pour une interview, un commentaire ou un éclairage sur le droit des affaires entre la France, la Corée et l'Europe, contactez directement les associés. Nous répondons en français, en anglais ou en coréen.",
+        "media_h": "Espace presse", "media_p": "Pour une interview, contactez directement les associés. Nous répondons en français, en anglais ou en coréen.",
         "spk_h": "Disponibles pour commenter", "kit_h": "Kit média", "about_h": "À propos d'Archè",
-        "about_p": "Archè (법무법인 아르케) est un cabinet d'avocats international à Paris. Il conseille les entreprises coréennes, françaises et européennes en droit des sociétés, droit du travail, contentieux et implantation entre la France, la Corée et l'Europe, en français, anglais et coréen.",
+        "about_p": "Archè (법무법인 아르케) est un cabinet d'avocats international à Paris. Il conseille les entreprises asiatiques et européennes en droit des sociétés, droit du travail, contentieux et projets internationaux, en français, anglais et coréen.",
         "logo": "Logo du cabinet (PNG)", "photo": "Portrait de {} (WebP)", "bios": "Biographies des associés", "write": "Écrire au contact presse",
         "subject": "Demande presse", "spk": {
             "jk": ["Implantation des entreprises coréennes en France : création de société et démarches administratives", "Restitution des biens culturels : l'affaire de l'Oegyujanggak", "L'exercice du droit et la justice en France"],
             "hk": ["Droit du sport et arbitrage devant le TAS (Paris 2024)", "Droit du travail français pour les filiales de groupes coréens", "Droit de l'Union européenne, technologie et régulation"]}},
- "ko": {"kicker": "ALEEDA 알리다", "media_btn": "언론 문의", "latest_btn": "최근 소식",
+ "ko": {"media_btn": "언론 문의", "latest_btn": "최근 소식",
         "stat_since": "년부터 언론 보도", "stat_items": "건의 기사", "stat_outlets": "개 매체", "stat_lang": "개 언어: 한국어·영어·프랑스어",
         "featured_in": "보도 매체",
-        "media_h": "언론 관계자용 안내", "media_p": "프랑스·한국·유럽 간 기업 법무에 관한 인터뷰, 논평, 배경 설명이 필요하시면 파트너 변호사에게 직접 연락해 주십시오. 한국어, 영어, 프랑스어로 답변드립니다.",
+        "media_h": "언론 관계자용 안내", "media_p": "인터뷰는 파트너 변호사에게 직접 연락해 주십시오. 한국어, 영어, 프랑스어로 답변드립니다.",
         "spk_h": "논평 가능 분야", "kit_h": "미디어 키트", "about_h": "아르케 소개",
-        "about_p": "법무법인 아르케(Archè)는 파리의 국제 부티크 로펌으로, 한국·프랑스·유럽 기업에 기업법, 노동법, 분쟁 해결, 프랑스·한국 시장 진출 자문을 한국어, 영어, 프랑스어로 제공합니다.",
+        "about_p": "법무법인 아르케(Archè)는 파리의 국제 부티크 로펌으로, 아시아와 유럽 기업에 기업법, 노동법, 분쟁 해결, 국제 프로젝트 자문을 한국어, 영어, 프랑스어로 제공합니다.",
         "logo": "로고 (PNG)", "photo": "{} 프로필 사진 (WebP)", "bios": "파트너 소개", "write": "언론 문의 이메일 보내기",
         "subject": "언론 문의", "spk": {
             "jk": ["한국 기업의 프랑스 진출: 법인 설립과 행정 절차", "문화재 반환: 외규장각 소송", "프랑스의 법조 실무와 사법 제도"],
@@ -749,20 +751,32 @@ def page_insights(lang, t):
     if len(evs) > PX.EVENTS_SHOWN:
         events += f'</ul><details class="ev-more"><summary>{e(PX.SHOW_ALL[lang].format(len(evs)))}</summary><ul class="events">' + "".join(ev_li(x) for x in evs[PX.EVENTS_SHOWN:]) + "</ul></details><ul class=\"events\" hidden>"
     pubs = "".join(f'<li><span class="pub-y">{y}</span><a href="{e(u)}" rel="noopener"><strong>{e(ti)}</strong></a><span class="ev-d">{e(dt[lang])}</span></li>' for y, ti, dt, u in PX.PUBS)
-    pubs_html = (f'<section class="alt" id="publications"><div class="wrap"><h2>{e(PX.PUBS_H[lang])}</h2><p class="lead-in">{e(PX.PUBS_P[lang])}</p>'
-                 f'<ul class="pubs">{pubs}</ul><p><a class="more" href="{PX.PUBS_ALL_URL}" rel="noopener">{e(PX.PUBS_ALL[lang])} ↗</a></p></div></section>')
     up = "../" * depth(lang, "insights")
+    books = [p for p in C.PRESS if C.PRESS_THEME.get(p["url"]) == "books"]
+    books_lbl = dict(PRESS_THEMES)["books"][lang]
+    books_html = (f'<div class="pub-books" id="press-books"><h3>{e(books_lbl)} <small>{len(books)}</small></h3>'
+                  f'<div class="press">{press_items(lang, books, up)}</div></div>') if books else ""
+    pubs_html = (f'<section class="alt" id="publications"><div class="wrap"><h2>{e(PX.PUBS_H[lang])}</h2><p class="lead-in">{e(PX.PUBS_P[lang])}</p>'
+                 f'<ul class="pubs">{pubs}</ul><p><a class="more" href="{PX.PUBS_ALL_URL}" rel="noopener">{e(PX.PUBS_ALL[lang])} ↗</a></p>{books_html}</div></section>')
     press = press_by_theme(lang, up)
     gallery = ""
     if getattr(C, "GALLERY", None):
-        figs = ""
-        for g in C.GALLERY:
+        def fig(g):
             when = f' <time datetime="{g["date"]}">{fmt_date(lang, g["date"])}</time>' if g.get("date") else ""
             enlarge = {"en": "Enlarge photo", "fr": "Agrandir la photo", "ko": "사진 확대"}[lang]
-            figs += (f'<figure><button type="button" class="g-open" aria-label="{e(enlarge)}: {e(g["alt"][lang])}"><img src="{up}{e(g["src"])}" alt="{e(g["alt"][lang])}" width="{g["w"]}" height="{g["h"]}" loading="lazy" decoding="async"></button>'
+            return (f'<figure><button type="button" class="g-open" aria-label="{e(enlarge)}: {e(g["alt"][lang])}"><img src="{up}{e(g["src"])}" alt="{e(g["alt"][lang])}" width="{g["w"]}" height="{g["h"]}" loading="lazy" decoding="async"></button>'
                      f'<figcaption>{e(g["caption"][lang])}{when}</figcaption></figure>')
+        shown = 5
+        figs = "".join(fig(g) for g in C.GALLERY[:shown])
+        rest = C.GALLERY[shown:]
+        more_lbl = {"en": "Show {n} more photos", "fr": "Afficher {n} photos de plus", "ko": "사진 {n}장 더 보기"}[lang]
+        if rest:
+            figs_more = "".join(fig(g) for g in rest)
+            figs_more = f'<details class="g-more"><summary>{e(more_lbl.format(n=len(rest)))}</summary><div class="gallery">{figs_more}</div></details>'
+        else:
+            figs_more = ""
         close = {"en": "Close", "fr": "Fermer", "ko": "닫기"}[lang]
-        gallery = f'<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(i["gallery_h"])}</h2></div><div class="gallery">{figs}</div><dialog class="lightbox" aria-label="{e(i["gallery_h"])}"><form method="dialog"><button class="lb-close" aria-label="{close}">×</button></form><img alt=""><p></p></dialog></div></section>'
+        gallery = f'<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(i["gallery_h"])}</h2></div><div class="gallery">{figs}</div>{figs_more}<dialog class="lightbox" aria-label="{e(i["gallery_h"])}"><form method="dialog"><button class="lb-close" aria-label="{close}">×</button></form><img alt=""><p></p></dialog></div></section>'
     since, n_art, n_out, n_lang = press_stats()
     stats = [(since, m["stat_since"]), (str(n_art), m["stat_items"]), (str(n_out), m["stat_outlets"])]
     if lang != "ko":  # "in the press since 1998": label before the value
@@ -770,7 +784,7 @@ def page_insights(lang, t):
                              for k, (v, l) in enumerate(stats))
     else:
         stats_html = "".join(f'<li><strong>{e(v)}</strong><span>{e(l)}</span></li>' for v, l in stats)
-    body = (f'<div class="page-head press-head"><div class="wrap"><p class="kicker press-kicker">{e(m["kicker"])}</p><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p>'
+    body = (f'<div class="page-head press-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p>'
             f'<ul class="press-stats">{stats_html}</ul>'
             f'<p class="press-actions"><a class="btn on-dark" href="#media">{e(m["media_btn"])}</a> <a class="btn ghost" href="#latest">{e(m["latest_btn"])}</a></p>'
             f'<p class="outlets"><span>{e(m["featured_in"])}</span> {outlet_strip(lang)}</p></div></div>\n'

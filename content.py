@@ -100,7 +100,7 @@ T["en"] = {
     },
     "insights": {
         "h1": "Press & events",
-        "lede": "Coverage, talks and appointments of Archè and its partners, between France, Korea and Europe.",
+        "lede": "Coverage, talks and appointments.",
         "press_h": "Coverage by theme",
         "follow_h": "Follow our work",
         "follow_p": "Follow Archè on social media.",
@@ -270,7 +270,7 @@ T["fr"] = {
     },
     "insights": {
         "h1": "Presse et événements",
-        "lede": "Couverture médiatique, interventions et nominations d'Archè et de ses associés, entre la France, la Corée et l'Europe.",
+        "lede": "Couverture médiatique, interventions et nominations.",
         "press_h": "Couverture par thème",
         "follow_h": "Suivre nos publications",
         "follow_p": "Suivez Archè sur les réseaux sociaux.",
@@ -440,7 +440,7 @@ T["ko"] = {
     },
     "insights": {
         "h1": "언론 보도 및 행사",
-        "lede": "프랑스·한국·유럽을 잇는 아르케와 파트너 변호사의 언론 보도, 강연, 위촉 소식.",
+        "lede": "언론 보도, 강연, 위촉 소식.",
         "press_h": "주제별 보도",
         "follow_h": "소식 받아보기",
         "follow_p": "아르케를 소셜 미디어에서 팔로우하세요.",
