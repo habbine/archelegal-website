@@ -552,7 +552,7 @@ def page_people(lang, t):
             more = (f'<details class="see-more"><summary>{e(L["more"].format(n=len(rest)))}</summary>'
                     f'<ul class="pf-list">{tail}</ul></details>') if rest else ""
             return f'<h3 class="pf-h">{e(L[key])}</h3><ul class="pf-list">{head}</ul>{more}'
-        roles = plist("career") + plist("edu", 3) + plist("roles", 4)
+        roles = plist("career") + plist("edu", 3) + plist("roles", TP.PROFILES[k].get("roles_keep", 4))
         first = person["name"].split()[0]
         mail = (f'<p class="pf-contact"><a class="btn pf-mail" href="mailto:{e(person["email"])}">'
                 f'{e(L["email"].format(first=first))}</a></p>')
