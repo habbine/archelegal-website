@@ -103,8 +103,8 @@ X["en"] = {
         "cta_h": "Facing a similar situation?",
         "cta_p": "Tell us about it. We will say what is involved and whether we are the right firm.",
     },
-    "events_h": "Recent news and events",
-    "events_p": "From the firm's news page, ALEEDA, named after the Korean word for \"to make known\".",
+    "events_h": "Latest news and events",
+    "events_p": "Recent talks, appointments and events involving the firm and its partners.",
     "events": [
         "IAKL annual conference 2026, London",
         "Salon de l'Étudiant Grandes Écoles, Paris, 10 October 2026 (Korea pavilion)",
@@ -219,8 +219,8 @@ X["fr"] = {
         "cta_h": "Une situation similaire ?",
         "cta_p": "Racontez-nous. Nous vous dirons ce qu'elle implique et si nous sommes le bon cabinet.",
     },
-    "events_h": "Actualités et événements récents",
-    "events_p": "Tirés de la page d'actualités du cabinet, ALEEDA, du mot coréen signifiant « faire savoir ».",
+    "events_h": "Dernières actualités et événements",
+    "events_p": "Interventions, nominations et événements récents du cabinet et de ses associés.",
     "events": [
         "Conférence annuelle de l'IAKL 2026, Londres",
         "Salon de l'Étudiant Grandes Écoles, Paris, 10 octobre 2026 (pavillon coréen)",
@@ -336,7 +336,7 @@ X["ko"] = {
         "cta_p": "상황을 알려 주세요. 필요한 절차와 아르케가 적합한지 말씀드리겠습니다.",
     },
     "events_h": "최근 소식과 행사",
-    "events_p": "로펌 소식 페이지 ALEEDA(한국어 '알리다')에서 가져왔습니다.",
+    "events_p": "아르케와 파트너 변호사의 최근 강연, 위촉, 행사 소식입니다.",
     "events": [
         "2026 IAKL 연례 컨퍼런스, 런던",
         "Salon de l'Étudiant 그랑제콜 박람회, 파리, 2026년 10월 10일(한국관)",

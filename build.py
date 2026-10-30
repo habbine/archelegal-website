@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parent
 LANGS = ["en", "fr", "ko"]
 LANG_LABEL = {"en": "EN", "fr": "FR", "ko": "한국어"}
 NAV = ["home", "services", "people", "insights", "contact"]
-SLUG = {"home": "", "services": "services/", "experience": "experience/", "people": "team/", "insights": "insights/",
+SLUG = {"home": "", "services": "services/", "experience": "experience/", "people": "team/", "insights": "press/",
         "contact": "contact/", "legal": "legal/", "privacy": "privacy/"}
 OG_LOCALE = {"en": "en_GB", "fr": "fr_FR", "ko": "ko_KR"}
 e = html.escape
@@ -45,29 +45,45 @@ def fmt_date(lang, d):
     return f"{int(day)} {mon} {y}"
 
 
+LANG_TAG = {"ko": {"en": "In Korean", "fr": "En coréen"}, "fr": {"en": "In French", "ko": "프랑스어"},
+            "en": {"fr": "En anglais", "ko": "영어"}}
+NEW_TAB = {"en": "opens in a new tab", "fr": "s'ouvre dans un nouvel onglet", "ko": "새 탭에서 열림"}
+
+
 def press_items(lang, items, up=""):
     out = ""
     for p in items:
         cover = (f'<img class="cover" src="{up}{e(p["cover"])}" alt="" width="72" height="108" loading="lazy" decoding="async">'
                  if p.get("cover") else "")
         about = p.get("about", {}).get(lang, "")
-        about_html = f'<span class="about">{e(about)}</span>' if about else ""
-        q = p.get("quote")
-        quote_html = (f'<span class="quote">« <q lang="{q["lang"]}">{e(q["text"])}</q> » — {e(q["by"])}, '
-                      f'<time datetime="{q["date"]}">{fmt_date(lang, q["date"])}</time></span>') if q else ""
-        out += (f'<a href="{e(p["url"])}" rel="noopener" target="_blank"{' class="has-cover"' if cover else ''}>{cover}<span class="txt"><strong lang="{p["lang"]}">{e(p["title"])}</strong>'
-                f'{about_html}{quote_html}<small>{e(p["outlet"][lang])} · <time datetime="{p["date"]}">{fmt_date(lang, p["date"])}</time></small></span></a>')
+        foreign = p["lang"] != lang
+        if about and foreign and lang != "ko":
+            # English/French pages: lead with the headline in the reader's language, keep the original underneath
+            head = f'<strong lang="{lang}">{e(about)}</strong><span class="orig" lang="{p["lang"]}">{e(p["title"])}</span>'
+        else:
+            head = f'<strong lang="{p["lang"]}">{e(p["title"])}</strong>' + (f'<span class="about">{e(about)}</span>' if about else "")
+        tag = LANG_TAG.get(p["lang"], {}).get(lang, "") if foreign else ""
+        tag_html = f' · <span class="lang-tag">{e(tag)}</span>' if tag else ""
+        out += (f'<a href="{e(p["url"])}" rel="noopener" target="_blank"{' class="has-cover"' if cover else ''}>{cover}<span class="txt">{head}'
+                f'<small>{e(p["outlet"][lang])} · <time datetime="{p["date"]}">{fmt_date(lang, p["date"])}</time>{tag_html}'
+                f' <span class="ext" aria-hidden="true">↗</span><span class="sr">({e(NEW_TAB[lang])})</span></small></span></a>')
     return out
 
 
 PRESS_THEMES = [
-    ("heritage", {"en": "Cultural heritage", "fr": "Patrimoine culturel", "ko": "문화유산"}),
-    ("books", {"en": "Books", "fr": "Livres", "ko": "도서"}),
-    ("sport", {"en": "Sport", "fr": "Sport", "ko": "스포츠"}),
     ("business", {"en": "Business and market entry", "fr": "Entreprises et implantation", "ko": "기업 및 시장 진출"}),
+    ("sport", {"en": "Sport and arbitration", "fr": "Sport et arbitrage", "ko": "스포츠 및 중재"}),
     ("law", {"en": "Law and justice", "fr": "Droit et justice", "ko": "법과 사법"}),
     ("profile", {"en": "Profile and profession", "fr": "Parcours et profession", "ko": "프로필 및 법조 경력"}),
+    ("heritage", {"en": "Cultural heritage", "fr": "Patrimoine culturel", "ko": "문화유산"}),
+    ("books", {"en": "Books", "fr": "Livres", "ko": "도서"}),
 ]
+# theme -> (target page, anchor, label)
+PRESS_CTA = {
+    "business": ("services", "advice", {"en": "Setting up in France or Korea? See how we help", "fr": "Vous vous implantez en France ou en Corée ? Nos expertises", "ko": "프랑스·한국 진출을 준비 중이신가요? 업무 분야 보기"}),
+    "sport": ("services", "litigation", {"en": "Disputes and arbitration: our practice", "fr": "Contentieux et arbitrage : notre pratique", "ko": "분쟁 해결·중재 업무 보기"}),
+    "profile": ("people", "", {"en": "Meet the team", "fr": "Découvrir l'équipe", "ko": "구성원 소개"}),
+}
 PRESS_MORE = {"en": "Show {n} more", "fr": "Voir {n} de plus", "ko": "{n}건 더 보기"}
 
 
@@ -85,8 +101,12 @@ def press_by_theme(lang, up, shown=3):
         head, rest = items[:shown], items[shown:]
         more = (f'<details class="press-more"><summary>{e(PRESS_MORE[lang].format(n=len(rest)))}</summary>'
                 f'<div class="press">{press_items(lang, rest, up)}</div></details>') if rest else ""
+        cta = ""
+        if key in PRESS_CTA:
+            pg, anchor, lbl = PRESS_CTA[key]
+            cta = f'<p class="press-cta"><a href="{rel(lang, "insights", lang, pg)}{"#" + anchor if anchor else ""}">{e(lbl[lang])} →</a></p>'
         out += (f'<div class="press-theme" id="press-{key}"><h3>{e(labels[lang])} <small>{len(items)}</small></h3>'
-                f'<div class="press">{press_items(lang, head, up)}</div>{more}</div>')
+                f'<div class="press">{press_items(lang, head, up)}</div>{more}{cta}</div>')
     return f'<div class="press-themes">{out}</div>'
 
 
@@ -392,7 +412,7 @@ def page_home(lang, t):
     sig = SIGNATURE[lang]
     sig_html = (f'<section class="alt signature" aria-labelledby="sig-h"><div class="wrap"><div class="section-head"><p class="kicker">{e(sig["kicker"])}</p><h2 id="sig-h">{e(sig["h"])}</h2></div><div class="cols c2">'
                 f'<div class="sig-card"><h3>{e(HERITAGE[lang][0])}</h3><p>{e(HERITAGE[lang][1])}</p><a class="sig-link" href="{rel(lang, "home", lang, "insights")}#oegyujanggak">{e(sig["case_more"])} →</a></div>'
-                f'<div class="sig-card"><h3>{e(sig["first_h"])}</h3><p>{e(sig["first_p"])}</p><p class="sig-src">{e(sig["src"])} ' + ", ".join(f'<a href="{e(p["url"])}" rel="noopener" target="_blank">{e(p["outlet"][lang])} ({e(p["date"][:4])})</a>' for p in press_featured()[:3]) + f'</p><a class="sig-link" href="{rel(lang, "home", lang, "insights")}#fp-h">{e(sig["first_more"])} →</a></div>'
+                f'<div class="sig-card"><h3>{e(sig["first_h"])}</h3><p>{e(sig["first_p"])}</p><p class="sig-src">{e(sig["src"])} ' + ", ".join(f'<a href="{e(p["url"])}" rel="noopener" target="_blank">{e(p["outlet"][lang])} ({e(p["date"][:4])})</a>' for p in press_featured()[:3]) + f'</p><a class="sig-link" href="{rel(lang, "home", lang, "insights")}#press-profile">{e(sig["first_more"])} →</a></div>'
                 '</div></div></section>')
     import team_profiles as TP
     team_cards = "".join(
@@ -597,19 +617,6 @@ CASE = {
 
 
 
-FEATURED_H = {"en": ("Featured coverage", "One of the first Korean lawyers in France, as reported in the Korean press since 1998."),
-              "fr": ("À la une", "L'un des premiers avocats coréens en France, selon la presse coréenne depuis 1998."),
-              "ko": ("주요 보도", "1998년부터 국내 언론이 소개한 프랑스의 첫 한국인 변호사 중 한 명.")}
-
-
-def featured_block(lang, up):
-    items = press_featured()
-    if not items:
-        return ""
-    h, p = FEATURED_H[lang]
-    return (f'<section class="featured-press" aria-labelledby="fp-h"><div class="wrap"><div class="section-head"><h2 id="fp-h">{e(h)}</h2><p class="lede">{e(p)}</p></div>'
-            f'<div class="press">{press_items(lang, items, up)}</div></div></section>')
-
 def case_file(lang):
     c = CASE[lang]
     rows = "".join(f'<li><span class="cf-year">{y}</span><span>{e(x)}</span></li>' for y, x in c["rows"])
@@ -619,8 +626,99 @@ def case_file(lang):
             f'<div class="cf-panel"><p class="cf-src">{e(c["src"])}</p><ol class="cf-timeline">{rows}</ol><p class="cf-note">{e(c.get("note", ""))}</p></div></div></section>')
 
 
+PRESS_PAGE = {
+ "en": {"kicker": "ALEEDA 알리다 · to make known", "media_btn": "Media enquiries", "latest_btn": "Latest news",
+        "stat_since": "in the press since", "stat_items": "articles", "stat_outlets": "outlets", "stat_lang": "languages: Korean, English, French",
+        "featured_in": "Featured in",
+        "media_h": "For journalists", "media_p": "For interviews, comment or background on business law between France, Korea and Europe, contact the partners directly. We answer in English, French or Korean.",
+        "spk_h": "Available for comment", "kit_h": "Media kit", "about_h": "About Archè",
+        "about_p": "Archè (법무법인 아르케) is an international boutique law firm in Paris. It advises Korean, French and European businesses on corporate, employment, disputes and market entry between France, Korea and Europe, in English, French and Korean.",
+        "logo": "Firm logo (PNG)", "photo": "Portrait of {} (WebP)", "bios": "Partner biographies", "write": "Email the press contact",
+        "subject": "Press enquiry", "spk": {
+            "jk": ["Korean companies entering France: company formation and administrative steps", "Restitution of cultural property: the Oegyujanggak case", "Legal practice and the judiciary in France"],
+            "hk": ["Sports law and CAS arbitration (Paris 2024)", "French employment law for Korean groups' subsidiaries", "EU law, technology and regulation"]}},
+ "fr": {"kicker": "ALEEDA 알리다 · faire savoir", "media_btn": "Contact presse", "latest_btn": "Dernières actualités",
+        "stat_since": "dans la presse depuis", "stat_items": "articles", "stat_outlets": "médias", "stat_lang": "langues : coréen, anglais, français",
+        "featured_in": "Cité par",
+        "media_h": "Espace presse", "media_p": "Pour une interview, un commentaire ou un éclairage sur le droit des affaires entre la France, la Corée et l'Europe, contactez directement les associés. Nous répondons en français, en anglais ou en coréen.",
+        "spk_h": "Disponibles pour commenter", "kit_h": "Kit média", "about_h": "À propos d'Archè",
+        "about_p": "Archè (법무법인 아르케) est un cabinet d'avocats international à Paris. Il conseille les entreprises coréennes, françaises et européennes en droit des sociétés, droit du travail, contentieux et implantation entre la France, la Corée et l'Europe, en français, anglais et coréen.",
+        "logo": "Logo du cabinet (PNG)", "photo": "Portrait de {} (WebP)", "bios": "Biographies des associés", "write": "Écrire au contact presse",
+        "subject": "Demande presse", "spk": {
+            "jk": ["Implantation des entreprises coréennes en France : création de société et démarches administratives", "Restitution des biens culturels : l'affaire de l'Oegyujanggak", "L'exercice du droit et la justice en France"],
+            "hk": ["Droit du sport et arbitrage devant le TAS (Paris 2024)", "Droit du travail français pour les filiales de groupes coréens", "Droit de l'Union européenne, technologie et régulation"]}},
+ "ko": {"kicker": "ALEEDA 알리다", "media_btn": "언론 문의", "latest_btn": "최근 소식",
+        "stat_since": "년부터 언론 보도", "stat_items": "건의 기사", "stat_outlets": "개 매체", "stat_lang": "개 언어: 한국어·영어·프랑스어",
+        "featured_in": "보도 매체",
+        "media_h": "언론 관계자용 안내", "media_p": "프랑스·한국·유럽 간 기업 법무에 관한 인터뷰, 논평, 배경 설명이 필요하시면 파트너 변호사에게 직접 연락해 주십시오. 한국어, 영어, 프랑스어로 답변드립니다.",
+        "spk_h": "논평 가능 분야", "kit_h": "미디어 키트", "about_h": "아르케 소개",
+        "about_p": "법무법인 아르케(Archè)는 파리의 국제 부티크 로펌으로, 한국·프랑스·유럽 기업에 기업법, 노동법, 분쟁 해결, 프랑스·한국 시장 진출 자문을 한국어, 영어, 프랑스어로 제공합니다.",
+        "logo": "로고 (PNG)", "photo": "{} 프로필 사진 (WebP)", "bios": "파트너 소개", "write": "언론 문의 이메일 보내기",
+        "subject": "언론 문의", "spk": {
+            "jk": ["한국 기업의 프랑스 진출: 법인 설립과 행정 절차", "문화재 반환: 외규장각 소송", "프랑스의 법조 실무와 사법 제도"],
+            "hk": ["스포츠법과 CAS 중재(파리 2024)", "한국 기업 현지 법인을 위한 프랑스 노동법", "EU법, 기술과 규제"]}},
+}
+
+
+def _articles():
+    return [p for p in C.PRESS if C.PRESS_THEME.get(p["url"]) != "books"]
+
+
+def press_stats():
+    arts = _articles()
+    since = min(p["date"][:4] for p in arts)
+    return since, len(arts), len({p["outlet"]["en"] for p in arts}), len({p["lang"] for p in arts})
+
+
+def outlet_strip(lang, n=8):
+    from collections import Counter
+    cnt = Counter(p["outlet"][lang] for p in _articles())
+    return " · ".join(e(o) for o, _ in cnt.most_common(n))
+
+
+def press_ld(lang):
+    items = []
+    for i, p in enumerate(C.PRESS, 1):
+        book = C.PRESS_THEME.get(p["url"]) == "books"
+        it = {"@type": "Book" if book else "NewsArticle", "url": p["url"], "inLanguage": p["lang"], "datePublished": p["date"]}
+        it["name" if book else "headline"] = p["title"]
+        if not book:
+            it["publisher"] = {"@type": "Organization", "name": p["outlet"]["en"]}
+        items.append({"@type": "ListItem", "position": i, "item": it})
+    d = {"@context": "https://schema.org", "@type": "CollectionPage", "name": T[lang]["meta"]["insights"][0],
+         "url": abs_url(lang, "insights"), "inLanguage": lang,
+         "about": {"@type": "LegalService", "name": C.FIRM_FULL, "url": C.SITE_URL},
+         "mainEntity": {"@type": "ItemList", "numberOfItems": len(items), "itemListElement": items}}
+    return '<script type="application/ld+json">' + json.dumps(d, ensure_ascii=False) + "</script>"
+
+
+def media_kit(lang, up):
+    m = PRESS_PAGE[lang]
+    people = {p["slug"]: p for p in C.PEOPLE}
+    team = rel(lang, "insights", lang, "people")
+    spk = ""
+    for k in ("jk", "hk"):
+        pp = people[k]
+        topics = "".join(f"<li>{e(x)}</li>" for x in m["spk"][k])
+        spk += (f'<div class="spk"><h4><a href="{team}#{k}">{e(pp["name"])}</a></h4>'
+                f'<p class="spk-mail"><a href="mailto:{e(pp["email"])}">{e(pp["email"])}</a></p><ul>{topics}</ul></div>')
+    kit = f'<li><a href="{up}assets/logo.png" download>{e(m["logo"])}</a></li>'
+    kit += "".join(f'<li><a href="{up}{e(people[k]["photo"])}" download>{e(m["photo"].format(people[k]["name"]))}</a></li>' for k in ("jk", "hk"))
+    kit += f'<li><a href="{team}">{e(m["bios"])}</a></li>'
+    from urllib.parse import quote
+    mail = f'mailto:{C.EMAIL}?subject={quote(m["subject"])}'
+    return (f'<section class="dark media" id="media" aria-labelledby="media-h"><div class="wrap">'
+            f'<div class="section-head"><h2 id="media-h">{e(m["media_h"])}</h2><p class="lede">{e(m["media_p"])}</p>'
+            f'<p><a class="btn on-dark" href="{e(mail)}">{e(m["write"])}</a></p>'
+            f'<p class="media-contact"><a href="mailto:{C.EMAIL}">{e(C.EMAIL)}</a> · <a href="tel:{C.PHONE_TEL}">{e(C.PHONE)}</a></p></div>'
+            f'<div class="media-grid"><div><h3>{e(m["spk_h"])}</h3><div class="spk-list">{spk}</div></div>'
+            f'<div><h3>{e(m["kit_h"])}</h3><ul class="kit">{kit}</ul><h3>{e(m["about_h"])}</h3><p class="boiler">{e(m["about_p"])}</p></div></div>'
+            f'</div></section>')
+
+
 def page_insights(lang, t):
     i = t["insights"]
+    m = PRESS_PAGE[lang]
     events = "".join(f"<li>{e(x)}</li>" for x in i["events"])
     up = "../" * depth(lang, "insights")
     press = press_by_theme(lang, up)
@@ -632,24 +730,24 @@ def page_insights(lang, t):
             enlarge = {"en": "Enlarge photo", "fr": "Agrandir la photo", "ko": "사진 확대"}[lang]
             figs += (f'<figure><button type="button" class="g-open" aria-label="{e(enlarge)}: {e(g["alt"][lang])}"><img src="{up}{e(g["src"])}" alt="{e(g["alt"][lang])}" width="{g["w"]}" height="{g["h"]}" loading="lazy" decoding="async"></button>'
                      f'<figcaption>{e(g["caption"][lang])}{when}</figcaption></figure>')
-        gallery = f'<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(i["gallery_h"])}</h2></div><div class="gallery">{figs}</div><dialog class="lightbox" aria-label="{e(i["gallery_h"])}"><form method="dialog"><button class="lb-close" aria-label="{ {"en": "Close", "fr": "Fermer", "ko": "닫기"}[lang] }">×</button></form><img alt=""><p></p></dialog></div></section>'
-    fl = {"en": ("Follow", "See more"), "fr": ("Suivre", "Voir plus"), "ko": ("팔로우", "더 보기")}[lang]
-    follow_rows = "".join(
-        f'<div class="fc-row"><span class="fc-ico" aria-hidden="true">{ico}</span><div class="fc-name"><strong>{e(name)}</strong><span>{e(handle)}</span></div>'
-        f'<a class="btn ghost fc-btn" href="{e(url)}" rel="noopener">{e(lbl)} ↗</a></div>'
-        for name, handle, url, lbl, ico in [
-            ("LinkedIn", "archelegalparis", C.LINKEDIN, fl[0], "in"),
-            ("Instagram", "@archelegal", C.INSTAGRAM, fl[0], "◎"),
-            ("Website", C.SITE_URL.replace("https://", ""), C.SITE_URL, fl[1], "◍"),
-        ])
-    follow_rows = f'<div class="fc-list">{follow_rows}</div>'
-    return f'''<div class="page-head"><div class="wrap"><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p></div></div>
-{featured_block(lang, up)}
-{case_file(lang)}
-
-<section><div class="wrap"><h2>{e(i["press_h"])}</h2>{press}</div></section>
-<section class="alt"><div class="wrap"><h2>{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul class="events">{events}</ul></div></section>
-{gallery}'''
+        close = {"en": "Close", "fr": "Fermer", "ko": "닫기"}[lang]
+        gallery = f'<section class="alt"><div class="wrap"><div class="section-head"><h2>{e(i["gallery_h"])}</h2></div><div class="gallery">{figs}</div><dialog class="lightbox" aria-label="{e(i["gallery_h"])}"><form method="dialog"><button class="lb-close" aria-label="{close}">×</button></form><img alt=""><p></p></dialog></div></section>'
+    since, n_art, n_out, n_lang = press_stats()
+    stats = [(since, m["stat_since"]), (str(n_art), m["stat_items"]), (str(n_out), m["stat_outlets"])]
+    if lang != "ko":  # "in the press since 1998": label before the value
+        stats_html = "".join(f'<li><span>{e(l)}</span><strong>{e(v)}</strong></li>' if k == 0 else f'<li><strong>{e(v)}</strong><span>{e(l)}</span></li>'
+                             for k, (v, l) in enumerate(stats))
+    else:
+        stats_html = "".join(f'<li><strong>{e(v)}</strong><span>{e(l)}</span></li>' for v, l in stats)
+    body = (f'<div class="page-head press-head"><div class="wrap"><p class="kicker press-kicker">{e(m["kicker"])}</p><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p>'
+            f'<ul class="press-stats">{stats_html}</ul>'
+            f'<p class="press-actions"><a class="btn on-dark" href="#media">{e(m["media_btn"])}</a> <a class="btn ghost" href="#latest">{e(m["latest_btn"])}</a></p>'
+            f'<p class="outlets"><span>{e(m["featured_in"])}</span> {outlet_strip(lang)}</p></div></div>\n'
+            f'<section class="alt" id="latest"><div class="wrap"><h2>{e(i["events_h"])}</h2><p class="lead-in">{e(i["events_p"])}</p><ul class="events">{events}</ul></div></section>\n'
+            f'{case_file(lang)}\n'
+            f'<section><div class="wrap"><h2>{e(i["press_h"])}</h2>{press}</div></section>\n'
+            f'{gallery}\n{media_kit(lang, up)}')
+    return body, press_ld(lang)
 
 
 def page_contact(lang, t):
@@ -709,7 +807,7 @@ def write(path, text):
 
 def main():
     # clean generated output only
-    for d in ["fr", "ko", "services", "experience", "team", "insights", "contact", "legal", "privacy"]:
+    for d in ["fr", "ko", "services", "experience", "team", "insights", "press", "contact", "legal", "privacy"]:
         shutil.rmtree(ROOT / d, ignore_errors=True)
     for f in ["index.html", "404.html", "sitemap.xml", "robots.txt", "CNAME", ".nojekyll"]:
         (ROOT / f).unlink(missing_ok=True)
@@ -740,6 +838,15 @@ def main():
               f'<meta name="robots" content="noindex"><link rel="canonical" href="{target}">'
               f'<meta http-equiv="refresh" content="0; url={target}"></head>'
               f'<body><p><a href="{target}">{e(T[lang]["nav"]["services"])}</a></p></body></html>')
+
+    # Former /insights/ URL: redirect to the Press page (nav label and URL now match)
+    for lang in LANGS:
+        target = abs_url(lang, "insights")
+        write(("" if lang == "en" else lang + "/") + "insights/index.html",
+              f'<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><title>Archè</title>'
+              f'<meta name="robots" content="noindex"><link rel="canonical" href="{target}">'
+              f'<meta http-equiv="refresh" content="0; url={target}"></head>'
+              f'<body><p><a href="{target}">{e(T[lang]["nav"]["insights"])}</a></p></body></html>')
 
     # 404 (absolute asset paths so it works at any depth)
     t = T["en"]
