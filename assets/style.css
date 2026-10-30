@@ -550,7 +550,7 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 .pf-roles li{margin-bottom:.35em;font-size:15px;color:var(--text)}
 @media(max-width:640px){.pf-facts div{grid-template-columns:1fr;gap:4px}}
 .pf-list{margin:0;padding-left:1.1em}
-.pf-list li{margin-bottom:.35em;font-size:15px;line-height:1.5;color:var(--text)}
+.pf-list li{max-width:none;margin-bottom:.35em;font-size:15px;line-height:1.5;color:var(--text)}
 .xp-note{margin:28px 0 0;font-size:14px;color:var(--muted);max-width:60em}
 
 /* Merged hero: name + promise in one block */
