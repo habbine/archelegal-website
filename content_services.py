@@ -308,16 +308,16 @@ def apply(T):
 
 META_OVERRIDES = {
     "en": {
-        "services": ("Practice areas | Archè, Franco-Korean law firm in Paris", "Corporate, M&A, commercial contracts, employment and immigration, disputes and arbitration, insolvency, IP and international projects, in French, English and Korean."),
-        "experience": ("Selected cases | Archè, Franco-Korean law firm in Paris", "Anonymised cases: entering France and Europe, M&A and investment, energy and infrastructure projects, disputes and arbitration, employment restructuring and immigration."),
-        "people": ("Team | Archè, Franco-Korean law firm in Paris", "Partners admitted in Paris and New York who advise in French, English and Korean on corporate, M&A, disputes, employment and immigration."),
-        "insights": ("Press and events | Archè, Franco-Korean law firm in Paris", "Press coverage of Archè and its partners, including the Oegyujanggak restitution case, books, talks and events between France and Korea."),
+        "services": ("Practice areas | Archè, cross-border law firm in Paris", "Corporate, M&A, commercial contracts, employment and immigration, disputes and arbitration, insolvency, IP and international projects, in French, English and Korean."),
+        "experience": ("Selected cases | Archè, cross-border law firm in Paris", "Anonymised cases: entering France and Europe, M&A and investment, energy and infrastructure projects, disputes and arbitration, employment restructuring and immigration."),
+        "people": ("Team | Archè, cross-border law firm in Paris", "Partners admitted in Paris and New York who advise in French, English and Korean on corporate, M&A, disputes, employment and immigration."),
+        "insights": ("Press and events | Archè, cross-border law firm in Paris", "Press coverage of Archè and its partners, including the Oegyujanggak restitution case, books, talks and events between France and Korea."),
     },
     "fr": {
-        "services": ("Domaines d'intervention | Archè, cabinet d'avocats franco-coréen à Paris", "Sociétés, fusions-acquisitions, contrats, droit du travail et immigration, contentieux et arbitrage, procédures collectives, PI et projets internationaux, en français, anglais et coréen."),
-        "experience": ("Références | Archè, cabinet d'avocats franco-coréen à Paris", "Dossiers anonymisés : implantation en France et en Europe, fusions-acquisitions, projets d'énergie et d'infrastructure, contentieux et arbitrage, restructurations et immigration."),
-        "people": ("Équipe | Archè, cabinet d'avocats franco-coréen à Paris", "Des associés inscrits à Paris et New York qui conseillent en français, anglais et coréen en sociétés, fusions-acquisitions, contentieux, droit du travail et immigration."),
-        "insights": ("Presse et événements | Archè, cabinet d'avocats franco-coréen à Paris", "Revue de presse d'Archè et de ses associés, dont l'affaire de restitution de l'Oegyujanggak, livres, conférences et événements entre la France et la Corée."),
+        "services": ("Domaines d'intervention | Archè, cabinet d'avocats transfrontalier à Paris", "Sociétés, fusions-acquisitions, contrats, droit du travail et immigration, contentieux et arbitrage, procédures collectives, PI et projets internationaux, en français, anglais et coréen."),
+        "experience": ("Références | Archè, cabinet d'avocats transfrontalier à Paris", "Dossiers anonymisés : implantation en France et en Europe, fusions-acquisitions, projets d'énergie et d'infrastructure, contentieux et arbitrage, restructurations et immigration."),
+        "people": ("Équipe | Archè, cabinet d'avocats transfrontalier à Paris", "Des associés inscrits à Paris et New York qui conseillent en français, anglais et coréen en sociétés, fusions-acquisitions, contentieux, droit du travail et immigration."),
+        "insights": ("Presse et événements | Archè, cabinet d'avocats transfrontalier à Paris", "Revue de presse d'Archè et de ses associés, dont l'affaire de restitution de l'Oegyujanggak, livres, conférences et événements entre la France et la Corée."),
     },
     "ko": {
         "home": ("아르케 | 파리 한인 변호사 로펌 · 프랑스 법인 설립·노동·소송 자문", "파리에 본사를 둔 국제 로펌 아르케. 25년 넘게 프랑스·유럽 진출, 법인 설립, M&A, 노동·구조조정, 취업 이민, 소송·중재를 한국어, 프랑스어, 영어로 자문합니다."),

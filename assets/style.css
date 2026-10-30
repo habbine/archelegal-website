@@ -764,3 +764,26 @@ ul.pubs .ev-d{font-size:15px;color:var(--c-muted)}
 .g-more[open] summary{margin-bottom:20px}
 .g-more .gallery figure,.g-more .gallery figure:first-child,.g-more .gallery figure:nth-child(n+6){grid-column:auto;grid-row:auto}
 .g-more .gallery figure img,.g-more .gallery figure:first-child img,.g-more .gallery figure:nth-child(n+6) img{aspect-ratio:4/3}
+
+/* Press: link from a news item to the practice it shows */
+ul.events li .ev-svc{display:block;margin-top:6px;font-size:14px;font-weight:600;color:var(--c-ink);text-decoration:none;border-bottom:0}
+ul.events li .ev-svc:hover{color:var(--gold-d);text-decoration:underline}
+.cf-svc{margin-top:8px}
+/* Press: publications in two columns, books as a compact row */
+@media(min-width:900px){ul.pubs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(32px,5vw,72px)}}
+.pub-books .press{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));column-gap:clamp(24px,4vw,48px)}
+.pub-books .press a{padding:14px 0}
+.pub-books .press a.has-cover{grid-template-columns:48px minmax(0,1fr);gap:12px}
+.pub-books .press img.cover{width:48px}
+
+/* Contact: what happens after a message */
+.next-h{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:32px 0 12px}
+.next-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px clamp(20px,3vw,40px);max-width:none}
+.next-steps li{max-width:none;margin:0;padding-top:12px;border-top:1px solid var(--green-line)}
+.next-steps strong{display:block;color:var(--ink);font-weight:600;margin-bottom:4px}
+.next-steps span{display:block;font-size:15px;line-height:1.5;color:var(--text)}
+
+/* Services: a contact link closing each practice area */
+.svc-cta{grid-column:-2/-1;margin:16px 0 0;font-size:15px}
+.svc-cta a{color:var(--gold);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
+.svc-cta a:hover{color:var(--ink)}

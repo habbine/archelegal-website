@@ -128,21 +128,21 @@ _I = {
 WHO = {
  "en": {"kicker": "Archè · International business law", "h": "Who we work with",
   "lede": "Legal counsel for businesses operating across borders, from market entry to international growth and complex commercial matters.",
-  "cta_h": "Navigating a cross-border legal challenge?", "cta_p": "Let's discuss your business and how we can help.", "cta_b": "Contact Archè",
+  "cta_h": "Navigating a cross-border legal challenge?", "cta_p": "Let's discuss your business and how we can help.", "cta_b": "Discuss your matter",
   "cards": [
    ("globe", "International businesses coming to France and Europe", "For foreign companies establishing or expanding their presence in France and Europe.", [("Market entry", "advice"), ("Corporate structuring", "corporate"), ("Employment", "employment"), ("Commercial contracts", "corporate")]),
    ("swap", "French and European businesses going abroad", "For French and European companies entering new markets abroad, negotiating cross-border partnerships and managing legal risks across jurisdictions.", [("International expansion", "advice"), ("Partnerships", "corporate"), ("Compliance", "advice"), ("Disputes", "litigation")]),
    ("build", "Entrepreneurs, startups and growing businesses", "For founders, SMEs and independent professionals seeking practical legal support to structure, operate and grow their businesses.", [("Business formation", "corporate"), ("Contracts", "corporate"), ("Employment", "employment"), ("Restructuring", "corporate")])]},
  "fr": {"kicker": "Archè · Droit international des affaires", "h": "Qui nous accompagnons",
   "lede": "Conseil juridique pour les entreprises qui opèrent au-delà des frontières, de l'implantation à la croissance internationale et aux dossiers commerciaux complexes.",
-  "cta_h": "Un enjeu juridique transfrontalier ?", "cta_p": "Parlons de votre activité et de la manière dont nous pouvons vous aider.", "cta_b": "Nous contacter",
+  "cta_h": "Un enjeu juridique transfrontalier ?", "cta_p": "Parlons de votre activité et de la manière dont nous pouvons vous aider.", "cta_b": "Parlez-nous de votre dossier",
   "cards": [
    ("globe", "Entreprises internationales qui s'implantent en France et en Europe", "Pour les entreprises étrangères qui s'établissent ou se développent en France et en Europe.", [("Implantation", "advice"), ("Structuration juridique", "corporate"), ("Droit du travail", "employment"), ("Contrats commerciaux", "corporate")]),
    ("swap", "Entreprises françaises et européennes qui se développent à l'étranger", "Pour les entreprises françaises et européennes qui abordent de nouveaux marchés, négocient des partenariats transfrontaliers et maîtrisent les risques juridiques dans plusieurs juridictions.", [("Développement international", "advice"), ("Partenariats", "corporate"), ("Conformité", "advice"), ("Contentieux", "litigation")]),
    ("build", "Entrepreneurs, startups et entreprises en croissance", "Pour les fondateurs, PME et indépendants qui cherchent un appui juridique concret pour structurer, exploiter et développer leur activité.", [("Création d'entreprise", "corporate"), ("Contrats", "corporate"), ("Droit du travail", "employment"), ("Restructuration", "corporate")])]},
  "ko": {"kicker": "아르케 · 국제 비즈니스 법", "h": "이런 고객과 함께합니다",
   "lede": "국경을 넘어 사업하는 기업을 위한 법률 자문. 시장 진출에서 해외 성장, 복잡한 상사 사안까지.",
-  "cta_h": "국경을 넘는 법적 과제를 안고 계신가요?", "cta_p": "귀사의 사업과 저희가 어떻게 도울 수 있는지 이야기해 보시죠.", "cta_b": "아르케에 문의",
+  "cta_h": "국경을 넘는 법적 과제를 안고 계신가요?", "cta_p": "귀사의 사업과 저희가 어떻게 도울 수 있는지 이야기해 보시죠.", "cta_b": "사안 상담하기",
   "cards": [
    ("globe", "프랑스·유럽에 진출하는 해외 기업", "프랑스와 유럽에 진출하거나 사업을 확장하려는 해외 기업을 위해.", [("시장 진출", "advice"), ("법인 구조 설계", "corporate"), ("노동·고용", "employment"), ("상사 계약", "corporate")]),
    ("swap", "해외로 진출하는 프랑스·유럽 기업", "새로운 해외 시장에 진출하고, 국경을 넘는 파트너십을 협상하며, 여러 관할의 법적 리스크를 관리하려는 프랑스·유럽 기업을 위해.", [("해외 확장", "advice"), ("파트너십", "corporate"), ("컴플라이언스", "advice"), ("분쟁", "litigation")]),
@@ -284,7 +284,7 @@ def footer(lang, page, t):
            + "".join(f'<li><a href="{e(u)}" rel="noopener">{e(l)}</a></li>' for l, u in C.FOOTER_PERSONAL))
     return f'''<footer class="site-footer"><div class="wrap">
 <div class="cols c4">
-<div><h2 class="ft-h">{e(C.FIRM_FULL)}</h2><p>{e(f["lawyers"])}</p></div>
+<div><h2 class="ft-h">{e(C.FIRM_FULL)}</h2></div>
 <div><h2 class="ft-h">{e(f["nav"])}</h2><ul>{links}</ul></div>
 <div><h2 class="ft-h">{e(t["home"]["offices_h"])}</h2><ul><li>Paris: {e(", ".join(C.ADDRESS_LINES[:2]))}</li><li>Seoul</li><li>Hong Kong</li></ul></div>
 <div><h2 class="ft-h">{e(f["follow"])}</h2><ul>{soc}</ul></div>
@@ -478,7 +478,8 @@ def page_services(lang, t):
             more = f'<details class="ex-more"><summary>{e(exl[1])} ({len(lis)})</summary><ul class="ex-list">{tail}</ul></details>' if tail else ""
             ex_html += f'<p class="ex-sub">{e(sub)}</p><ul class="ex-list">{head}</ul>{more}'
         ex_block = f'<div class="ex"><h3 class="ex-h">{e(exl[0])}</h3>{ex_html}</div>' if ex_html else ""
-        items += f'<div class="service" id="{key}"><div><p class="svc-sub">{e(intro)}</p><h2>{e(title)}</h2></div>{body}{ex_block}</div>'
+        svc_cta = f'<p class="svc-cta"><a href="{cta_href(lang, "services")}">{e(t["cta"])} →</a></p>'
+        items += f'<div class="service" id="{key}"><div><p class="svc-sub">{e(intro)}</p><h2>{e(title)}</h2></div>{body}{ex_block}{svc_cta}</div>'
     faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in s["faq"])
     ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in s["faq"]]}
@@ -636,12 +637,18 @@ CASE = {
 
 
 
+CASE_SVC = {"en": "Disputes involving public bodies: our practice",
+            "fr": "Contentieux impliquant des personnes publiques : notre pratique",
+            "ko": "공공기관 관련 분쟁: 업무 분야 보기"}
+
+
 def case_file(lang):
     c = CASE[lang]
     rows = "".join(f'<li><span class="cf-year">{y}</span><span>{e(x)}</span></li>' for y, x in c["rows"])
     return (f'<section class="case-file" id="oegyujanggak" aria-labelledby="cf-h"><div class="wrap cf-grid">'
             f'<div><p class="kicker cf-kicker">{e(c["kicker"])}</p><h2 id="cf-h">{e(HERITAGE[lang][0])}</h2><p class="lede">{e(HERITAGE[lang][1])}</p>'
-            f'<p class="cf-more"><a href="#press-heritage">{e(c["more"])} ↓</a></p></div>'
+            f'<p class="cf-more"><a href="#press-heritage">{e(c["more"])} ↓</a></p>'
+            f'<p class="cf-more cf-svc"><a href="{rel(lang, "insights", lang, "services")}#litigation">{e(CASE_SVC[lang])} →</a></p></div>'
             f'<div class="cf-panel"><p class="cf-src">{e(c["src"])}</p><ol class="cf-timeline">{rows}</ol><p class="cf-note">{e(c.get("note", ""))}</p></div></div></section>')
 
 
@@ -741,9 +748,15 @@ def page_insights(lang, t):
     i = t["insights"]
     m = PRESS_PAGE[lang]
     import press_extra as PX
+    import content_services as CS
+    svc_title = {sid: ti for sid, ti, _, _ in CS.SERVICES8[lang]}
     def ev_li(ev):
         d, title, detail, url = ev
         link = f' <a href="{e(url)}" rel="noopener">{e(PX.OPEN[lang])}<span class="sr-only"> ({e(title[lang])})</span> ↗</a>' if url else ""
+        sid = PX.EVENT_SERVICE.get(d)
+        if sid:
+            link += (f'<a class="ev-svc" href="{rel(lang, "insights", lang, "services")}#{sid}">'
+                     f'{e(PX.RELATED[lang])}{" : " if lang == "fr" else ": "}{e(svc_title[sid])} →</a>')
         return (f'<li><time datetime="{d}">{e(fmt_date(lang, d))}</time><strong>{e(title[lang])}</strong>'
                 f'<span class="ev-d">{e(detail[lang])}{link}</span></li>')
     evs = sorted(PX.EVENTS, key=lambda x: x[0], reverse=True)
@@ -792,8 +805,27 @@ def page_insights(lang, t):
             f'{case_file(lang)}\n'
             f'<section><div class="wrap"><h2>{e(i["press_h"])}</h2>{press}</div></section>\n'
             f'{pubs_html}\n'
-            f'{gallery}\n{media_kit(lang, up)}')
+            f'{gallery}\n{media_kit(lang, up)}\n'
+            f'{cta_band(lang, "insights", t, WHO[lang]["cta_h"], WHO[lang]["cta_p"], dark=False)}')
     return body, press_ld(lang)
+
+
+# What happens after a message. Each line restates something the site already says
+# (Services call to action, fees FAQ); no response time is promised.
+NEXT_STEPS = {
+    "en": ("What happens next", [
+        ("1. Describe your matter", "In English, French or Korean, by email or with the form below."),
+        ("2. We reply with a first view", "What your matter involves and what to prepare."),
+        ("3. Fees agreed in advance", "Fixed fees for clearly defined assignments; otherwise hourly or tailored, agreed before work starts.")]),
+    "fr": ("Comment cela se passe", [
+        ("1. Décrivez votre situation", "En français, en anglais ou en coréen, par courriel ou avec le formulaire ci-dessous."),
+        ("2. Nous vous répondons", "Ce que votre dossier implique et ce qu'il faut préparer."),
+        ("3. Des honoraires convenus à l'avance", "Forfait pour les missions clairement définies ; sinon au temps passé ou sur mesure, convenus avant le début de la mission.")]),
+    "ko": ("상담 진행 방식", [
+        ("1. 사안 설명", "한국어, 프랑스어, 영어로 이메일 또는 아래 양식을 통해 보내 주세요."),
+        ("2. 1차 답변", "사안에 필요한 절차와 준비 사항을 안내해 드립니다."),
+        ("3. 사전 보수 합의", "업무 범위가 명확한 사안은 정액 보수, 그 밖에는 시간제 또는 맞춤형 보수를 업무 시작 전에 합의합니다.")]),
+}
 
 
 def page_contact(lang, t):
@@ -805,7 +837,10 @@ def page_contact(lang, t):
     if C.WHATSAPP_URL:
         msgs += f'<li><a href="{e(C.WHATSAPP_URL)}" rel="noopener">{e(c["whatsapp"])}</a></li>'
     book = f'<p><a class="btn on-dark" href="{e(C.BOOKING_URL)}" rel="noopener">{e(t["cta"])}</a></p>' if C.BOOKING_URL else ""
-    return f'''<div class="page-head"><div class="wrap"><h1>{e(c["h1"])}</h1><p class="lede">{e(c["lede"])}</p></div></div>
+    nx = NEXT_STEPS[lang]
+    steps = "".join(f'<li><strong>{e(h)}</strong><span>{e(x)}</span></li>' for h, x in nx[1])
+    return f'''<div class="page-head"><div class="wrap"><h1>{e(c["h1"])}</h1><p class="lede">{e(c["lede"])}</p>
+<h2 class="next-h">{e(nx[0])}</h2><ol class="next-steps">{steps}</ol></div></div>
 <section style="padding-top:0"><div class="wrap cols c2">
 <div id="form"><h2>{e(c["form_h"])}</h2>
 <form class="contact" data-to="{e(C.EMAIL)}" data-subject="{e(c["subject"])}" data-sep="{" : " if lang == "fr" else ": "}" data-mail="{e(c["mail"])}" data-fallback="{e(c["fallback"])}" data-copy="{e(c["copy"])}" data-copied="{e(c["copied"])}" data-intro="{e(json.dumps([c["f_name"], c["f_position"], c["f_company"]], ensure_ascii=False))}" method="post" action="mailto:{e(C.EMAIL)}" enctype="text/plain">
