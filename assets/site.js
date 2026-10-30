@@ -89,13 +89,32 @@
           msg = d.get("message") || "";
       if (endpoint) {
         e.preventDefault();
-        fetch(endpoint, { method: "POST", body: d, headers: { Accept: "application/json" } })
-          .then(function (r) {
-            if (!r.ok) throw new Error("bad");
+        if (d.get("_honey")) return;  // bot trap
+        var btn = form.querySelector('button[type="submit"]');
+        if (btn) btn.disabled = true;
+        if (status) status.textContent = form.getAttribute("data-sending") || "";
+        var payload = {
+          name: name, email: email, company: company, topic: topic, message: msg,
+          _subject: "Website enquiry: " + topic + " / " + (company || name),
+          _template: "table", _captcha: "false",
+          page_language: document.documentElement.lang || ""
+        };
+        fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload)
+        })
+          .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) {
+            if (!r.ok || String(j.success) !== "true") throw new Error("bad");
+          }); })
+          .then(function () {
             form.reset();
             if (status) status.textContent = form.getAttribute("data-ok");
           })
-          .catch(function () { if (status) status.textContent = form.getAttribute("data-fail"); });
+          .catch(function () {
+            if (status) status.textContent = form.getAttribute("data-fail");
+          })
+          .then(function () { if (btn) btn.disabled = false; });
         return;
       }
       e.preventDefault();

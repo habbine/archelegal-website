@@ -676,3 +676,6 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 
 /* who cards: inbound/outbound direction label */
 .who-dir{margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d)}
+
+/* contact form honeypot */
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}

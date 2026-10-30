@@ -172,17 +172,17 @@ SIGNATURE = {
     "en": {"kicker": "Signature", "h": "A Paris firm with Korean roots",
            "case_more": "Read about the case",
            "first_h": "One of the first Korean lawyers admitted to the French bar",
-           "first_p": "Admitted to the Paris Bar in 1997, James Joong-ho Kim is one of the first Korean lawyers to practise in France.",
+           "first_p": "Admitted to the Paris Bar in 1998, James Joong-ho Kim is one of the first Korean lawyers to practise in France.",
            "first_more": "Read the coverage", "src": "Reported by:"},
     "fr": {"kicker": "Repères", "h": "Un cabinet parisien aux racines coréennes",
            "case_more": "En savoir plus sur l'affaire",
            "first_h": "L'un des premiers avocats coréens inscrits au barreau en France",
-           "first_p": "Inscrit au Barreau de Paris en 1997, James Joong-ho Kim est l'un des premiers avocats coréens à exercer en France.",
+           "first_p": "Inscrit au Barreau de Paris en 1998, James Joong-ho Kim est l'un des premiers avocats coréens à exercer en France.",
            "first_more": "Lire la presse", "src": "Selon :"},
     "ko": {"kicker": "대표 이력", "h": "한국에 뿌리를 둔 파리 로펌",
            "case_more": "사건 자세히 보기",
            "first_h": "프랑스 변호사회에 등록한 첫 한국인 변호사 중 한 명",
-           "first_p": "1997년 파리 변호사회에 등록한 김중호 변호사는 프랑스에서 활동한 첫 한국인 변호사 중 한 명입니다.",
+           "first_p": "1998년 파리 변호사회에 등록한 김중호 변호사는 프랑스에서 활동한 첫 한국인 변호사 중 한 명입니다.",
            "first_more": "보도 보기", "src": "보도:"},
 }
 TEAM_H = {"en": ("Who will handle your matter", "Partner-led work in French, English and Korean."),
@@ -665,12 +665,13 @@ def page_contact(lang, t):
     return f'''<div class="page-head"><div class="wrap"><h1>{e(c["h1"])}</h1><p class="lede">{e(c["lede"])}</p></div></div>
 <section style="padding-top:0"><div class="wrap cols c2">
 <div id="form"><h2>{e(c["form_h"])}</h2>
-<form class="contact" data-to="{e(C.EMAIL)}"{endpoint} data-ok="{e(c["ok"])}" data-fail="{e(c["fail"])}" data-mail="{e(c["mail"])}" method="post" action="mailto:{e(C.EMAIL)}" enctype="text/plain">
+<form class="contact" data-to="{e(C.EMAIL)}"{endpoint} data-ok="{e(c["ok"])}" data-fail="{e(c["fail"])}" data-mail="{e(c["mail"])}" data-sending="{e({"en": "Sending…", "fr": "Envoi en cours…", "ko": "전송 중…"}[lang])}" method="post" action="mailto:{e(C.EMAIL)}" enctype="text/plain">
 <label>{e(c["f_name"])}<input name="name" required autocomplete="name"></label>
 <label>{e(c["f_email"])}<input name="email" type="email" required autocomplete="email"></label>
 <label>{e(c["f_company"])}<input name="company" autocomplete="organization"></label>
 <label>{e(c["f_topic"])}<select name="topic">{topics}</select></label>
 <label>{e(c["f_msg"])}<textarea name="message" required></textarea></label>
+<label class="hp" aria-hidden="true">Leave empty<input name="_honey" tabindex="-1" autocomplete="off"></label>
 <label class="check"><input type="checkbox" name="consent" required><span>{e(c["f_consent"])}</span></label>
 <button class="btn" type="submit">{e(c["send"])}</button>
 <p class="form-status" role="status" aria-live="polite"></p>

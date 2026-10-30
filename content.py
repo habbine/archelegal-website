@@ -147,7 +147,7 @@ T["en"] = {
 <h2>Who is responsible</h2>
 <p>Archè SELARL, 57 Quai de Grenelle, 75015 Paris, France, is responsible for the personal data collected through this website. Contact: paris@archelegal.com.</p>
 <h2>What we collect</h2>
-<p>This website does not use cookies, advertising trackers or analytics, and it loads no fonts or scripts from third parties. We only receive personal data when you write to us: your name, email address, company, topic and message.</p>
+<p>This website does not use cookies, advertising trackers or analytics, and it loads no fonts or scripts from third parties. We only receive personal data when you write to us: your name, email address, company, topic and message. Messages sent through the contact form are relayed to paris@archelegal.com by FormSubmit (formsubmit.co), an email-forwarding service that processes them only to deliver them to us.</p>
 <h2>Why and on what basis</h2>
 <p>We use these details to reply to your request and, if you become a client, to carry out our engagement. The legal basis is your consent when you contact us and our legitimate interest in answering enquiries.</p>
 <h2>Retention</h2>
@@ -316,7 +316,7 @@ T["fr"] = {
 <h2>Responsable du traitement</h2>
 <p>Archè SELARL, 57 Quai de Grenelle, 75015 Paris, France, est responsable des données personnelles collectées via ce site. Contact : paris@archelegal.com.</p>
 <h2>Ce que nous collectons</h2>
-<p>Ce site n'utilise ni cookies, ni traceurs publicitaires, ni outils d'analyse, et ne charge aucune police ni aucun script provenant de tiers. Nous ne recevons de données personnelles que lorsque vous nous écrivez : votre nom, votre adresse électronique, votre société, le sujet et votre message.</p>
+<p>Ce site n'utilise ni cookies, ni traceurs publicitaires, ni outils d'analyse, et ne charge aucune police ni aucun script provenant de tiers. Nous ne recevons de données personnelles que lorsque vous nous écrivez : votre nom, votre adresse électronique, votre société, le sujet et votre message. Les messages envoyés via le formulaire de contact sont transmis à paris@archelegal.com par FormSubmit (formsubmit.co), un service de relais d'e-mails qui ne les traite que pour nous les remettre.</p>
 <h2>Finalités et base légale</h2>
 <p>Nous utilisons ces informations pour répondre à votre demande et, si vous devenez client, pour exécuter notre mission. La base légale est votre consentement lorsque vous nous contactez et notre intérêt légitime à répondre aux demandes.</p>
 <h2>Durée de conservation</h2>
@@ -485,7 +485,7 @@ T["ko"] = {
 <h2>개인정보 처리자</h2>
 <p>Archè SELARL(57 Quai de Grenelle, 75015 Paris, France)이 이 웹사이트에서 수집되는 개인정보의 처리자입니다. 연락처: paris@archelegal.com.</p>
 <h2>수집 항목</h2>
-<p>이 웹사이트는 쿠키, 광고 추적기, 분석 도구를 사용하지 않으며 제3자의 글꼴이나 스크립트도 불러오지 않습니다. 문의하실 때 입력하신 이름, 이메일, 회사, 문의 분야, 메시지만 받습니다.</p>
+<p>이 웹사이트는 쿠키, 광고 추적기, 분석 도구를 사용하지 않으며 제3자의 글꼴이나 스크립트도 불러오지 않습니다. 문의하실 때 입력하신 이름, 이메일, 회사, 문의 분야, 메시지만 받습니다. 문의 양식으로 보내신 메시지는 이메일 전달 서비스인 FormSubmit(formsubmit.co)을 통해 paris@archelegal.com으로 전달되며, 이 서비스는 전달 목적으로만 메시지를 처리합니다.</p>
 <h2>이용 목적과 근거</h2>
 <p>문의에 답변하고, 의뢰인이 되시는 경우 위임 업무를 수행하기 위해 사용합니다. 근거는 문의 시 주신 동의와 문의에 답변할 정당한 이익입니다.</p>
 <h2>보관 기간</h2>
