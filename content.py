@@ -121,15 +121,16 @@ T["en"] = {
         "kakao": "Message us on KakaoTalk",
         "whatsapp": "Message us on WhatsApp",
         "form_h": "Send a message",
-        "f_name": "Name", "f_email": "Email", "f_company": "Company",
+        "f_name": "Full name", "f_position": "Position", "f_company": "Company",
         "f_topic": "Topic",
         "topics": ["Company setup or market entry", "Employment", "International mobility", "Contract review", "Compliance", "Legal services", "Litigation or arbitration", "International project", "Other"],
-        "f_msg": "How can we help?",
+        "f_object": "Object of the enquiry",
         "f_consent": "I agree that Archè uses these details to reply to my request. See the privacy policy.",
         "send": "Send message",
-        "ok": "Thank you. We have received your message.",
-        "fail": "The message could not be sent. Please email us directly.",
-        "mail": "Your email app is opening with the message ready to send.",
+        "mail": "Your email app is opening with your enquiry written in. Please check it and press Send.",
+        "subject": "Website enquiry",
+        "fallback": "Nothing opened? Write to",
+        "copy": "Copy my enquiry", "copied": "Copied",
         "confidential": "Please do not send confidential documents through this form. We will tell you how to share them securely.",
     },
     "footer": {
@@ -147,7 +148,7 @@ T["en"] = {
 <h2>Who is responsible</h2>
 <p>Archè SELARL, 57 Quai de Grenelle, 75015 Paris, France, is responsible for the personal data collected through this website. Contact: paris@archelegal.com.</p>
 <h2>What we collect</h2>
-<p>This website does not use cookies, advertising trackers or analytics, and it loads no fonts or scripts from third parties. We only receive personal data when you write to us: your name, email address, company, topic and message. Messages sent through the contact form are relayed to paris@archelegal.com by FormSubmit (formsubmit.co), an email-forwarding service that processes them only to deliver them to us.</p>
+<p>This website does not use cookies, advertising trackers or analytics, and it loads no fonts or scripts from third parties. We only receive personal data when you write to us: your full name, position, company, the topic and object of your enquiry, and the email address you write from. The contact form does not send anything itself: it opens your own email app with your enquiry written in, and nothing reaches us unless you send that email to paris@archelegal.com.</p>
 <h2>Why and on what basis</h2>
 <p>We use these details to reply to your request and, if you become a client, to carry out our engagement. The legal basis is your consent when you contact us and our legitimate interest in answering enquiries.</p>
 <h2>Retention</h2>
@@ -290,15 +291,16 @@ T["fr"] = {
         "kakao": "Nous écrire sur KakaoTalk",
         "whatsapp": "Nous écrire sur WhatsApp",
         "form_h": "Envoyer un message",
-        "f_name": "Nom", "f_email": "Courriel", "f_company": "Société",
+        "f_name": "Nom complet", "f_position": "Fonction", "f_company": "Société",
         "f_topic": "Sujet",
         "topics": ["Création de société ou implantation", "Droit du travail", "Mobilité internationale", "Revue de contrats", "Conformité", "Services juridiques", "Contentieux ou arbitrage", "Projet international", "Autre"],
-        "f_msg": "Comment pouvons-nous vous aider ?",
+        "f_object": "Objet de la demande",
         "f_consent": "J'accepte qu'Archè utilise ces informations pour répondre à ma demande. Voir la politique de confidentialité.",
         "send": "Envoyer le message",
-        "ok": "Merci. Nous avons bien reçu votre message.",
-        "fail": "Le message n'a pas pu être envoyé. Écrivez-nous directement par courriel.",
-        "mail": "Votre application de messagerie s'ouvre avec le message prêt à envoyer.",
+        "mail": "Votre messagerie s'ouvre avec votre demande déjà rédigée. Vérifiez-la puis cliquez sur Envoyer.",
+        "subject": "Demande via le site",
+        "fallback": "Rien ne s'est ouvert ? Écrivez à",
+        "copy": "Copier ma demande", "copied": "Copié",
         "confidential": "N'envoyez pas de documents confidentiels via ce formulaire. Nous vous indiquerons comment les transmettre en sécurité.",
     },
     "footer": {
@@ -316,7 +318,7 @@ T["fr"] = {
 <h2>Responsable du traitement</h2>
 <p>Archè SELARL, 57 Quai de Grenelle, 75015 Paris, France, est responsable des données personnelles collectées via ce site. Contact : paris@archelegal.com.</p>
 <h2>Ce que nous collectons</h2>
-<p>Ce site n'utilise ni cookies, ni traceurs publicitaires, ni outils d'analyse, et ne charge aucune police ni aucun script provenant de tiers. Nous ne recevons de données personnelles que lorsque vous nous écrivez : votre nom, votre adresse électronique, votre société, le sujet et votre message. Les messages envoyés via le formulaire de contact sont transmis à paris@archelegal.com par FormSubmit (formsubmit.co), un service de relais d'e-mails qui ne les traite que pour nous les remettre.</p>
+<p>Ce site n'utilise ni cookies, ni traceurs publicitaires, ni outils d'analyse, et ne charge aucune police ni aucun script provenant de tiers. Nous ne recevons de données personnelles que lorsque vous nous écrivez : vos nom et prénom, votre fonction, votre société, le sujet et l'objet de votre demande, ainsi que l'adresse électronique depuis laquelle vous écrivez. Le formulaire de contact n'envoie rien lui-même : il ouvre votre propre messagerie avec votre demande déjà rédigée, et rien ne nous parvient tant que vous n'envoyez pas ce courriel à paris@archelegal.com.</p>
 <h2>Finalités et base légale</h2>
 <p>Nous utilisons ces informations pour répondre à votre demande et, si vous devenez client, pour exécuter notre mission. La base légale est votre consentement lorsque vous nous contactez et notre intérêt légitime à répondre aux demandes.</p>
 <h2>Durée de conservation</h2>
@@ -459,15 +461,16 @@ T["ko"] = {
         "kakao": "카카오톡으로 문의",
         "whatsapp": "WhatsApp으로 문의",
         "form_h": "메시지 보내기",
-        "f_name": "이름", "f_email": "이메일", "f_company": "회사",
+        "f_name": "성명", "f_position": "직책", "f_company": "회사",
         "f_topic": "문의 분야",
         "topics": ["법인 설립·시장 진출", "노동법", "국제 인력 이동", "계약 검토", "컴플라이언스", "법률 자문 서비스", "소송·중재", "국제 프로젝트", "기타"],
-        "f_msg": "어떤 도움이 필요하신가요?",
+        "f_object": "문의 내용",
         "f_consent": "아르케가 문의에 답변하기 위해 위 정보를 사용하는 것에 동의합니다. 개인정보 처리방침 보기.",
         "send": "메시지 보내기",
-        "ok": "감사합니다. 메시지가 접수되었습니다.",
-        "fail": "메시지를 보내지 못했습니다. 이메일로 직접 보내 주세요.",
-        "mail": "보낼 준비가 된 메시지와 함께 이메일 앱이 열립니다.",
+        "mail": "문의 내용이 작성된 상태로 이메일 앱이 열립니다. 내용을 확인한 뒤 보내기를 눌러 주세요.",
+        "subject": "웹사이트 문의",
+        "fallback": "아무것도 열리지 않았나요? 다음 주소로 보내 주세요:",
+        "copy": "문의 내용 복사", "copied": "복사됨",
         "confidential": "기밀 문서는 이 양식으로 보내지 마세요. 안전하게 전달하는 방법을 안내해 드립니다.",
     },
     "footer": {
@@ -485,7 +488,7 @@ T["ko"] = {
 <h2>개인정보 처리자</h2>
 <p>Archè SELARL(57 Quai de Grenelle, 75015 Paris, France)이 이 웹사이트에서 수집되는 개인정보의 처리자입니다. 연락처: paris@archelegal.com.</p>
 <h2>수집 항목</h2>
-<p>이 웹사이트는 쿠키, 광고 추적기, 분석 도구를 사용하지 않으며 제3자의 글꼴이나 스크립트도 불러오지 않습니다. 문의하실 때 입력하신 이름, 이메일, 회사, 문의 분야, 메시지만 받습니다. 문의 양식으로 보내신 메시지는 이메일 전달 서비스인 FormSubmit(formsubmit.co)을 통해 paris@archelegal.com으로 전달되며, 이 서비스는 전달 목적으로만 메시지를 처리합니다.</p>
+<p>이 웹사이트는 쿠키, 광고 추적기, 분석 도구를 사용하지 않으며 제3자의 글꼴이나 스크립트도 불러오지 않습니다. 문의하실 때 보내 주신 성명, 직책, 회사, 문의 분야와 문의 내용, 그리고 발신 이메일 주소만 받습니다. 문의 양식은 직접 아무것도 전송하지 않으며, 문의 내용이 작성된 상태로 이용자의 이메일 앱을 열어 줄 뿐입니다. 해당 이메일을 paris@archelegal.com으로 보내셔야만 저희에게 전달됩니다.</p>
 <h2>이용 목적과 근거</h2>
 <p>문의에 답변하고, 의뢰인이 되시는 경우 위임 업무를 수행하기 위해 사용합니다. 근거는 문의 시 주신 동의와 문의에 답변할 정당한 이익입니다.</p>
 <h2>보관 기간</h2>

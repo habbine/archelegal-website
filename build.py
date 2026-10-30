@@ -661,17 +661,15 @@ def page_contact(lang, t):
     if C.WHATSAPP_URL:
         msgs += f'<li><a href="{e(C.WHATSAPP_URL)}" rel="noopener">{e(c["whatsapp"])}</a></li>'
     book = f'<p><a class="btn on-dark" href="{e(C.BOOKING_URL)}" rel="noopener">{e(t["cta"])}</a></p>' if C.BOOKING_URL else ""
-    endpoint = f' data-endpoint="{e(C.FORM_ENDPOINT)}"' if C.FORM_ENDPOINT else ""
     return f'''<div class="page-head"><div class="wrap"><h1>{e(c["h1"])}</h1><p class="lede">{e(c["lede"])}</p></div></div>
 <section style="padding-top:0"><div class="wrap cols c2">
 <div id="form"><h2>{e(c["form_h"])}</h2>
-<form class="contact" data-to="{e(C.EMAIL)}"{endpoint} data-ok="{e(c["ok"])}" data-fail="{e(c["fail"])}" data-mail="{e(c["mail"])}" data-sending="{e({"en": "Sending…", "fr": "Envoi en cours…", "ko": "전송 중…"}[lang])}" method="post" action="mailto:{e(C.EMAIL)}" enctype="text/plain">
-<label>{e(c["f_name"])}<input name="name" required autocomplete="name"></label>
-<label>{e(c["f_email"])}<input name="email" type="email" required autocomplete="email"></label>
-<label>{e(c["f_company"])}<input name="company" autocomplete="organization"></label>
-<label>{e(c["f_topic"])}<select name="topic">{topics}</select></label>
-<label>{e(c["f_msg"])}<textarea name="message" required></textarea></label>
-<label class="hp" aria-hidden="true">Leave empty<input name="_honey" tabindex="-1" autocomplete="off"></label>
+<form class="contact" data-to="{e(C.EMAIL)}" data-subject="{e(c["subject"])}" data-sep="{" : " if lang == "fr" else ": "}" data-mail="{e(c["mail"])}" data-fallback="{e(c["fallback"])}" data-copy="{e(c["copy"])}" data-copied="{e(c["copied"])}" method="post" action="mailto:{e(C.EMAIL)}" enctype="text/plain">
+<label>{e(c["f_name"])}<input name="full_name" required autocomplete="name"></label>
+<label>{e(c["f_position"])}<input name="position" required autocomplete="organization-title"></label>
+<label>{e(c["f_company"])}<input name="company" required autocomplete="organization"></label>
+<label>{e(c["f_topic"])}<select name="topic" required>{topics}</select></label>
+<label>{e(c["f_object"])}<textarea name="object" required></textarea></label>
 <label class="check"><input type="checkbox" name="consent" required><span>{e(c["f_consent"])}</span></label>
 <button class="btn" type="submit">{e(c["send"])}</button>
 <p class="form-status" role="status" aria-live="polite"></p>

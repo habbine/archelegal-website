@@ -14,7 +14,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#1B2B2B">
 <link rel="icon" href="../../assets/favicon.png" type="image/png"><link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
-<link rel="preload" href="../../assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../../assets/style.css?v=2d6a75beaa">
+<link rel="preload" href="../../assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../../assets/style.css?v=950b333974">
 <script defer src="../../assets/site.js"></script>
 
 </head>
@@ -29,13 +29,12 @@
 <div class="page-head"><div class="wrap"><h1>문의</h1><p class="lede">한국어, 프랑스어, 영어로 문의해 주세요.</p></div></div>
 <section style="padding-top:0"><div class="wrap cols c2">
 <div id="form"><h2>메시지 보내기</h2>
-<form class="contact" data-to="paris@archelegal.com" data-endpoint="https://formsubmit.co/ajax/paris@archelegal.com" data-ok="감사합니다. 메시지가 접수되었습니다." data-fail="메시지를 보내지 못했습니다. 이메일로 직접 보내 주세요." data-mail="보낼 준비가 된 메시지와 함께 이메일 앱이 열립니다." data-sending="전송 중…" method="post" action="mailto:paris@archelegal.com" enctype="text/plain">
-<label>이름<input name="name" required autocomplete="name"></label>
-<label>이메일<input name="email" type="email" required autocomplete="email"></label>
-<label>회사<input name="company" autocomplete="organization"></label>
-<label>문의 분야<select name="topic"><option>법인 설립·시장 진출</option><option>노동법</option><option>국제 인력 이동</option><option>계약 검토</option><option>컴플라이언스</option><option>법률 자문 서비스</option><option>소송·중재</option><option>국제 프로젝트</option><option>기타</option></select></label>
-<label>어떤 도움이 필요하신가요?<textarea name="message" required></textarea></label>
-<label class="hp" aria-hidden="true">Leave empty<input name="_honey" tabindex="-1" autocomplete="off"></label>
+<form class="contact" data-to="paris@archelegal.com" data-subject="웹사이트 문의" data-sep=": " data-mail="문의 내용이 작성된 상태로 이메일 앱이 열립니다. 내용을 확인한 뒤 보내기를 눌러 주세요." data-fallback="아무것도 열리지 않았나요? 다음 주소로 보내 주세요:" data-copy="문의 내용 복사" data-copied="복사됨" method="post" action="mailto:paris@archelegal.com" enctype="text/plain">
+<label>성명<input name="full_name" required autocomplete="name"></label>
+<label>직책<input name="position" required autocomplete="organization-title"></label>
+<label>회사<input name="company" required autocomplete="organization"></label>
+<label>문의 분야<select name="topic" required><option>법인 설립·시장 진출</option><option>노동법</option><option>국제 인력 이동</option><option>계약 검토</option><option>컴플라이언스</option><option>법률 자문 서비스</option><option>소송·중재</option><option>국제 프로젝트</option><option>기타</option></select></label>
+<label>문의 내용<textarea name="object" required></textarea></label>
 <label class="check"><input type="checkbox" name="consent" required><span>아르케가 문의에 답변하기 위해 위 정보를 사용하는 것에 동의합니다. 개인정보 처리방침 보기.</span></label>
 <button class="btn" type="submit">메시지 보내기</button>
 <p class="form-status" role="status" aria-live="polite"></p>
