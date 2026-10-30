@@ -14,7 +14,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#1B2B2B">
 <link rel="icon" href="../../assets/favicon.png" type="image/png"><link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
-<link rel="preload" href="../../assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../../assets/style.css?v=2d6a75beaa">
+<link rel="preload" href="../../assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../../assets/style.css?v=950b333974">
 <script defer src="../../assets/site.js"></script>
 
 </head>
@@ -29,13 +29,12 @@
 <div class="page-head"><div class="wrap"><h1>Contact</h1><p class="lede">Écrivez-nous en français, en anglais ou en coréen.</p></div></div>
 <section style="padding-top:0"><div class="wrap cols c2">
 <div id="form"><h2>Envoyer un message</h2>
-<form class="contact" data-to="paris@archelegal.com" data-endpoint="https://formsubmit.co/ajax/paris@archelegal.com" data-ok="Merci. Nous avons bien reçu votre message." data-fail="Le message n&#x27;a pas pu être envoyé. Écrivez-nous directement par courriel." data-mail="Votre application de messagerie s&#x27;ouvre avec le message prêt à envoyer." data-sending="Envoi en cours…" method="post" action="mailto:paris@archelegal.com" enctype="text/plain">
-<label>Nom<input name="name" required autocomplete="name"></label>
-<label>Courriel<input name="email" type="email" required autocomplete="email"></label>
-<label>Société<input name="company" autocomplete="organization"></label>
-<label>Sujet<select name="topic"><option>Création de société ou implantation</option><option>Droit du travail</option><option>Mobilité internationale</option><option>Revue de contrats</option><option>Conformité</option><option>Services juridiques</option><option>Contentieux ou arbitrage</option><option>Projet international</option><option>Autre</option></select></label>
-<label>Comment pouvons-nous vous aider ?<textarea name="message" required></textarea></label>
-<label class="hp" aria-hidden="true">Leave empty<input name="_honey" tabindex="-1" autocomplete="off"></label>
+<form class="contact" data-to="paris@archelegal.com" data-subject="Demande via le site" data-sep=" : " data-mail="Votre messagerie s&#x27;ouvre avec votre demande déjà rédigée. Vérifiez-la puis cliquez sur Envoyer." data-fallback="Rien ne s&#x27;est ouvert ? Écrivez à" data-copy="Copier ma demande" data-copied="Copié" method="post" action="mailto:paris@archelegal.com" enctype="text/plain">
+<label>Nom complet<input name="full_name" required autocomplete="name"></label>
+<label>Fonction<input name="position" required autocomplete="organization-title"></label>
+<label>Société<input name="company" required autocomplete="organization"></label>
+<label>Sujet<select name="topic" required><option>Création de société ou implantation</option><option>Droit du travail</option><option>Mobilité internationale</option><option>Revue de contrats</option><option>Conformité</option><option>Services juridiques</option><option>Contentieux ou arbitrage</option><option>Projet international</option><option>Autre</option></select></label>
+<label>Objet de la demande<textarea name="object" required></textarea></label>
 <label class="check"><input type="checkbox" name="consent" required><span>J&#x27;accepte qu&#x27;Archè utilise ces informations pour répondre à ma demande. Voir la politique de confidentialité.</span></label>
 <button class="btn" type="submit">Envoyer le message</button>
 <p class="form-status" role="status" aria-live="polite"></p>

@@ -77,52 +77,57 @@
     setInterval(render, 30000);
   }
 
-  // Contact form: POST to endpoint if configured, otherwise compose an email.
+  // Contact form: open the visitor's email app with every answer written into the message.
+  // Labels and texts come from the page, so the email is in the page's language.
   document.querySelectorAll("form.contact").forEach(function (form) {
+    function labelOf(name) {
+      var field = form.querySelector('[name="' + name + '"]');
+      var label = field && field.closest("label");
+      if (!label) return name;
+      var text = "";
+      label.childNodes.forEach(function (n) { if (n.nodeType === 3) text += n.textContent; });
+      return text.trim() || name;
+    }
     form.addEventListener("submit", function (e) {
+      e.preventDefault();
       var status = form.querySelector(".form-status");
-      var endpoint = form.getAttribute("data-endpoint");
       var to = form.getAttribute("data-to");
       var d = new FormData(form);
-      var name = d.get("name") || "", email = d.get("email") || "",
-          company = d.get("company") || "", topic = d.get("topic") || "",
-          msg = d.get("message") || "";
-      if (endpoint) {
-        e.preventDefault();
-        if (d.get("_honey")) return;  // bot trap
-        var btn = form.querySelector('button[type="submit"]');
-        if (btn) btn.disabled = true;
-        if (status) status.textContent = form.getAttribute("data-sending") || "";
-        var payload = {
-          name: name, email: email, company: company, topic: topic, message: msg,
-          _subject: "Website enquiry: " + topic + " / " + (company || name),
-          _template: "table", _captcha: "false",
-          page_language: document.documentElement.lang || ""
-        };
-        fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(payload)
-        })
-          .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) {
-            if (!r.ok || String(j.success) !== "true") throw new Error("bad");
-          }); })
-          .then(function () {
-            form.reset();
-            if (status) status.textContent = form.getAttribute("data-ok");
-          })
-          .catch(function () {
-            if (status) status.textContent = form.getAttribute("data-fail");
-          })
-          .then(function () { if (btn) btn.disabled = false; });
-        return;
-      }
-      e.preventDefault();
-      var subject = "[" + topic + "] " + (company || name);
-      var body = msg + "\n\n--\n" + name + (company ? " — " + company : "") + "\n" + email;
-      window.location.href = "mailto:" + to + "?subject=" + encodeURIComponent(subject) +
+      function v(k) { return String(d.get(k) || "").trim(); }
+      var company = v("company"), topic = v("topic");
+      var sep = form.getAttribute("data-sep") || ": ";
+
+      var subject = (form.getAttribute("data-subject") || "Website enquiry") +
+        sep + topic + " / " + company;
+      var body = ["full_name", "position", "company", "topic"].map(function (k) {
+        return labelOf(k) + sep + v(k);
+      }).concat(["", labelOf("object") + sep.replace(/\s+$/, ""), v("object")]).join("\r\n");
+
+      window.location.href = "mailto:" + to +
+        "?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(body);
-      if (status) status.textContent = form.getAttribute("data-mail");
+
+      if (!status) return;
+      // For visitors without an email app on this device (webmail only).
+      status.textContent = (form.getAttribute("data-mail") || "") + " " +
+        (form.getAttribute("data-fallback") || "") + " ";
+      var link = document.createElement("a");
+      link.href = "mailto:" + to;
+      link.textContent = to;
+      status.appendChild(link);
+      if (navigator.clipboard) {
+        status.appendChild(document.createTextNode(" "));
+        var copy = document.createElement("button");
+        copy.type = "button";
+        copy.className = "copy-message";
+        copy.textContent = form.getAttribute("data-copy") || "Copy";
+        copy.addEventListener("click", function () {
+          navigator.clipboard.writeText(to + "\n" + subject + "\n\n" + body).then(function () {
+            copy.textContent = form.getAttribute("data-copied") || "Copied";
+          }, function () {});
+        });
+        status.appendChild(copy);
+      }
     });
   });
 })();

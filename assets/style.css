@@ -679,3 +679,4 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 
 /* contact form honeypot */
 .hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+.copy-message{font:inherit;font-size:14px;padding:2px 10px;margin-top:6px;border:1px solid currentColor;border-radius:6px;background:none;color:inherit;cursor:pointer}
