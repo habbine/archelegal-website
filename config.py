@@ -21,7 +21,6 @@ WHATSAPP_URL = ""     # e.g. https://wa.me/33143358410
 
 # Contact form. "" = the form opens the visitor's email app. For a real form,
 # create a free Formspree/Basin endpoint and paste its URL here.
-FORM_ENDPOINT = "https://formsubmit.co/ajax/paris@archelegal.com"  # FormSubmit relay to paris@archelegal.com (activate once via the confirmation email)
 
 # Seoul / Hong Kong. Add a street address and phone when available.
 SEOUL = {"address": "Humanstarville #1101, Dosandae-ro 454, Gangnam-gu, Seoul, South Korea", "phone": "", "email": "seoul@archelegal.com"}
@@ -79,9 +78,7 @@ PRESS = [
      "title": "A Forgotten Promise: The Secrets of the Royal Protocols (James J. Kim, ISBN 979-8270335410)",
      "about": {"en": "English edition of James Joong-ho Kim's novel, based on the Oegyujanggak restitution case",
                "fr": "Édition anglaise du roman de James Joong-ho Kim, inspiré de l'affaire de l'Oegyujanggak",
-               "ko": "외규장각 반환 소송을 바탕으로 한 김중호 변호사 소설 「잊혀진 약속」의 영문판"},
-     "quote": {"text": "Une lecture à la fois aisée et prenante.", "lang": "fr",
-               "by": "Hauteclaire, Amazon.fr", "date": "2026-01-18"}},
+               "ko": "외규장각 반환 소송을 바탕으로 한 김중호 변호사 소설 「잊혀진 약속」의 영문판"}},
     {"date": "2025-10-19", "outlet": _o("Legal Times", "리걸타임즈"), "lang": "ko",
      "url": "http://www.legaltimes.co.kr/news/articleView.html?idxno=89709", "cover": "assets/img/book-promise.webp",
      "title": "[신간소개] 파리에서 활동하는 김중호 변호사의 《잊혀진 약속》",
