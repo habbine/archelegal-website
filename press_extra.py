@@ -116,7 +116,7 @@ EVENTS = [
      KA_TALKS),
 ]
 
-EVENTS_SHOWN = 8  # the rest go under "Show all"
+EVENTS_SHOWN = 6  # the rest go under "Show all"
 
 PUBS_H = T("Publications and institutional work", "Publications et travaux institutionnels", "논문 및 기관 활동")
 PUBS_P = T("Selected research and contributions by Habbine Estelle Kim.",

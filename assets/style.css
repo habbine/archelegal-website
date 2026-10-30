@@ -159,7 +159,7 @@ section{padding:clamp(64px,9vw,112px) 0}
 .press .quote{display:block;margin-top:4px;font-family:var(--serif);font-style:italic;color:var(--gold)}
 .press q{quotes:none}
 .alt .press .quote{color:var(--gold-d)}
-.press small{display:block;margin-top:4px;font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums}
+.press small{display:block;margin-top:6px;font-size:13px;letter-spacing:.02em;color:var(--muted);font-variant-numeric:tabular-nums}
 .alt .press a{border-top-color:var(--c-line);color:var(--c-ink)}
 .alt .press a:hover strong{color:var(--gold-d)}
 .alt .press .about{color:var(--c-text)}
@@ -407,7 +407,7 @@ nav.primary .lang a{min-width:0;padding:0 7px;min-height:32px;font-size:11px;let
 .press-themes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px clamp(32px,5vw,72px);align-items:start}
 .press-themes .press-theme{margin-top:0}
 .press-themes .press-theme h3{font-family:var(--sans);font-weight:600;font-size:15px;letter-spacing:.12em;text-transform:uppercase;padding-top:14px;margin-bottom:4px}
-.press-themes .press a{padding:16px 0}
+.press-themes .press a{padding:14px 0}
 .press-themes .press a.has-cover{grid-template-columns:56px minmax(0,1fr);gap:14px}
 .press-themes .press img.cover{width:56px}
 
@@ -703,7 +703,6 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 /* Press page (press/) */
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .press-head + section{padding-top:clamp(48px,7vw,88px)}
-.press-kicker{margin:0 0 12px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 .press-stats{list-style:none;margin:32px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:20px clamp(28px,5vw,56px);max-width:none}
 .press-stats li{margin:0;max-width:none;display:flex;flex-direction:column;gap:2px}
 .press-stats strong{font-family:var(--serif);font-size:clamp(28px,4vw,40px);font-weight:400;line-height:1.1;color:var(--ink);font-variant-numeric:tabular-nums}
@@ -711,7 +710,7 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 .press-actions{display:flex;flex-wrap:wrap;gap:16px;margin:32px 0 0}
 .outlets{margin:28px 0 0;padding-top:18px;border-top:1px solid var(--green-line);font-size:15px;line-height:1.7;color:var(--text);max-width:none}
 .outlets span{margin-right:10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.press .orig{display:block;margin-top:4px;font-size:15px;color:var(--muted)}
+.press .orig{display:block;margin-top:3px;font-size:14px;line-height:1.45;color:var(--muted)}
 .alt .press .orig{color:var(--c-muted)}
 .press .lang-tag{letter-spacing:.04em}
 .press .ext{color:var(--gold)}
@@ -754,3 +753,14 @@ ul.pubs strong{font-weight:600;line-height:1.4}
 ul.pubs .ev-d{font-size:15px;color:var(--c-muted)}
 #publications a.more{color:var(--c-ink);text-decoration:underline;text-decoration-color:var(--gold-d);text-underline-offset:4px}
 @media(max-width:520px){ul.pubs li{grid-template-columns:1fr}ul.pubs .pub-y{grid-row:auto}}
+
+/* Press: books under Publications; extra photos collapsed */
+.pub-books{margin-top:48px}
+.pub-books h3{font-family:var(--sans);font-weight:600;font-size:15px;letter-spacing:.12em;text-transform:uppercase;padding-top:14px;margin-bottom:4px;border-top:1px solid var(--c-ink)}
+.pub-books h3 small{font-size:13px;color:var(--c-muted);margin-left:8px;letter-spacing:.06em}
+.g-more{margin-top:24px}
+.g-more summary{cursor:pointer;display:inline-flex;align-items:center;min-height:44px;font-weight:600;color:var(--c-ink);text-decoration:underline;text-decoration-color:var(--gold-d);text-underline-offset:4px}
+.g-more summary:focus-visible{outline:2px solid var(--gold-d);outline-offset:3px}
+.g-more[open] summary{margin-bottom:20px}
+.g-more .gallery figure,.g-more .gallery figure:first-child,.g-more .gallery figure:nth-child(n+6){grid-column:auto;grid-row:auto}
+.g-more .gallery figure img,.g-more .gallery figure:first-child img,.g-more .gallery figure:nth-child(n+6) img{aspect-ratio:4/3}
