@@ -94,14 +94,18 @@
       var to = form.getAttribute("data-to");
       var d = new FormData(form);
       function v(k) { return String(d.get(k) || "").trim(); }
-      var company = v("company"), topic = v("topic");
+      var topic = v("topic");
       var sep = form.getAttribute("data-sep") || ": ";
 
       var subject = (form.getAttribute("data-subject") || "Website enquiry") +
-        sep + topic + " / " + company;
-      var body = ["full_name", "position", "company", "topic"].map(function (k) {
-        return labelOf(k) + sep + v(k);
-      }).concat(["", labelOf("object") + sep.replace(/\s+$/, ""), v("object")]).join("\r\n");
+        sep + topic;
+      // Name, position and company are left blank at the top for the sender to fill in.
+      var intro = [];
+      try { intro = JSON.parse(form.getAttribute("data-intro") || "[]"); } catch (err) {}
+      var bare = sep.replace(/\s+$/, "");
+      var body = intro.map(function (label) { return label + bare + " "; })
+        .concat(["", labelOf("topic") + sep + topic, "", labelOf("object") + bare, v("object")])
+        .join("\r\n");
 
       window.location.href = "mailto:" + to +
         "?subject=" + encodeURIComponent(subject) +
