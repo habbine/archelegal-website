@@ -209,7 +209,7 @@ section:has(> .prose){background:var(--paper);color:var(--c-text);padding-top:cl
 .site-footer li{margin-bottom:.4em}
 .pf-contact .pf-card{margin-left:12px}
 .site-footer .ft-logo{display:inline-block;margin-bottom:14px}
-.site-footer .ft-logo img{width:220px;height:auto;display:block}
+.site-footer .ft-logo img{width:160px;height:auto;display:block}
 .site-footer .ft-legal{margin:0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .fine{border-top:1px solid var(--green-line);padding-top:20px;display:flex;flex-wrap:wrap;gap:12px 28px;color:var(--muted);font-size:14px}
 .fine a{color:var(--text)}

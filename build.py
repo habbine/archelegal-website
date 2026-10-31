@@ -285,7 +285,7 @@ def footer(lang, page, t):
            + "".join(f'<li><a href="{e(u)}" rel="noopener">{e(l)}</a></li>' for l, u in C.FOOTER_PERSONAL))
     return f'''<footer class="site-footer"><div class="wrap">
 <div class="cols c4">
-<div><a href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}" class="ft-logo"><img src="{up}assets/logo-horizontal-dark.svg" width="491" height="132" alt=""></a></div>
+<div><a href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}" class="ft-logo"><img src="{up}assets/logo-stacked-dark.svg" width="341" height="218" alt=""></a></div>
 <div><h2 class="ft-h">{e(f["nav"])}</h2><ul>{links}</ul></div>
 <div><h2 class="ft-h">{e(t["home"]["offices_h"])}</h2><ul><li>Paris</li><li>Seoul</li><li>Hong Kong</li></ul></div>
 <div><h2 class="ft-h">{e(f["follow"])}</h2><ul>{soc}</ul></div>
