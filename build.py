@@ -568,6 +568,8 @@ def page_people(lang, t):
                 f'{e(L["email"].format(first=first))}</a>'
                 + (f' <a class="btn pf-mail pf-card" href="{up}{e(person["card"])}" download="{e(person["card"].rsplit("/", 1)[1])}">'
                    f'{e(L["card_btn"])}</a>' if person.get("card_btn") else "")
+                + (f' <a class="btn pf-mail pf-card" href="{up}assets/downloads/{k}.vcf" download="{k}.vcf">'
+                   f'{e(L["vcard"])}</a>' if person.get("card_btn") else "")
                 + '</p>')
         out += (f'<article class="person" id="{k}"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div class="pf">'
                 f'<h2 class="pf-name">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>'
