@@ -207,7 +207,8 @@ section:has(> .prose){background:var(--paper);color:var(--c-text);padding-top:cl
 .site-footer h3,.site-footer .ft-h{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.8em}
 .site-footer ul{list-style:none;padding:0;margin:0}
 .site-footer li{margin-bottom:.4em}
-.pf-contact .pf-card{margin-left:12px}
+.pf-contact{display:flex;flex-wrap:wrap;gap:12px}
+.pf-contact .btn{min-width:0;margin:0}
 .site-footer .ft-logo{display:inline-block;margin-bottom:14px}
 .site-footer .ft-logo img{width:160px;height:auto;display:block}
 .site-footer .ft-legal{margin:0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}

@@ -47,6 +47,7 @@ PEOPLE = [
         "card": "assets/downloads/james-kim-carte-recto.png",
         "card_back": "assets/downloads/james-kim-carte-verso.png",
         "card_btn": True,
+        "vcard": True,
         "tel": ["+33617904220", "+821093924220"],
     },
     {
@@ -56,9 +57,11 @@ PEOPLE = [
         "name": "Habbine Estelle Kim",
         "email": "habbine.kim@archelegal.com",
         "linkedin": "https://www.linkedin.com/in/kim-avocat/",
-        "links": HK_LINKS,
+        "links": [],
+        "downloads": False,
         "card": "assets/downloads/habbine-kim-carte-recto.png",
         "card_back": "assets/downloads/habbine-kim-carte-verso.png",
+        "vcard": True,
     },
     {
         "slug": "dk",
