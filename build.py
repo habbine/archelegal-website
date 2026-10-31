@@ -113,8 +113,8 @@ def press_by_theme(lang, up, shown=3):
 
 
 HERITAGE = {
-    "en": ("The Oegyujanggak case", "Since 2007, James Joong-ho Kim has acted in the claim for the return of Korea's Oegyujanggak royal manuscripts before the Paris Administrative Court. At the December 2009 hearing, the French State used the word \u201cpillage\u201d for the first time.", "Read the press coverage"),
-    "fr": ("L'affaire de l'Oegyujanggak", "Depuis 2007, James Joong-ho Kim agit dans la demande de restitution des manuscrits royaux coréens de l'Oegyujanggak devant le tribunal administratif de Paris. À l'audience de décembre 2009, l'État français a employé pour la première fois le mot \u00ab pillage \u00bb.", "Lire la presse"),
+    "en": ("The Oegyujanggak case", "Since 2007, James Joong-ho KIM has acted in the claim for the return of Korea's Oegyujanggak royal manuscripts before the Paris Administrative Court. At the December 2009 hearing, the French State used the word \u201cpillage\u201d for the first time.", "Read the press coverage"),
+    "fr": ("L'affaire de l'Oegyujanggak", "Depuis 2007, James Joong-ho KIM agit dans la demande de restitution des manuscrits royaux coréens de l'Oegyujanggak devant le tribunal administratif de Paris. À l'audience de décembre 2009, l'État français a employé pour la première fois le mot \u00ab pillage \u00bb.", "Lire la presse"),
     "ko": ("외규장각 반환 소송", "김중호 변호사는 2007년부터 파리 행정법원에서 외규장각 의궤 반환 소송을 맡아 왔습니다. 2009년 12월 변론에서 프랑스 정부는 처음으로 '약탈'이라는 표현을 사용했습니다.", "언론 보도 보기"),
 }
 
@@ -194,12 +194,12 @@ SIGNATURE = {
     "en": {"kicker": "Signature", "h": "A Paris firm with Korean roots",
            "case_more": "Read about the case",
            "first_h": "One of the first Korean lawyers admitted to the French bar",
-           "first_p": "Admitted to the Paris Bar in 1998, James Joong-ho Kim is one of the first Korean lawyers to practise in France.",
+           "first_p": "Admitted to the Paris Bar in 1998, James Joong-ho KIM is one of the first Korean lawyers to practise in France.",
            "first_more": "Read the coverage", "src": "Reported by:"},
     "fr": {"kicker": "Repères", "h": "Un cabinet parisien aux racines coréennes",
            "case_more": "En savoir plus sur l'affaire",
            "first_h": "L'un des premiers avocats coréens inscrits au barreau en France",
-           "first_p": "Inscrit au Barreau de Paris en 1998, James Joong-ho Kim est l'un des premiers avocats coréens à exercer en France.",
+           "first_p": "Inscrit au Barreau de Paris en 1998, James Joong-ho KIM est l'un des premiers avocats coréens à exercer en France.",
            "first_more": "Lire la presse", "src": "Selon :"},
     "ko": {"kicker": "대표 이력", "h": "한국에 뿌리를 둔 파리 로펌",
            "case_more": "사건 자세히 보기",
@@ -266,7 +266,7 @@ def header(lang, page, t):
         switch += f'<a href="{rel(lang, page, l, page)}" hreflang="{l}" lang="{l}"{cur}>{LANG_LABEL[l]}</a>'
     return f'''<a class="skip" href="#main">{e(t["skip"])}</a>
 <header class="site-header"><div class="wrap">
-<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img class="brand-logo" src="{up}assets/logo-horizontal.svg" width="284" height="58" alt="{e(C.FIRM)} Avocats · 법무법인 아르케 · {e({"en": "International boutique law firm", "fr": "Cabinet d'avocats international", "ko": "국제 부티크 로펌"}[lang])}"></a>
+<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img class="brand-logo" src="{up}assets/logo-horizontal-dark.svg" width="491" height="132" alt=""></a>
 <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" type="button">{e(t["menu"])}</button>
 <nav class="primary" id="primary-nav" aria-label="{e(t["menu"])}">{nav}<div class="lang" role="group" aria-label="Language">{switch}</div></nav>
 </div></header>'''
@@ -279,14 +279,15 @@ def cta_href(lang, page):
 
 def footer(lang, page, t):
     f = t["footer"]
+    up = "../" * depth(lang, page)
     links = "".join(f'<li><a href="{rel(lang, page, lang, k)}">{e(t["nav"][k])}</a></li>' for k in NAV)
     soc = (f'<li><a href="{C.LINKEDIN}" rel="noopener">LinkedIn</a></li><li><a href="{C.INSTAGRAM}" rel="noopener">Instagram</a></li>'
            + "".join(f'<li><a href="{e(u)}" rel="noopener">{e(l)}</a></li>' for l, u in C.FOOTER_PERSONAL))
     return f'''<footer class="site-footer"><div class="wrap">
 <div class="cols c4">
-<div><h2 class="ft-h">{e(C.FIRM_FULL)}</h2></div>
+<div><a href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}" class="ft-logo"><img src="{up}assets/logo-stacked-dark.svg" width="341" height="218" alt=""></a></div>
 <div><h2 class="ft-h">{e(f["nav"])}</h2><ul>{links}</ul></div>
-<div><h2 class="ft-h">{e(t["home"]["offices_h"])}</h2><ul><li>Paris: {e(", ".join(C.ADDRESS_LINES[:2]))}</li><li>Seoul</li><li>Hong Kong</li></ul></div>
+<div><h2 class="ft-h">{e(t["home"]["offices_h"])}</h2><ul><li>Paris</li><li>Seoul</li><li>Hong Kong</li></ul></div>
 <div><h2 class="ft-h">{e(f["follow"])}</h2><ul>{soc}</ul></div>
 </div>
 <div class="fine"><span>© {2026} {e(C.FIRM_FULL)}. {e(f["rights"])}</span><a href="{rel(lang, page, lang, "legal")}">{e(f["legal"])}</a><a href="{rel(lang, page, lang, "privacy")}">{e(f["privacy"])}</a></div>
@@ -557,13 +558,24 @@ def page_people(lang, t):
             return f'<h3 class="pf-h">{e(L[key])}</h3><ul class="pf-list">{head}</ul>{more}'
         roles = plist("career") + plist("edu", 3) + plist("roles", TP.PROFILES[k].get("roles_keep", 4))
         first = person["name"].split()[0]
+        dl = [(L["vcard"], up + f"assets/downloads/{k}.vcf", f"{k}.vcf")]
+        for key, lbl in (("card", "card"), ("card_back", "card_back")):
+            if person.get(key):
+                dl.insert(0 if key == "card" else 1, (L[lbl], up + person[key], person[key].rsplit("/", 1)[1]))
+        downloads = ('<ul class="person-downloads">' + "".join(
+            f'<li><a class="pl-btn" href="{e(href)}" download="{e(fname)}">{e(lbl)}</a></li>' for lbl, href, fname in dl) + "</ul>") if person.get("downloads", False) else ""
         mail = (f'<p class="pf-contact"><a class="btn pf-mail" href="mailto:{e(person["email"])}">'
-                f'{e(L["email"].format(first=first))}</a></p>')
+                f'{e(L["email"].format(first=first))}</a>'
+                + (f' <a class="btn pf-mail pf-card" href="{up}{e(person["card_pdf"])}" download="{e(person["card_pdf"].rsplit("/", 1)[1])}">'
+                   f'{e(L["card_btn"])}</a>' if person.get("card_pdf") else "")
+                + (f' <a class="btn pf-mail pf-card" href="{up}assets/downloads/{k}.vcf" download="{k}.vcf">'
+                   f'{e(L["vcard"])}</a>' if person.get("vcard") else "")
+                + '</p>')
         out += (f'<article class="person" id="{k}"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div class="pf">'
                 f'<h2 class="pf-name">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>'
                 f'<p class="pf-lead">{e(pr["lead"])}</p>{mail}'
                 f'<h3 class="pf-h">{e(L["areas"])}</h3><ul class="pf-areas">{areas}</ul>'
-                f'<dl class="pf-facts">{facts}</dl>{roles}{links}</div></article>')
+                f'<dl class="pf-facts">{facts}</dl>{roles}{links}{downloads}</div></article>')
         thumb = (f'<img src="{up}{e(person["photo"])}" alt="" width="96" height="120" loading="lazy" decoding="async">'
                  if person["photo"] else f'<span aria-hidden="true">{e(person["initials"])}</span>')
         cards += (f'<li><a class="tov-card" href="#{k}">{thumb}<span class="tov-txt"><span class="tov-name">{e(person["name"])}</span>'
@@ -881,6 +893,25 @@ def page_privacy(lang, t):
 <section style="padding-top:0"><div class="wrap prose">{P["body"]}</div></section>'''
 
 
+def vcard(person, role):
+    # Only data already on the site and in config.py; no new facts.
+    parts = person["name"].split()
+    def esc(v):
+        return v.replace("\\", "\\\\").replace(",", "\\,").replace(";", "\\;")
+    lines = ["BEGIN:VCARD", "VERSION:3.0",
+             f"N:{esc(parts[-1])};{esc(' '.join(parts[:-1]))};;;",
+             f"FN:{esc(person['name'])}",
+             f"ORG:{esc(C.FIRM_FULL)}",
+             f"TITLE:{esc(role)}",
+             f"EMAIL;TYPE=WORK:{person['email']}",
+             f"TEL;TYPE=WORK,VOICE:{C.PHONE_TEL}",
+             *[f"TEL;TYPE=CELL,VOICE:{n}" for n in person.get("tel", [])],
+             f"ADR;TYPE=WORK:;;57 Quai de Grenelle;Paris;;75015;France",
+             f"URL:{C.SITE_URL}",
+             "END:VCARD"]
+    return "\r\n".join(lines) + "\r\n"
+
+
 def write(path, text):
     path = ROOT / path
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -894,25 +925,14 @@ CARDS = {
         "name": "Habbine Estelle KIM", "name_ko": "김하빈", "given": "Habbine Estelle", "family": "KIM",
         "title": "Avocate associée", "title_ko": "대표 변호사", "bars": "Paris & New York Bars", "bars_ko": "프랑스 & 미국 변호사",
         "email": "habbine.kim@archelegal.com", "linkedin": "https://www.linkedin.com/in/kim-avocat/",
+        "vcf": "hk",
     },
 }
 
 
-def vcard(c):
-    lines = ["BEGIN:VCARD", "VERSION:3.0",
-             f"N:{c['family']};{c['given']};;;", f"FN:{c['name']}",
-             f"ORG:{C.FIRM} Avocats", f"TITLE:{c['title']} - {c['bars']}",
-             f"EMAIL;TYPE=INTERNET,WORK:{c['email']}", f"TEL;TYPE=WORK,VOICE:{C.PHONE_TEL}",
-             "ADR;TYPE=WORK:;;Tour Totem\\, 57 Quai de Grenelle;Paris;;75015;France",
-             f"URL:{C.SITE_URL}/", f"X-SOCIALPROFILE;TYPE=linkedin:{c['linkedin']}",
-             f"NOTE:{c['name_ko']} {c['title_ko']} - {C.FIRM} Avocats (법무법인 아르케) - Paris | Seoul | Hong Kong",
-             "END:VCARD"]
-    return "\r\n".join(lines) + "\r\n"
-
-
 def card_page(slug, c):
     base = C.SITE_URL.rstrip("/") + "/"
-    vcf = f"{base}carte/{slug}/{slug}.vcf"
+    vcf = f"{base}assets/downloads/{c['vcf']}.vcf"
     svg = (ROOT / "assets/brand/arche-avocats-monogram-dark-transparent.svg").read_text(encoding="utf-8")
     mark = re.sub(r'width="\d+" height="\d+"', 'width="72" height="72"', svg, count=1).replace('<title>Archè Avocats</title>', f'<title>{e(C.FIRM)} Avocats</title>')
     links = [
@@ -983,7 +1003,6 @@ def main():
 
     for slug, c in CARDS.items():
         write(f"carte/{slug}/index.html", card_page(slug, c))
-        write(f"carte/{slug}/{slug}.vcf", vcard(c))
 
     # 404 (absolute asset paths so it works at any depth)
     t = T["en"]
@@ -1007,6 +1026,8 @@ def main():
     write("robots.txt", f"User-agent: *\nAllow: /\nSitemap: {C.SITE_URL.rstrip('/')}/sitemap.xml\n")
     write("CNAME", C.DOMAIN + "\n")
     write(".nojekyll", "")
+    for person in C.PEOPLE:
+        write(f"assets/downloads/{person['slug']}.vcf", vcard(person, T["en"]["people"]["roles"][person["slug"]]))
 
     for w in sorted(set(warnings)):
         print("WARNING:", w)

@@ -1,6 +1,6 @@
 """Press page: dated news and events, and selected publications (firm's request, Oct 2026).
 
-Sources: the firm's existing press-page items, and Habbine Estelle Kim's talks and publications
+Sources: the firm's existing press-page items, and Habbine Estelle KIM's talks and publications
 pages (kimavocat.com/conference.html, kimavocat.com/publication.html), checked 30 Oct 2026.
 Year-only dates ("2025") are used where the source gives no exact date.
 """
@@ -10,22 +10,22 @@ def T(en, fr, ko):
     return {"en": en, "fr": fr, "ko": ko}
 
 
-HK = T("Habbine Estelle Kim", "Habbine Estelle Kim", "김하빈 변호사")
-JK = T("James Joong-ho Kim", "James Joong-ho Kim", "김중호 변호사")
+HK = T("Habbine Estelle KIM", "Habbine Estelle KIM", "김하빈 변호사")
+JK = T("James Joong-ho KIM", "James Joong-ho KIM", "김중호 변호사")
 KA_TALKS = "https://www.kimavocat.com/conference.html"
 
 # (date, title, detail, url)
 EVENTS = [
     ("2026-10-10",
      T("Salon de l'Étudiant, Korea Pavilion, Paris", "Salon de l'Étudiant, pavillon coréen, Paris", "Salon de l'Étudiant 한국관, 파리"),
-     T("Habbine Estelle Kim, moderator and speaker: Korean companies in France, careers and professional opportunities. As Secretary General of the CCICF, with KOSME.",
-       "Habbine Estelle Kim, modératrice et intervenante : les entreprises coréennes en France, carrières et opportunités. En qualité de secrétaire générale de la CCICF, avec la KOSME.",
+     T("Habbine Estelle KIM, moderator and speaker: Korean companies in France, careers and professional opportunities. As Secretary General of the CCICF, with KOSME.",
+       "Habbine Estelle KIM, modératrice et intervenante : les entreprises coréennes en France, carrières et opportunités. En qualité de secrétaire générale de la CCICF, avec la KOSME.",
        "김하빈 변호사, 사회 및 발표: 프랑스 내 한국 기업의 커리어와 기회. 한불상공회의소(CCICF) 사무총장 자격, 중소벤처기업진흥공단(KOSME)과 공동 진행."),
      KA_TALKS),
     ("2026-10-01",
      T("IAKL Annual Conference, London (30 Sep – 3 Oct 2026)", "Conférence annuelle de l'IAKL, Londres (30 sept. – 3 oct. 2026)", "IAKL 연례 컨퍼런스, 런던(2026년 9월 30일~10월 3일)"),
-     T("Habbine Estelle Kim, speaker: Between Automation and Autonomy, AI, international business and legal practice.",
-       "Habbine Estelle Kim, intervenante : entre automatisation et autonomie, IA, affaires internationales et pratique du droit.",
+     T("Habbine Estelle KIM, speaker: Between Automation and Autonomy, AI, international business and legal practice.",
+       "Habbine Estelle KIM, intervenante : entre automatisation et autonomie, IA, affaires internationales et pratique du droit.",
        "김하빈 변호사, 발표: 자동화와 자율 사이, AI·국제 비즈니스·법률 실무."),
      KA_TALKS),
     ("2026-01-01",
@@ -36,44 +36,44 @@ EVENTS = [
      "https://www.kimavocat.com/certification.html"),
     ("2025-11-05",
      T("Seminar at the Embassy of Korea in France", "Séminaire à l'Ambassade de Corée en France", "주프랑스 대한민국 대사관 세미나"),
-     T("James Joong-ho Kim, information session on everyday law and student life, consular section.",
-       "James Joong-ho Kim, séance d'information sur le droit au quotidien et la vie étudiante, section consulaire.",
+     T("James Joong-ho KIM, information session on everyday law and student life, consular section.",
+       "James Joong-ho KIM, séance d'information sur le droit au quotidien et la vie étudiante, section consulaire.",
        "김중호 변호사, 영사과 생활법률·유학생활 설명회."),
      ""),
     ("2025-10-17",
      T("New book: A Forgotten Promise", "Nouvel ouvrage : A Forgotten Promise", "신간 「잊혀진 약속」(A Forgotten Promise)"),
-     T("James Joong-ho Kim's novel based on the Oegyujanggak restitution case.",
-       "Roman de James Joong-ho Kim inspiré de l'affaire de restitution de l'Oegyujanggak.",
+     T("James Joong-ho KIM's novel based on the Oegyujanggak restitution case.",
+       "Roman de James Joong-ho KIM inspiré de l'affaire de restitution de l'Oegyujanggak.",
        "외규장각 반환 소송을 바탕으로 한 김중호 변호사의 소설."),
      "https://www.amazon.fr/dp/B0FWZS7SYM"),
     ("2025-09-19",
      T("AFEC Jeunes conference on sport and EU law, Paris", "Colloque AFEC Jeunes, sport et droit de l'Union, Paris", "AFEC 청년위원회 스포츠·EU법 컨퍼런스, 파리"),
-     T("Habbine Estelle Kim, moderator of the round table on sports governance.",
-       "Habbine Estelle Kim, modératrice de la table ronde sur la gouvernance du sport.",
+     T("Habbine Estelle KIM, moderator of the round table on sports governance.",
+       "Habbine Estelle KIM, modératrice de la table ronde sur la gouvernance du sport.",
        "김하빈 변호사, 스포츠 거버넌스 라운드테이블 사회."),
      KA_TALKS),
     ("2025-04-11",
      T("Paris Arbitration Week", "Paris Arbitration Week", "파리 중재 주간(Paris Arbitration Week)"),
-     T("Habbine Estelle Kim, speaker on CAS arbitration procedures after the Paris 2024 Games (WISLaw panel).",
-       "Habbine Estelle Kim, intervenante sur les procédures d'arbitrage devant le TAS après les Jeux de Paris 2024 (panel WISLaw).",
+     T("Habbine Estelle KIM, speaker on CAS arbitration procedures after the Paris 2024 Games (WISLaw panel).",
+       "Habbine Estelle KIM, intervenante sur les procédures d'arbitrage devant le TAS après les Jeux de Paris 2024 (panel WISLaw).",
        "김하빈 변호사, 파리 2024 이후 스포츠중재재판소(CAS) 절차 발표(WISLaw 패널)."),
      KA_TALKS),
     ("2025",
      T("IAKL Annual Conference, Seoul", "Conférence annuelle de l'IAKL, Séoul", "IAKL 연례 컨퍼런스, 서울"),
-     T("Habbine Estelle Kim, speaker: regulatory and trade requirements for conducting international business.",
-       "Habbine Estelle Kim, intervenante : exigences réglementaires et commerciales des affaires internationales.",
+     T("Habbine Estelle KIM, speaker: regulatory and trade requirements for conducting international business.",
+       "Habbine Estelle KIM, intervenante : exigences réglementaires et commerciales des affaires internationales.",
        "김하빈 변호사, 발표: 국제 비즈니스를 위한 규제·통상 요건."),
      KA_TALKS),
     ("2025",
      T("IAKL European Conference, Berlin", "Conférence européenne de l'IAKL, Berlin", "IAKL 유럽 컨퍼런스, 베를린"),
-     T("Habbine Estelle Kim, co-organiser and speaker: EU regulation and AI.",
-       "Habbine Estelle Kim, co-organisatrice et intervenante : réglementation européenne et IA.",
+     T("Habbine Estelle KIM, co-organiser and speaker: EU regulation and AI.",
+       "Habbine Estelle KIM, co-organisatrice et intervenante : réglementation européenne et IA.",
        "김하빈 변호사, 공동 기획 및 발표: EU 규제와 AI."),
      KA_TALKS),
     ("2025",
      T("Station F · HEC Incubator, JETRO and IndiaAI seminar", "Station F · Incubateur HEC, séminaire JETRO et IndiaAI", "스테이션 F · HEC 인큐베이터, JETRO·IndiaAI 세미나"),
-     T("Habbine Estelle Kim, speaker: navigating French incorporation, a legal guide for international startups.",
-       "Habbine Estelle Kim, intervenante : créer sa société en France, guide juridique pour les startups internationales.",
+     T("Habbine Estelle KIM, speaker: navigating French incorporation, a legal guide for international startups.",
+       "Habbine Estelle KIM, intervenante : créer sa société en France, guide juridique pour les startups internationales.",
        "김하빈 변호사, 발표: 해외 스타트업을 위한 프랑스 법인 설립 법률 가이드."),
      KA_TALKS),
     ("2025",
@@ -86,32 +86,32 @@ EVENTS = [
      ""),
     ("2024",
      T("France-Korea Chamber of Commerce and Industry (CCICF), Paris", "Chambre de commerce et d'industrie France-Corée (CCICF), Paris", "한불상공회의소(CCICF), 파리"),
-     T("Habbine Estelle Kim, speaker on French employment law: harassment.",
-       "Habbine Estelle Kim, intervenante en droit du travail : le harcèlement.",
+     T("Habbine Estelle KIM, speaker on French employment law: harassment.",
+       "Habbine Estelle KIM, intervenante en droit du travail : le harcèlement.",
        "김하빈 변호사, 프랑스 노동법 발표: 직장 내 괴롭힘."),
      KA_TALKS),
     ("2024",
      T("IAKL European Conference, Brussels", "Conférence européenne de l'IAKL, Bruxelles", "IAKL 유럽 컨퍼런스, 브뤼셀"),
-     T("Habbine Estelle Kim, speaker: professional athletes and anti-doping rules.",
-       "Habbine Estelle Kim, intervenante : les athlètes professionnels et les règles antidopage.",
+     T("Habbine Estelle KIM, speaker: professional athletes and anti-doping rules.",
+       "Habbine Estelle KIM, intervenante : les athlètes professionnels et les règles antidopage.",
        "김하빈 변호사, 발표: 프로 선수와 도핑 방지 규정."),
      KA_TALKS),
     ("2024",
      T("Station F · HEC Incubator, KSC seminar", "Station F · Incubateur HEC, séminaire KSC", "스테이션 F · HEC 인큐베이터, KSC 세미나"),
-     T("Habbine Estelle Kim, speaker: legal and intellectual property considerations for startups.",
-       "Habbine Estelle Kim, intervenante : questions juridiques et de propriété intellectuelle pour les startups.",
+     T("Habbine Estelle KIM, speaker: legal and intellectual property considerations for startups.",
+       "Habbine Estelle KIM, intervenante : questions juridiques et de propriété intellectuelle pour les startups.",
        "김하빈 변호사, 발표: 스타트업의 법률·지식재산권 고려사항."),
      KA_TALKS),
     ("2023",
      T("Station F · HEC Incubator, KSC seminar", "Station F · Incubateur HEC, séminaire KSC", "스테이션 F · HEC 인큐베이터, KSC 세미나"),
-     T("Habbine Estelle Kim, speaker: conducting business in France, a legal approach.",
-       "Habbine Estelle Kim, intervenante : faire des affaires en France, approche juridique.",
+     T("Habbine Estelle KIM, speaker: conducting business in France, a legal approach.",
+       "Habbine Estelle KIM, intervenante : faire des affaires en France, approche juridique.",
        "김하빈 변호사, 발표: 프랑스에서의 비즈니스, 법률적 접근."),
      KA_TALKS),
     ("2023",
      T("Guest lectures, Université Paris Cité and Aix-Marseille Université", "Cours invités, Université Paris Cité et Aix-Marseille Université", "파리 시테 대학교·엑스마르세유 대학교 초빙 강의"),
-     T("Habbine Estelle Kim, guest lecturer and jury member, 2023–2026.",
-       "Habbine Estelle Kim, intervenante et membre du jury, 2023–2026.",
+     T("Habbine Estelle KIM, guest lecturer and jury member, 2023–2026.",
+       "Habbine Estelle KIM, intervenante et membre du jury, 2023–2026.",
        "김하빈 변호사, 초빙 강사 및 심사위원, 2023–2026."),
      KA_TALKS),
 ]
@@ -122,8 +122,8 @@ RELATED = T("Related practice", "Expertise liée", "관련 업무")
 EVENTS_SHOWN = 6  # the rest go under "Show all"
 
 PUBS_H = T("Publications and institutional work", "Publications et travaux institutionnels", "논문 및 기관 활동")
-PUBS_P = T("Selected research and contributions by Habbine Estelle Kim.",
-           "Sélection de travaux de recherche et de contributions de Habbine Estelle Kim.",
+PUBS_P = T("Selected research and contributions by Habbine Estelle KIM.",
+           "Sélection de travaux de recherche et de contributions de Habbine Estelle KIM.",
            "김하빈 변호사의 주요 연구와 기관 기여.")
 PUBS_ALL = T("All publications on kimavocat.com", "Toutes les publications sur kimavocat.com", "kimavocat.com에서 전체 논문 보기")
 PUBS_ALL_URL = "https://www.kimavocat.com/publication.html"

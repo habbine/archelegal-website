@@ -62,7 +62,7 @@ ul{padding-left:1.1em}
 .site-header .wrap{display:flex;align-items:center;gap:24px;min-height:76px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);min-width:0}
 .brand img{width:40px;height:auto;flex-shrink:0}
-.brand img.brand-logo{width:auto;height:58px;max-width:100%}
+.brand .brand-logo{width:auto;height:44px}
 .brand-text{display:flex;flex-direction:column;gap:2px}
 .brand span{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:.06em;line-height:1.2}
 .brand small{display:block;font-family:var(--serif);font-size:13px;font-weight:400;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;line-height:1.2}
@@ -207,6 +207,12 @@ section:has(> .prose){background:var(--paper);color:var(--c-text);padding-top:cl
 .site-footer h3,.site-footer .ft-h{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.8em}
 .site-footer ul{list-style:none;padding:0;margin:0}
 .site-footer li{margin-bottom:.4em}
+.pf-contact{display:flex;flex-wrap:nowrap;gap:16px}
+.pf-contact .btn{min-width:0;margin:0;flex:0 1 auto;padding:0 16px;letter-spacing:.12em;white-space:nowrap}
+@media(max-width:640px){.pf-contact{flex-direction:column;align-items:stretch}}
+.site-footer .ft-logo{display:inline-block;margin-bottom:14px}
+.site-footer .ft-logo img{width:160px;height:auto;display:block}
+.site-footer .ft-legal{margin:0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .fine{border-top:1px solid var(--green-line);padding-top:20px;display:flex;flex-wrap:wrap;gap:12px 28px;color:var(--muted);font-size:14px}
 .fine a{color:var(--text)}
 
@@ -231,9 +237,7 @@ section:has(> .prose){background:var(--paper);color:var(--c-text);padding-top:cl
   nav.primary > a[aria-current="page"]{color:var(--gold);border-bottom-color:var(--green-line)}
   nav.primary .lang{align-self:flex-start}
 }
-@media (max-width:420px){.brand small{display:none}.brand span{font-size:16px}}
-@media (max-width:1020px){.brand img.brand-logo{height:50px}}
-@media (max-width:420px){.brand img.brand-logo{height:42px}}
+@media (max-width:420px){.brand small{display:none}.brand span{font-size:16px}.brand .brand-logo{height:30px}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition:none!important;animation:none!important}
@@ -790,3 +794,15 @@ ul.events li .ev-svc:hover{color:var(--gold-d);text-decoration:underline}
 .svc-cta{grid-column:-2/-1;margin:16px 0 0;font-size:15px}
 .svc-cta a{color:var(--gold);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
 .svc-cta a:hover{color:var(--ink)}
+
+/* footer on phones: logo on its own line, then Pages / Offices / Follow side by side (Oct 2026) */
+@media (max-width:760px){
+  .site-footer{padding:40px 0 24px}
+  .site-footer .cols.c4{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 14px;margin-bottom:24px}
+  .site-footer .cols.c4>div:first-child{grid-column:1/-1}
+  .site-footer .ft-logo{margin-bottom:0}
+  .site-footer .ft-logo img{width:120px}
+  .site-footer .ft-h{font-size:11px;letter-spacing:.12em}
+  .site-footer li{font-size:14px;overflow-wrap:anywhere}
+  .site-footer li:not(:has(a)){padding:4px 0;min-height:24px}
+}
