@@ -279,12 +279,13 @@ def cta_href(lang, page):
 
 def footer(lang, page, t):
     f = t["footer"]
+    up = "../" * depth(lang, page)
     links = "".join(f'<li><a href="{rel(lang, page, lang, k)}">{e(t["nav"][k])}</a></li>' for k in NAV)
     soc = (f'<li><a href="{C.LINKEDIN}" rel="noopener">LinkedIn</a></li><li><a href="{C.INSTAGRAM}" rel="noopener">Instagram</a></li>'
            + "".join(f'<li><a href="{e(u)}" rel="noopener">{e(l)}</a></li>' for l, u in C.FOOTER_PERSONAL))
     return f'''<footer class="site-footer"><div class="wrap">
 <div class="cols c4">
-<div><h2 class="ft-h">{e(C.FIRM_FULL)}</h2></div>
+<div><a href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}" class="ft-logo"><img src="{up}assets/logo-horizontal-dark.svg" width="491" height="132" alt=""></a><p class="ft-legal">{e(C.FIRM_FULL)}</p></div>
 <div><h2 class="ft-h">{e(f["nav"])}</h2><ul>{links}</ul></div>
 <div><h2 class="ft-h">{e(t["home"]["offices_h"])}</h2><ul><li>Paris: {e(", ".join(C.ADDRESS_LINES[:2]))}</li><li>Seoul</li><li>Hong Kong</li></ul></div>
 <div><h2 class="ft-h">{e(f["follow"])}</h2><ul>{soc}</ul></div>
