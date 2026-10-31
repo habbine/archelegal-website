@@ -565,7 +565,10 @@ def page_people(lang, t):
         downloads = ('<ul class="person-downloads">' + "".join(
             f'<li><a class="pl-btn" href="{e(href)}" download="{e(fname)}">{e(lbl)}</a></li>' for lbl, href, fname in dl) + "</ul>")
         mail = (f'<p class="pf-contact"><a class="btn pf-mail" href="mailto:{e(person["email"])}">'
-                f'{e(L["email"].format(first=first))}</a></p>')
+                f'{e(L["email"].format(first=first))}</a>'
+                + (f' <a class="btn pf-mail pf-card" href="{up}{e(person["card"])}" download="{e(person["card"].rsplit("/", 1)[1])}">'
+                   f'{e(L["card_btn"])}</a>' if person.get("card_btn") else "")
+                + '</p>')
         out += (f'<article class="person" id="{k}"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div class="pf">'
                 f'<h2 class="pf-name">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>'
                 f'<p class="pf-lead">{e(pr["lead"])}</p>{mail}'
@@ -899,6 +902,7 @@ def vcard(person, role):
              f"TITLE:{esc(role)}",
              f"EMAIL;TYPE=WORK:{person['email']}",
              f"TEL;TYPE=WORK,VOICE:{C.PHONE_TEL}",
+             *[f"TEL;TYPE=CELL,VOICE:{n}" for n in person.get("tel", [])],
              f"ADR;TYPE=WORK:;;57 Quai de Grenelle;Paris;;75015;France",
              f"URL:{C.SITE_URL}",
              "END:VCARD"]

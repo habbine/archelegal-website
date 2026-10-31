@@ -1,9 +1,9 @@
 """Structured lawyer profiles. Source: the firm's own CVs (Oct 2026) and the bios already on the site. Do not add facts."""
 
 LABELS = {
-    "en": {"areas": "Practice areas", "bar": "Bar admissions", "lang": "Languages", "career": "Career", "edu": "Education", "roles": "Professional roles and distinctions", "all": "See all", "more": "Show {n} more", "email": "Email {first}", "jump": "Our lawyers", "vcard": "Save contact (vCard)", "card": "Business card (front)", "card_back": "Business card (back)"},
-    "fr": {"areas": "Domaines d'intervention", "bar": "Barreaux", "lang": "Langues", "career": "Parcours", "edu": "Formation", "roles": "Fonctions, mandats et distinctions", "all": "Voir tout", "more": "Afficher {n} de plus", "email": "Écrire à {first}", "jump": "Nos avocats", "vcard": "Enregistrer le contact (vCard)", "card": "Carte de visite (recto)", "card_back": "Carte de visite (verso)"},
-    "ko": {"areas": "업무 분야", "bar": "변호사 자격", "lang": "언어", "career": "경력", "edu": "학력", "roles": "대외 활동 및 수상", "all": "전체 보기", "more": "{n}개 더 보기", "email": "{first} 변호사에게 이메일", "jump": "변호사 소개", "vcard": "연락처 저장 (vCard)", "card": "명함 (앞면)", "card_back": "명함 (뒷면)"},
+    "en": {"areas": "Practice areas", "bar": "Bar admissions", "lang": "Languages", "career": "Career", "edu": "Education", "roles": "Professional roles and distinctions", "all": "See all", "more": "Show {n} more", "email": "Email {first}", "jump": "Our lawyers", "vcard": "Save contact (vCard)", "card": "Business card (front)", "card_back": "Business card (back)", "card_btn": "Download card"},
+    "fr": {"areas": "Domaines d'intervention", "bar": "Barreaux", "lang": "Langues", "career": "Parcours", "edu": "Formation", "roles": "Fonctions, mandats et distinctions", "all": "Voir tout", "more": "Afficher {n} de plus", "email": "Écrire à {first}", "jump": "Nos avocats", "vcard": "Enregistrer le contact (vCard)", "card": "Carte de visite (recto)", "card_back": "Carte de visite (verso)", "card_btn": "Télécharger la carte"},
+    "ko": {"areas": "업무 분야", "bar": "변호사 자격", "lang": "언어", "career": "경력", "edu": "학력", "roles": "대외 활동 및 수상", "all": "전체 보기", "more": "{n}개 더 보기", "email": "{first} 변호사에게 이메일", "jump": "변호사 소개", "vcard": "연락처 저장 (vCard)", "card": "명함 (앞면)", "card_back": "명함 (뒷면)", "card_btn": "명함 다운로드"},
 }
 
 PROFILES = {

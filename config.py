@@ -47,6 +47,10 @@ PEOPLE = [
         "name": "James Joong-ho Kim",
         "email": "james.kim@archelegal.com",
         "linkedin": "https://www.linkedin.com/in/jameskim-arche/",
+        "card": "assets/downloads/james-kim-carte-recto.png",
+        "card_back": "assets/downloads/james-kim-carte-verso.png",
+        "card_btn": True,
+        "tel": ["+33617904220", "+821093924220"],
     },
     {
         "slug": "hk",
