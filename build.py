@@ -266,7 +266,7 @@ def header(lang, page, t):
         switch += f'<a href="{rel(lang, page, l, page)}" hreflang="{l}" lang="{l}"{cur}>{LANG_LABEL[l]}</a>'
     return f'''<a class="skip" href="#main">{e(t["skip"])}</a>
 <header class="site-header"><div class="wrap">
-<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img src="{up}assets/logo-mark.png" width="38" height="48" alt=""><span class="brand-text"><span>{e(C.FIRM)} Legal <i class="brand-ko" lang="ko">법무법인 아르케</i></span><small>{e({"en": "International boutique law firm", "fr": "Cabinet d'avocats international", "ko": "국제 부티크 로펌"}[lang])}</small></span></a>
+<a class="brand" href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}"><img class="brand-logo" src="{up}assets/logo-horizontal.svg" width="284" height="58" alt="{e(C.FIRM)} Avocats · 법무법인 아르케 · {e({"en": "International boutique law firm", "fr": "Cabinet d'avocats international", "ko": "국제 부티크 로펌"}[lang])}"></a>
 <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" type="button">{e(t["menu"])}</button>
 <nav class="primary" id="primary-nav" aria-label="{e(t["menu"])}">{nav}<div class="lang" role="group" aria-label="Language">{switch}</div></nav>
 </div></header>'''
@@ -370,7 +370,7 @@ def follow_card(lang, text):
             ("Instagram", "@archelegal", C.INSTAGRAM, fl[0], "◎"),
             ("Website", C.SITE_URL.replace("https://", ""), C.SITE_URL, fl[1], "◍"),
         ])
-    return (f'<div class="follow-card"><div class="fc-head"><img class="fc-logo" src="assets/logo-mark.png" width="38" height="48" alt="">'
+    return (f'<div class="follow-card"><div class="fc-head"><img class="fc-logo" src="assets/logo-mark.png" width="40" height="40" alt="">'
             f'<div><strong>{e(head[0])}</strong><p>{e(head[1])}</p></div></div><div class="fc-list">{rows}</div></div>')
 
 
@@ -730,7 +730,8 @@ def media_kit(lang, up):
         topics = "".join(f"<li>{e(x)}</li>" for x in tl)
         spk += (f'<div class="spk"><h4><a href="{team}#{k}">{e(pp["name"])}</a></h4>'
                 f'<p class="spk-mail"><a href="mailto:{e(pp["email"])}">{e(pp["email"])}</a></p><ul>{topics}</ul></div>')
-    kit = f'<li><a href="{up}assets/logo.png" download>{e(m["logo"])}</a></li>'
+    kit = (f'<li><a href="{up}assets/logo.png" download>{e(m["logo"])}</a></li>'
+           f'<li><a href="{up}assets/brand/arche-avocats-horizontal-light.svg" download>{e(m["logo"])[:-6]} (SVG)</a></li>')
     kit += "".join(f'<li><a href="{up}{e(people[k]["photo"])}" download>{e(m["photo"].format(people[k]["name"]))}</a></li>' for k in ("jk", "hk"))
     kit += f'<li><a href="{team}">{e(m["bios"])}</a></li>'
     from urllib.parse import quote
@@ -886,9 +887,60 @@ def write(path, text):
     path.write_text(text, encoding="utf-8")
 
 
+# Digital business card reached from the QR code printed on business cards.
+# Kept out of the sitemap and noindexed: it is a personal contact page, not site content.
+CARDS = {
+    "kim": {
+        "name": "Habbine Estelle KIM", "name_ko": "김하빈", "given": "Habbine Estelle", "family": "KIM",
+        "title": "Avocate associée", "title_ko": "대표 변호사", "bars": "Paris & New York Bars", "bars_ko": "프랑스 & 미국 변호사",
+        "email": "habbine.kim@archelegal.com", "linkedin": "https://www.linkedin.com/in/kim-avocat/",
+    },
+}
+
+
+def vcard(c):
+    lines = ["BEGIN:VCARD", "VERSION:3.0",
+             f"N:{c['family']};{c['given']};;;", f"FN:{c['name']}",
+             f"ORG:{C.FIRM} Avocats", f"TITLE:{c['title']} - {c['bars']}",
+             f"EMAIL;TYPE=INTERNET,WORK:{c['email']}", f"TEL;TYPE=WORK,VOICE:{C.PHONE_TEL}",
+             "ADR;TYPE=WORK:;;Tour Totem\\, 57 Quai de Grenelle;Paris;;75015;France",
+             f"URL:{C.SITE_URL}/", f"X-SOCIALPROFILE;TYPE=linkedin:{c['linkedin']}",
+             f"NOTE:{c['name_ko']} {c['title_ko']} - {C.FIRM} Avocats (법무법인 아르케) - Paris | Seoul | Hong Kong",
+             "END:VCARD"]
+    return "\r\n".join(lines) + "\r\n"
+
+
+def card_page(slug, c):
+    base = C.SITE_URL.rstrip("/") + "/"
+    vcf = f"{base}carte/{slug}/{slug}.vcf"
+    svg = (ROOT / "assets/brand/arche-avocats-monogram-dark-transparent.svg").read_text(encoding="utf-8")
+    mark = re.sub(r'width="\d+" height="\d+"', 'width="72" height="72"', svg, count=1).replace('<title>Archè Avocats</title>', f'<title>{e(C.FIRM)} Avocats</title>')
+    links = [
+        (vcf, "Save contact · 연락처 저장", True),
+        (f"mailto:{c['email']}", c["email"], False),
+        (f"tel:{C.PHONE_TEL}", C.PHONE, False),
+        (c["linkedin"], "LinkedIn", False),
+        (base, "archelegal.com", False),
+    ]
+    items = "".join(f'<li><a class="btn{"" if i == 0 else " ghost"}" href="{e(h)}"{" download" if dl else ""}>{e(t)}</a></li>' for i, (h, t, dl) in enumerate(links))
+    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{e(c["name"])} · {e(C.FIRM)} Avocats</title><meta name="robots" content="noindex">
+<link rel="icon" href="{base}assets/favicon.png" type="image/png"><link rel="apple-touch-icon" href="{base}assets/apple-touch-icon.png">
+<link rel="stylesheet" href="{base}assets/style.css?v={CSS_V}">
+<style>.vc{{max-width:420px;margin:0 auto;padding:48px var(--gutter,20px) 64px;text-align:center}}.vc svg{{display:block;margin:0 auto}}.vc .firm{{font-family:var(--serif);letter-spacing:.3em;font-size:14px;margin:14px 0 2px}}.vc h1{{font-size:30px;margin:28px 0 4px}}.vc .ko{{font-family:"Noto Serif KR",serif;color:var(--gold)}}.vc p{{margin:2px 0;color:var(--muted)}}.vc ul{{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:10px}}.vc .btn{{display:flex;width:100%;min-width:0;box-sizing:border-box;outline-offset:-5px;text-transform:none;letter-spacing:.04em;font-size:15px}}.vc .ghost{{background:transparent;border:1px solid var(--green-line);outline-color:transparent;color:var(--ink)}}.vc .cities{{margin-top:28px;letter-spacing:.3em;font-size:13px}}</style>
+</head><body><main id="main" class="vc">
+{mark}
+<div class="firm">ARCHÈ AVOCATS</div><div class="ko">법무법인 아르케</div>
+<h1>{e(c["name"])}</h1><p class="ko" lang="ko">{e(c["name_ko"])} {e(c["title_ko"])}</p>
+<p>{e(c["title"])} · {e(c["bars"])}</p>
+<ul>{items}</ul>
+<p class="cities">PARIS | SEOUL | HONG KONG</p>
+</main></body></html>'''
+
+
 def main():
     # clean generated output only
-    for d in ["fr", "ko", "services", "experience", "team", "insights", "press", "contact", "legal", "privacy"]:
+    for d in ["fr", "ko", "services", "experience", "team", "insights", "press", "contact", "legal", "privacy", "carte"]:
         shutil.rmtree(ROOT / d, ignore_errors=True)
     for f in ["index.html", "404.html", "sitemap.xml", "robots.txt", "CNAME", ".nojekyll"]:
         (ROOT / f).unlink(missing_ok=True)
@@ -928,6 +980,10 @@ def main():
               f'<meta name="robots" content="noindex"><link rel="canonical" href="{target}">'
               f'<meta http-equiv="refresh" content="0; url={target}"></head>'
               f'<body><p><a href="{target}">{e(T[lang]["nav"]["insights"])}</a></p></body></html>')
+
+    for slug, c in CARDS.items():
+        write(f"carte/{slug}/index.html", card_page(slug, c))
+        write(f"carte/{slug}/{slug}.vcf", vcard(c))
 
     # 404 (absolute asset paths so it works at any depth)
     t = T["en"]
