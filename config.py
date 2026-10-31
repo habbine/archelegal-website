@@ -72,6 +72,10 @@ PEOPLE = [
         "name": "Dabin Kevin KIM",
         "email": "dabin.kim@archelegal.com",
         "linkedin": "https://www.linkedin.com/in/dabin-kevin-kim-0082a9113/",
+        "card": "assets/downloads/dabin-kim-carte-recto.png",
+        "card_back": "assets/downloads/dabin-kim-carte-verso.png",
+        "card_pdf": "assets/downloads/dk-carte.pdf",
+        "vcard": True,
     },
 ]
 
