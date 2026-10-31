@@ -46,7 +46,7 @@ T["en"] = {
         "creds_h": "Where we are involved",
         "creds_p": "Our partners hold roles in the institutions that connect France and Korea. These are some of them.",
         "creds": [
-            ("Korea-France Chamber of Commerce and Industry (CCICF)", "Founder James Joong-ho Kim is president (2012–2015 and 2018–2026); Habbine Estelle Kim is general secretary."),
+            ("Korea-France Chamber of Commerce and Industry (CCICF)", "Founder James Joong-ho KIM is president (2012–2015 and 2018–2026); Habbine Estelle KIM is general secretary."),
             ("Embassy of Korea in France", "Legal counsel."),
             ("HEC incubator at Station F", "Legal counsel to startups in the programme."),
             ("Korea Creative Content Agency (KOCCA)", "Members of its content business advisory board."),
@@ -216,7 +216,7 @@ T["fr"] = {
         "creds_h": "Nos engagements",
         "creds_p": "Nos associés exercent des responsabilités dans des institutions qui relient la France et la Corée. En voici quelques-unes.",
         "creds": [
-            ("Chambre de commerce et d'industrie Corée-France (CCICF)", "Le fondateur James Joong-ho Kim en est président (2012–2015 et 2018–2026) ; Habbine Estelle Kim en est secrétaire générale."),
+            ("Chambre de commerce et d'industrie Corée-France (CCICF)", "Le fondateur James Joong-ho KIM en est président (2012–2015 et 2018–2026) ; Habbine Estelle KIM en est secrétaire générale."),
             ("Ambassade de Corée en France", "Conseil juridique."),
             ("Incubateur HEC à Station F", "Conseil juridique des startups du programme."),
             ("Korea Creative Content Agency (KOCCA)", "Membres de son comité consultatif sur le secteur des contenus."),
@@ -386,7 +386,7 @@ T["ko"] = {
         "creds_h": "주요 활동",
         "creds_p": "구성원들은 프랑스와 한국을 잇는 기관에서 활동하고 있습니다.",
         "creds": [
-            ("주불한국상공회의소 (CCICF)", "설립자 김중호 변호사가 회장(2012–2015, 2018–2026)을, Habbine Estelle Kim 변호사가 사무총장을 맡고 있습니다."),
+            ("주불한국상공회의소 (CCICF)", "설립자 김중호 변호사가 회장(2012–2015, 2018–2026)을, Habbine Estelle KIM 변호사가 사무총장을 맡고 있습니다."),
             ("주프랑스 대한민국 대사관", "법률 자문."),
             ("스테이션 F HEC 인큐베이터", "입주 스타트업 법률 자문."),
             ("한국콘텐츠진흥원 (KOCCA)", "콘텐츠 비즈니스 자문위원."),

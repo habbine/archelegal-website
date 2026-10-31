@@ -113,8 +113,8 @@ def press_by_theme(lang, up, shown=3):
 
 
 HERITAGE = {
-    "en": ("The Oegyujanggak case", "Since 2007, James Joong-ho Kim has acted in the claim for the return of Korea's Oegyujanggak royal manuscripts before the Paris Administrative Court. At the December 2009 hearing, the French State used the word \u201cpillage\u201d for the first time.", "Read the press coverage"),
-    "fr": ("L'affaire de l'Oegyujanggak", "Depuis 2007, James Joong-ho Kim agit dans la demande de restitution des manuscrits royaux coréens de l'Oegyujanggak devant le tribunal administratif de Paris. À l'audience de décembre 2009, l'État français a employé pour la première fois le mot \u00ab pillage \u00bb.", "Lire la presse"),
+    "en": ("The Oegyujanggak case", "Since 2007, James Joong-ho KIM has acted in the claim for the return of Korea's Oegyujanggak royal manuscripts before the Paris Administrative Court. At the December 2009 hearing, the French State used the word \u201cpillage\u201d for the first time.", "Read the press coverage"),
+    "fr": ("L'affaire de l'Oegyujanggak", "Depuis 2007, James Joong-ho KIM agit dans la demande de restitution des manuscrits royaux coréens de l'Oegyujanggak devant le tribunal administratif de Paris. À l'audience de décembre 2009, l'État français a employé pour la première fois le mot \u00ab pillage \u00bb.", "Lire la presse"),
     "ko": ("외규장각 반환 소송", "김중호 변호사는 2007년부터 파리 행정법원에서 외규장각 의궤 반환 소송을 맡아 왔습니다. 2009년 12월 변론에서 프랑스 정부는 처음으로 '약탈'이라는 표현을 사용했습니다.", "언론 보도 보기"),
 }
 
@@ -194,12 +194,12 @@ SIGNATURE = {
     "en": {"kicker": "Signature", "h": "A Paris firm with Korean roots",
            "case_more": "Read about the case",
            "first_h": "One of the first Korean lawyers admitted to the French bar",
-           "first_p": "Admitted to the Paris Bar in 1998, James Joong-ho Kim is one of the first Korean lawyers to practise in France.",
+           "first_p": "Admitted to the Paris Bar in 1998, James Joong-ho KIM is one of the first Korean lawyers to practise in France.",
            "first_more": "Read the coverage", "src": "Reported by:"},
     "fr": {"kicker": "Repères", "h": "Un cabinet parisien aux racines coréennes",
            "case_more": "En savoir plus sur l'affaire",
            "first_h": "L'un des premiers avocats coréens inscrits au barreau en France",
-           "first_p": "Inscrit au Barreau de Paris en 1998, James Joong-ho Kim est l'un des premiers avocats coréens à exercer en France.",
+           "first_p": "Inscrit au Barreau de Paris en 1998, James Joong-ho KIM est l'un des premiers avocats coréens à exercer en France.",
            "first_more": "Lire la presse", "src": "Selon :"},
     "ko": {"kicker": "대표 이력", "h": "한국에 뿌리를 둔 파리 로펌",
            "case_more": "사건 자세히 보기",
