@@ -557,13 +557,19 @@ def page_people(lang, t):
             return f'<h3 class="pf-h">{e(L[key])}</h3><ul class="pf-list">{head}</ul>{more}'
         roles = plist("career") + plist("edu", 3) + plist("roles", TP.PROFILES[k].get("roles_keep", 4))
         first = person["name"].split()[0]
+        dl = [(L["vcard"], up + f"assets/downloads/{k}.vcf", f"{k}.vcf")]
+        for key, lbl in (("card", "card"), ("card_back", "card_back")):
+            if person.get(key):
+                dl.insert(0 if key == "card" else 1, (L[lbl], up + person[key], person[key].rsplit("/", 1)[1]))
+        downloads = ('<ul class="person-downloads">' + "".join(
+            f'<li><a class="pl-btn" href="{e(href)}" download="{e(fname)}">{e(lbl)}</a></li>' for lbl, href, fname in dl) + "</ul>")
         mail = (f'<p class="pf-contact"><a class="btn pf-mail" href="mailto:{e(person["email"])}">'
                 f'{e(L["email"].format(first=first))}</a></p>')
         out += (f'<article class="person" id="{k}"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div class="pf">'
                 f'<h2 class="pf-name">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>'
                 f'<p class="pf-lead">{e(pr["lead"])}</p>{mail}'
                 f'<h3 class="pf-h">{e(L["areas"])}</h3><ul class="pf-areas">{areas}</ul>'
-                f'<dl class="pf-facts">{facts}</dl>{roles}{links}</div></article>')
+                f'<dl class="pf-facts">{facts}</dl>{roles}{links}{downloads}</div></article>')
         thumb = (f'<img src="{up}{e(person["photo"])}" alt="" width="96" height="120" loading="lazy" decoding="async">'
                  if person["photo"] else f'<span aria-hidden="true">{e(person["initials"])}</span>')
         cards += (f'<li><a class="tov-card" href="#{k}">{thumb}<span class="tov-txt"><span class="tov-name">{e(person["name"])}</span>'
@@ -880,6 +886,24 @@ def page_privacy(lang, t):
 <section style="padding-top:0"><div class="wrap prose">{P["body"]}</div></section>'''
 
 
+def vcard(person, role):
+    # Only data already on the site and in config.py; no new facts.
+    parts = person["name"].split()
+    def esc(v):
+        return v.replace("\\", "\\\\").replace(",", "\\,").replace(";", "\\;")
+    lines = ["BEGIN:VCARD", "VERSION:3.0",
+             f"N:{esc(parts[-1])};{esc(' '.join(parts[:-1]))};;;",
+             f"FN:{esc(person['name'])}",
+             f"ORG:{esc(C.FIRM_FULL)}",
+             f"TITLE:{esc(role)}",
+             f"EMAIL;TYPE=WORK:{person['email']}",
+             f"TEL;TYPE=WORK,VOICE:{C.PHONE_TEL}",
+             f"ADR;TYPE=WORK:;;57 Quai de Grenelle;Paris;;75015;France",
+             f"URL:{C.SITE_URL}",
+             "END:VCARD"]
+    return "\r\n".join(lines) + "\r\n"
+
+
 def write(path, text):
     path = ROOT / path
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -951,6 +975,8 @@ def main():
     write("robots.txt", f"User-agent: *\nAllow: /\nSitemap: {C.SITE_URL.rstrip('/')}/sitemap.xml\n")
     write("CNAME", C.DOMAIN + "\n")
     write(".nojekyll", "")
+    for person in C.PEOPLE:
+        write(f"assets/downloads/{person['slug']}.vcf", vcard(person, T["en"]["people"]["roles"][person["slug"]]))
 
     for w in sorted(set(warnings)):
         print("WARNING:", w)

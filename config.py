@@ -56,6 +56,8 @@ PEOPLE = [
         "email": "habbine.kim@archelegal.com",
         "linkedin": "https://www.linkedin.com/in/kim-avocat/",
         "links": HK_LINKS,
+        "card": "assets/downloads/habbine-kim-carte-recto.png",
+        "card_back": "assets/downloads/habbine-kim-carte-verso.png",
     },
     {
         "slug": "dk",

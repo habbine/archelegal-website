@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Kim;Habbine Estelle;;;
+FN:Habbine Estelle Kim
+ORG:Archè SELARL
+TITLE:Partner
+EMAIL;TYPE=WORK:habbine.kim@archelegal.com
+TEL;TYPE=WORK,VOICE:+33143358410
+ADR;TYPE=WORK:;;57 Quai de Grenelle;Paris;;75015;France
+URL:https://archelegal.com
+END:VCARD

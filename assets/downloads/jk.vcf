@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Kim;James Joong-ho;;;
+FN:James Joong-ho Kim
+ORG:Archè SELARL
+TITLE:Founder and Managing Partner
+EMAIL;TYPE=WORK:james.kim@archelegal.com
+TEL;TYPE=WORK,VOICE:+33143358410
+ADR;TYPE=WORK:;;57 Quai de Grenelle;Paris;;75015;France
+URL:https://archelegal.com
+END:VCARD

@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Kim;Dabin Kevin;;;
+FN:Dabin Kevin Kim
+ORG:Archè SELARL
+TITLE:Of Counsel
+EMAIL;TYPE=WORK:dabin.kim@archelegal.com
+TEL;TYPE=WORK,VOICE:+33143358410
+ADR;TYPE=WORK:;;57 Quai de Grenelle;Paris;;75015;France
+URL:https://archelegal.com
+END:VCARD
