@@ -794,3 +794,15 @@ ul.events li .ev-svc:hover{color:var(--gold-d);text-decoration:underline}
 .svc-cta{grid-column:-2/-1;margin:16px 0 0;font-size:15px}
 .svc-cta a{color:var(--gold);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
 .svc-cta a:hover{color:var(--ink)}
+
+/* footer on phones: logo on its own line, then Pages / Offices / Follow side by side (Oct 2026) */
+@media (max-width:760px){
+  .site-footer{padding:40px 0 24px}
+  .site-footer .cols.c4{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 14px;margin-bottom:24px}
+  .site-footer .cols.c4>div:first-child{grid-column:1/-1}
+  .site-footer .ft-logo{margin-bottom:0}
+  .site-footer .ft-logo img{width:120px}
+  .site-footer .ft-h{font-size:11px;letter-spacing:.12em}
+  .site-footer li{font-size:14px;overflow-wrap:anywhere}
+  .site-footer li:not(:has(a)){padding:4px 0;min-height:24px}
+}
