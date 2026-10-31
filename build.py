@@ -923,7 +923,7 @@ def write(path, text):
 CARDS = {
     "kim": {
         "name": "Habbine Estelle KIM", "name_ko": "김하빈", "given": "Habbine Estelle", "family": "KIM",
-        "title": "Avocate associée", "title_ko": "대표 변호사", "bars": "Paris & New York Bars", "bars_ko": "프랑스 & 미국 변호사",
+        "title": "Avocate associée", "title_ko": "파트너", "bars": "Paris & New York Bars", "bars_ko": "프랑스 & 미국 변호사",
         "email": "habbine.kim@archelegal.com", "linkedin": "https://www.linkedin.com/in/kim-avocat/",
         "vcf": "hk",
     },
