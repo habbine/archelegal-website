@@ -46,6 +46,7 @@ PEOPLE = [
         "linkedin": "https://www.linkedin.com/in/jameskim-arche/",
         "card": "assets/downloads/james-kim-carte-recto.png",
         "card_back": "assets/downloads/james-kim-carte-verso.png",
+        "card_pdf": "assets/downloads/jk-carte.pdf",
         "card_btn": True,
         "vcard": True,
         "tel": ["+33617904220", "+821093924220"],
@@ -61,6 +62,7 @@ PEOPLE = [
         "downloads": False,
         "card": "assets/downloads/habbine-kim-carte-recto.png",
         "card_back": "assets/downloads/habbine-kim-carte-verso.png",
+        "card_pdf": "assets/downloads/hk-carte.pdf",
         "vcard": True,
     },
     {

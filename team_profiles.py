@@ -27,7 +27,7 @@ PROFILES = {
  },
  "hk": {
   "roles_keep": 5,
-  "areas": ["advice", "corporate", "employment", "litigation",
+  "areas": ["corporate", "employment", "litigation",
             (None, {"en": "Compliance", "fr": "Conformité", "ko": "컴플라이언스"})],
   "en": {"lead": "Represents companies in cross-border litigation and arbitration (commercial, civil, employment and IP) and advises them on legal and regulatory compliance.",
     "bar": "Paris Bar · New York Bar", "lang": "French · English · Korean · Spanish (B1)",

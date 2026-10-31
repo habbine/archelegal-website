@@ -566,8 +566,8 @@ def page_people(lang, t):
             f'<li><a class="pl-btn" href="{e(href)}" download="{e(fname)}">{e(lbl)}</a></li>' for lbl, href, fname in dl) + "</ul>") if person.get("downloads", False) else ""
         mail = (f'<p class="pf-contact"><a class="btn pf-mail" href="mailto:{e(person["email"])}">'
                 f'{e(L["email"].format(first=first))}</a>'
-                + (f' <a class="btn pf-mail pf-card" href="{up}{e(person["card"])}" download="{e(person["card"].rsplit("/", 1)[1])}">'
-                   f'{e(L["card_btn"])}</a>' if person.get("card") else "")
+                + (f' <a class="btn pf-mail pf-card" href="{up}{e(person["card_pdf"])}" download="{e(person["card_pdf"].rsplit("/", 1)[1])}">'
+                   f'{e(L["card_btn"])}</a>' if person.get("card_pdf") else "")
                 + (f' <a class="btn pf-mail pf-card" href="{up}assets/downloads/{k}.vcf" download="{k}.vcf">'
                    f'{e(L["vcard"])}</a>' if person.get("vcard") else "")
                 + '</p>')
