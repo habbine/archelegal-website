@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N:KIM;Habbine Estelle;;;
+FN:Habbine Estelle KIM
+ORG:Archè Avocats
+TITLE:Avocate associée - Paris & New York Bars
+EMAIL;TYPE=INTERNET,WORK:habbine.kim@archelegal.com
+TEL;TYPE=WORK,VOICE:+33143358410
+ADR;TYPE=WORK:;;Tour Totem\, 57 Quai de Grenelle;Paris;;75015;France
+URL:https://archelegal.com/
+X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/kim-avocat/
+NOTE:김하빈 대표 변호사 - Archè Avocats (법무법인 아르케) - Paris | Seoul | Hong Kong
+END:VCARD
