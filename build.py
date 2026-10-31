@@ -285,9 +285,9 @@ def footer(lang, page, t):
            + "".join(f'<li><a href="{e(u)}" rel="noopener">{e(l)}</a></li>' for l, u in C.FOOTER_PERSONAL))
     return f'''<footer class="site-footer"><div class="wrap">
 <div class="cols c4">
-<div><a href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}" class="ft-logo"><img src="{up}assets/logo-horizontal-dark.svg" width="491" height="132" alt=""></a><p class="ft-legal">{e(C.FIRM_FULL)}</p></div>
+<div><a href="{rel(lang, page, lang, "home")}" aria-label="{e(C.FIRM)}" class="ft-logo"><img src="{up}assets/logo-horizontal-dark.svg" width="491" height="132" alt=""></a></div>
 <div><h2 class="ft-h">{e(f["nav"])}</h2><ul>{links}</ul></div>
-<div><h2 class="ft-h">{e(t["home"]["offices_h"])}</h2><ul><li>Paris: {e(", ".join(C.ADDRESS_LINES[:2]))}</li><li>Seoul</li><li>Hong Kong</li></ul></div>
+<div><h2 class="ft-h">{e(t["home"]["offices_h"])}</h2><ul><li>Paris</li><li>Seoul</li><li>Hong Kong</li></ul></div>
 <div><h2 class="ft-h">{e(f["follow"])}</h2><ul>{soc}</ul></div>
 </div>
 <div class="fine"><span>© {2026} {e(C.FIRM_FULL)}. {e(f["rights"])}</span><a href="{rel(lang, page, lang, "legal")}">{e(f["legal"])}</a><a href="{rel(lang, page, lang, "privacy")}">{e(f["privacy"])}</a></div>

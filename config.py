@@ -34,10 +34,7 @@ HK_LINKS = [
     ("Instagram", "https://www.instagram.com/kim_avocat/"),
 ]
 # Founder links kept in the footer.
-FOOTER_PERSONAL = [
-    ("kimavocat.com", "https://www.kimavocat.com/"),
-    ("Instagram · kim_avocat", "https://www.instagram.com/kim_avocat/"),
-]
+FOOTER_PERSONAL = []
 
 PEOPLE = [
     {
