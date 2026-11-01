@@ -447,7 +447,6 @@ def page_home(lang, t):
 {sig_html}
 {team_html}
 <section class="alt"><div class="wrap"><div class="section-head"><h2>{e(h["industries_h"])}</h2><p class="lede">{e(h["industries_p"])}</p></div><div class="industries">{inds}</div></div></section>
-<section><div class="wrap"><div class="section-head"><h2>{e(h["offices_h"])}</h2><p class="lede">{e(NETWORK[lang])}</p></div><div class="offices">{offices}</div></div></section>
 <section class="alt"><div class="wrap aff"><h2 class="aff-h">{AFF_H[lang]}</h2><ul class="aff-list">{"".join(f"<li>{e(x)}</li>" for x in AFFILIATIONS)}</ul></div></section>
 {press}
 {close_html}"""
