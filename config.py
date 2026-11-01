@@ -12,7 +12,7 @@ ADDRESS_LINES = ["Tour Totem", "57 Quai de Grenelle", "75015 Paris", "France"]
 MAPS_URL = "https://www.openstreetmap.org/search?query=57%20Quai%20de%20Grenelle%2075015%20Paris"
 
 LINKEDIN = "https://www.linkedin.com/company/archelegalparis"
-INSTAGRAM = "https://www.instagram.com/archelegal/"
+INSTAGRAM = "https://www.instagram.com/archeavocats"
 
 # Booking / messaging. Leave "" to hide a channel.
 BOOKING_URL = ""      # e.g. a Calendly or Cal.com link: shown as the main button when set
