@@ -474,7 +474,7 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 .hero-b .lede{color:var(--c-ink);font-size:clamp(18px,1.9vw,24px);line-height:1.5;max-width:32em}
 .hero-b .actions .btn:not(.ghost){background:var(--c-ink);border-color:var(--c-ink);outline-color:var(--c-ink);color:#fff}
 .hero-b .actions .btn:not(.ghost):hover{background:var(--green-mid);border-color:var(--green-mid);outline-color:var(--green-mid);color:#fff}
-.hero-b .actions .btn.ghost{color:var(--c-ink);border-bottom-color:var(--gold-d)}
+.hero-b .actions .btn.ghost{color:var(--c-ink);border:1px solid var(--c-ink);border-bottom-color:var(--c-ink)}
 .hero-b .actions .btn.ghost:hover{color:var(--gold-d)}
 .hero-b .actions .btn:focus-visible{outline:2px solid var(--gold-d);outline-offset:4px}
 .cred-strip.strip-b{background:var(--paper);border-top:1px solid var(--c-ink)}
