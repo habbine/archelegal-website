@@ -588,7 +588,7 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 .hero-b .actions{align-items:center;gap:20px;margin-top:28px}
 .hero-b .actions .btn:not(.ghost){background:var(--c-ink);border-color:var(--c-ink);outline-color:var(--c-ink);color:#fff}
 .hero-b .actions .btn:not(.ghost):hover{background:var(--green-mid);border-color:var(--green-mid);outline-color:var(--green-mid);color:#fff}
-.hero-b .actions .btn.ghost{min-width:0;padding:0 4px;border:0;outline:0;background:none;text-transform:none;letter-spacing:0;font-family:var(--sans);font-size:16px;color:var(--c-ink);border-bottom:1px solid var(--gold-d);min-height:44px}
+.hero-b .actions .btn.ghost{min-width:0;padding:0 18px;border:1px solid var(--c-ink);outline:0;background:none;text-transform:none;letter-spacing:0;font-family:var(--sans);font-size:16px;color:var(--c-ink);min-height:44px}
 .hero-b .actions .btn.ghost:hover{color:var(--gold-d)}
 .hero-b .actions .btn:focus-visible{outline:2px solid var(--gold-d);outline-offset:4px}
 @media(max-width:480px){.hero-b .actions .btn.ghost{flex:0 0 auto}}
