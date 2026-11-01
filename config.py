@@ -8,7 +8,7 @@ FIRM_FULL = "Archè SELARL"
 EMAIL = "paris@archelegal.com"
 PHONE = "+33 1 43 35 84 10"
 PHONE_TEL = "+33143358410"
-ADDRESS_LINES = ["Tour Totem", "57 Quai de Grenelle", "75015 Paris", "France"]
+ADDRESS_LINES = ["57 Quai de Grenelle", "75015 Paris", "France"]
 MAPS_URL = "https://www.openstreetmap.org/search?query=57%20Quai%20de%20Grenelle%2075015%20Paris"
 
 LINKEDIN = "https://www.linkedin.com/company/archelegalparis"
