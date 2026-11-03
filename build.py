@@ -556,7 +556,8 @@ def page_people(lang, t):
                     f'<ul class="pf-list">{tail}</ul></details>') if rest else ""
             return f'<h3 class="pf-h">{e(L[key])}</h3><ul class="pf-list">{head}</ul>{more}'
         roles = plist("career") + plist("edu", 3) + plist("roles", TP.PROFILES[k].get("roles_keep", 4))
-        first = person["name"].split()[0]
+        dname = person["name_ko"] if lang == "ko" and person.get("name_ko") else person["name"]
+        first = dname.split()[0]
         dl = [(L["vcard"], up + f"assets/downloads/{k}.vcf", f"{k}.vcf")]
         for key, lbl in (("card", "card"), ("card_back", "card_back")):
             if person.get(key):
@@ -571,13 +572,13 @@ def page_people(lang, t):
                    f'{e(L["vcard"])}</a>' if person.get("vcard") else "")
                 + '</p>')
         out += (f'<article class="person" id="{k}"><div class="avatar" aria-hidden="{"false" if person["photo"] else "true"}">{av}</div><div class="pf">'
-                f'<h2 class="pf-name">{e(person["name"])}</h2><p class="role">{e(p["roles"][k])}</p>'
+                f'<h2 class="pf-name">{e(dname)}</h2><p class="role">{e(p["roles"][k])}</p>'
                 f'<p class="pf-lead">{e(pr["lead"])}</p>{mail}'
                 f'<h3 class="pf-h">{e(L["areas"])}</h3><ul class="pf-areas">{areas}</ul>'
                 f'<dl class="pf-facts">{facts}</dl>{roles}{links}{downloads}</div></article>')
         thumb = (f'<img src="{up}{e(person["photo"])}" alt="" width="96" height="120" loading="lazy" decoding="async">'
                  if person["photo"] else f'<span aria-hidden="true">{e(person["initials"])}</span>')
-        cards += (f'<li><a class="tov-card" href="#{k}">{thumb}<span class="tov-txt"><span class="tov-name">{e(person["name"])}</span>'
+        cards += (f'<li><a class="tov-card" href="#{k}">{thumb}<span class="tov-txt"><span class="tov-name">{e(dname)}</span>'
                   f'<span class="tov-role">{e(p["roles"][k])}</span><span class="tov-lang">{e(pr["lang"])}</span></span></a></li>')
     import team_profiles as TP2
     people_ld = []

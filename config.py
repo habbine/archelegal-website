@@ -42,6 +42,7 @@ PEOPLE = [
         "initials": "JK",
         "photo": "assets/img/team-jk-2.webp",  # e.g. "assets/img/james-kim.jpg" once you add the file
         "name": "James Joong-ho KIM",
+        "name_ko": "김중호",
         "email": "james.kim@archelegal.com",
         "linkedin": "https://www.linkedin.com/in/jameskim-arche/",
         "card": "assets/downloads/james-kim-carte-recto.png",
@@ -56,6 +57,7 @@ PEOPLE = [
         "initials": "HK",
         "photo": "assets/img/team-hk-4.webp",
         "name": "Habbine Estelle KIM",
+        "name_ko": "김하빈",
         "email": "habbine.kim@archelegal.com",
         "linkedin": "https://www.linkedin.com/in/kim-avocat/",
         "links": [],
@@ -70,6 +72,7 @@ PEOPLE = [
         "initials": "DK",
         "photo": "assets/img/team-dk-3.webp",
         "name": "Dabin Kevin KIM",
+        "name_ko": "김다빈",
         "email": "dabin.kim@archelegal.com",
         "linkedin": "https://www.linkedin.com/in/dabin-kevin-kim-0082a9113/",
         "card": "assets/downloads/dabin-kim-carte-recto.png",
