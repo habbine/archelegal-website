@@ -70,7 +70,7 @@ PEOPLE = [
     {
         "slug": "dk",
         "initials": "DK",
-        "photo": "assets/img/team-dk-3.webp",
+        "photo": "assets/img/team-dk-4.webp",
         "name": "Dabin Kevin KIM",
         "name_ko": "김다빈",
         "email": "dabin.kim@archelegal.com",
