@@ -54,7 +54,7 @@ PEOPLE = [
     {
         "slug": "hk",
         "initials": "HK",
-        "photo": "assets/img/team-hk.webp",
+        "photo": "assets/img/team-hk-2.webp",
         "name": "Habbine Estelle KIM",
         "email": "habbine.kim@archelegal.com",
         "linkedin": "https://www.linkedin.com/in/kim-avocat/",
