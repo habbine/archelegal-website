@@ -40,7 +40,7 @@ PEOPLE = [
     {
         "slug": "jk",
         "initials": "JK",
-        "photo": "assets/img/team-jk.webp",  # e.g. "assets/img/james-kim.jpg" once you add the file
+        "photo": "assets/img/team-jk-2.webp",  # e.g. "assets/img/james-kim.jpg" once you add the file
         "name": "James Joong-ho KIM",
         "email": "james.kim@archelegal.com",
         "linkedin": "https://www.linkedin.com/in/jameskim-arche/",
