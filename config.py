@@ -40,7 +40,7 @@ PEOPLE = [
     {
         "slug": "jk",
         "initials": "JK",
-        "photo": "assets/img/team-jk-2.webp",  # e.g. "assets/img/james-kim.jpg" once you add the file
+        "photo": "assets/img/team-jk-3.webp",  # e.g. "assets/img/james-kim.jpg" once you add the file
         "name": "James Joong-ho KIM",
         "name_ko": "김중호",
         "email": "james.kim@archelegal.com",
@@ -55,7 +55,7 @@ PEOPLE = [
     {
         "slug": "hk",
         "initials": "HK",
-        "photo": "assets/img/team-hk-5.webp",
+        "photo": "assets/img/team-hk-6.webp",
         "name": "Habbine Estelle KIM",
         "name_ko": "김하빈",
         "email": "habbine.kim@archelegal.com",
@@ -70,7 +70,7 @@ PEOPLE = [
     {
         "slug": "dk",
         "initials": "DK",
-        "photo": "assets/img/team-dk-4.webp",
+        "photo": "assets/img/team-dk-5.webp",
         "name": "Dabin Kevin KIM",
         "name_ko": "김다빈",
         "email": "dabin.kim@archelegal.com",
