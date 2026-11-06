@@ -211,7 +211,7 @@ section:has(> .prose){background:var(--paper);color:var(--c-text);padding-top:cl
 .pf-contact .btn{min-width:0;margin:0;flex:0 1 auto;padding:0 16px;letter-spacing:.12em;white-space:nowrap}
 @media(max-width:640px){.pf-contact{flex-direction:column;align-items:stretch}}
 .site-footer .ft-logo{display:inline-block;margin-bottom:14px}
-.site-footer .ft-logo img{width:160px;height:auto;display:block}
+.site-footer .ft-logo img{width:200px;height:auto;display:block}
 .site-footer .ft-legal{margin:0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .fine{border-top:1px solid var(--green-line);padding-top:20px;display:flex;flex-wrap:wrap;gap:12px 28px;color:var(--muted);font-size:14px}
 .fine a{color:var(--text)}
@@ -801,7 +801,7 @@ ul.events li .ev-svc:hover{color:var(--gold-d);text-decoration:underline}
   .site-footer .cols.c4{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 14px;margin-bottom:24px}
   .site-footer .cols.c4>div:first-child{grid-column:1/-1}
   .site-footer .ft-logo{margin-bottom:0}
-  .site-footer .ft-logo img{width:120px}
+  .site-footer .ft-logo img{width:170px}
   .site-footer .ft-h{font-size:11px;letter-spacing:.12em}
   .site-footer li{font-size:14px;overflow-wrap:anywhere}
   .site-footer li:not(:has(a)){padding:4px 0;min-height:24px}
