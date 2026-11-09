@@ -614,7 +614,7 @@ ul.events li{max-width:none;margin:0;padding:16px 0;border-top:1px solid var(--c
 /* Team snapshot */
 .tm-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
 .tm-card{display:flex;flex-direction:column;gap:4px;color:var(--ink);text-decoration:none}
-.tm-card img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1);margin-bottom:12px;border:1px solid var(--green-mid)}
+.tm-card img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;border:1px solid var(--green-mid)}
 .tm-name{font-family:var(--serif);font-size:20px}
 .tm-role{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 .tm-lang{font-size:15px;color:var(--muted)}
