@@ -12,7 +12,7 @@
     });
   }
 
-  // Time bridge: Paris / Seoul / Hong Kong office hours
+  // Time bridge: office hours
   var bridge = document.getElementById("bridge");
   if (bridge && window.Intl) {
     var OPEN = 9, CLOSE = 18;
