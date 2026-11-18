@@ -280,7 +280,7 @@ HERO = {
     "fr": {"kicker": "Cabinet d'avocats international de type boutique · Siège à Paris",
            "h1": "Un droit transfrontalier pour les affaires internationales.",
            "lede": "Depuis plus de 25 ans, nous conseillons les entreprises qui exercent entre l'Europe, l'Asie, l'Afrique, les États-Unis et le Moyen-Orient : création de société, droit du travail, contentieux et projets internationaux. En français, en anglais et en coréen.",
-           "strip": [("Barreaux", "Barreau de Paris · Barreau de New York"), ("Langues de travail", "Français · Anglais · Coréen"), ("Expérience", "Europe · Royaume-Uni · États-Unis · Moyen-Orient · Asie · Afrique")]},
+           "strip": [("Barreaux", "Paris · New York"), ("Langues de travail", "Français · Anglais · Coréen"), ("Expérience", "Europe · Royaume-Uni · États-Unis · Moyen-Orient · Asie · Afrique")]},
     "ko": {"kicker": "부티크 국제 로펌 · 파리 본사",
            "h1": "국제 비즈니스를 위한 국경 간 법률 자문.",
            "lede": "25년 넘게 유럽, 아시아, 아프리카, 미국, 중동 사이에서 사업하는 기업을 자문해 왔습니다. 회사 설립, 노동, 분쟁, 국제 프로젝트를 한국어, 프랑스어, 영어로 지원합니다.",
