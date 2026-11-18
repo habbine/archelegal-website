@@ -276,7 +276,7 @@ HERO = {
     "en": {"kicker": "International boutique law firm · Headquartered in Paris",
            "h1": "Cross-border law for international business.",
            "lede": "For over 25 years, we have advised companies doing business between Europe, Asia, Africa, the United States and the Middle East: company set-up, employment, disputes and international projects. In French, English and Korean.",
-           "strip": [("Bar admissions", "Paris Bar · New York Bar"), ("Working languages", "French · English · Korean"), ("Experience", "Europe · UK · USA · Middle East · Asia · Africa")]},
+           "strip": [("Bar admissions", "Paris · New York"), ("Working languages", "French · English · Korean"), ("Experience", "Europe · UK · USA · Middle East · Asia · Africa")]},
     "fr": {"kicker": "Cabinet d'avocats international de type boutique · Siège à Paris",
            "h1": "Un droit transfrontalier pour les affaires internationales.",
            "lede": "Depuis plus de 25 ans, nous conseillons les entreprises qui exercent entre l'Europe, l'Asie, l'Afrique, les États-Unis et le Moyen-Orient : création de société, droit du travail, contentieux et projets internationaux. En français, en anglais et en coréen.",
